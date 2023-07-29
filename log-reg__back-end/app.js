@@ -23,7 +23,7 @@ app.use(limiter);
 app.use(middleware);
 
 app.get('/', (req, res) => {
-	res.status(200).send('Wczytano główna strone.');
+	return res.status(200).send('Wczytano główna strone.');
 });
 
 app.listen(PORT, ()=>{console.log(`Server Started correctly on port ${PORT}`)});

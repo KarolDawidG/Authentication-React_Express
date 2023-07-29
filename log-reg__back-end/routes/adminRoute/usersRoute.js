@@ -12,14 +12,14 @@ router.get('/', verifyToken, async (req, res, next) => {
   console.log(`Autoryzacja: ${userRole}`);
   
   if (userRole !== 'admin') {
-    return res.status(403).send('Brak uprawnień do dostępu do danych.');
+      return res.status(403).send('Brak uprawnień do dostępu do danych.');
   }
   try {
-    const usersList = await UsersRecord.listAll();
-    res.json({ usersList });
+      const usersList = await UsersRecord.listAll();
+      return res.json({ usersList });
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Unknown server error. Please contact your administrator.');
+      console.error(error);
+      return res.status(500).send('Unknown server error. Please contact your administrator.');
   }
 });
 

@@ -4,10 +4,10 @@ const middleware = require('../../config/middleware')
 router.use(middleware);
 
 router.get('/', (req, res, next) => {
-    console.log("Wylogowano")
+        console.log("The user has been logged out.")
         res.clearCookie('user');
         res.clearCookie('token');
-        res.status(200).send('The server is working properly.');
+        return res.status(200).send('The server is working properly.');
     });
 
 module.exports = router;

@@ -8,10 +8,10 @@ router.use(middleware);
 
 router.get('/', async (req, res)=>{
     try{
-        res.status(200).send('Operation completed successfully.');
+        return res.status(200).send('Operation completed successfully.');
     } catch (err) {
         console.error(err);
-        res.status(500).send('Unknown server error. Please contact your administrator.');
+        return res.status(500).send('Unknown server error. Please contact your administrator.');
     }
 });
 
@@ -48,10 +48,10 @@ router.post('/', async (req, res) => {
         }
       } catch (error) {
         console.error(error);
-        res.status(500).send('Unknown server error. Please contact your administrator.');
+        return res.status(500).send('Unknown server error. Please contact your administrator.');
       }
     } else {
-      res.status(400).send('You can\'t just do a SQL Injection attack and think everything is fine');
+        return res.status(400).send('You can\'t just do a SQL Injection attack and think everything is fine');
     }
   });
 
