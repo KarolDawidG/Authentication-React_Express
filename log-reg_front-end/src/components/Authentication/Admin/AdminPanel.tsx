@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { useNavigate } from 'react-router-dom';
+import {FadeLoader} from "react-spinners/";
 import axios from 'axios';
 import { admin } from "../../Utils/links";
 
@@ -41,7 +42,17 @@ export const AdminPanel = () => {
   }, [redirect]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <FadeLoader
+            color="#e30937"
+            height={30}
+            loading
+            margin={6}
+            radius={3}
+            speedMultiplier={1}
+            width={4}
+        />
+    </div>;
   }
 
   return (

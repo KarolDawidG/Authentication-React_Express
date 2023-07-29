@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
 import 'react-toastify/dist/ReactToastify.css';
 import { RedirectBtn } from "../../Others/RedirectBtn";
+import { reset } from "../../Utils/links";
 
 
 export const Reset = () => {
@@ -14,7 +15,7 @@ export const Reset = () => {
       e.preventDefault();
   
       try {
-        const response = await axios.post("http://localhost:3001/reset/", {
+        const response = await axios.post(reset, {
             email,
             password,
           });

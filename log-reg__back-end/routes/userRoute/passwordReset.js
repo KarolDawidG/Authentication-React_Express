@@ -1,8 +1,10 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const middleware = require("../../config/middleware");
 const router = express.Router();
 const { UsersRecord } = require("../../database/Records/UsersRecord");
 
+router.use(middleware);
 router.use(express.json());
 
 router.get('/', async (req, res) => {

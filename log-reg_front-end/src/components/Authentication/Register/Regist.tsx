@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { notify } from "../../Others/Notify";
 import 'react-toastify/dist/ReactToastify.css';
 import "../../../css/styles.css";
+import { register } from "../../Utils/links";
 
 export const Regist: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -19,30 +20,25 @@ export const Regist: React.FC = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/register", {
+      const response = await axios.post(register, {
         email,
         username,
         password,
-    
       });
-
       if (response.status === 200) {
-
           notify(response.data);
           setTimeout(() => redirect(`/`), 2000);
-
       } else if (response.status === 401) {
-        alert(response.data);  
+        notify(response.data);  
       } else  {
-        alert(response.data); 
-
+        notify(response.data); 
       }
     } catch (error: any) {
       console.error(error);
       if (error.response) {
         notify(error.response.data); 
       } else {
-        alert('Error occurred. Please check your network connection.');
+        notify('Error occurred. Please check your network connection.');
       }
     }
   };
