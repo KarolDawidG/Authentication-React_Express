@@ -4,13 +4,15 @@ const bcrypt = require("bcrypt");
 const middleware = require("../../config/middleware");
 const router = express.Router();
 const { queryParameterize, validateEmail } = require('../../config/config');
+const logger = require('../../logs/logger');
 router.use(middleware);
 
 router.get('/', async (req, res)=>{
     try{
         return res.status(200).send('Operation completed successfully.');
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        console.error(error);
+        logger.error(error.message);
         return res.status(500).send('Unknown server error. Please contact your administrator.');
     }
 });
@@ -48,6 +50,7 @@ router.post('/', async (req, res) => {
         }
       } catch (error) {
         console.error(error);
+        logger.error(error.message);
         return res.status(500).send('Unknown server error. Please contact your administrator.');
       }
     } else {

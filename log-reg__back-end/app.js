@@ -10,6 +10,7 @@ const logoutRoute = require('./routes/userRoute/logoutRoute');
 const usersRoute = require('./routes/adminRoute/usersRoute');
 const updateRole = require('./routes/adminRoute/updateRole');
 const resetRoute = require('./routes/userRoute/passwordReset');
+const logger = require('./logs/logger');
 
 app.use('/register', regRoute );
 app.use('/auth', logRoute );
@@ -22,8 +23,23 @@ app.use('/reset', resetRoute);
 app.use(limiter);
 app.use(middleware);
 
+
 app.get('/', (req, res) => {
-	return res.status(200).send('Wczytano główna strone.');
-});
+		try {
+		  return res.status(200).send('Wczytano główną stronę.');
+		} catch (error) {
+		  console.error(error);
+		  logger.error(error.message);
+		  if (error instanceof SyntaxError) {
+			logger.error(error.message);
+			return res.status(400).send('Nieprawidłowe zapytanie.');
+		  } else if (error instanceof ReferenceError) {
+			logger.error(error.message);
+			return res.status(500).send('Błąd wewnętrzny serwera.');
+		  } else {
+			return res.status(500).send('Wystąpił nieznany błąd.');
+		  }
+		}
+	  });
 
 app.listen(PORT, ()=>{console.log(`Server Started correctly on port ${PORT}`)});

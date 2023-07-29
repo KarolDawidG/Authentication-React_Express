@@ -3,15 +3,15 @@ const bcrypt = require('bcrypt');
 const middleware = require("../../config/middleware");
 const router = express.Router();
 const { UsersRecord } = require("../../database/Records/UsersRecord");
-
+const logger = require('../../logs/logger');
 router.use(middleware);
-router.use(express.json());
 
 router.get('/', async (req, res) => {
   try {
     return res.status(200).send('The server is working properly.');
   } catch (error) {
     console.log(error);
+    logger.error(error.message);
     return res.status(500).send('An error occurred while trying to establish a GET connection.');
   }
 });
@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
     } 
   } catch (error) {
         console.error(error);
+        logger.error(error.message);
         return res.status(500).send('Unknown server error. Please contact your administrator.');
   }
 });
