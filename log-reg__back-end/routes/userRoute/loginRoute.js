@@ -7,12 +7,37 @@ const middleware = require('../../config/middleware')
 const {verifyTokenAfterLogin,  publicKey, privateKey, queryParameterize } = require('../../config/config');
 router.use(middleware);
 
+//// winston
+// Step 1: Import Winston
+const winston = require('winston');
+const { createLogger, transports, format } = winston;
+const { combine, timestamp, printf } = format;
+
+// Step 2: Create a custom log format
+const logFormat = printf(({ level, message, timestamp }) => {
+  return `${timestamp} ${level}: ${message}`;
+});
+
+// Step 3: Create a logger with desired transports
+const logger = createLogger({
+  format: combine(
+    timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    logFormat
+  ),
+  transports: [
+    new transports.Console(),
+    new transports.File({ filename: 'logs/error.log', level: 'error' }),
+  ],
+});
+////////////////
 
 router.get('/', verifyTokenAfterLogin, (req, res) => {
     if (token) {
         jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
             if (err) {
-                console.error(err);
+                // console.error(err);  
+                // Step 4: Log the error message
+                logger.error(err.message);
                 return res.status(401).send('Your session has expired. Please log in again.');
             } else {
                 return res.status(200).send('Successful operation.');
@@ -61,6 +86,7 @@ router.post("/", async (req, res) => {
     }
   } catch (error) {
       console.error(error);
+      logger.error(error.message);
       return res.status(500).send("Unknown server error. Please contact your administrator.");
   }
 });
