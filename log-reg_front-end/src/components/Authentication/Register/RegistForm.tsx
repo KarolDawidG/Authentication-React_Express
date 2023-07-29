@@ -12,7 +12,6 @@ export const RegistForm: React.FC<RegistFormProps> = ({
   setPassword,
   password,
 }) => {
-  const isEmailValid = validateEmail(email);
   return (
     <form className="login-form__form" onSubmit={handleSubmit}>
       <label className="login-form__label" htmlFor="email">
@@ -25,7 +24,7 @@ export const RegistForm: React.FC<RegistFormProps> = ({
         id="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        style={{ backgroundColor: isEmailValid ? "lightcoral" : "grey" }}
+        style={{ backgroundColor: validateEmail(email) ? "lightcoral" : "grey" }}
         onKeyDown={preventSpace}
         required
       />
@@ -42,7 +41,7 @@ export const RegistForm: React.FC<RegistFormProps> = ({
         id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        style={{backgroundColor: `${backgroundColor(username.length, 4)}`}}
+        style={{backgroundColor: `${backgroundColor(username.length, 6)}`}}
         onKeyDown={preventSpace}
         required
       />

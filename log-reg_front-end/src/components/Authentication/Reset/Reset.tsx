@@ -5,7 +5,7 @@ import { notify } from "../../Others/Notify";
 import 'react-toastify/dist/ReactToastify.css';
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { reset } from "../../Utils/links";
-
+import { backgroundColor, preventSpace, validateEmail } from "../../../components/Utils/FormsUtils/forms-utils";
 
 export const Reset = () => {
     const [email, setEmail] = useState("");
@@ -46,20 +46,25 @@ export const Reset = () => {
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Podaj adres email:</label>
                         <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
+                            type="email"
+                            id="email"
+                            value={email}
+                            style={{ backgroundColor: validateEmail(email) ? "lightcoral" : "grey" }}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onKeyDown={preventSpace}
+                            required
                         /><br /><br />
             
                     <label htmlFor="password">Podaj nowe hasło:</label>
                         <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
+                            type="password"
+                            id="password"
+                            value={password}
+                            minLength={8}
+                            style={{backgroundColor: `${backgroundColor(password.length, 8)}`}}
+                            onChange={(e) => setPassword(e.target.value)}
+                            onKeyDown={preventSpace}
+                            required
                         /><br /><br />
             
                     <button className="login-form__submit" type="submit">Resetuj hasło</button>
