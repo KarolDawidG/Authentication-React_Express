@@ -5,25 +5,25 @@ const { UsersRecord } = require('../../database/Records/UsersRecord');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
-const {  verifyToken } = require('../../config/config');
+const {  verifyToken      } = require('../../config/config');
 
 router.use(middleware);
  
 router.get('/', verifyToken, async (req, res, next) => {
-  const userRole = req.userRole; 
-  logger.info(`${MESSAGES.AUTHORIZATION_LVL} ${userRole}`);
+    const userRole = req.userRole; 
 
-  if (userRole !== 'admin') {
+    logger.info(`${MESSAGES.AUTHORIZATION_LVL} ${userRole}`)
+    if (userRole !== 'admin') {
       return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.FORBIDDEN);
-  }
-  try {
+    }
+    try {
         const usersList = await UsersRecord.listAll();
-        return res.json({ usersList });
-  } catch (error) {
+        res.json({ usersList });
+    } catch (error) {
         logger.error(error.message);
-        return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
-  }
-});
+        res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
+    }
+  });
 
 // router.post('/delete/:id', async (req, res, next) => {
 //    const id = req.params.id;

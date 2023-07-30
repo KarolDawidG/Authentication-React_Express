@@ -23,6 +23,7 @@ const MESSAGES = {
     FORBIDDEN: 'Ye be not allowed to access this treasure!',
     
     // Authorization
+    JWT_ERROR: 'JsonWebTokenError: invalid signature.',
     AUTHORIZATION_LVL: 'Avast ye! Authorization level: ',
   };
   

@@ -1,6 +1,9 @@
 const rateLimit = require("express-rate-limit");
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const MESSAGES = require('./messages');
+const STATUS_CODES = require('./status-codes');
+const logger = require('../logs/logger');
 
 const queryParameterize = /^[A-Za-z0-9]+$/;
 
@@ -36,18 +39,14 @@ const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
 });
 
 const verifyTokenAfterLogin = (req, res, next) => {
-
-  if (!token) {
-    return res.status(200).send("Uzytkownik musi sie zalogować");
-  }
-
+  const token = req.headers.authorization;
+    if (!token) {
+      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.USER_NOT_LOGGED_IN);
+    }
   jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
     if (err) {
-      console.error(err);
-      console.log('JsonWebTokenError: invalid signature.')
-      return res.status(401).send('Sesja wygasła.');
+      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.SESSION_EXPIRED);
     }
-
     req.user = decoded;
     next();
   });
@@ -55,18 +54,14 @@ const verifyTokenAfterLogin = (req, res, next) => {
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
-
-  if (!authHeader) { //jesli nie ma nagłówka
-    return res.status(401).send("Uzytkownik musi sie zalogować");
-  }
-
-  const token = authHeader.split(" ")[1]; // Odczytanie samego tokenu, pomijając "Bearer "
-  
+    if (!authHeader) { 
+      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.USER_NOT_LOGGED_IN);
+    }
+  const token = authHeader.split(" ")[1];
   jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
     if (err) {
-      console.error(err);
-      console.log('JsonWebTokenError: invalid signature.');
-      return res.status(401).send('Sesja wygasła.');
+      logger.info(MESSAGES.JWT_ERROR);
+      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.SESSION_EXPIRED);
     }
     const userRole = decoded.role;
     req.userRole = userRole;
