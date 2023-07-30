@@ -1,15 +1,14 @@
-import React from "react";
-import {LoginFormProps} from '../../Utils/Interfaces/LoginFormProps';
+import React, { useContext } from "react";
 import { backgroundColor, preventSpace } from "../../../components/Utils/FormsUtils/forms-utils";
+import {LoginContect} from './Login';
 import "../../../css/styles.css";
 
-export const LoginForm: React.FC<LoginFormProps> = ({
-  handleSubmit,
-  username,
-  password,
-  setUsername,
-  setPassword,
-}) => {
+
+export const LoginForm = () => {
+  
+  const context = useContext(LoginContect);
+    if(!context) return null;
+      const {handleSubmit, username, password, setPassword, setUsername} = context;
 
   return (
     <>

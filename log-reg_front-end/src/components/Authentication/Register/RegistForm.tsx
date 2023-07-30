@@ -1,17 +1,15 @@
-import React from "react";
-import {RegistFormProps} from '../../Utils/Interfaces/RegistFormProps';
+import React, { useContext } from "react";
+//import {RegistFormProps} from '../../Utils/Interfaces/RegistFormProps';
 import { backgroundColor, preventSpace, validateEmail } from "../../../components/Utils/FormsUtils/forms-utils";
+import {RegisterContect} from './Regist';
 import "../../../css/styles.css";
 
-export const RegistForm: React.FC<RegistFormProps> = ({
-  handleSubmit,
-  email,
-  username,
-  setEmail,
-  setUsername,
-  setPassword,
-  password,
-}) => {
+
+export const RegistForm = () => {
+  const context = useContext(RegisterContect);
+    if(!context) return null;
+      const {handleSubmit, username, password, setPassword, setUsername, email, setEmail} = context;
+
   return (
     <form className="login-form__form" onSubmit={handleSubmit}>
       <label className="login-form__label" htmlFor="email">

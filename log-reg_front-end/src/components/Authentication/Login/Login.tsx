@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
@@ -8,7 +8,11 @@ import { CorrectLogin } from "../../AfterLogin/CorrectLogin";
 import { LoginForm } from "./LoginForm";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
+import {LoginContectType} from '../../Utils/Interfaces/LoginContectType';
 import "../../../css/styles.css";
+import { Title } from "../../Others/Title";
+
+export const LoginContect = createContext<LoginContectType | null>(null); 
 
 export const Login = () => {
     const [username, setUsername] = useState("");
@@ -26,25 +30,23 @@ export const Login = () => {
         });
     
         if (response.status === 200) {
-          const token = response.data.token;
-          localStorage.setItem('token', token);
-          
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    
-          notify('The user has logged in.');
-          setIsAuthenticated(true);
+              const token = response.data.token;
+              localStorage.setItem('token', token);     
+              axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+              notify('The user has logged in.');
+              setIsAuthenticated(true);
           if (username === "root") {
-            redirect(`/admin`);
+                redirect(`/admin`);
           }
         } else {
-          notify('Login failed. Please check your credentials.');
+              notify('Login failed. Please check your credentials.');
         }
       } catch (error: any) {
-        console.error(error);
+            console.error(error);
         if (error.response) {
-          notify(error.response.data);
+            notify(error.response.data);
         } else {
-          notify('Error occurred. Please check your network connection.');
+            notify('Error occurred. Please check your network connection.');
         }
       }
     };
@@ -53,40 +55,36 @@ export const Login = () => {
       setIsAuthenticated(false);
     };
   return (
-    <>
+  <>
+    <LoginContect.Provider 
+        value={{
+          username,
+          password,
+          setPassword,
+          setUsername,
+          handleSubmit
+        }}>
       <ToastContainer />
-      <div className="center-side">
-        <h1 className="regist__title">Login</h1>
-      </div>
-
-      <div className="container">
-        
-        <div className="right-side">
-          {!isAuthenticated ? (
-            <LoginForm
-              handleSubmit={handleSubmit}
-              username={username}
-              password={password}
-              setUsername={setUsername}
-              setPassword={setPassword}
-            />
-          ) : (
-            <>
-              <CorrectLogin />
-              <LogoutButton onLogout={handleLogout} />
-            </>
-          )}
-        </div>
-
-        <div className="left-side">
-          <div className="regist__buttons">
-            <RedirectBtn to="/">Menu</RedirectBtn>
-            <RedirectBtn to="/regist">Regist</RedirectBtn>
-            <RedirectBtn to="/reset">Reset</RedirectBtn>
+      <Title props={'Login panel'}/>
+        <div className="container">
+          <div className="right-side">
+            {!isAuthenticated ? (<LoginForm/>) : 
+            (
+              <>
+                <CorrectLogin />
+                <LogoutButton onLogout={handleLogout} />
+              </>
+            )}
           </div>
-        </div>
-
+            <div className="left-side">
+              <div className="regist__buttons">
+                <RedirectBtn to="/">Menu</RedirectBtn>
+                <RedirectBtn to="/regist">Regist</RedirectBtn>
+                <RedirectBtn to="/reset">Reset</RedirectBtn>
+              </div>
+            </div>
       </div>
-    </>
+    </LoginContect.Provider>
+  </>
   );
 };

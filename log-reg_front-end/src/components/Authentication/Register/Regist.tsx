@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
 import { register } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
+import {RegistContentProps} from '../../Utils/Interfaces/RegistContentProps';
 import { RegistForm } from "./RegistForm";
+import { Title } from "../../Others/Title";
 import "../../../css/styles.css";
 
+export const RegisterContect = createContext<RegistContentProps | null>(null); 
 
 export const Regist: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -45,32 +48,32 @@ export const Regist: React.FC = () => {
 
   return (
     <>
+    <RegisterContect.Provider 
+        value={{
+                handleSubmit,
+                email,
+                username,
+                password,
+                setEmail,
+                setPassword,
+                setUsername
+              }}>
     <ToastContainer />
-      <div className="center-side">
-        <h1 className="regist__title">Registration</h1>
-      </div>
-
-      <div className="container">
-        <div className="right-side">
-          <RegistForm
-            handleSubmit={handleSubmit}
-            email={email}
-            username={username}
-            password={password}
-            setEmail={setEmail}
-            setUsername={setUsername}
-            setPassword={setPassword}
-          />
-        </div>
-
-        <div className="left-side">
-          <div className="regist__buttons">
-            <RedirectBtn to="/">Menu</RedirectBtn>
-            <RedirectBtn to="/login">Login</RedirectBtn>
+      <Title props={'Register panel'}/>
+        <div className="container">
+          <div className="right-side">
+            <RegistForm/>
           </div>
-        </div>
 
-      </div>
+          <div className="left-side">
+            <div className="regist__buttons">
+              <RedirectBtn to="/">Menu</RedirectBtn>
+              <RedirectBtn to="/login">Login</RedirectBtn>
+            </div>
+          </div>
+
+        </div>
+      </RegisterContect.Provider>
     </>
   );
 };
