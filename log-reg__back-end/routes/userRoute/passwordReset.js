@@ -4,15 +4,16 @@ const middleware = require("../../config/middleware");
 const router = express.Router();
 const { UsersRecord } = require("../../database/Records/UsersRecord");
 const logger = require('../../logs/logger');
+const MESSAGES = require('../../config/messages');
+const STATUS_CODES = require('../../config/status-codes');
 router.use(middleware);
 
 router.get('/', async (req, res) => {
   try {
-    return res.status(200).send('The server is working properly.');
+    return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
   } catch (error) {
-    console.log(error);
     logger.error(error.message);
-    return res.status(500).send('An error occurred while trying to establish a GET connection.');
+    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.ERROR_GET_CONNECTION);
   }
 });
 
@@ -22,18 +23,21 @@ router.post('/', async (req, res) => {
     const userExists = {
       emailExists: await UsersRecord.selectByEmail([email]),
     };
-    if (!userExists.emailExists || userExists.emailExists.length === 0) {
-        return res.status(401).send('User with this email address does not exist.');
-    }else{
+
+        if (!userExists.emailExists || userExists.emailExists.length === 0) {
+            return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.EMAIL_DOES_EXIST);
+        }
+
       const hashPassword = await bcrypt.hash(password, 10);
       await UsersRecord.updatePasswordByEmail([hashPassword, email]);
-      return res.status(200).send('Successful password reset.');
-    } 
+      logger.info(MESSAGES.SUCCESSFUL_RESET);
+      return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_RESET);
+    
   } catch (error) {
-        console.error(error);
         logger.error(error.message);
-        return res.status(500).send('Unknown server error. Please contact your administrator.');
+        return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
   }
 });
+
 
 module.exports = router;

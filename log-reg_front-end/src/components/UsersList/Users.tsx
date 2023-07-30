@@ -27,6 +27,7 @@ export const UsersList: React.FC = () => {
         };
         const res = await axios.get(users, config);
         const data = res.data;
+        
         setUsersList(data.usersList);
       } catch (error) {
         console.error(error);

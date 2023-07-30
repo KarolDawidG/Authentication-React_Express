@@ -8,10 +8,11 @@ import { UsersList } from "./components/UsersList/Users";
 import { Reset } from "./components/Authentication/Reset/Reset";
 import { BeLogin } from "./components/Authentication/Login/BeLogin";
 import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
+import { ToastContainer } from "react-toastify";
 // import LogRocket from 'logrocket';   todo
 export const App = () => {
   return (
-    <>
+    <><ToastContainer />
       <Routes>
         <Route path="/" element={<Menu />} />
         <Route path="/login" element={<Login />} />

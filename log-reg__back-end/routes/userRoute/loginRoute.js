@@ -57,10 +57,9 @@ router.post("/", async (req, res) => {
 
     const rola = ifUser[0].role;
     logger.info(`Logged in user: ${user}, access level: ${rola}`);
-
     const token = generateToken(user, rola);
+    return res.status(STATUS_CODES.SUCCESS).json({ token: token, message: `${MESSAGES.SUCCESSFUL_OPERATION}` });
     
-    return res.status(STATUS_CODES.SUCCESS).json({ token: token });
   } catch (error) {
     logger.error(error.message);
     return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);

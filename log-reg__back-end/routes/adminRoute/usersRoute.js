@@ -2,24 +2,26 @@ const express = require('express');
 const router = express.Router();
 const middleware = require('../../config/middleware');
 const { UsersRecord } = require('../../database/Records/UsersRecord');
+const MESSAGES = require('../../config/messages');
+const STATUS_CODES = require('../../config/status-codes');
+const logger = require('../../logs/logger');
 const {  verifyToken } = require('../../config/config');
 
 router.use(middleware);
-
  
 router.get('/', verifyToken, async (req, res, next) => {
   const userRole = req.userRole; 
-  console.log(`Autoryzacja: ${userRole}`);
-  
+  logger.info(`${MESSAGES.AUTHORIZATION_LVL} ${userRole}`);
+
   if (userRole !== 'admin') {
-      return res.status(403).send('Brak uprawnień do dostępu do danych.');
+      return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.FORBIDDEN);
   }
   try {
-      const usersList = await UsersRecord.listAll();
-      return res.json({ usersList });
+        const usersList = await UsersRecord.listAll();
+        return res.json({ usersList });
   } catch (error) {
-      console.error(error);
-      return res.status(500).send('Unknown server error. Please contact your administrator.');
+        logger.error(error.message);
+        return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
   }
 });
 

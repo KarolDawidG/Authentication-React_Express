@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
 import { auth } from "../../Utils/links";
@@ -68,7 +67,6 @@ export const Login = () => {
           setUsername,
           handleSubmit
         }}>
-      <ToastContainer />
       <Title props={'Login panel'}/>
         <div className="container">
             {!isAuthenticated ? (<LoginForm/>) : 
