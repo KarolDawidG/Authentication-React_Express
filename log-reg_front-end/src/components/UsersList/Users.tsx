@@ -5,8 +5,10 @@ import { UserTable } from "./UserTable";
 import { RedirectBtn } from "../Others/RedirectBtn";
 import axios from 'axios';
 import { users } from "../Utils/links";
-import { NoResources } from "../Authentication/Login/NoResources";
+import { BeLogin } from "../Authentication/Login/BeLogin";
 import { Loader } from "../Utils/Loader";
+import { Title } from "../Others/Title";
+
 
 export const UsersList: React.FC = () => {
   const redirect = useNavigate();
@@ -16,7 +18,7 @@ export const UsersList: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const token = localStorage.getItem('token'); // Odczytanie tokena z localStorage
+        const token = localStorage.getItem('token'); 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         const config = {
           headers: {
@@ -44,21 +46,21 @@ export const UsersList: React.FC = () => {
     }
   }, [redirect]);
 
-  if (isLoading) {
-    return <>
-        <Loader/>
-    </>
-  }
+    if (isLoading) {
+      return <>
+          <Loader/>
+      </>
+    }
 
-  if (usersList === null) {   
-    return <>
-      <NoResources/>
-    </>;
-  }
+    if (usersList === null) {   
+      return <>
+        <BeLogin/>
+      </>;
+    }
 
   return (
     <>
-      <h1>Lista użytkowników</h1>
+      <Title props="Lista użytkowników"/>
       <UserTable users={usersList} />
       <RedirectBtn to="/">Menu</RedirectBtn>
     </>

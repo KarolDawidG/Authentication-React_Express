@@ -4,7 +4,7 @@ export const BeLogin = () => {
   return (
     <div className="container">
       <div className="center-side">
-        <h1>Musisz się zalogować</h1>
+        <h1>You are not logged in or do not have access to resources!</h1>
       </div>
 
       <div className="left-side">

@@ -5,6 +5,7 @@ import { admin } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { Loader } from "../../Utils/Loader";
+import { Title } from "../../Others/Title";
 
 export const AdminPanel = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,18 +48,16 @@ export const AdminPanel = () => {
 
   return (
     <div className="container">
-        <div className="right-side">
-                <h1 >Welcome to Admin Panel</h1>
-        </div>
+      <Title props="Welcome to Admin Panel"/>
         <div className="left-side">
           <div className="regist__buttons">
             <RedirectBtn to="/">Menu</RedirectBtn>
             <RedirectBtn to="/users">Users</RedirectBtn>
             <RedirectBtn to="/regist">Regist</RedirectBtn>
             <RedirectBtn to="/login">Login</RedirectBtn>
-            <LogoutButton onLogout={handleLogout} />
           </div>
         </div> 
+          <LogoutButton onLogout={handleLogout} />
     </div>
   );
 };
