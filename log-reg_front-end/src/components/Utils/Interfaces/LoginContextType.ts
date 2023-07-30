@@ -1,4 +1,4 @@
-export interface LoginContectType {
+export interface LoginContextType {
   username: string;
   password: string;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;

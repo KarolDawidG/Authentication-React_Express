@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { backgroundColor, preventSpace } from "../../../components/Utils/FormsUtils/forms-utils";
-import {LoginContect} from './Login';
+import {LoginContext} from './Login';
 import "../../../css/styles.css";
 
 
 export const LoginForm = () => {
   
-  const context = useContext(LoginContect);
+  const context = useContext(LoginContext);
     if(!context) return null;
       const {handleSubmit, username, password, setPassword, setUsername} = context;
 
   return (
     <>
+    <div className="right-side">
       <form className="login-form__form" onSubmit={handleSubmit}>
         <label className="login-form__label" htmlFor="username">
           Username:
@@ -48,6 +49,7 @@ export const LoginForm = () => {
         <input className="login-form__submit" type="submit" value="Login" />
         
       </form>
+      </div>
     </>
   );
 };

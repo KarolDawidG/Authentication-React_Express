@@ -2,3 +2,5 @@
 2023-07-29 22:37:38 error: No database selected
 2023-07-29 22:45:39 error: toxxken is not defined
 2023-07-29 22:49:01 error: tokenxxxxx is not defined
+2023-07-30 16:40:17 error: Cannot read properties of undefined (reading 'WRONG_USERNAME')
+2023-07-30 17:02:09 error: queryParameterize is not a function

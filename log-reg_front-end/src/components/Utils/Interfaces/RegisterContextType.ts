@@ -1,4 +1,4 @@
-export interface RegistContentProps {
+export interface RegisterContextType {
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   email: string;
   username: string;

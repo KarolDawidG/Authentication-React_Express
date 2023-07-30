@@ -11,6 +11,7 @@ export const RegistForm = () => {
       const {handleSubmit, username, password, setPassword, setUsername, email, setEmail} = context;
 
   return (
+    <div className="right-side">
     <form className="login-form__form" onSubmit={handleSubmit}>
       <label className="login-form__label" htmlFor="email">
         Email:
@@ -63,5 +64,6 @@ export const RegistForm = () => {
 
       <input className="login-form__submit" type="submit" value="Register" />
     </form>
+    </div>
   );
 };

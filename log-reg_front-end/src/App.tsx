@@ -7,6 +7,7 @@ import { AdminPanel } from "./components/Authentication/Admin/AdminPanel";
 import { UsersList } from "./components/UsersList/Users";
 import { Reset } from "./components/Authentication/Reset/Reset";
 import { BeLogin } from "./components/Authentication/Login/BeLogin";
+import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
 // import LogRocket from 'logrocket';   todo
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/after-login" element={<CorrectLogin />} />
         <Route path="/users" element={<UsersList />} />
         <Route path="/reset" element={<Reset/>} />
         <Route path="/be-login" element={<BeLogin/>} />

@@ -5,12 +5,12 @@ import { notify } from "../../Others/Notify";
 import axios from "axios";
 import { register } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
-import {RegistContentProps} from '../../Utils/Interfaces/RegistContentProps';
+import {RegisterContextType} from '../../Utils/Interfaces/RegisterContextType';
 import { RegistForm } from "./RegistForm";
 import { Title } from "../../Others/Title";
 import "../../../css/styles.css";
 
-export const RegisterContect = createContext<RegistContentProps | null>(null); 
+export const RegisterContect = createContext<RegisterContextType | null>(null); 
 
 export const Regist: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -61,17 +61,13 @@ export const Regist: React.FC = () => {
     <ToastContainer />
       <Title props={'Register panel'}/>
         <div className="container">
-          <div className="right-side">
             <RegistForm/>
-          </div>
-
           <div className="left-side">
             <div className="regist__buttons">
               <RedirectBtn to="/">Menu</RedirectBtn>
               <RedirectBtn to="/login">Login</RedirectBtn>
             </div>
           </div>
-
         </div>
       </RegisterContect.Provider>
     </>
