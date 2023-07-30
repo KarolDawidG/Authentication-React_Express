@@ -1,10 +1,10 @@
 import { RedirectBtn } from "../../Others/RedirectBtn";
 
-export const BeLogin = () => {
+export const NoResources = () => {
   return (
     <div className="container">
       <div className="center-side">
-        <h1>Musisz się zalogować</h1>
+        <h1>There are no resources to display.</h1>
       </div>
 
       <div className="left-side">

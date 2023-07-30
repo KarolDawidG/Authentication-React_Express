@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { auth } from "../../Utils/links";
+import { ToastContainer } from 'react-toastify';
+import { notify } from "../../Others/Notify";
 import axios from "axios";
+import { auth } from "../../Utils/links";
 import { CorrectLogin } from "../../AfterLogin/CorrectLogin";
 import { LoginForm } from "./LoginForm";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
-import { ToastContainer } from 'react-toastify';
-import { notify } from "../../Others/Notify";
-import 'react-toastify/dist/ReactToastify.css';
 import "../../../css/styles.css";
 
-
-
-  export const Login = () => {
+export const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,7 +31,7 @@ import "../../../css/styles.css";
           
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     
-          notify(response.data);
+          notify('The user has logged in.');
           setIsAuthenticated(true);
           if (username === "root") {
             redirect(`/admin`);
@@ -61,7 +58,9 @@ import "../../../css/styles.css";
       <div className="center-side">
         <h1 className="regist__title">Login</h1>
       </div>
+
       <div className="container">
+        
         <div className="right-side">
           {!isAuthenticated ? (
             <LoginForm

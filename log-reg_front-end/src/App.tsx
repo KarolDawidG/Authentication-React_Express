@@ -7,7 +7,7 @@ import { AdminPanel } from "./components/Authentication/Admin/AdminPanel";
 import { UsersList } from "./components/UsersList/Users";
 import { Reset } from "./components/Authentication/Reset/Reset";
 import { BeLogin } from "./components/Authentication/Login/BeLogin";
-
+// import LogRocket from 'logrocket';   todo
 export const App = () => {
   return (
     <>

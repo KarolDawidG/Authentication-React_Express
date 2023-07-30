@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { notify } from "../../Others/Notify";
 import axios from "axios";
+import { register } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { RegistForm } from "./RegistForm";
-import { ToastContainer } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { notify } from "../../Others/Notify";
-import 'react-toastify/dist/ReactToastify.css';
 import "../../../css/styles.css";
-import { register } from "../../Utils/links";
+
 
 export const Regist: React.FC = () => {
   const [email, setEmail] = useState("");

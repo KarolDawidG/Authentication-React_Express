@@ -1,7 +1,7 @@
 import React from "react";
-import "../../../css/styles.css";
 import {RegistFormProps} from '../../Utils/Interfaces/RegistFormProps';
 import { backgroundColor, preventSpace, validateEmail } from "../../../components/Utils/FormsUtils/forms-utils";
+import "../../../css/styles.css";
 
 export const RegistForm: React.FC<RegistFormProps> = ({
   handleSubmit,

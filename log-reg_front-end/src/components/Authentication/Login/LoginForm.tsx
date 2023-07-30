@@ -1,7 +1,7 @@
 import React from "react";
 import {LoginFormProps} from '../../Utils/Interfaces/LoginFormProps';
-import "../../../css/styles.css";
 import { backgroundColor, preventSpace } from "../../../components/Utils/FormsUtils/forms-utils";
+import "../../../css/styles.css";
 
 export const LoginForm: React.FC<LoginFormProps> = ({
   handleSubmit,

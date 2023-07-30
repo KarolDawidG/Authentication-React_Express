@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import { notify } from './Notify';
-import 'react-toastify/dist/ReactToastify.css';
 
 interface LogoutButtonProps {
   onLogout: () => void;

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { UsersListProps } from "./UsersListProps";
 import { UserTable } from "./UserTable";
 import { RedirectBtn } from "../Others/RedirectBtn";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { users } from "../Utils/links";
+import { NoResources } from "../Authentication/Login/NoResources";
+import { Loader } from "../Utils/Loader";
 
 export const UsersList: React.FC = () => {
   const redirect = useNavigate();
@@ -43,11 +45,15 @@ export const UsersList: React.FC = () => {
   }, [redirect]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <>
+        <Loader/>
+    </>
   }
 
   if (usersList === null) {   
-    return <p>Nic nie ma</p>;
+    return <>
+      <NoResources/>
+    </>;
   }
 
   return (

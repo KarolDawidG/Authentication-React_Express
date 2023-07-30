@@ -1,10 +1,9 @@
 import { useState } from "react";
-import axios from "axios";
 import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
-import 'react-toastify/dist/ReactToastify.css';
-import { RedirectBtn } from "../../Others/RedirectBtn";
+import axios from "axios";
 import { reset } from "../../Utils/links";
+import { RedirectBtn } from "../../Others/RedirectBtn";
 import { backgroundColor, preventSpace, validateEmail } from "../../../components/Utils/FormsUtils/forms-utils";
 
 export const Reset = () => {
