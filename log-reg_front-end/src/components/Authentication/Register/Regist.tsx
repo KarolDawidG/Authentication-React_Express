@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { register } from "../../Utils/links";
+import { INTERNET_DISCONNECTED, register } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import {RegisterContextType} from '../../Utils/Interfaces/RegisterContextType';
 import { RegistForm } from "./RegistForm";
@@ -37,11 +37,10 @@ export const Regist: React.FC = () => {
         notify(response.data); 
       }
     } catch (error: any) {
-      console.error(error);
       if (error.response) {
-        notify(error.response.data); 
+        notify(error.response.data.message);
       } else {
-        notify('Error occurred. Please check your network connection.');
+        notify(INTERNET_DISCONNECTED);
       }
     }
   };

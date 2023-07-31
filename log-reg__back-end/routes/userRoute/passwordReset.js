@@ -24,9 +24,9 @@ router.post('/', async (req, res) => {
       emailExists: await UsersRecord.selectByEmail([email]),
     };
 
-        if (!userExists.emailExists || userExists.emailExists.length === 0) {
-            return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.EMAIL_DOES_EXIST);
-        }
+      if (!userExists.emailExists || userExists.emailExists.length === 0) {
+          return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.EMAIL_DOES_EXIST);
+      }
 
       const hashPassword = await bcrypt.hash(password, 10);
       await UsersRecord.updatePasswordByEmail([hashPassword, email]);

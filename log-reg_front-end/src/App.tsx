@@ -9,6 +9,7 @@ import { Reset } from "./components/Authentication/Reset/Reset";
 import { BeLogin } from "./components/Authentication/Login/BeLogin";
 import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
 import { ToastContainer } from "react-toastify";
+import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
 // import LogRocket from 'logrocket';   todo
 export const App = () => {
   return (
@@ -21,6 +22,7 @@ export const App = () => {
         <Route path="/after-login" element={<CorrectLogin />} />
         <Route path="/users" element={<UsersList />} />
         <Route path="/reset" element={<Reset/>} />
+        <Route path="/reset-email" element={<ResetEmail/>} />
         <Route path="/be-login" element={<BeLogin/>} />
       </Routes>
     </>

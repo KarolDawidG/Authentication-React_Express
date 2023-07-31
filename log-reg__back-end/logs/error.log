@@ -8,3 +8,17 @@
 2023-07-30 18:47:19 error: SUCCESS is not defined
 2023-07-30 19:20:44 error: No database selected
 2023-07-30 19:20:50 error: No database selected
+2023-07-31 12:37:54 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 12:37:59 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 12:38:50 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 12:38:59 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 12:39:02 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 12:56:10 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 12:56:18 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 12:58:37 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 13:01:19 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-07-31 13:08:34 error: data and salt arguments required
+2023-07-31 13:08:42 error: data and salt arguments required
+2023-07-31 13:08:43 error: data and salt arguments required
+2023-07-31 13:08:43 error: data and salt arguments required
+2023-07-31 13:08:43 error: data and salt arguments required

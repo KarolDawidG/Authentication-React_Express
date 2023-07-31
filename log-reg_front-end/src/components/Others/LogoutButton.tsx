@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import { notify } from './Notify';
+import { INTERNET_DISCONNECTED } from '../Utils/links';
 
 interface LogoutButtonProps {
   onLogout: () => void;
@@ -17,8 +18,12 @@ export const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
       await axios.get('http://localhost:3001/logout');
       notify(message);
       onLogout();
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      if (error.response) {
+        notify(error.response.data.message);
+      } else {
+        notify(INTERNET_DISCONNECTED);
+      }
     }
   };
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { auth } from "../../Utils/links";
+import { auth, INTERNET_DISCONNECTED } from "../../Utils/links";
 import { LoginForm } from "./LoginForm";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
@@ -26,29 +26,27 @@ export const Login = () => {
             username,
             password,
           });
-      
+
           if (response.status === 200) {
                 const token = response.data.token;
-                localStorage.setItem('token', token);
-                //cokie for now dosent work
-                //Cookies.set('token', token, { httpOnly: true });     
+                localStorage.setItem('token', token);    
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                notify('The user has logged in.');
+                notify(response.data.message);
                 setIsAuthenticated(true);
 
-            if (username === "root") {  //shout use role: admin, not username: root TODO
-                  redirect(`/admin`);
+            if (username === 'root') {  //shout use role: admin, not username: root TODO
+                  redirect('/admin');
             } 
 
           } else {
-                notify('Login failed. Please check your credentials.');
+              notify(response.data.message);
           }
         } catch (error: any) {
-              console.error(error);
           if (error.response) {
-              notify(error.response.data);
+            console.log(error.response.data.message);
+            notify(error.response.data.message);
           } else {
-              notify('Error occurred. Please check your network connection.');
+            notify(INTERNET_DISCONNECTED);
           }
         }
     };
@@ -80,7 +78,7 @@ export const Login = () => {
               <div className="regist__buttons">
                 <RedirectBtn to="/">Menu</RedirectBtn>
                 <RedirectBtn to="/regist">Regist</RedirectBtn>
-                <RedirectBtn to="/reset">Reset</RedirectBtn>
+                <RedirectBtn to="/reset-email">Reset</RedirectBtn>
               </div>
             </div>
       </div>

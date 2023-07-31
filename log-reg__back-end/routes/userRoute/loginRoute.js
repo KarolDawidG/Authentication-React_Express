@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     }
 
     if (!user.match(queryParameterize)) {
-      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.SQL_INJECTION);
+      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.SQL_INJECTION_ALERT);
     }
 
     const ifUser = await UsersRecord.selectByUsername([user]);

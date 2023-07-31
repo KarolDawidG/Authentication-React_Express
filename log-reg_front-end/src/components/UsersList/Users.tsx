@@ -4,10 +4,11 @@ import { UsersListProps } from "./UsersListProps";
 import { UserTable } from "./UserTable";
 import { RedirectBtn } from "../Others/RedirectBtn";
 import axios from 'axios';
-import { users } from "../Utils/links";
+import { INTERNET_DISCONNECTED, users } from "../Utils/links";
 import { BeLogin } from "../Authentication/Login/BeLogin";
 import { Loader } from "../Utils/Loader";
 import { Title } from "../Others/Title";
+import { notify } from "../Others/Notify";
 
 
 export const UsersList: React.FC = () => {
@@ -29,12 +30,16 @@ export const UsersList: React.FC = () => {
         const data = res.data;
         
         setUsersList(data.usersList);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error: any) {
+        if (error.response) {
+          notify(error.response.data);
+        } else {
+          notify(INTERNET_DISCONNECTED);
+        }
+      } 
     };
 
-    fetchUsers();
+    fetchUsers(); 
   }, []);
 
 

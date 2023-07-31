@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { reset } from "../../Utils/links";
+import { INTERNET_DISCONNECTED, reset } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { backgroundColor, preventSpace, validateEmail } from "../../../components/Utils/FormsUtils/forms-utils";
 
@@ -22,16 +22,15 @@ export const Reset = () => {
         if (response.status === 200) {
             notify(response.data);
         } else {
-            notify('Reset failed. Please check your credentials.');
+            notify(response.data);
         }
       } catch (error: any) {
-        console.error(error);
-            if (error.response) {
-                notify(error.response.data);
-            } else {
-                notify('Error occurred. Please check your network connection.');
-            }
+        if (error.response) {
+          notify(error.response.data.message);
+        } else {
+          notify(INTERNET_DISCONNECTED);
         }
+      }
     };
   
     return (

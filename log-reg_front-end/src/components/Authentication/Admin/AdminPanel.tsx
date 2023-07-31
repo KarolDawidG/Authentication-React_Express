@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { notify } from "../../Others/Notify";
 import axios from 'axios';
 import { admin } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
@@ -13,53 +14,55 @@ export const AdminPanel = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    redirect(`/login  `);
+    redirect(`/login`);
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');    
-    if (!token) {                                   
-      redirect('/be-login');                        
-    } else {
-      axios.get(admin, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(response => {
+    const fetchAdminData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          return redirect('/be-login');
+        }
+        const response = await axios.get(admin, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (response.data.userRole === "admin") {
           setIsLoading(false);
-        } else {
-          redirect('/'); 
         }
-      })
-      .catch(error => {
-        console.error(error);
-        redirect('/be-login');
-      });
-    }
+      } catch (error: any) {
+        if (error.response) {
+          console.log(error.response);
+          notify(error.response);
+        } else {
+          notify("An error occurred while fetching admin data.");
+        }
+      }
+    };
+
+    fetchAdminData();
   }, [redirect]);
 
   if (isLoading) {
     return <>
-        <Loader/>
+      <Loader />
     </>;
   }
 
   return (
     <div className="container">
-      <Title props="Welcome to Admin Panel"/>
-        <div className="left-side">
-          <div className="regist__buttons">
-            <RedirectBtn to="/">Menu</RedirectBtn>
-            <RedirectBtn to="/users">Users</RedirectBtn>
-            <RedirectBtn to="/regist">Regist</RedirectBtn>
-            <RedirectBtn to="/login">Login</RedirectBtn>
-          </div>
-        </div> 
-          <LogoutButton onLogout={handleLogout} />
+      <Title props="Welcome to Admin Panel" />
+      <div className="left-side">
+        <div className="regist__buttons">
+          <RedirectBtn to="/">Menu</RedirectBtn>
+          <RedirectBtn to="/users">Users</RedirectBtn>
+          <RedirectBtn to="/regist">Regist</RedirectBtn>
+          <RedirectBtn to="/login">Login</RedirectBtn>
+        </div>
+      </div>
+      <LogoutButton onLogout={handleLogout} />
     </div>
   );
 };
-
-
