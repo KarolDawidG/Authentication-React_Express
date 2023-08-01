@@ -239,3 +239,10 @@ body {
   max-width: 100%; /* Zapewnia, że obrazek nie będzie przekraczał rozmiarów jego pojemnika */
   max-height: 100%;
 }
+
+.regist__message {
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+}
+
