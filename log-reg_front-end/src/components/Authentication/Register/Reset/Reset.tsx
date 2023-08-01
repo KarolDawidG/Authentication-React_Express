@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import {  useParams } from "react-router-dom";
-import { notify } from "../../Others/Notify";
+import { notify } from "../../../Others/Notify";
 import axios from "axios";
-import { INTERNET_DISCONNECTED } from "../../Utils/links";
-import { RedirectBtn } from "../../Others/RedirectBtn";
+import { INTERNET_DISCONNECTED, ENDPOINT_RESET} from "../../../Utils/links";
+import { RedirectBtn } from "../../../Others/RedirectBtn";
 import { PasswordForm } from "./PasswordForm";
+import { PasswordStatus } from "./PasswordStatus";
 
 
 export const Reset = () => {
@@ -17,7 +18,7 @@ export const Reset = () => {
 
   const handleResetLink = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/reset/${id}/${token}`);
+      const response = await axios.get(`${ENDPOINT_RESET}/${id}/${token}`);
 
       if (response.status === 200) {
         notify(response.data);
@@ -33,7 +34,7 @@ export const Reset = () => {
       e.preventDefault();
   
       try {
-        const response = await axios.post(`http://localhost:3001/reset/${id}/${token}`, {
+        const response = await axios.post(`${ENDPOINT_RESET}/${id}/${token}`, {
           password,
         });
   
@@ -69,32 +70,28 @@ export const Reset = () => {
                 <div className="right-side">
                 <form onSubmit={handleSubmit}>
             <label htmlFor="password1">Podaj nowe hasło:</label>
-            {/* Komponent PasswordForm odpowiedzialny za pierwsze wprowadzenie hasła */}
-            <PasswordForm
-              password={password}
-              setPassword={setPassword1}
-              label="Hasło:"
-            />
-            {/* Komponent PasswordForm odpowiedzialny za drugie wprowadzenie hasła */}
-            <PasswordForm
-              password={password2}
-              setPassword={setPassword2}
-              label="Powtórz hasło:"
-            />
+                <PasswordForm
+                  password={password}
+                  setPassword={setPassword1}
+                  label="Hasło:"
+                />
+                <PasswordForm
+                  password={password2}
+                  setPassword={setPassword2}
+                  label="Powtórz hasło:"
+                />
             <button
               className="login-form__submit"
               type="submit"
-              disabled={!passwordsMatch} // Wyłącz przycisk, jeśli hasła nie są takie same
+              disabled={!passwordsMatch} 
             >
               Resetuj hasło
             </button>
-            <span style={{ color: password && password2 && passwordsMatch ? "green" : "red" }}>
-                {password && password2 && passwordsMatch
-                  ? "    The passwords match!   "
-                  : password || password2
-                  ? "  The passwords don't match"
-                  : "     Enter the password    "}
-          </span>
+            <PasswordStatus
+              password={password}
+              password2={password2}
+              passwordsMatch={passwordsMatch}
+            />
 
           </form>
                 </div>

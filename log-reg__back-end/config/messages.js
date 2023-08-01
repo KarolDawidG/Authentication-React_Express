@@ -13,6 +13,7 @@ const MESSAGES = {
     UNPROCESSABLE_ENTITY: 'Invalid login details. Make sure you have entered the correct login and password.',
     WRONG_USERNAME: 'Abandon hope! Wrong username, matey!',
     WRONG_PASSWORD: 'Ahoy there! Wrong password! Yo ho ho!',
+    PASS_RESET: 'Password has been updated',
     INVALID_EMAIL: 'Arrr! That be an invalid email address!',
     EMAIL_DOES_EXIST: 'Avast ye! No user with this email address be found.',
     EMAIL_USER_EXIST: 'Arrr! That email and username already be taken!',

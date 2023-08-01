@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { RedirectBtn } from '../../Others/RedirectBtn';
-import { notify } from "../../Others/Notify";
-import { INTERNET_DISCONNECTED , LINK_RESET} from '../../Utils/links';
+import { RedirectBtn } from '../../../Others/RedirectBtn';
+import { notify } from "../../../Others/Notify";
+import { INTERNET_DISCONNECTED , LINK_RESET} from '../../../Utils/links';
 
 interface FormState {
   email: string;

@@ -12,9 +12,9 @@ router.use(middleware);
 
 router.get('/:id/:token',  (req, res) => {
 try {
-  res.status(200).send('niby wszystko oke 200');
+  res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
 } catch (error) {
-  console.error(error);
+  logger.error(error);
 }
 });
 
@@ -35,10 +35,10 @@ router.post('/:id/:token', async (req, res) => {
     await UsersRecord.updatePasswordById([hashPassword, id]);
 
     logger.info(MESSAGES.SUCCESSFUL_RESET);
-    return res.status(200).send('Hasło zostało zresetowane.');
+    return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.PASS_RESET);
   } catch (error) {
     logger.error(error.message);
-    return res.status(500).send('Wystąpił błąd podczas resetowania hasła.');
+    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
   }
 });
 

@@ -31,7 +31,7 @@ export const Login = () => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);    
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                notify(response.data.message);  //correct
+                notify(response.data.message);
                 setIsAuthenticated(true);
 
             if (username === ADMIN_ROLE) {  //shout use role: admin, not username: root TODO
@@ -54,8 +54,9 @@ export const Login = () => {
     };
     
     const handleLogout = () => {
-      Cookies.remove('token');
       setIsAuthenticated(false);
+      setUsername("");
+      setPassword("");
     };
   return (
   <>

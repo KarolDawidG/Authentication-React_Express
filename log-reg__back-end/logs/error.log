@@ -150,3 +150,12 @@
 2023-08-01 17:03:55 error: invalid signature
 2023-08-01 17:04:25 error: invalid signature
 2023-08-01 17:38:00 error: Missing credentials for "PLAIN"
+2023-08-01 18:35:25 error: invalid signature
+2023-08-01 18:39:16 error: invalid signature
+2023-08-01 19:47:11 error: Cannot set headers after they are sent to the client
+2023-08-01 19:58:29 error: secretOrPrivateKey must have a value
+2023-08-01 20:03:46 error: emailExist is not defined
+2023-08-01 20:04:17 error: emailExist is not defined
+2023-08-01 20:06:18 error: emailExist is not defined
+2023-08-01 20:22:19 error: transporter is not defined
+2023-08-01 20:22:34 error: transporter is not defined
