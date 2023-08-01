@@ -9,7 +9,7 @@ const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
 router.use(middleware);
 
-router.get('/', async (req, res)=>{
+router.get('/', async (req, res) =>{
     try{
         logger.info(MESSAGES.SUCCESSFUL_OPERATION);
         return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);

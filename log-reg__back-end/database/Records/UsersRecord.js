@@ -20,6 +20,11 @@ class UsersRecord{
       return results;
     }
 
+    static async selectById(id){
+      const [results] = await pool.execute('SELECT * FROM accounts WHERE id = ?',id);
+      return results;
+    }
+
     static async selectByUsername(username){
       const [results] = await pool.execute('SELECT * FROM accounts WHERE username = ?', username);
       return results;
@@ -37,6 +42,11 @@ class UsersRecord{
   
     static async updatePasswordByEmail([ hashPassword, email]) {
       const results = await pool.execute("UPDATE accounts SET password = ? WHERE email = ?", [hashPassword, email]);
+      return results;
+    }
+
+    static async updatePasswordById([ hashPassword, id]) {
+      const results = await pool.execute("UPDATE accounts SET password = ? WHERE id = ?", [hashPassword, id]);
       return results;
     }
   

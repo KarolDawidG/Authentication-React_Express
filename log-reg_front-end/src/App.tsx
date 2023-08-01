@@ -21,7 +21,7 @@ export const App = () => {
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/after-login" element={<CorrectLogin />} />
         <Route path="/users" element={<UsersList />} />
-        <Route path="/reset" element={<Reset/>} />
+        <Route path="/reset/:id/:token" element={<Reset />} />
         <Route path="/reset-email" element={<ResetEmail/>} />
         <Route path="/be-login" element={<BeLogin/>} />
       </Routes>

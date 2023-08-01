@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { notify } from "../../Others/Notify";
 import axios from 'axios';
-import { admin } from "../../Utils/links";
+import { ENDPOINT_ADMIN } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { Loader } from "../../Utils/Loader";
@@ -24,7 +24,7 @@ export const AdminPanel = () => {
         if (!token) {
           return redirect('/be-login');
         }
-        const response = await axios.get(admin, {
+        const response = await axios.get(ENDPOINT_ADMIN, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

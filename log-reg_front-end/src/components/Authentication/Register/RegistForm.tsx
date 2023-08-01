@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-//import {RegistFormProps} from '../../Utils/Interfaces/RegistFormProps';
 import { backgroundColor, preventSpace, validateEmail } from "../../../components/Utils/FormsUtils/forms-utils";
 import {RegisterContect} from './Regist';
 import "../../../css/styles.css";

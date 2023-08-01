@@ -7,12 +7,8 @@ const STATUS_CODES = require('../../config/status-codes');
 router.use(middleware);
 
 router.get('/', (req, res, next) => {
-    try {
-        logger.info("The user has been logged out.");
-        return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.USER_NOT_LOGGED_IN);
-    } catch (error) {
-        logger.error(error.message);
-    }
+    logger.info(MESSAGES.SUCCESSFUL_LOGOUT);
+    return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_LOGOUT);
 });
 
 module.exports = router;

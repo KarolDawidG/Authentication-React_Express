@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { auth, INTERNET_DISCONNECTED } from "../../Utils/links";
+import { ENDPOINT_AUTH, INTERNET_DISCONNECTED , ADMIN_ROLE} from "../../Utils/links";
 import { LoginForm } from "./LoginForm";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
@@ -22,7 +22,7 @@ export const Login = () => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
         try {
-          const response = await axios.post(auth, {
+          const response = await axios.post(ENDPOINT_AUTH, {
             username,
             password,
           });
@@ -31,21 +31,23 @@ export const Login = () => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);    
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                notify(response.data.message);
+                notify(response.data.message);  //correct
                 setIsAuthenticated(true);
 
-            if (username === 'root') {  //shout use role: admin, not username: root TODO
+            if (username === ADMIN_ROLE) {  //shout use role: admin, not username: root TODO
                   redirect('/admin');
             } 
 
           } else {
               notify(response.data.message);
+              console.log(response.data.message);
           }
         } catch (error: any) {
-          if (error.response) {
-            console.log(error.response.data.message);
-            notify(error.response.data.message);
+          if (error) {
+            console.error(error);
+            notify(error.response.data);
           } else {
+            console.error(error);
             notify(INTERNET_DISCONNECTED);
           }
         }

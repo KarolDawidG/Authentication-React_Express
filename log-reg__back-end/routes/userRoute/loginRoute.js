@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
     const password = req.body.password;
 
     if (!user || !password) {
-      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.USERNAME_PASSWORD_REQUIRED);
+      return res.status(STATUS_CODES.UNPROCESSABLE_ENTITY).send(MESSAGES.UNPROCESSABLE_ENTITY);
     }
 
     if (!user.match(queryParameterize)) {
@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
     const ifUser = await UsersRecord.selectByUsername([user]);
     
     if (ifUser.length === 0) {
-      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.WRONG_USERNAME);
+      return res.status(401).send(MESSAGES.WRONG_USERNAME);
     }
 
     const hashedPassword = ifUser[0].password;
@@ -58,11 +58,11 @@ router.post("/", async (req, res) => {
     const rola = ifUser[0].role;
     logger.info(`Logged in user: ${user}, access level: ${rola}`);
     const token = generateToken(user, rola);
-    return res.status(STATUS_CODES.SUCCESS).json({ token: token, message: `${MESSAGES.SUCCESSFUL_OPERATION}` });
+    return res.status(STATUS_CODES.SUCCESS).json({ token: token, message: MESSAGES.SUCCESSFUL_SIGN_UP });
     
   } catch (error) {
     logger.error(error.message);
-    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
+    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.INTERNET_DISCONNECTED);
   }
 });
 

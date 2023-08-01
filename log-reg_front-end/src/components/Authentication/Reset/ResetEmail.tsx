@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { RedirectBtn } from '../../Others/RedirectBtn';
+import { notify } from "../../Others/Notify";
+import { INTERNET_DISCONNECTED , LINK_RESET} from '../../Utils/links';
 
 interface FormState {
   email: string;
@@ -16,7 +18,7 @@ export const ResetEmail: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState((prevState) => ({ ...prevState, [name]: value }));
-    setLink('http://localhost:3000/reset');
+    setLink(LINK_RESET);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -24,17 +26,21 @@ export const ResetEmail: React.FC = () => {
 
     try {
       const dataToSend = { ...formState, link };
-      const response = await axios.post('http://localhost:3001/email', dataToSend);
+      const response = await axios.post('http://localhost:3001/forgot', dataToSend);
 
-      if (response.status === 200 && response.data === 'success') {
+      if (response.status === 200) {
         setFormState({ email: '' });
         setLink(''); 
-        console.log('front okey');
+        notify(response.data);
       } else {
-        console.log(response);
+        notify(response.data.message);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      if (error) {
+        notify(error.response.data);
+      } else {
+        notify(INTERNET_DISCONNECTED);
+      }
     }
   };
 

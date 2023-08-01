@@ -1,9 +1,8 @@
 import React, { useState, createContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { INTERNET_DISCONNECTED, register } from "../../Utils/links";
+import { INTERNET_DISCONNECTED, ENDPOINT_REGISTER } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import {RegisterContextType} from '../../Utils/Interfaces/RegisterContextType';
 import { RegistForm } from "./RegistForm";
@@ -23,7 +22,7 @@ export const Regist: React.FC = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(register, {
+      const response = await axios.post(ENDPOINT_REGISTER, {
         email,
         username,
         password,
@@ -32,13 +31,13 @@ export const Regist: React.FC = () => {
           notify(response.data);
           setTimeout(() => redirect(`/`), 2000);
       } else if (response.status === 401) {
-        notify(response.data);  
+        notify(response.data.message);  
       } else  {
-        notify(response.data); 
+        notify(response.data.message); 
       }
     } catch (error: any) {
-      if (error.response) {
-        notify(error.response.data.message);
+      if (error) {
+        notify(error.response.data);
       } else {
         notify(INTERNET_DISCONNECTED);
       }
@@ -57,7 +56,6 @@ export const Regist: React.FC = () => {
                 setPassword,
                 setUsername
               }}>
-    <ToastContainer />
       <Title props={'Register panel'}/>
         <div className="container">
             <RegistForm/>

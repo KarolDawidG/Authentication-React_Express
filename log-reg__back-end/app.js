@@ -9,8 +9,8 @@ const regRoute = require('./routes/userRoute/registerRoute');
 const logoutRoute = require('./routes/userRoute/logoutRoute');
 const usersRoute = require('./routes/adminRoute/usersRoute');
 const updateRole = require('./routes/adminRoute/updateRole');
-const resetRoute = require('./routes/userRoute/passwordReset');
-const emailRoute = require('./routes/userRoute/emailRoute');
+const resetRoute = require('./routes/userRoute/resetRoute');
+const forgotRoute = require('./routes/userRoute/forgotPassRoute');
 const logger = require('./logs/logger');
 
 app.use('/register', regRoute );
@@ -20,7 +20,7 @@ app.use('/logout', logoutRoute);
 app.use('/users', usersRoute );
 app.use('/update-role', updateRole );
 app.use('/reset', resetRoute);
-app.use('/email', emailRoute);
+app.use('/forgot', forgotRoute);
 
 app.use(limiter);
 app.use(middleware);

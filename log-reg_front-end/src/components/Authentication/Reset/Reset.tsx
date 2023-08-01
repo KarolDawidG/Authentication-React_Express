@@ -1,58 +1,67 @@
-import { useState } from "react";
-import { ToastContainer } from 'react-toastify';
+import { useState, useEffect } from "react";
+import {  useParams } from "react-router-dom";
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { INTERNET_DISCONNECTED, reset } from "../../Utils/links";
+import { INTERNET_DISCONNECTED } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
-import { backgroundColor, preventSpace, validateEmail } from "../../../components/Utils/FormsUtils/forms-utils";
+import { backgroundColor, preventSpace } from "../../../components/Utils/FormsUtils/forms-utils";
+
 
 export const Reset = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const { id, token } = useParams();
   
+
+
+  const handleResetLink = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/reset/${id}/${token}`);
+
+      if (response.status === 200) {
+        notify(response.data);
+      } else {
+        notify(response.data.message);
+      }
+    } catch (error:any) {
+      notify(error.response.data);
+    }
+  };
+
     const handleSubmit = async (e:any) => {
       e.preventDefault();
   
       try {
-        const response = await axios.post(reset, {
-            email,
-            password,
-          });
+        const response = await axios.post(`http://localhost:3001/reset/${id}/${token}`, {
+          password,
+        });
   
         if (response.status === 200) {
             notify(response.data);
         } else {
-            notify(response.data);
+            notify(response.data.message);
         }
+        
       } catch (error: any) {
-        if (error.response) {
-          notify(error.response.data.message);
+        if (error) {
+          notify(error.response.data);
         } else {
           notify(INTERNET_DISCONNECTED);
         }
       }
     };
   
+    useEffect(() => {
+      handleResetLink();
+    }, []);
+
     return (
        <>
         <div className="center-side">
             <h1 className="regist__title">Reset</h1>
         </div>
         <div className="container">
-            <ToastContainer/> 
                 <div className="right-side">
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="email">Podaj adres email:</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            style={{ backgroundColor: validateEmail(email) ? "lightcoral" : "grey" }}
-                            onChange={(e) => setEmail(e.target.value)}
-                            onKeyDown={preventSpace}
-                            required
-                        /><br /><br />
-            
                     <label htmlFor="password">Podaj nowe hasło:</label>
                         <input
                             type="password"

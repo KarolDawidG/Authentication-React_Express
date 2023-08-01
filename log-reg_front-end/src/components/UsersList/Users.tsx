@@ -4,7 +4,7 @@ import { UsersListProps } from "./UsersListProps";
 import { UserTable } from "./UserTable";
 import { RedirectBtn } from "../Others/RedirectBtn";
 import axios from 'axios';
-import { INTERNET_DISCONNECTED, users } from "../Utils/links";
+import { INTERNET_DISCONNECTED, ENDPOINT_USERS } from "../Utils/links";
 import { BeLogin } from "../Authentication/Login/BeLogin";
 import { Loader } from "../Utils/Loader";
 import { Title } from "../Others/Title";
@@ -26,7 +26,7 @@ export const UsersList: React.FC = () => {
             'Authorization': `Bearer ${token}`
           }
         };
-        const res = await axios.get(users, config);
+        const res = await axios.get(ENDPOINT_USERS, config);
         const data = res.data;
         
         setUsersList(data.usersList);

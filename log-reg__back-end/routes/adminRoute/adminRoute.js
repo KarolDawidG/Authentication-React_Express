@@ -7,7 +7,6 @@ const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
 router.use(middleware);
 
-
 router.get('/', verifyToken, (req, res, next) => {
     const userRole = req.userRole;
     logger.info(`${MESSAGES.AUTHORIZATION_LVL} ${userRole}`);
