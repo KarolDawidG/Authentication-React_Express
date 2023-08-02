@@ -17,12 +17,10 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const { email } = req.body;
-
     let usernameReset = '';
     let idReset = '';
     let emailReset = '';
     let passwordReset = '';
-    
     try {
         const [emailExists] = await UsersRecord.selectByEmail([email]);
            if (!emailExists || emailExists.length === 0) {
@@ -41,7 +39,7 @@ router.post('/', async (req, res) => {
           email: emailReset,
           id: idReset
       };
-      const token = jwt.sign(payload, secret, { expiresIn: '15m' });
+      const token = jwt.sign(payload, secret, { expiresIn: '1m' });
       const link = `http://localhost:3000/reset/${idReset}/${token}`;
 
       await sendResetPasswordEmail(emailReset, emailReset, link);
@@ -50,7 +48,7 @@ router.post('/', async (req, res) => {
           logger.info(MESSAGES.EMAIL_SUCCESS);
           res.status(STATUS_CODES.SUCCESS).send(MESSAGES.EMAIL_SUCCESS);
       } catch (error) {
-          logger.error(error.message);
+        logger.error(`Server error email route: ${error.message}`);
           res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
       }
   });

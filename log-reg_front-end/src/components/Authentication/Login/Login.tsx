@@ -1,6 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_AUTH, INTERNET_DISCONNECTED , ADMIN_ROLE} from "../../Utils/links";
@@ -18,7 +17,7 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const redirect = useNavigate();
-  
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
         try {
@@ -29,7 +28,11 @@ export const Login = () => {
 
           if (response.status === 200) {
                 const token = response.data.token;
-                localStorage.setItem('token', token);    
+                const refreshToken = response.data.refreshToken;
+                
+                localStorage.setItem('token', token);   
+                localStorage.setItem('refreshToken', refreshToken);
+
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 notify(response.data.message);
                 setIsAuthenticated(true);
@@ -57,7 +60,63 @@ export const Login = () => {
       setIsAuthenticated(false);
       setUsername("");
       setPassword("");
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
     };
+    
+
+    ///////////////////////////////////////////////////
+
+    const handleTokenRefresh = async () => {
+
+      const refreshToken = localStorage.getItem('refreshToken');
+      if (refreshToken) {
+        try {
+          const response = await axios.post("http://localhost:3001/auth/refresh", {
+            refreshToken,
+          });
+    
+          if (response.status === 200) {
+            const token = response.data.token;
+            const refreshToken = response.data.refreshToken;
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            setIsAuthenticated(true);
+            notify("Token refreshed successfully.");
+          } else {
+            notify("Failed to refresh token.");
+          }
+        } catch (error: any) {
+          if (error.response && error.response.status === 403) {
+            // Handle 403 error here
+            // For example, log out the user and clear token data
+            setIsAuthenticated(false);
+            
+            localStorage.removeItem('refreshToken');
+            notify("Your session has expired. Please log in again.");
+          } else {
+            if (error.response) {
+              console.error(error.response.data);
+              notify(error.response.data);
+            } else {
+              console.error(error);
+              notify(INTERNET_DISCONNECTED);
+            }
+          }
+        }
+      }
+    };
+  
+    // Check if token exists and if not, refresh it
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (!token && isAuthenticated) {
+        handleTokenRefresh();
+      }
+    }, []);
+
+    /////////////////////////////////////////////////////
   return (
   <>
     <LoginContext.Provider 

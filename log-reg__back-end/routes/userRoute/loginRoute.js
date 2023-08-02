@@ -2,31 +2,21 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
 const { UsersRecord } = require("../../database/Records/UsersRecord");
-const { verifyTokenAfterLogin, publicKey, privateKey, queryParameterize } = require('../../config/config');
+const { queryParameterize } = require('../../config/config');
+const { SECRET_REFRESH_TOKEN, generateRefreshToken, generateToken} = require('../../config/tokenUtils');
 const middleware = require('../../config/middleware');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
-const TOKEN_EXPIRATION_TIME = '1h';
 const router = express.Router();
 router.use(middleware);
 
 
-router.get('/', verifyTokenAfterLogin, (req, res) => {
-  const token = req.headers.authorization;
-
-  if (!token) {
-    return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.USER_NOT_LOGGED_IN);
-  }
-
-  jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (error, decoded) => {
-    if (error) {
-      logger.error(error.message);
-      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.SESSION_EXPIRED);
-    } else {
+router.get('/', (req, res) => {
       return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
-    }
   });
+  router.get('/refresh', (req, res) => {
+    return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
 });
 
 router.post("/", async (req, res) => {
@@ -57,8 +47,11 @@ router.post("/", async (req, res) => {
 
     const rola = ifUser[0].role;
     logger.info(`Logged in user: ${user}, access level: ${rola}`);
+
     const token = generateToken(user, rola);
-    return res.status(STATUS_CODES.SUCCESS).json({ token: token, message: MESSAGES.SUCCESSFUL_SIGN_UP });
+    const refreshToken = generateRefreshToken(user);
+
+     return res.status(STATUS_CODES.SUCCESS).json({ token: token, refreshToken: refreshToken, message: MESSAGES.SUCCESSFUL_SIGN_UP });
     
   } catch (error) {
     logger.error(error.message);
@@ -66,13 +59,20 @@ router.post("/", async (req, res) => {
   }
 });
 
-const generateToken = (username, role) => {
-  const payload = {
-    user: username,
-    role: role,
-    exp: Math.floor(Date.now() / 1000) + parseInt(TOKEN_EXPIRATION_TIME.split('h')[0]) * 60 * 60
-  };
-  return jwt.sign(payload, privateKey, { algorithm: "RS256" });
-}
+router.post('/refresh', (req, res) => {
+  const refreshToken = req.body.refreshToken;
+  if (!refreshToken) {
+    return res.status(401).json({ message: 'Brak refresh tokena' });
+  }
+  jwt.verify(refreshToken, SECRET_REFRESH_TOKEN, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ message: 'Nieprawidłowy refresh token' });
+    }
+    const username = decoded.user;
+    const newToken = generateToken(username);
+    const refreshToken = generateRefreshToken(username);
+    return res.json({ token: newToken, refreshToken: refreshToken });
+  });
+});
 
 module.exports = router;

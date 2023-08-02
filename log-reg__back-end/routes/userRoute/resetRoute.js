@@ -37,8 +37,8 @@ router.post('/:id/:token', async (req, res) => {
     logger.info(MESSAGES.SUCCESSFUL_RESET);
     return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.PASS_RESET);
   } catch (error) {
-    logger.error(error.message);
-    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
+    logger.error(`Server error: ${error.message}`);
+    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.JWT_ERROR);
   }
 });
 

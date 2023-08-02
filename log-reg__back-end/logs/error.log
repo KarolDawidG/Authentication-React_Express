@@ -159,3 +159,24 @@
 2023-08-01 20:06:18 error: emailExist is not defined
 2023-08-01 20:22:19 error: transporter is not defined
 2023-08-01 20:22:34 error: transporter is not defined
+2023-08-01 20:35:15 error: invalid signature
+2023-08-01 21:20:58 error: Server error: invalid signature
+2023-08-01 21:23:20 error: Server error: invalid signature
+2023-08-01 21:26:28 error: Server error: jwt expired
+2023-08-02 15:19:16 error: id is not defined
+2023-08-02 15:19:34 error: id is not defined
+2023-08-02 15:22:21 error: id is not defined
+2023-08-02 15:23:34 error: id is not defined
+2023-08-02 15:23:39 error: id is not defined
+2023-08-02 15:24:02 error: SECRET_REFRESH_TOKEN is not defined
+2023-08-02 15:24:29 error: SECRET_REFRESH_TOKEN is not defined
+2023-08-02 15:24:39 error: generateToken is not defined
+2023-08-02 15:24:57 error: generateRefreshToken is not defined
+2023-08-02 15:25:12 error: generateRefreshToken is not defined
+2023-08-02 15:25:46 error: generateRefreshToken is not defined
+2023-08-02 15:31:17 error: id is not defined
+2023-08-02 21:00:23 error: Cannot read properties of undefined (reading 'split')
+2023-08-02 21:00:40 error: Cannot read properties of undefined (reading 'split')
+2023-08-02 21:00:41 error: Cannot read properties of undefined (reading 'split')
+2023-08-02 21:00:56 error: Cannot read properties of undefined (reading 'split')
+2023-08-02 21:01:02 error: Cannot read properties of undefined (reading 'split')
