@@ -1,20 +1,8 @@
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
 const TOKEN_EXPIRATION_TIME = '1m';
 const SECRET_REFRESH_TOKEN = 'secretRefreshTokenKey';
 const REFRESH_TOKEN_EXPIRATION = '7d';
-
-const { privateKey } = crypto.generateKeyPairSync('rsa', {
-    modulusLength: 2048,
-    publicKeyEncoding: {
-      type: 'spki',
-      format: 'pem',
-    },
-    privateKeyEncoding: {
-      type: 'pkcs8',
-      format: 'pem',
-    },
-  });
+const { privateKey } = require('./config');
 
 const generateToken = (username, role) => {
   const payload = {

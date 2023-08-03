@@ -180,3 +180,4 @@
 2023-08-02 21:00:41 error: Cannot read properties of undefined (reading 'split')
 2023-08-02 21:00:56 error: Cannot read properties of undefined (reading 'split')
 2023-08-02 21:01:02 error: Cannot read properties of undefined (reading 'split')
+2023-08-03 07:10:23 error: secretOrPrivateKey must be an asymmetric key when using RS256

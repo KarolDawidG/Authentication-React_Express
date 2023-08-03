@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
 const { UsersRecord } = require("../../database/Records/UsersRecord");
-const { queryParameterize } = require('../../config/config');
+const { queryParameterize} = require('../../config/config');
 const { SECRET_REFRESH_TOKEN, generateRefreshToken, generateToken} = require('../../config/tokenUtils');
 const middleware = require('../../config/middleware');
 const MESSAGES = require('../../config/messages');
@@ -50,7 +50,7 @@ router.post("/", async (req, res) => {
 
     const token = generateToken(user, rola);
     const refreshToken = generateRefreshToken(user);
-
+    
      return res.status(STATUS_CODES.SUCCESS).json({ token: token, refreshToken: refreshToken, message: MESSAGES.SUCCESSFUL_SIGN_UP });
     
   } catch (error) {

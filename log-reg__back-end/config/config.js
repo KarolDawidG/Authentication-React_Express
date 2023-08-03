@@ -26,19 +26,19 @@ const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
   },
 });
 
-const verifyTokenAfterLogin = (req, res, next) => {
-  const token = req.headers.authorization;
-    if (!token) {
-      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.USER_NOT_LOGGED_IN);
-    }
-  jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
-    if (err) {
-      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.SESSION_EXPIRED);
-    }
-    req.user = decoded;
-    next();
-  });
-};
+// const verifyTokenAfterLogin = (req, res, next) => {
+//   const token = req.headers.authorization;
+//     if (!token) {
+//       return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.USER_NOT_LOGGED_IN);
+//     }
+//   jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
+//     if (err) {
+//       return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.SESSION_EXPIRED);
+//     }
+//     req.user = decoded;
+//     next();
+//   });
+// };
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -71,6 +71,5 @@ module.exports = {
     queryParameterize,
     generateRandomNumber,
     validateEmail,
-    verifyTokenAfterLogin,
     verifyToken,
 };
