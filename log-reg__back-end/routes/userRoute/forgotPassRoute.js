@@ -6,7 +6,7 @@ const router = express.Router();
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
-const {sendResetPasswordEmail} = require('./emailSender');
+const {sendResetPasswordEmail} = require('../../config/emailSender');
 const {jwt_secret} = require('../../config/configENV');
 
 router.use(middleware);
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     try {
         const [emailExists] = await UsersRecord.selectByEmail([email]);
            if (!emailExists || emailExists.length === 0) {
-            return res.status(STATUS_CODES.NOT_FOUND).send(MESSAGES.EMAIL_DOES_EXIST);
+            return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.EMAIL_SUCCESS);
           }
             usernameReset = emailExists?.username;
             emailReset = emailExists?.email;

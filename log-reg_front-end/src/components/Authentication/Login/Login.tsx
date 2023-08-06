@@ -86,14 +86,6 @@ export const Login = () => {
             notify("Failed to refresh token.");
           }
         } catch (error: any) {
-          if (error.response && error.response.status === 403) {
-            // Handle 403 error here
-            // For example, log out the user and clear token data
-            setIsAuthenticated(false);
-            
-            localStorage.removeItem('refreshToken');
-            notify("Your session has expired. Please log in again.");
-          } else {
             if (error.response) {
               console.error(error.response.data);
               notify(error.response.data);
@@ -102,7 +94,6 @@ export const Login = () => {
               notify(INTERNET_DISCONNECTED);
             }
           }
-        }
       }
     };
   

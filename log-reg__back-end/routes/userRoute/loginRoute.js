@@ -15,9 +15,7 @@ router.use(middleware);
 router.get('/', (req, res) => {
       return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
   });
-  router.get('/refresh', (req, res) => {
-    return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
-});
+
 
 router.post("/", async (req, res) => {
   try {
@@ -35,16 +33,16 @@ router.post("/", async (req, res) => {
     const ifUser = await UsersRecord.selectByUsername([user]);
     
     if (ifUser.length === 0) {
-      return res.status(401).send(MESSAGES.WRONG_USERNAME);
+      return res.status(401).send(MESSAGES.UNPROCESSABLE_ENTITY);
     }
 
     const hashedPassword = ifUser[0].password;
     const isPasswordValid = await bcrypt.compare(password, hashedPassword);
 
     if (!isPasswordValid) {
-      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.WRONG_PASSWORD);
+      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.UNPROCESSABLE_ENTITY);
     }
-
+    
     const rola = ifUser[0].role;
     logger.info(`Logged in user: ${user}, access level: ${rola}`);
 
@@ -59,14 +57,20 @@ router.post("/", async (req, res) => {
   }
 });
 
+
+router.get('/refresh', (req, res) => {
+  return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
+});
+
+
 router.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;
   if (!refreshToken) {
-    return res.status(401).json({ message: 'Brak refresh tokena' });
+    return res.status(401).json({ message: MESSAGES.NO_REFRESH_TOKEN });
   }
   jwt.verify(refreshToken, SECRET_REFRESH_TOKEN, (err, decoded) => {
     if (err) {
-      return res.status(403).json({ message: 'Nieprawidłowy refresh token' });
+      return res.status(403).json({ message: MESSAGES.INVALID_REFRESH_TOKEN });
     }
     const username = decoded.user;
     const role = decoded.role;

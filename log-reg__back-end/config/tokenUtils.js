@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const TOKEN_EXPIRATION_TIME = '1m';
-const SECRET_REFRESH_TOKEN = 'secretRefreshTokenKey';
+const crypto = require('crypto');
+const SECRET_REFRESH_TOKEN = crypto.randomBytes(32).toString('hex');  //kazdy reset serwera, generuje nowy klucz
 const REFRESH_TOKEN_EXPIRATION = '7d';
 const { privateKey } = require('./config');
 
