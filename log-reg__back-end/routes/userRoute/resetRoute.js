@@ -2,13 +2,17 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const middleware = require("../../config/middleware");
+const {limiter, errorHandler} = require('../../config/config');
 const router = express.Router();
 const { UsersRecord } = require("../../database/Records/UsersRecord");
 const logger = require('../../logs/logger');
 const {jwt_secret} = require('../../config/configENV')
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
+
 router.use(middleware);
+router.use(limiter);
+router.use(errorHandler);
 
 router.get('/:id/:token',  (req, res) => {
 try {

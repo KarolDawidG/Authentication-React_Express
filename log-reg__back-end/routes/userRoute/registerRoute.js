@@ -2,12 +2,16 @@ const express = require('express');
 const {UsersRecord} = require("../../database/Records/UsersRecord");
 const bcrypt = require("bcrypt");
 const middleware = require("../../config/middleware");
+const {limiter, errorHandler} = require('../../config/config');
 const router = express.Router();
 const { queryParameterize, validateEmail } = require('../../config/config');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
+
 router.use(middleware);
+router.use(limiter);
+router.use(errorHandler);
 
 router.get('/', async (req, res) =>{
     try{

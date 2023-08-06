@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const middleware = require('../../config/middleware');
+const {limiter, errorHandler} = require('../../config/config');
 const { UsersRecord } = require('../../database/Records/UsersRecord');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
@@ -8,6 +9,8 @@ const logger = require('../../logs/logger');
 const {  verifyToken      } = require('../../config/config');
 
 router.use(middleware);
+router.use(limiter);
+router.use(errorHandler);
  
 router.get('/', verifyToken, async (req, res, next) => {
     const userRole = req.userRole; 

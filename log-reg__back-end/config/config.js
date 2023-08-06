@@ -7,6 +7,16 @@ const logger = require('../logs/logger');
 
 const queryParameterize = /^[A-Za-z0-9]+$/;
 
+const errorHandler = (err, req, res, next) => {
+  console.error(err);
+  logger.error(err.message);
+    if (err instanceof SyntaxError) {
+      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_REQUEST);
+    } else {
+      return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.UNKNOW_ERROR);
+    }
+};
+
 const limiter = rateLimit({
     windowMs: 15*60*1000,   //15 minutes
     max: 20,                // limit each IP to 100 per windowMs
@@ -63,6 +73,7 @@ const validateEmail = (e) => {
 };
 
 module.exports = {
+    errorHandler,
     limiter,
     publicKey,
     privateKey,

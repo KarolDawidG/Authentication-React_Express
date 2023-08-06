@@ -3,14 +3,17 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
 const { UsersRecord } = require("../../database/Records/UsersRecord");
 const { queryParameterize} = require('../../config/config');
+const {limiter, errorHandler} = require('../../config/config');
 const { SECRET_REFRESH_TOKEN, generateRefreshToken, generateToken} = require('../../config/tokenUtils');
 const middleware = require('../../config/middleware');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
 const router = express.Router();
-router.use(middleware);
 
+router.use(middleware);
+router.use(limiter);
+router.use(errorHandler);
 
 router.get('/', (req, res) => {
       return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);

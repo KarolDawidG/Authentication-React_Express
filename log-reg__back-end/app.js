@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = 3001;
-const {limiter} = require('./config/config');
+const {limiter, errorHandler} = require('./config/config');
 const middleware = require("./config/middleware");
 const logRoute = require('./routes/userRoute/loginRoute');
 const adminRoute = require('./routes/adminRoute/adminRoute');
@@ -11,6 +11,8 @@ const usersRoute = require('./routes/adminRoute/usersRoute');
 const updateRole = require('./routes/adminRoute/updateRole');
 const resetRoute = require('./routes/userRoute/resetRoute');
 const forgotRoute = require('./routes/userRoute/forgotPassRoute');
+const MESSAGES = require('./config/messages');
+const STATUS_CODES = require('./config/status-codes');
 const logger = require('./logs/logger');
 
 app.use('/register', regRoute );
@@ -24,24 +26,10 @@ app.use('/forgot', forgotRoute);
 
 app.use(limiter);
 app.use(middleware);
-
+app.use(errorHandler);
 
 app.get('/', (req, res) => {
-		try {
-		  return res.status(200).send('Wczytano główną stronę.');
-		} catch (error) {
-		  console.error(error);
-		  logger.error(error.message);
-		  if (error instanceof SyntaxError) {
-			logger.error(error.message);
-			return res.status(400).send('Nieprawidłowe zapytanie.');
-		  } else if (error instanceof ReferenceError) {
-			logger.error(error.message);
-			return res.status(500).send('Błąd wewnętrzny serwera.');
-		  } else {
-			return res.status(500).send('Wystąpił nieznany błąd.');
-		  }
-		}
-	  });
+	return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
+  });
 
-app.listen(PORT, ()=>{console.log(`Server Started correctly on port ${PORT}`)});
+app.listen(PORT, ()=>{logger.info(`${MESSAGES.SERVER_STARTED} ${PORT}`)});

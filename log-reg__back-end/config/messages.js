@@ -1,5 +1,6 @@
 const MESSAGES = {
   // Successful operations
+  SERVER_STARTED: 'Server Started correctly on port',
   SUCCESSFUL_OPERATION: 'Operation successful. Congratulations!',
   SUCCESSFUL_LOGOUT: 'Logout completed successfully. Farewell!',
   SUCCESSFUL_RESET: 'Your password has been reset successfully.',
@@ -20,7 +21,9 @@ const MESSAGES = {
   INTERNET_DISCONNECTED: 'You seem to have lost internet connection. Please check your connectivity.',
   
   // Server errors and permissions
-  SERVER_ERROR: 'An unknown server error occurred. Please contact your friendly admin for assistance.',
+  INVALID_REQUEST: 'Invalid request to the server.',
+  SERVER_ERROR: 'An unknown server error occurred. Please contact your admin for assistance.',
+  UNKNOW_ERROR: 'An unknown error occurred.',
   FORBIDDEN: 'Access to this resource is restricted. You do not have the necessary permissions.',
   
   // Authorization

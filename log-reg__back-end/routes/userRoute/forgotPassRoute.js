@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const middleware = require("../../config/middleware");
+const {limiter, errorHandler} = require('../../config/config');
 const { UsersRecord } = require("../../database/Records/UsersRecord");
 const router = express.Router();
 const MESSAGES = require('../../config/messages');
@@ -10,6 +11,8 @@ const {sendResetPasswordEmail} = require('../../config/emailSender');
 const {jwt_secret} = require('../../config/configENV');
 
 router.use(middleware);
+router.use(limiter);
+router.use(errorHandler);
 
 router.get('/', (req, res) => {
   return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
