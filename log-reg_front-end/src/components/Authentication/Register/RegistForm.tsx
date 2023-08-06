@@ -9,6 +9,11 @@ export const RegistForm = () => {
     if(!context) return null;
       const {handleSubmit, username, password, setPassword, setUsername, email, setEmail} = context;
 
+      const removeSpecialCharacters = (inputString:string) => {
+        return inputString.replace(/[^\w\s]/gi, '');
+      }
+
+      
   return (
     <div className="right-side">
     <form className="login-form__form" onSubmit={handleSubmit}>
@@ -37,7 +42,7 @@ export const RegistForm = () => {
         type="text"
         minLength={6}
         id="username"
-        value={username}
+        value={removeSpecialCharacters(username)}
         onChange={(e) => setUsername(e.target.value)}
         style={{backgroundColor: `${backgroundColor(username.length, 6)}`}}
         onKeyDown={preventSpace}

@@ -59,9 +59,7 @@ export const Login = () => {
     const handleLogout = () => {
       setIsAuthenticated(false);
       setUsername("");
-      setPassword("");
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken');
+      setPassword("");      
     };
     
 

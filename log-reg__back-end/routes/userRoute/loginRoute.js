@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
     logger.info(`Logged in user: ${user}, access level: ${rola}`);
 
     const token = generateToken(user, rola);
-    const refreshToken = generateRefreshToken(user);
+    const refreshToken = generateRefreshToken(user, rola);
     
      return res.status(STATUS_CODES.SUCCESS).json({ token: token, refreshToken: refreshToken, message: MESSAGES.SUCCESSFUL_SIGN_UP });
     
@@ -69,8 +69,10 @@ router.post('/refresh', (req, res) => {
       return res.status(403).json({ message: 'Nieprawidłowy refresh token' });
     }
     const username = decoded.user;
-    const newToken = generateToken(username);
-    const refreshToken = generateRefreshToken(username);
+    const role = decoded.role;
+    
+    const newToken = generateToken(username, role);
+    const refreshToken = generateRefreshToken(username, role);
     return res.json({ token: newToken, refreshToken: refreshToken });
   });
 });

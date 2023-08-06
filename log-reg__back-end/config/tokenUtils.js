@@ -4,18 +4,19 @@ const SECRET_REFRESH_TOKEN = 'secretRefreshTokenKey';
 const REFRESH_TOKEN_EXPIRATION = '7d';
 const { privateKey } = require('./config');
 
-const generateToken = (username, role) => {
+const generateToken = (username, rola) => {
   const payload = {
     user: username,
-    role: role,
+    role: rola,
     exp: Math.floor(Date.now() / 1000) + parseInt(TOKEN_EXPIRATION_TIME.split('m')[0]) * 60 * 60
   };
   return jwt.sign(payload, privateKey, { algorithm: "RS256" });
 }
 
-const generateRefreshToken = (username) => {
+const generateRefreshToken = (username, rola) => {
   const payload = {
     user: username,
+    role: rola
   };
   return jwt.sign(payload, SECRET_REFRESH_TOKEN, {
     expiresIn: REFRESH_TOKEN_EXPIRATION,
