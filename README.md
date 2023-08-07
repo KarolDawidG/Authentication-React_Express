@@ -1,19 +1,41 @@
-# Log-Reg Application
-
+# Authentication-React_Express
 This is a full-stack web application built using Express (JavaScript) for the backend and React with TypeScript for the frontend. The application provides features like user authentication, registration, password reset, and an admin panel.
 
 ## Getting Started
-
-To run the application locally, follow these steps:
+### `To run the application locally, follow these steps:`
 
 1. Clone this repository to your local machine.
 
-2. Install the required dependencies by running the following command:
-```bash
-npm install
+2. Install the required dependencies for both the backend and frontend by navigating to the following directories and running the command:
 
- in the project directories: 
-- \Authentication-React Express\log-reg_ back-end 
-- \Authentication-React Express\log-reg_ front-end
+### `npm install` 
+ - Authentication-React Express/log-reg_back-end
+ - Authentication-React Express/log-reg_front-end
 
-3. Enter all the data necessary to run the database
+3. Set up the necessary database configurations by providing the required data. 
+You can do this by:
+Creating a .env file in the backend directory (Authentication-React Express/log-reg_back-end) and adding your database connection details.
+
+## Once the dependencies are installed and the database is configured, you can start the application by running the following commands in separate terminal windows (CMD):
+
+# For the backend:
+ - ### `cd Authentication-React_Express/log-reg_back-end && nodemon app.js`
+
+# For the frontend:
+ - ###  `cd Authentication-React_Express/log-reg_front-end && npm run start`
+
+Open your web browser and navigate to http://localhost:3000 to access the application.
+
+## Features
+ - User Authentication
+ - User Registration
+ - Password Reset
+ - Admin Panel
+ - Authorization via JWT
+   
+## Technologies Used
+ - Express (Node.js) - backend
+ - React (TypeScript) - frontend
+ - MySQL database
+   
+If you encounter any issues or have questions, please refer to the project's documentation or reach out to the project maintainers.
