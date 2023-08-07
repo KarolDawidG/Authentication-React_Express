@@ -46,4 +46,3 @@ test('should insert a new user record into the database', async () => {
     expect(usersWithInvalidEmail).toHaveLength(0);
   });
 
-

@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
     const ifUser = await UsersRecord.selectByUsername([user]);
     
     if (ifUser.length === 0) {
-      return res.status(401).send(MESSAGES.UNPROCESSABLE_ENTITY);
+      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.UNPROCESSABLE_ENTITY);
     }
 
     const hashedPassword = ifUser[0].password;

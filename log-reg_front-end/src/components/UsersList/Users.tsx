@@ -28,8 +28,7 @@ export const UsersList: React.FC = () => {
         };
         const res = await axios.get(ENDPOINT_USERS, config);
         const data = res.data;
-        
-        setUsersList(data.usersList);
+          setUsersList(data.usersList);
       } catch (error: any) {
         if (error.response) {
           notify(error.response.data);

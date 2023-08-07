@@ -19,7 +19,7 @@ const errorHandler = (err, req, res, next) => {
 
 const limiter = rateLimit({
     windowMs: 15*60*1000,   //15 minutes
-    max: 20,                // limit each IP to 100 per windowMs
+    max: 200,                // limit each IP to 100 per windowMs
 });
 
 const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
