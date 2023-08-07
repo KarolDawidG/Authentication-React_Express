@@ -8,7 +8,12 @@ To run the application locally, follow these steps:
 
 1. Clone this repository to your local machine.
 
-2. Install the required dependencies by running the following command in the project directory:
-
+2. Install the required dependencies by running the following command:
 ```bash
 npm install
+
+ in the project directories: 
+- \Authentication-React Express\log-reg_ back-end 
+- \Authentication-React Express\log-reg_ front-end
+
+3. Enter all the data necessary to run the database
