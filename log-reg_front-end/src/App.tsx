@@ -13,7 +13,7 @@ import { ResetEmail } from "./components/Authentication/Register/Reset/ResetEmai
 // import LogRocket from 'logrocket';   todo
 export const App = () => {
   return (
-    <><ToastContainer />
+    <><ToastContainer limit={1} />
       <Routes>
         <Route path="/" element={<Menu />} />
         <Route path="/login" element={<Login />} />

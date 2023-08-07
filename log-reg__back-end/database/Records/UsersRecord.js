@@ -1,4 +1,5 @@
 const {pool} = require("../db");
+const { validateEmail } = require('../../config/config');
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -35,6 +36,10 @@ class UsersRecord{
     }
 
     static async insert([username, hashPassword, email]) {
+      if (!validateEmail(email)) {
+        throw new Error('Invalid email address');
+      }
+
       const id = uuidv4(); 
       const result = await pool.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
       return id;

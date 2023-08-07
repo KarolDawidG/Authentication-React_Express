@@ -3,7 +3,7 @@ const MESSAGES = {
   SERVER_STARTED: 'Server Started correctly on port',
   SUCCESSFUL_OPERATION: 'Operation successful. Congratulations!',
   SUCCESSFUL_LOGOUT: 'Logout completed successfully. Farewell!',
-  SUCCESSFUL_RESET: 'Your password has been reset successfully.',
+  SUCCESSFUL_RESET: 'Password has been reset successfully.',
   SUCCESSFUL_SIGN_UP: 'Welcome aboard! You are now officially part of our community.',
   EMAIL_SUCCESS: 'If the email address exists, a password reset link will be sent.',
 
@@ -12,7 +12,6 @@ const MESSAGES = {
   SESSION_EXPIRED: 'Your session has expired. Please log in again to continue your adventure.',
   USER_NOT_LOGGED_IN: 'Hold up! The user is not logged in.',
   UNPROCESSABLE_ENTITY: 'Invalid login details. Please ensure you have entered the correct login and password.',
-  PASS_RESET: 'Password has been successfully updated.',
   INVALID_EMAIL: 'Invalid email address. Please provide a valid one.',
   EMAIL_USER_EXIST: 'The provided email and username are already in use. Please choose different ones.',
   EMAIL_EXIST: 'The email address is already taken. Please choose another one.',
