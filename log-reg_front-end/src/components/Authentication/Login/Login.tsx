@@ -4,7 +4,6 @@ import { notify } from "../../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_AUTH, INTERNET_DISCONNECTED , ADMIN_ROLE} from "../../Utils/links";
 import { LoginForm } from "./LoginForm";
-import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import {LoginContextType} from '../../Utils/Interfaces/LoginContextType';
 import "../../../css/styles.css";
@@ -39,7 +38,9 @@ export const Login = () => {
 
             if (username === ADMIN_ROLE) {  //shout use role: admin, not username: root TODO
                   redirect('/admin');
-            } 
+            } else {
+              redirect('/after-login'); // Przeniesienie po zalogowaniu dla użytkownika nie będącego administratorem
+            }
 
           } else {
               notify(response.data.message);
@@ -56,14 +57,7 @@ export const Login = () => {
         }
     };
     
-    const handleLogout = () => {
-      setIsAuthenticated(false);
-      setUsername("");
-      setPassword("");      
-    };
-    
-
-    ///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 
     const handleTokenRefresh = async () => {
 
@@ -103,7 +97,7 @@ export const Login = () => {
       if (!token && isAuthenticated) {
         handleTokenRefresh();
       }
-    }, []);
+    }, [isAuthenticated]);
 
     /////////////////////////////////////////////////////
   return (
@@ -118,13 +112,7 @@ export const Login = () => {
         }}>
       <Title props={'Login panel'}/>
         <div className="container">
-            {!isAuthenticated ? (<LoginForm/>) : 
-            (
-              <>
-                {redirect(`/after-login`)}
-                <LogoutButton onLogout={handleLogout} /> 
-              </>
-            )}
+          <LoginForm/>
             <div className="left-side">
               <div className="regist__buttons">
                 <RedirectBtn to="/">Menu</RedirectBtn>
