@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { notify } from "../../Others/Notify";
 import axios from 'axios';
-import { ENDPOINT_ADMIN } from "../../Utils/links";
+import { ADMIN_ROLE, ENDPOINT_ADMIN } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { Loader } from "../../Utils/Loader";
 import { Title } from "../../Others/Title";
+import jwtDecode from "jwt-decode"; // Importuj bibliotekę do dekodowania JWT
 
 export const AdminPanel = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,32 +19,21 @@ export const AdminPanel = () => {
   };
 
   useEffect(() => {
-    const fetchAdminData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          return redirect('/be-login');
-        }
-        const response = await axios.get(ENDPOINT_ADMIN, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (response.data.userRole === "admin") {
-          setIsLoading(false);
-        }
-      } catch (error: any) {
-        if (error.response) {
-          console.log(error.response);
-          notify(error.response);
-        } else {
-          notify("An error occurred while fetching admin data.");
-        }
-      }
-    };
-
-    fetchAdminData();
-  }, [redirect]);
+    const token = localStorage.getItem('token');
+    console.log(token); //wyswietla sie w konsoli dwa razy, dlaczego?
+    if (!token) {
+      return redirect('/be-login');
+    }
+    
+    const decodedToken:any = jwtDecode(token); // Dekoduj token JWT
+    const userRole = decodedToken.role; // Odczytaj rolę z tokena
+    
+    if (userRole === ADMIN_ROLE) {
+      setIsLoading(false);
+    } else{
+      return redirect('/be-login');
+    }
+  },[]);
 
   if (isLoading) {
     return <>

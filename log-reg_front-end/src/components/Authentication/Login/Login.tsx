@@ -8,6 +8,7 @@ import { RedirectBtn } from "../../Others/RedirectBtn";
 import {LoginContextType} from '../../Utils/Interfaces/LoginContextType';
 import "../../../css/styles.css";
 import { Title } from "../../Others/Title";
+import jwtDecode from "jwt-decode";
 
 export const LoginContext  = createContext<LoginContextType  | null>(null); 
 
@@ -36,16 +37,17 @@ export const Login = () => {
                 notify(response.data.message);
                 setIsAuthenticated(true);
 
-            if (username === ADMIN_ROLE) {  //shout use role: admin, not username: root TODO
-                  redirect('/admin');
+
+                const decodedToken:any = jwtDecode(token); // Dekoduj token JWT
+                const userRole = decodedToken.role;
+
+            if (userRole === ADMIN_ROLE) {  
+                redirect('/admin');
             } else {
-              redirect('/after-login'); // Przeniesienie po zalogowaniu dla użytkownika nie będącego administratorem
+                redirect('/after-login'); // Przeniesienie po zalogowaniu dla użytkownika nie będącego administratorem
             }
 
-          } else {
-              notify(response.data.message);
-              console.log(response.data.message);
-          }
+          } 
         } catch (error: any) {
           if (error) {
             console.error(error);

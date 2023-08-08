@@ -4,9 +4,7 @@ const middleware = require("../../config/middleware");
 const {limiter, errorHandler} = require('../../config/config');
 const router = express.Router();
 
-router.use(middleware);
-router.use(limiter);
-router.use(errorHandler);
+router.use(middleware, limiter, errorHandler);
 
 // router.get('/', async (req, res)=>{
 //     try{

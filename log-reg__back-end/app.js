@@ -24,9 +24,7 @@ app.use('/update-role', updateRole );
 app.use('/reset', resetRoute);
 app.use('/forgot', forgotRoute);
 
-app.use(middleware);
-app.use(limiter);
-app.use(errorHandler);
+app.use(middleware, limiter, errorHandler);
 
 app.get('/', (req, res) => {
 	return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);

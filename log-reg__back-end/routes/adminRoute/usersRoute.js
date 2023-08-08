@@ -8,14 +8,12 @@ const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
 const {  verifyToken      } = require('../../config/config');
 
-router.use(middleware);
-router.use(limiter);
-router.use(errorHandler);
+router.use(middleware, limiter, errorHandler);
  
 router.get('/', verifyToken, async (req, res, next) => {
     const userRole = req.userRole; 
 
-    logger.info(`${MESSAGES.AUTHORIZATION_LVL} ${userRole}`)
+    logger.info(`${MESSAGES.AUTHORIZATION_LVL}: users ${userRole}`)
     if (userRole !== 'admin') {
       return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.FORBIDDEN);
     }
