@@ -3,5 +3,4 @@ export interface UsersListProps {
     username: string;
     email: string;
     role: string;
-    
 }

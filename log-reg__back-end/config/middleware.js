@@ -1,12 +1,54 @@
 const express = require('express');
 const cors = require('cors');	
+const helmet = require('helmet');
+
 
 const middleware = express.Router();
+
 middleware.use(cors({
 	origin: 'http://localhost:3000',
-}));
-middleware.use(express.json());
-middleware.use(express.urlencoded({ extended: true }));
+	// methods: ['GET', 'POST', 'PUT', 'DELETE'],
+	methods: ['GET', 'POST'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
+	credentials: true,
+  }));
+  
+middleware.use(express.json({ extended: true }));
 
+middleware.use(
+	helmet({
+		contentSecurityPolicy: {		// Włączenie domyślnej polityki CSP
+			directives: {
+			  defaultSrc: ["'self'"],
+			  scriptSrc: ["'self'", "'trusted-cdn.com'"],
+			  styleSrc: ["'self'", "'unsafe-inline'"],
+			  imgSrc: ["'self'", 'data:', 'img.example.com'],
+			  connectSrc: ["'self'"],
+			  fontSrc: ["'self'", 'font.example.com'],
+			},
+		  },
+	  crossOriginEmbedderPolicy: true, // Włączenie polityki COEP
+	  crossOriginOpenerPolicy: true, // Włączenie polityki COOP
+	  crossOriginResourcePolicy: true, // Włączenie polityki CORP
+	  dnsPrefetchControl: true, // Włączenie kontroli nad DNS prefetching
+	  frameguard: { action: 'deny' }, // Opcje zabezpieczenia przed atakami clickjacking
+	  hsts: { maxAge: 5184000 }, // Konfiguracja Strict Transport Security (HSTS)
+	  referrerPolicy: { policy: 'strict-origin-when-cross-origin' }, // Konfiguracja polityki referer
+	  xssFilter: true, // Włączenie filtra XSS
+	  noSniff: true, // Zapobieganie sniffingowi MIME
+	  ieNoOpen: true, // Blokada otwierania w IE poprzez nagłówek "X-Download-Options"
+	  hidePoweredBy: true, // Ukrycie informacji o serwerze
+	  permittedCrossDomainPolicies: true, // Opcje zezwolenia na polityki zdalnego dostępu
+	  featurePolicy: {
+		features: {
+		  accelerometer: ["'none'"], // Ograniczenie dostępu do akcelerometru
+		  camera: ["'none'"], // Ograniczenie dostępu do kamery
+		  geolocation: ["'none'"], // Ograniczenie dostępu do geolokalizacji
+		  microphone: ["'none'"], // Ograniczenie dostępu do mikrofonu
+		},
+	  },
+	})
+  );
+  
 
 module.exports = middleware;

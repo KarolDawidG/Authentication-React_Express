@@ -188,3 +188,4 @@
 2023-08-07 15:41:06 error: Incorrect arguments to mysqld_stmt_execute
 2023-08-07 15:41:08 error: Incorrect arguments to mysqld_stmt_execute
 2023-08-07 15:41:24 error: Incorrect arguments to mysqld_stmt_execute
+2023-08-08 16:15:51 error: Server error: invalid signature
