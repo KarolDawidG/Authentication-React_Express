@@ -9,9 +9,12 @@ export const ENDPOINT_REGISTER = "http://localhost:3001/register";
 export const ENDPOINT_RESET = "http://localhost:3001/reset";
 
 export const ENDPOINT_EMAIL = 'http://localhost:3001/forgot';
+
 export const ENDPOINT_LOGOUT = 'http://localhost:3001/logout';
 
 export const LINK_RESET = 'http://localhost:3000/reset';
+
+export const ENDPOINT_REFRESH = 'http://localhost:3001/auth/refresh';
 
 export const ADMIN_ROLE = "admin";
 

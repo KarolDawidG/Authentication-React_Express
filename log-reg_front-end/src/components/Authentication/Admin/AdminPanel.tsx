@@ -1,39 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
-import { notify } from "../../Others/Notify";
-import axios from 'axios';
-import { ADMIN_ROLE, ENDPOINT_ADMIN } from "../../Utils/links";
+import { ADMIN_ROLE } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { Loader } from "../../Utils/Loader";
 import { Title } from "../../Others/Title";
-import jwtDecode from "jwt-decode"; // Importuj bibliotekę do dekodowania JWT
+import jwtDecode from "jwt-decode";
 
 export const AdminPanel = () => {
   const [isLoading, setIsLoading] = useState(true);
   const redirect = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     localStorage.removeItem('token');
     redirect(`/login`);
-  };
+  }, [redirect]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log(token); //wyswietla sie w konsoli dwa razy, dlaczego?
+    console.log(token);
     if (!token) {
       return redirect('/be-login');
     }
-    
-    const decodedToken:any = jwtDecode(token); // Dekoduj token JWT
-    const userRole = decodedToken.role; // Odczytaj rolę z tokena
-    
+
+    const decodedToken:any = jwtDecode(token);
+    const userRole = decodedToken.role;
+
     if (userRole === ADMIN_ROLE) {
       setIsLoading(false);
-    } else{
+    } else {
       return redirect('/be-login');
     }
-  },[]);
+  }, [redirect]);
 
   if (isLoading) {
     return <>

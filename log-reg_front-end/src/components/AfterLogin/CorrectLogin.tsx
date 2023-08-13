@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Title } from "../Others/Title";
 import { RedirectBtn } from "../Others/RedirectBtn";
 import { LogoutButton } from "../Others/LogoutButton";
 import { notify } from "../Others/Notify";
 import axios from "axios";
+import {ENDPOINT_REFRESH} from "../Utils/links";
 
 export const CorrectLogin = () => {
   const redirect = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     redirect(`/login`);
-  };
+  }, [redirect]);
 
-  const handleTokenRefresh = async () => {
+  const handleTokenRefresh = useCallback(async () => {
     const refreshToken = localStorage.getItem('refreshToken');
     if (!refreshToken) {
       redirect('/be-login');
-      return;
+      return null;
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/auth/refresh", {
+      const response = await axios.post(ENDPOINT_REFRESH, {
         refreshToken,
       });
 
@@ -34,7 +35,7 @@ export const CorrectLogin = () => {
 
         localStorage.setItem('token', token);
         localStorage.setItem('refreshToken', newRefreshToken);
-        
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         setIsAuthenticated(true);
         notify("Token refreshed successfully.");
@@ -52,7 +53,7 @@ export const CorrectLogin = () => {
         notify("An error occurred while refreshing the token.");
       }
     }
-  };
+  }, [redirect]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -61,7 +62,7 @@ export const CorrectLogin = () => {
     } else {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [handleTokenRefresh]);
 
   return (
     <div className="container">

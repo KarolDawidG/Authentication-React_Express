@@ -1,5 +1,5 @@
-import { UsersListProps } from "./UsersListProps";
-import "./tabela.css";
+import { UsersListProps } from "../Utils/Interfaces/UsersListProps";
+import "../../css/tabela.css";
 
 interface Props {
     user: UsersListProps;

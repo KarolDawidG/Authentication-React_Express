@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { RedirectBtn } from '../../../Others/RedirectBtn';
 import { notify } from "../../../Others/Notify";
-import { INTERNET_DISCONNECTED , LINK_RESET} from '../../../Utils/links';
+import {ENDPOINT_EMAIL, INTERNET_DISCONNECTED, LINK_RESET} from '../../../Utils/links';
 
 interface FormState {
   email: string;
@@ -26,7 +26,7 @@ export const ResetEmail: React.FC = () => {
 
     try {
       const dataToSend = { ...formState, link };
-      const response = await axios.post('http://localhost:3001/forgot', dataToSend);
+      const response = await axios.post(ENDPOINT_EMAIL, dataToSend);
 
       if (response.status === 200) {
         setFormState({ email: '' });

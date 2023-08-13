@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { backgroundColor, preventSpace } from "../../../components/Utils/FormsUtils/forms-utils";
+import {backgroundColor, preventSpace} from "../../Utils/FormsUtils/forms-utils";
 import {LoginContext} from './Login';
 import "../../../css/styles.css";
 

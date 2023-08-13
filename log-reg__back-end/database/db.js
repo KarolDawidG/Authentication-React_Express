@@ -10,23 +10,8 @@ const pool = createPool({
   decimalNumbers: true,
 });
 
-(async () => {
-  
-    const [rows] = await pool.query('SHOW DATABASES');
-    const databases = rows.map((row) => row.Database);
-      if (!databases.includes(nameDB)) {
-        await pool.query(`CREATE DATABASE ${nameDB}`);
-      }
-        await pool.query(`USE ${nameDB}`);
-        const tables = [createAccountsTable, createRoot];
-        for await (const table of tables) {
-        await table(pool);
-      }
-  
-})();
-
 // (async () => {
-//   try {
+//
 //     const [rows] = await pool.query('SHOW DATABASES');
 //     const databases = rows.map((row) => row.Database);
 //       if (!databases.includes(nameDB)) {
@@ -34,13 +19,28 @@ const pool = createPool({
 //       }
 //         await pool.query(`USE ${nameDB}`);
 //         const tables = [createAccountsTable, createRoot];
-//       for await (const table of tables) {
+//         for await (const table of tables) {
 //         await table(pool);
-//       }console.log('Database started correctly');
-//   } catch (err) {
-//     console.error(err);
-//   }
+//       }
+//
 // })();
+
+(async () => {
+  try {
+    const [rows] = await pool.query('SHOW DATABASES');
+    const databases = rows.map((row) => row.Database);
+      if (!databases.includes(nameDB)) {
+        await pool.query(`CREATE DATABASE ${nameDB}`);
+      }
+        await pool.query(`USE ${nameDB}`);
+        const tables = [createAccountsTable, createRoot];
+      for await (const table of tables) {
+        await table(pool);
+      }console.log('Database started correctly');
+  } catch (err) {
+    console.error(err);
+  }
+})();
 
 module.exports = {
   pool,

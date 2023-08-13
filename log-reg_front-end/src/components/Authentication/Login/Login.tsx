@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { ENDPOINT_AUTH, INTERNET_DISCONNECTED , ADMIN_ROLE} from "../../Utils/links";
+import {ENDPOINT_AUTH, INTERNET_DISCONNECTED, ADMIN_ROLE, ENDPOINT_REFRESH} from "../../Utils/links";
 import { LoginForm } from "./LoginForm";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import {LoginContextType} from '../../Utils/Interfaces/LoginContextType';
@@ -26,7 +26,7 @@ export const Login = () => {
             password,
           });
 
-          if (response.status === 200) {
+          if (response && response.status === 200) {
                 const token = response.data.token;
                 const refreshToken = response.data.refreshToken;
                 
@@ -37,36 +37,31 @@ export const Login = () => {
                 notify(response.data.message);
                 setIsAuthenticated(true);
 
-
-                const decodedToken:any = jwtDecode(token); // Dekoduj token JWT
+                const decodedToken:any = jwtDecode(token);
                 const userRole = decodedToken.role;
 
             if (userRole === ADMIN_ROLE) {  
                 redirect('/admin');
             } else {
-                redirect('/after-login'); // Przeniesienie po zalogowaniu dla użytkownika nie będącego administratorem
+                redirect('/after-login');
             }
 
           } 
         } catch (error: any) {
           if (error) {
             console.error(error);
-            notify(error.response.data);
-          } else {
-            console.error(error);
             notify(INTERNET_DISCONNECTED);
           }
         }
     };
     
-///////////////////////////////////////////////////
 
     const handleTokenRefresh = async () => {
 
       const refreshToken = localStorage.getItem('refreshToken');
       if (refreshToken) {
         try {
-          const response = await axios.post("http://localhost:3001/auth/refresh", {
+          const response = await axios.post(ENDPOINT_REFRESH, {
             refreshToken,
           });
     

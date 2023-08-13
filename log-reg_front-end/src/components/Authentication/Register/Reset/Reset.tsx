@@ -14,22 +14,6 @@ export const Reset = () => {
   const { id, token } = useParams();
   const [passwordsMatch, setPasswordsMatch] = useState(false);
   
-
-
-  const handleResetLink = async () => {
-    try {
-      const response = await axios.get(`${ENDPOINT_RESET}/${id}/${token}`);
-
-      if (response.status === 200) {
-        notify(response.data);
-      } else {
-        notify(response.data.message);
-      }
-    } catch (error:any) {
-      notify(error.response.data);
-    }
-  };
-
     const handleSubmit = async (e:any) => {
       e.preventDefault();
   
@@ -53,13 +37,25 @@ export const Reset = () => {
       }
     };
   
-    useEffect(() => {
-      handleResetLink();
-    }, []);
+  useEffect(() => {
+    const handleResetLink = async () => {
+      try {
+        const response = await axios.get(`${ENDPOINT_RESET}/${id}/${token}`);
 
-    useEffect(() => {
-      setPasswordsMatch(password === password2);
-    }, [password, password2]);
+        if (response.status === 200) {
+          notify(response.data);
+        } else {
+          notify(response.data.message);
+        }
+      } catch (error:any) {
+        notify(error.response.data);
+      }
+    };
+
+    handleResetLink(); // Wywołanie funkcji handleResetLink
+
+    setPasswordsMatch(password === password2);
+  }, [id, token, password, password2]); 
 
     return (
        <>
