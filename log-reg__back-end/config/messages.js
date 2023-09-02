@@ -13,6 +13,7 @@ const MESSAGES = {
   USER_NOT_LOGGED_IN: 'Hold up! The user is not logged in.',
   UNPROCESSABLE_ENTITY: 'Invalid login details. Please ensure you have entered the correct login and password.',
   INVALID_EMAIL: 'Invalid email address. Please provide a valid one.',
+  INVALID_PASS: 'The password should contain at least 8 characters, one capital letter and a number!',
   EMAIL_USER_EXIST: 'The provided email and username are already in use. Please choose different ones.',
   EMAIL_EXIST: 'The email address is already taken. Please choose another one.',
   USER_EXIST: 'The username already exists. Please select a different one.',

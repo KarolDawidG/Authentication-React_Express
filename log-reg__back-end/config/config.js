@@ -5,8 +5,6 @@ const MESSAGES = require('./messages');
 const STATUS_CODES = require('./status-codes');
 const logger = require('../logs/logger');
 
-const queryParameterize = /^[A-Za-z0-9]+$/;
-
 const errorHandler = (err, req, res, next) => {
   console.error(err);
   logger.error(err.message);
@@ -66,10 +64,25 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+const queryParameterize = /^[A-Za-z0-9]+$/;
 
 const validateEmail = (e) => {
   const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
   return email.test(e);
+};
+
+const  validatePassword = (e) => {
+    if (e.length < 8 || e.length > 16) {
+        return false;
+    }
+    if (!/[A-Z]/.test(e)) {
+        return false;
+    }
+    if (!/[0-9]/.test(e)) {
+        return false;
+    }
+
+    return true;
 };
 
 module.exports = {
@@ -79,5 +92,6 @@ module.exports = {
     privateKey,
     queryParameterize,
     validateEmail,
+    validatePassword,
     verifyToken,
 };

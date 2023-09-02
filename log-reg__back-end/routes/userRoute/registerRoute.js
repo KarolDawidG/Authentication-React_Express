@@ -2,15 +2,15 @@ const express = require('express');
 const {UsersRecord} = require("../../database/Records/UsersRecord");
 const bcrypt = require("bcrypt");
 const middleware = require("../../config/middleware");
-const {limiter, errorHandler} = require('../../config/config');
+const {errorHandler} = require('../../config/config');
 const router = express.Router();
-const { queryParameterize, validateEmail } = require('../../config/config');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
+const {  validatePassword, queryParameterize, validateEmail } = require("../../config/config");
+
 
 router.use(middleware);
-router.use(limiter);
 router.use(errorHandler);
 
 router.get('/', async (req, res) =>{
@@ -30,6 +30,10 @@ router.post('/', async (req, res) => {
       return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_EMAIL);
     }
 
+    if (!validatePassword(password)) {
+        return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_PASS);
+    }
+
     if (!username.match(queryParameterize)) {
       logger.info(MESSAGES.SQL_INJECTION_ALERT);
       return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.SQL_INJECTION_ALERT);
@@ -45,15 +49,15 @@ router.post('/', async (req, res) => {
           (userExists.emailExists && userExists.emailExists.length > 0) &&
           (userExists.loginExists && userExists.loginExists.length > 0)) {
           return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.EMAIL_USER_EXIST);
-        };
+        }
 
         if (userExists.emailExists && userExists.emailExists.length > 0) {
             return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.EMAIL_EXIST);
-        };
+        }
 
         if (userExists.loginExists && userExists.loginExists.length > 0) {
             return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.USER_EXIST);
-        } ;
+        }
 
         const hashPassword = await bcrypt.hash(password, 10);
         await UsersRecord.insert([username, hashPassword, email])

@@ -1,9 +1,11 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
+const { nameDB} = require('../../config/configENV');
+const {pool} = require("../../database/db");
 const { UsersRecord } = require("../../database/Records/UsersRecord");
 const { queryParameterize} = require('../../config/config');
-const {limiter, errorHandler} = require('../../config/config');
+const {errorHandler} = require('../../config/config');
 const { SECRET_REFRESH_TOKEN, generateRefreshToken, generateToken} = require('../../config/tokenUtils');
 const middleware = require('../../config/middleware');
 const MESSAGES = require('../../config/messages');
@@ -12,7 +14,6 @@ const logger = require('../../logs/logger');
 const router = express.Router();
 
 router.use(middleware);
-router.use(limiter);
 router.use(errorHandler);
 
 router.get('/', (req, res) => {
@@ -22,6 +23,8 @@ router.get('/', (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    await pool.query(`USE ${nameDB}`);
+
     const user = req.body.username;
     const password = req.body.password;
 
