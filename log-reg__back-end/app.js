@@ -15,6 +15,9 @@ const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
 const logger = require('./logs/logger');
 
+const capRoutes = require('./routes/captchaRoute/capRoute');
+app.use('/cap', capRoutes);
+
 app.use('/register', regRoute );
 app.use('/auth', logRoute );
 app.use('/admin', adminRoute );
