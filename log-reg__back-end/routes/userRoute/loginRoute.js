@@ -42,6 +42,10 @@ router.post("/", async (req, res) => {
       return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.UNPROCESSABLE_ENTITY);
     }
 
+    if (!ifUser[0].is_active) {
+      return res.status(STATUS_CODES.UNAUTHORIZED).send('Account is not active. Please check your email for activation.');
+    }
+
     const hashedPassword = ifUser[0].password;
     const isPasswordValid = await bcrypt.compare(password, hashedPassword);
 

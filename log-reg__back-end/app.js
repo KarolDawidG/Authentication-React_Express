@@ -11,12 +11,12 @@ const usersRoute = require('./routes/adminRoute/usersRoute');
 const updateRole = require('./routes/adminRoute/updateRole');
 const resetRoute = require('./routes/userRoute/resetRoute');
 const forgotRoute = require('./routes/userRoute/forgotPassRoute');
+const capRoutes = require('./routes/captchaRoute/capRoute');
+
 const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
 const logger = require('./logs/logger');
 
-const capRoutes = require('./routes/captchaRoute/capRoute');
-app.use('/cap', capRoutes);
 
 app.use('/register', regRoute );
 app.use('/auth', logRoute );
@@ -26,6 +26,7 @@ app.use('/users', usersRoute );
 app.use('/update-role', updateRole );
 app.use('/reset', resetRoute);
 app.use('/forgot', forgotRoute);
+app.use('/cap', capRoutes);
 
 app.use(middleware, limiter, errorHandler);
 

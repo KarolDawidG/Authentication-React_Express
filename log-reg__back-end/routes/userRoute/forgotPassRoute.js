@@ -13,9 +13,6 @@ const {jwt_secret} = require('../../config/configENV');
 router.use(middleware);
 router.use(errorHandler);
 
-router.get('/', (req, res) => {
-  return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
-});
 
 router.post('/', async (req, res) => {
     const { email } = req.body;

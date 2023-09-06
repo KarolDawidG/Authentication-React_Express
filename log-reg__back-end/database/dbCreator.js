@@ -8,13 +8,6 @@ const {insertRoot, findRoot, createAccounts} = require('./querrys');
       console.error(err);
     }
   };
-
-  // const createRoot = async (pool) => {
-  //     const [rows] = await pool.query(findRoot);
-  //       if (rows.length === 0) {
-  //         await pool.query(insertRoot);
-  //       }
-  // };
   
 
 const createRoot = async (pool) => {

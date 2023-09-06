@@ -10,6 +10,11 @@ class UsersRecord{
         this.email = obj.email;
         this.role = obj.role;
       }
+    
+    static async activateAccount(id) {
+        const results = await pool.execute("UPDATE accounts SET is_active = true WHERE id = ?", [id]);
+        return results;
+      }
 
     static async listAll(){
         const [results] = await pool.execute(`SELECT * FROM accounts`);

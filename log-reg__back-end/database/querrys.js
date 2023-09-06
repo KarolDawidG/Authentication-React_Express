@@ -10,6 +10,7 @@ const createAccounts = `
       email varchar(100) NOT NULL,
       role varchar(20) NOT NULL DEFAULT 'user',
       PRIMARY KEY (id),
+      is_active BOOLEAN DEFAULT false,
       UNIQUE KEY (username),
       UNIQUE KEY (email)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
