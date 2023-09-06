@@ -12,11 +12,8 @@ export const LoginForm = () => {
   const contextCapta = useContext(CaptchaContext);
 
   if (!context || !contextCapta) return null;
-
-  const { handleSubmit, username, password, setPassword, setUsername } = context;
-  const captchaRef = contextCapta as React.MutableRefObject<ReCAPTCHA | null>;
-
-  
+    const { handleSubmit, username, password, setPassword, setUsername } = context;
+    const captchaRef = contextCapta as React.MutableRefObject<ReCAPTCHA | null>;
 
   return (
       <div className="right-side">

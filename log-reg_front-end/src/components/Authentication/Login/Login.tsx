@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect, useRef} from "react";
 import { useNavigate } from 'react-router-dom';
 import { notify } from "../../Others/Notify";
 import axios from "axios";
-import {  ENDPOINT_CAPTCHA} from "../../Utils/links";
+import { ENDPOINT_CAPTCHA} from "../../Utils/links";
 import { LoginForm } from "./LoginForm";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import {LoginContextType} from '../../Utils/Interfaces/LoginContextType';
@@ -29,7 +29,6 @@ export const Login = () => {
             const inputVal = inputElement.value;
             const token = captchaRef.current.getValue();
             captchaRef.current.reset();
-
                 try {
                     const response = await axios.post(ENDPOINT_CAPTCHA, { inputVal, token });
 

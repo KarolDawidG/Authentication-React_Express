@@ -1,4 +1,4 @@
-import { backgroundColor, preventSpace } from "../../../Utils/FormsUtils/forms-utils";
+import { backgroundColor, preventSpace } from "../../Utils/FormsUtils/forms-utils";
 
 interface PassForm {
   password: string;

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import {  useParams } from "react-router-dom";
-import { notify } from "../../../Others/Notify";
+import {  useParams, useNavigate } from "react-router-dom";
+import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { INTERNET_DISCONNECTED, ENDPOINT_RESET} from "../../../Utils/links";
-import { RedirectBtn } from "../../../Others/RedirectBtn";
+import { INTERNET_DISCONNECTED, ENDPOINT_RESET} from "../../Utils/links";
+import { RedirectBtn } from "../../Others/RedirectBtn";
 import { PasswordForm } from "./PasswordForm";
 import { PasswordStatus } from "./PasswordStatus";
 
@@ -13,20 +13,20 @@ export const Reset = () => {
   const [password2, setPassword2] = useState("");
   const { id, token } = useParams();
   const [passwordsMatch, setPasswordsMatch] = useState(false);
-  
+  const redirect = useNavigate();
+
     const handleSubmit = async (e:any) => {
       e.preventDefault();
   
       try {
         const response = await axios.post(`${ENDPOINT_RESET}/${id}/${token}`, {
-          password,
+          password,password2,
         });
   
         if (response.status === 200) {
-            notify(response.data);
-        } else {
-            notify(response.data.message);
-        }
+          notify('Password has been reset successfully.');
+          setTimeout(() => redirect(`/`), 2000);
+      }
         
       } catch (error: any) {
         if (error) {
@@ -42,17 +42,16 @@ export const Reset = () => {
       try {
         const response = await axios.get(`${ENDPOINT_RESET}/${id}/${token}`);
 
-        if (response.status === 200) {
-          notify(response.data);
-        } else {
+        if (response.status !== 200) {
           notify(response.data.message);
-        }
+      }
+      
       } catch (error:any) {
         notify(error.response.data);
       }
     };
 
-    handleResetLink(); // Wywołanie funkcji handleResetLink
+    handleResetLink(); 
 
     setPasswordsMatch(password === password2);
   }, [id, token, password, password2]); 
