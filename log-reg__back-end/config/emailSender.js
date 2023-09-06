@@ -1,21 +1,25 @@
 const nodemailer = require('nodemailer');
 const { service, user, pass } = process.env;
 
-const sendResetPasswordEmail = async (email, usernameReset, link) => {
-  const transporter = nodemailer.createTransport({
+const createTransporter = () => {
+  return nodemailer.createTransport({
     service: service,
     auth: {
       user: user,
       pass: pass,
     },
   });
+};
+
+const sendResetPasswordEmail = async (email, username, link) => {
+  const transporter = createTransporter();
 
   const mailOptions = {
     from: user,
     to: email,
     subject: `Password Reset`,
     text: `
-      Hello ${usernameReset},
+      Hello ${username},
 
       We have received a request to reset your password. Please click on the link below to reset your password:
 
@@ -32,13 +36,7 @@ const sendResetPasswordEmail = async (email, usernameReset, link) => {
 };
 
 const sendRegisterEmail = async (email, username, link) => {
-  const transporter = nodemailer.createTransport({
-    service: service,
-    auth: {
-      user: user,
-      pass: pass,
-    },
-  });
+  const transporter = createTransporter();
 
   const mailRegisOptions = {
     from: user,

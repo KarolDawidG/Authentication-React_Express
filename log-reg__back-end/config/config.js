@@ -72,6 +72,14 @@ const  validatePassword = (e) => {
     return true;
 };
 
+const validateUserName = (username) => {
+  if (username.length >= 6 && username.length <= 16) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 module.exports = {
     errorHandler,
     limiter,
@@ -80,5 +88,6 @@ module.exports = {
     queryParameterize,
     validateEmail,
     validatePassword,
+    validateUserName,
     verifyToken,
 };

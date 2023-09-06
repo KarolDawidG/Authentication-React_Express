@@ -7,21 +7,21 @@ const router = express.Router();
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
-const {  validatePassword, queryParameterize, validateEmail } = require("../../config/config");
+const {  validatePassword, validateUserName, validateEmail } = require("../../config/config");
 const {sendRegisterEmail} = require('../../config/emailSender');
 
 router.use(middleware);
 router.use(errorHandler);
 
-router.get('/', async (req, res) =>{
-    try{
-        logger.info(MESSAGES.SUCCESSFUL_OPERATION);
-        return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
-    } catch (error) {
-        logger.error(error.message);
-        return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
-    }
-});
+// router.get('/', async (req, res) =>{
+//     try{
+//         logger.info(MESSAGES.SUCCESSFUL_OPERATION);
+//         return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
+//     } catch (error) {
+//         logger.error(error.message);
+//         return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
+//     }
+// });
 
 router.post('/', async (req, res) => {
     const { email, username, password } = req.body;
@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
         return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_PASS);
     }
 
-    if (!username.match(queryParameterize)) {
+    if (!validateUserName(username)) {
       logger.info(MESSAGES.INCORRECT_USERNAME);
       return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INCORRECT_USERNAME);
     }
