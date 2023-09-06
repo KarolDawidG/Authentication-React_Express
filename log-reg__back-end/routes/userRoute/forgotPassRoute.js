@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
       const token = jwt.sign(payload, secret, { expiresIn: '1m' });
       const link = `http://localhost:3000/reset/${idReset}/${token}`;
 
-      await sendResetPasswordEmail(emailReset, emailReset, link);
+      await sendResetPasswordEmail(emailReset, usernameReset, link);
 
       try {
           logger.info(MESSAGES.EMAIL_SUCCESS);

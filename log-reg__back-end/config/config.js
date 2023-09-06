@@ -17,7 +17,7 @@ const errorHandler = (err, req, res, next) => {
 
 const limiter = rateLimit({
     windowMs: 15*60*1000,   //15 minutes
-    max: 200,                // limit each IP to 100 per windowMs
+    max: 50,                // limit each IP to 100 per windowMs
 });
 
 const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
@@ -32,19 +32,6 @@ const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
   },
 });
 
-// const verifyTokenAfterLogin = (req, res, next) => {
-//   const token = req.headers.authorization;
-//     if (!token) {
-//       return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.USER_NOT_LOGGED_IN);
-//     }
-//   jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
-//     if (err) {
-//       return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.SESSION_EXPIRED);
-//     }
-//     req.user = decoded;
-//     next();
-//   });
-// };
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;

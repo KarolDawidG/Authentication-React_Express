@@ -221,3 +221,10 @@
 2023-09-02 17:27:21 error: validateEmail is not a function
 2023-09-02 17:28:01 error: validateEmail is not a function
 2023-09-02 17:28:16 error: validateEmail is not a function
+2023-09-05 10:17:55 error: Server error: jwt expired
+2023-09-05 10:43:38 error: Server error: jwt expired
+2023-09-05 10:44:03 error: Server error: jwt expired
+2023-09-05 10:44:05 error: Server error: jwt expired
+2023-09-05 10:47:18 error: Server error: jwt expired
+2023-09-05 10:47:36 error: Server error: jwt expired
+2023-09-05 10:48:24 error: Server error: jwt expired

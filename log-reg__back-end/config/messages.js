@@ -8,6 +8,7 @@ const MESSAGES = {
   EMAIL_SUCCESS: 'If the email address exists, a password reset link will be sent.',
 
   // Errors and validation messages
+  INCORRECT_USERNAME: 'The password cannot contain special characters.',
   ERROR_GET_CONNECTION: 'An unexpected glitch occurred while attempting to connect.',
   SESSION_EXPIRED: 'Your session has expired. Please log in again to continue your adventure.',
   USER_NOT_LOGGED_IN: 'Hold up! The user is not logged in.',

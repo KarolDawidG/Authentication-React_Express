@@ -8,7 +8,7 @@ const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
 const {  validatePassword, queryParameterize, validateEmail } = require("../../config/config");
-
+const {sendRegisterEmail} = require('../../config/emailSender');
 
 router.use(middleware);
 router.use(errorHandler);
@@ -25,6 +25,7 @@ router.get('/', async (req, res) =>{
 
 router.post('/', async (req, res) => {
     const { email, username, password } = req.body;
+    const link = 'jakislink';
 
     if (!validateEmail(email)) {
       return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_EMAIL);
@@ -35,8 +36,8 @@ router.post('/', async (req, res) => {
     }
 
     if (!username.match(queryParameterize)) {
-      logger.info(MESSAGES.SQL_INJECTION_ALERT);
-      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.SQL_INJECTION_ALERT);
+      logger.info(MESSAGES.INCORRECT_USERNAME);
+      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INCORRECT_USERNAME);
     }
 
       try {
@@ -60,7 +61,11 @@ router.post('/', async (req, res) => {
         }
 
         const hashPassword = await bcrypt.hash(password, 10);
-        await UsersRecord.insert([username, hashPassword, email])
+
+        await UsersRecord.insert([username, hashPassword, email]);
+
+        await sendRegisterEmail(email, username, link);
+
         logger.info(MESSAGES.SUCCESSFUL_SIGN_UP);
         return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_SIGN_UP);
           

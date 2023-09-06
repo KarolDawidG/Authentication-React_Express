@@ -13,7 +13,7 @@ const sendResetPasswordEmail = async (email, usernameReset, link) => {
   const mailOptions = {
     from: user,
     to: email,
-    subject: `Password Reset - Message from ${user}`,
+    subject: `Password Reset`,
     text: `
       Hello ${usernameReset},
 
@@ -31,4 +31,35 @@ const sendResetPasswordEmail = async (email, usernameReset, link) => {
   await transporter.sendMail(mailOptions);
 };
 
-module.exports = { sendResetPasswordEmail };
+const sendRegisterEmail = async (email, username, link) => {
+  const transporter = nodemailer.createTransport({
+    service: service,
+    auth: {
+      user: user,
+      pass: pass,
+    },
+  });
+
+  const mailRegisOptions = {
+    from: user,
+    to: email,
+    subject: `Welcome!`,
+    text: `
+      Hello ${username},
+
+      Welcome in our service!
+      Please click on the link below to end your registration:
+
+      ${link}
+
+      If you did not sign up in our services, please ignore this email.
+
+      Best regards,
+      The Team at [Your Company Name]
+    `,
+  };
+
+  await transporter.sendMail(mailRegisOptions);
+};
+
+module.exports = { sendResetPasswordEmail, sendRegisterEmail };

@@ -9,6 +9,7 @@ const logger = require('../../logs/logger');
 const {jwt_secret} = require('../../config/configENV')
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
+const {  validatePassword } = require("../../config/config");
 
 router.use(middleware);
 router.use(limiter);
@@ -24,8 +25,16 @@ try {
 
 router.post('/:id/:token', async (req, res) => {
   const { id, token } = req.params;
-  const { password } = req.body;
+  const { password, password2 } = req.body;
   let oldPasword = '';
+
+  if(password !== password2){
+    return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_PASS);
+  }
+
+  if (!validatePassword(password)) {
+    return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_PASS);
+}
 
   try {
     const [user] = await UsersRecord.selectById([id]);
@@ -45,7 +54,6 @@ router.post('/:id/:token', async (req, res) => {
     return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.JWT_ERROR);
   }
 });
-
 
 
 module.exports = router;
