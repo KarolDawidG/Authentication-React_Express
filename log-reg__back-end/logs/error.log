@@ -230,3 +230,7 @@
 2023-09-05 10:48:24 error: Server error: jwt expired
 2023-09-06 19:14:42 error: jwt is not defined
 2023-09-06 19:15:04 error: jwt is not defined
+2023-09-06 19:45:15 error: jwt is not defined
+2023-09-06 19:46:22 error: Server error: decoded is not defined
+2023-09-06 19:56:26 error: secretOrPrivateKey must have a value
+2023-09-06 19:56:47 error: secretOrPrivateKey must have a value

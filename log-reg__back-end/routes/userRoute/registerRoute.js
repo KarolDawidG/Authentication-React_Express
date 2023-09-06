@@ -1,6 +1,8 @@
 const express = require('express');
 const {UsersRecord} = require("../../database/Records/UsersRecord");
 const bcrypt = require("bcrypt");
+const {JWT_CONFIRMED_TOKEN} = require('../../config/configENV');
+const jwt = require('jsonwebtoken');
 const middleware = require("../../config/middleware");
 const {errorHandler} = require('../../config/config');
 const router = express.Router();
@@ -53,14 +55,14 @@ router.post('/', async (req, res) => {
         const hashPassword = await bcrypt.hash(password, 10);
         await UsersRecord.insert([username, hashPassword, email]);
 
-        // budowa linka
         const [emailExists] = await UsersRecord.selectByEmail([email]);
         idActivation = emailExists?.id;
       
-       const link = `http://localhost:3001/register/${idActivation}`;
+       const activationToken = jwt.sign({ userId: idActivation }, JWT_CONFIRMED_TOKEN, { expiresIn: '5m' });
+       const link = `http://localhost:3001/register/${activationToken}`;
+       
         await sendRegisterEmail(email, username, link);
-        /////////////////////////////////////////////////////////////////////
-
+        
         logger.info(MESSAGES.SUCCESSFUL_SIGN_UP);
         return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_SIGN_UP);
       } catch (error) {
@@ -70,15 +72,22 @@ router.post('/', async (req, res) => {
     } 
   );
 
-  router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-  try {
-    await UsersRecord.activateAccount(id)
-      return res.redirect('http://localhost:3000/login');
-  } catch (error) {
+  router.get("/:token", async (req, res) => {
+    const { token } = req.params;
+    try {
+      jwt.verify(token, JWT_CONFIRMED_TOKEN, async (err, decoded) => {
+        if (err) {
+          return res.status(STATUS_CODES.UNAUTHORIZED).send('Nieprawidłowy token aktywacyjny.');
+        }
+  
+        const id = decoded.userId;
+        await UsersRecord.activateAccount(id);
+        return res.redirect('http://localhost:3000/login');
+      });
+    } catch (error) {
       logger.error(`Server error: ${error.message}`);
-    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.JWT_ERROR);
-  }
+      return res.status(STATUS_CODES.SERVER_ERROR).send('Błąd serwera.');
+    }
   });
 
 module.exports = router;
