@@ -31,7 +31,6 @@ export const Login = () => {
             captchaRef.current.reset();
                 try {
                     const response = await axios.post(ENDPOINT_CAPTCHA, { inputVal, token });
-
                         if (response.data === "Human 👨 👩") {
                             handleLogin(username, password, setIsAuthenticated, redirect);
                         }
@@ -77,3 +76,5 @@ export const Login = () => {
         </>
     );
 };
+
+

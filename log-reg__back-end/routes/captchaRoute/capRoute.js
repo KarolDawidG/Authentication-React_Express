@@ -3,14 +3,13 @@ const router = express.Router();
 const axios = require("axios");
 const cors = require("cors");
 
-const REACT_APP_SECRET_KEY = "6Lc-ufQnAAAAAFHAfXXa-u2F7gMpSaBHRT323NgS";
+const {REACT_APP_SECRET_KEY} = require('../../config/configENV');
 
 router.use(cors());
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 router.post("/", async (req, res) => {
-
   const { token, inputVal } = req.body;
 
   try {

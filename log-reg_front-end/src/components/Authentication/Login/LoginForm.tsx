@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { backgroundColor, preventSpace } from "../../Utils/FormsUtils/forms-utils";
 import { CaptchaContext, LoginContext } from './Login';
+import { REACT_APP_SITE_KEY } from "../../Utils/links";
 import ReCAPTCHA from "react-google-recaptcha";
 import "../../../css/styles.css";
 
-// const REACT_APP_SECRET_KEY = "6Lc-ufQnAAAAAFHAfXXa-u2F7gMpSaBHRT323NgS";
-const REACT_APP_SITE_KEY = "6Lc-ufQnAAAAAACcAYt0QXQIBxulSTBdUUcAXQE-";
 
 export const LoginForm = () => {
   const context = useContext(LoginContext);

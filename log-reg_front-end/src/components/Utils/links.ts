@@ -23,3 +23,5 @@ export const ADMIN_ROLE = "admin";
 export const INTERNET_DISCONNECTED = "Ye be sailing in the Bermuda Triangle, matey! The internet be lost in Davy Jones' locker!";
 
 export const LOG_OUT = 'The user has been logged out!';
+
+export const REACT_APP_SITE_KEY = "6LfeZQcoAAAAAIzOsGl5iQj6j2NFP1MwR02ABHIu";

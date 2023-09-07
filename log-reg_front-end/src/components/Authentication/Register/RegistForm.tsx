@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { backgroundColor, preventSpace, validateEmail } from "../../Utils/FormsUtils/forms-utils";
-import {RegisterContect} from './Regist';
+import {RegisterContect, CaptchaContext} from './Regist';
+import { REACT_APP_SITE_KEY } from "../../Utils/links";
+import ReCAPTCHA from "react-google-recaptcha";
 import "../../../css/styles.css";
-
 
 export const RegistForm = () => {
   const context = useContext(RegisterContect);
-    if(!context) return null;
+  const contextCapta = useContext(CaptchaContext);
+
+  if (!context || !contextCapta) return null;
       const {handleSubmit, username, password, setPassword, setUsername, email, setEmail} = context;
+      const captchaRef = contextCapta as React.MutableRefObject<ReCAPTCHA | null>;
 
       const removeSpecialCharacters = (inputString:string) => {
         return inputString.replace(/[^\w\s]/gi, '');
@@ -66,6 +70,7 @@ export const RegistForm = () => {
       />
       <br />
 
+      <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} ref={captchaRef} />
       <input className="login-form__submit" type="submit" value="Register" />
     </form>
     </div>

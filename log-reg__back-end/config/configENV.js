@@ -11,6 +11,7 @@ module.exports = {
     jwt_secret:process.env.JWT_SECRET,
     JWT_CONFIRMED_TOKEN:process.env.JWT_CONFIRMED_TOKEN,
     service:process.env.service,
+    REACT_APP_SECRET_KEY:process.env.REACT_APP_SECRET_KEY
     
 };
 

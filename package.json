@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "backend": "cd ./log-reg__back-end && npm run start",
+    "frontend": "cd ./log-reg_front-end && npm run start"
   }
 }

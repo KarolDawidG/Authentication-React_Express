@@ -17,7 +17,6 @@ const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
 const logger = require('./logs/logger');
 
-
 app.use('/register', regRoute );
 app.use('/auth', logRoute );
 app.use('/admin', adminRoute );
