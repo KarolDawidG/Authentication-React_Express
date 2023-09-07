@@ -1,4 +1,4 @@
-const {insertRoot, findRoot, createAccounts} = require('./querrys');
+const {insertRoot, findRoot, createAccounts, deleteNotActiveAccount, event_schedulerON} = require('./querrys');
 
   const createAccountsTable = async (pool) => {
     try {
@@ -9,6 +9,23 @@ const {insertRoot, findRoot, createAccounts} = require('./querrys');
     }
   };
   
+  const deleteAccount = async (pool) => {
+    try {
+      await pool.query(deleteNotActiveAccount);
+      
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const eventSchedulerON = async (pool) => {
+    try {
+      await pool.query(event_schedulerON);
+      
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 const createRoot = async (pool) => {
   try {
@@ -30,4 +47,6 @@ const createRoot = async (pool) => {
 module.exports = {
   createAccountsTable,
   createRoot,
+  deleteAccount,
+  eventSchedulerON,
 }

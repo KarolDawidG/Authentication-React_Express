@@ -1,6 +1,6 @@
 const { createPool } = require('mysql2/promise');
 const {hostDB, nameDB, userDB, passDB} = require('../config/configENV');
-const { createAccountsTable, createRoot} = require('./dbCreator');
+const { createAccountsTable, createRoot, deleteAccount, eventSchedulerON} = require('./dbCreator');
 
 const pool = createPool({
   host: hostDB,
@@ -10,21 +10,6 @@ const pool = createPool({
   decimalNumbers: true,
 });
 
-// (async () => {
-//
-//     const [rows] = await pool.query('SHOW DATABASES');
-//     const databases = rows.map((row) => row.Database);
-//       if (!databases.includes(nameDB)) {
-//         await pool.query(`CREATE DATABASE ${nameDB}`);
-//       }
-//         await pool.query(`USE ${nameDB}`);
-//         const tables = [createAccountsTable, createRoot];
-//         for await (const table of tables) {
-//         await table(pool);
-//       }
-//
-// })();
-
 (async () => {
   try {
     const [rows] = await pool.query('SHOW DATABASES');
@@ -33,7 +18,7 @@ const pool = createPool({
         await pool.query(`CREATE DATABASE ${nameDB}`);
       }
         await pool.query(`USE ${nameDB}`);
-        const tables = [createAccountsTable, createRoot];
+        const tables = [createAccountsTable, createRoot, deleteAccount, eventSchedulerON];
       for await (const table of tables) {
         await table(pool);
       }console.log('Database started correctly');

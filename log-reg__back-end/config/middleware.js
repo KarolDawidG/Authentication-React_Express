@@ -15,6 +15,8 @@ middleware.use(cors({
   
 middleware.use(express.json({ extended: true }));
 
+middleware.use(express.urlencoded({ extended: true }));
+
 middleware.use(
 	helmet({
 		contentSecurityPolicy: {		// Włączenie domyślnej polityki CSP
