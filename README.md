@@ -19,23 +19,40 @@ Creating a .env file in the backend directory (Authentication-React Express/log-
 ## Once the dependencies are installed and the database is configured, you can start the application by running the following commands in separate terminal windows (CMD):
 
 # For the backend:
- - ### `cd Authentication-React_Express/log-reg_back-end && nodemon app.js`
+ - ### `npm run backend`
 
 # For the frontend:
- - ###  `cd Authentication-React_Express/log-reg_front-end && npm run start`
+ - ###  `npm run frontend`
 
 Open your web browser and navigate to http://localhost:3000 to access the application.
 
-## Features
+# Features
  - User Authentication
  - User Registration
  - Password Reset
  - Admin Panel
  - Authorization via JWT
    
-## Technologies Used
- - Express (Node.js) - backend
- - React (TypeScript) - frontend
+# Technologies Used
+## backend
+ - Express (Node.js)
  - MySQL database
+ - Axios
+ - Bcrypt
+ - Cors
+ - Crypto
+ - Dotenv
+ - Express-rate-limit
+ - Helmet
+ - JsonWebToken
+ - Nodemailer
+ - Modemon
+ - Uuid
+ - Winston
+ - Jest
+
+ ## frontend
+ - React (TypeScript)
+
    
 If you encounter any issues or have questions, please refer to the project's documentation or reach out to the project maintainers.
