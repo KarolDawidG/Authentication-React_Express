@@ -17,7 +17,12 @@ const errorHandler = (err, req, res, next) => {
 
 const limiter = rateLimit({
     windowMs: 15*60*1000,   //15 minutes
-    max: 50,                // limit each IP to 100 per windowMs
+    max: 200,                // limit each IP to 100 per windowMs
+});
+
+const limiterLogin = rateLimit({
+  windowMs: 60 * 1000 * 5, 
+  max: 5,
 });
 
 const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
@@ -83,6 +88,7 @@ const validateUserName = (username) => {
 module.exports = {
     errorHandler,
     limiter,
+    limiterLogin,
     publicKey,
     privateKey,
     queryParameterize,

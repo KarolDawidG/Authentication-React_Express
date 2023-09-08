@@ -26,6 +26,7 @@ const MESSAGES = {
   SERVER_ERROR: 'An unknown server error occurred. Please contact your admin for assistance.',
   UNKNOW_ERROR: 'An unknown error occurred.',
   FORBIDDEN: 'Access to this resource is restricted. You do not have the necessary permissions.',
+  CAPTCHA_ERROR: "Error verifying reCAPTCHA",
   
   // Authorization
   JWT_ERROR: 'JsonWebTokenError: Invalid signature. Authorization failed.',

@@ -7,10 +7,12 @@ const middleware = require("../../config/middleware");
 const {errorHandler} = require('../../config/config');
 const router = express.Router();
 const MESSAGES = require('../../config/messages');
+const URL = require('../../config/url');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
 const {  validatePassword, validateUserName, validateEmail } = require("../../config/config");
 const {sendRegisterEmail} = require('../../config/emailSender');
+
 
 router.use(middleware);
 router.use(errorHandler);
@@ -59,8 +61,9 @@ router.post('/', async (req, res) => {
         idActivation = emailExists?.id;
       
        const activationToken = jwt.sign({ userId: idActivation }, JWT_CONFIRMED_TOKEN, { expiresIn: '5m' });
-       const link = `http://localhost:3001/register/${activationToken}`;
-       
+      
+       const link = `${URL.REGISTER_URL}${activationToken}`;
+
         await sendRegisterEmail(email, username, link);
         
         logger.info(MESSAGES.SUCCESSFUL_SIGN_UP);
@@ -77,16 +80,17 @@ router.post('/', async (req, res) => {
     try {
       jwt.verify(token, JWT_CONFIRMED_TOKEN, async (err, decoded) => {
         if (err) {
-          return res.status(STATUS_CODES.UNAUTHORIZED).send('Nieprawidłowy token aktywacyjny.');
+          return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.JWT_ERROR);
         }
   
         const id = decoded.userId;
         await UsersRecord.activateAccount(id);
-        return res.redirect('http://localhost:3000/login');
+        
+        return res.redirect(URL.URL_LOGIN);
       });
     } catch (error) {
       logger.error(`Server error: ${error.message}`);
-      return res.status(STATUS_CODES.SERVER_ERROR).send('Błąd serwera.');
+      return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
     }
   });
 

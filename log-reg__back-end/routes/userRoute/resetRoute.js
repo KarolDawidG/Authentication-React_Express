@@ -1,9 +1,9 @@
 const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const middleware = require("../../config/middleware");
 const {limiter, errorHandler} = require('../../config/config');
-const router = express.Router();
 const { UsersRecord } = require("../../database/Records/UsersRecord");
 const logger = require('../../logs/logger');
 const {jwt_secret} = require('../../config/configENV')

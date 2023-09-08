@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const MESSAGES = require('../../config/messages');
+const URL = require('../../config/url');
 const middleware = require('../../config/middleware');
 
 const {REACT_APP_SECRET_KEY} = require('../../config/configENV');
@@ -12,7 +14,7 @@ router.post("/", async (req, res) => {
 
   try {
     const response = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${REACT_APP_SECRET_KEY}&response=${token}`
+      `${URL.RECAPTCHA}${REACT_APP_SECRET_KEY}&response=${token}`
     );
       if (response.data.success) {
         return res.send("Human 👨 👩");
@@ -21,7 +23,7 @@ router.post("/", async (req, res) => {
       }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error verifying reCAPTCHA");
+    res.status(500).send(MESSAGES.CAPTCHA_ERROR);
    }
 });
 

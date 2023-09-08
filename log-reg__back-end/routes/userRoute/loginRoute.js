@@ -4,8 +4,7 @@ const bcrypt = require("bcrypt");
 const { nameDB} = require('../../config/configENV');
 const {pool} = require("../../database/db");
 const { UsersRecord } = require("../../database/Records/UsersRecord");
-const { queryParameterize} = require('../../config/config');
-const {errorHandler} = require('../../config/config');
+const {errorHandler, limiterLogin, queryParameterize} = require('../../config/config');
 const middleware = require('../../config/middleware');
 const { SECRET_REFRESH_TOKEN, generateRefreshToken, generateToken} = require('../../config/tokenUtils');
 const MESSAGES = require('../../config/messages');
@@ -16,12 +15,7 @@ const router = express.Router();
 router.use(middleware);
 router.use(errorHandler);
 
-router.get('/', (req, res) => {
-      return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
-  });
-
-
-router.post("/", async (req, res) => {
+router.post("/", limiterLogin, async (req, res) => {
   try {
     await pool.query(`USE ${nameDB}`);
 
@@ -43,7 +37,7 @@ router.post("/", async (req, res) => {
     }
 
     if (!ifUser[0].is_active) {
-      return res.status(STATUS_CODES.UNAUTHORIZED).send('Account is not active. Please check your email for activation.');
+      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.FORBIDDEN);
     }
 
     const hashedPassword = ifUser[0].password;
@@ -66,12 +60,6 @@ router.post("/", async (req, res) => {
     return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.INTERNET_DISCONNECTED);
   }
 });
-
-
-router.get('/refresh', (req, res) => {
-  return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
-});
-
 
 router.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;

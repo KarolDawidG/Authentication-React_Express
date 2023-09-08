@@ -6,6 +6,7 @@ const { UsersRecord } = require("../../database/Records/UsersRecord");
 const router = express.Router();
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
+const URL = require('../../config/url');
 const logger = require('../../logs/logger');
 const {sendResetPasswordEmail} = require('../../config/emailSender');
 const {jwt_secret} = require('../../config/configENV');
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
           id: idReset
       };
       const token = jwt.sign(payload, secret, { expiresIn: '1m' });
-      const link = `http://localhost:3000/reset/${idReset}/${token}`;
+      const link = `${URL.RESET_URL}${idReset}/${token}`;
 
       await sendResetPasswordEmail(emailReset, usernameReset, link);
 

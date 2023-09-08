@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');	
 const helmet = require('helmet');
-
+const URL = require('./url');
 
 const middleware = express.Router();
 
 middleware.use(cors({
-	origin: 'http://localhost:3000',
+	origin: URL.MAIN_URL,
 	// methods: ['GET', 'POST', 'PUT', 'DELETE'],
 	methods: ['GET', 'POST'],
 	allowedHeaders: ['Content-Type', 'Authorization'],
