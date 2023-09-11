@@ -10,7 +10,7 @@ const MESSAGES = require('../../config/messages');
 const URL = require('../../config/url');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
-const {  validatePassword, validateUserName, validateEmail } = require("../../config/config");
+const {  validatePassword } = require("../../config/config");
 const {sendRegisterEmail} = require('../../config/emailSender');
 
 
@@ -19,19 +19,9 @@ router.use(errorHandler);
 
 router.post('/', async (req, res) => {
     const { email, username, password } = req.body;
-    let idActivation = '';
-
-    if (!validateEmail(email)) {
-      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_EMAIL);
-    }
 
     if (!validatePassword(password)) {
-        return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_PASS);
-    }
-
-    if (!validateUserName(username)) {
-      logger.info(MESSAGES.INCORRECT_USERNAME);
-      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INCORRECT_USERNAME);
+      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_PASS);
     }
 
       try {
@@ -39,12 +29,6 @@ router.post('/', async (req, res) => {
           emailExists: await UsersRecord.selectByEmail([email]),
           loginExists: await UsersRecord.selectByUsername([username]),
         };
-  
-        if (
-          (userExists.emailExists && userExists.emailExists.length > 0) &&
-          (userExists.loginExists && userExists.loginExists.length > 0)) {
-          return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.EMAIL_USER_EXIST);
-        }
 
         if (userExists.emailExists && userExists.emailExists.length > 0) {
             return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.EMAIL_EXIST);
@@ -55,14 +39,9 @@ router.post('/', async (req, res) => {
         }
         
         const hashPassword = await bcrypt.hash(password, 10);
-        await UsersRecord.insert([username, hashPassword, email]);
-
-        const [emailExists] = await UsersRecord.selectByEmail([email]);
-        idActivation = emailExists?.id;
-      
-       const activationToken = jwt.sign({ userId: idActivation }, JWT_CONFIRMED_TOKEN, { expiresIn: '5m' });
-      
-       const link = `${URL.REGISTER_URL}${activationToken}`;
+        const idActivation = await UsersRecord.insert(username, hashPassword, email);
+        const activationToken = jwt.sign({ userId: idActivation }, JWT_CONFIRMED_TOKEN, { expiresIn: '5m' });
+        const link = `${URL.REGISTER_URL}${activationToken}`;
 
         await sendRegisterEmail(email, username, link);
         

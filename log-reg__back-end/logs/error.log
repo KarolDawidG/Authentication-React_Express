@@ -1,1 +1,5 @@
-2023-07-29 22:37:38 error: No database selected
+2023-07-29 22:37:38 error: No database selected2023-09-11 14:58:27 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 14:58:30 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 14:58:47 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 14:59:56 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 15:14:42 error: Unknown column 'username.accounts' in 'field list'

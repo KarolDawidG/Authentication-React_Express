@@ -1,5 +1,5 @@
 const {pool} = require("../db");
-const { validateEmail } = require('../../config/config');
+const { validateEmail, validateUserName } = require('../../config/config');
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -40,15 +40,46 @@ class UsersRecord{
          await pool.execute("DELETE FROM accounts WHERE id = ?", [id]);
     }
 
-    static async insert([username, hashPassword, email]) {
-      if (!validateEmail(email)) {
-        throw new Error('Invalid email address');
-      }
 
-      const id = uuidv4(); 
-      const result = await pool.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
-      return id;
+    static async insert(username, hashPassword, email) {
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+    
+        if (!validateEmail(email)) {
+          throw new Error('Invalid email address.');
+        }
+    
+        if (!validateUserName(username)) {
+          throw new Error('Invalid username.');
+        }
+    
+        const id = uuidv4();
+        await connection.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
+    
+        await connection.commit();
+        return id; 
+      } catch (error) {
+        await connection.rollback();
+        throw error;
+      } finally {
+        connection.release();
+      }
     }
+    
+
+    // static async insert([username, hashPassword, email]) {
+    //   if (!validateEmail(email)) {
+    //     throw new Error('Invalid email address.');
+    //   }
+    //   if (!validateUserName(username)) {
+    //     throw new Error('Invalid username.');
+    //   }
+
+    //   const id = uuidv4(); 
+    //   const result = await pool.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
+    //   return id;
+    // }
   
     static async updatePasswordByEmail([ hashPassword, email]) {
       const results = await pool.execute("UPDATE accounts SET password = ? WHERE email = ?", [hashPassword, email]);
