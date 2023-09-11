@@ -23,11 +23,11 @@ export const UserTableRow = (props: Props) => {
 
     return (
         <tr>
-        <td>{props.user.id}</td>
-        <td>{props.user.username}</td>
-        <td>{props.user.email}</td>
-        <td>{props.user.role}</td>
-        <td><button onClick={() => handleDeleteUser()}>Usuń</button></td>
-    </tr>
+          <td>{props.user.id}</td>
+          <td>{props.user.username}</td>
+          <td>{props.user.email}</td>
+          <td>{props.user.role}</td>
+          <td><button onClick={() => handleDeleteUser()}>Usuń</button></td>
+        </tr>
     )
 }

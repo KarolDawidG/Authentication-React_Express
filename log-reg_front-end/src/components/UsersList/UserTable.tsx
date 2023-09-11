@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserTableRow } from "./UserTableRow";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
 import "../../css/tabela.css";
+import { UserUpdate } from "./UserUpdate";
 
 
 export const UserTable: React.FC = () => {
@@ -27,6 +28,7 @@ export const UserTable: React.FC = () => {
                 <UserTableRow user={user} key={user.id} />
             ))}
             </tbody>
+                <UserUpdate usersList={usersList} />
         </table>
     );
 };

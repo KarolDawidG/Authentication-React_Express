@@ -21,10 +21,11 @@ class UsersRecord{
         return results.map(obj => new UsersRecord(obj));
     }
 
-    static async selectByEmail(email){
+    static async selectByEmail(email) {
       const [results] = await pool.execute('SELECT * FROM accounts WHERE email = ?',email);
-      return results;
+      return results; 
     }
+    
 
     static async selectById(id){
       const [results] = await pool.execute('SELECT * FROM accounts WHERE id = ?',id);
@@ -32,7 +33,7 @@ class UsersRecord{
     }
 
     static async selectByUsername(username){
-      const [results] = await pool.execute('SELECT * FROM accounts WHERE username = ?', username);
+      const [results] = await pool.execute('SELECT is_active, role, password FROM accounts WHERE username = ?', username);
       return results;
     }
 
@@ -53,8 +54,8 @@ class UsersRecord{
         if (!validateUserName(username)) {
           throw new Error('Invalid username.');
         }
-    
         const id = uuidv4();
+
         await connection.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
     
         await connection.commit();
@@ -66,20 +67,6 @@ class UsersRecord{
         connection.release();
       }
     }
-    
-
-    // static async insert([username, hashPassword, email]) {
-    //   if (!validateEmail(email)) {
-    //     throw new Error('Invalid email address.');
-    //   }
-    //   if (!validateUserName(username)) {
-    //     throw new Error('Invalid username.');
-    //   }
-
-    //   const id = uuidv4(); 
-    //   const result = await pool.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
-    //   return id;
-    // }
   
     static async updatePasswordByEmail([ hashPassword, email]) {
       const results = await pool.execute("UPDATE accounts SET password = ? WHERE email = ?", [hashPassword, email]);
@@ -90,6 +77,16 @@ class UsersRecord{
       const results = await pool.execute("UPDATE accounts SET password = ? WHERE id = ?", [hashPassword, id]);
       return results;
     }
+    
+    static async updateRole(role, username) {
+      try {
+        const results = await pool.execute('UPDATE accounts SET role = ? WHERE username = ?', [role, username]);
+        return results;
+      } catch (error) {
+        throw error; 
+      }
+    }
+    
   
   }
         

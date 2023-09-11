@@ -30,11 +30,10 @@ router.post('/', async (req, res) => {
           loginExists: await UsersRecord.selectByUsername([username]),
         };
 
-        if (userExists.emailExists && userExists.emailExists.length > 0) {
-            return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.EMAIL_EXIST);
+        if ( userExists.emailExists.length > 0) {
+          return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.EMAIL_EXIST);
         }
-
-        if (userExists.loginExists && userExists.loginExists.length > 0) {
+        if (userExists.loginExists.length > 0) {
             return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.USER_EXIST);
         }
         
