@@ -29,10 +29,34 @@ const createAccounts = `
 const event_schedulerON = `SET GLOBAL event_scheduler = ON;
 `;
 
+const testing_data = `INSERT INTO accounts (id, username, password, email, role, is_active) VALUES
+(UUID(), 'user1', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user1@gmail.com', 'user', '1'),
+(UUID(), 'user2', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user2@gmail.com', 'user', '1'),
+(UUID(), 'user3', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user3@gmail.com', 'user', '1'),
+(UUID(), 'user4', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user4@gmail.com', 'user', '1'),
+(UUID(), 'user5', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user5@gmail.com', 'user', '1'),
+(UUID(), 'user6', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user6@gmail.com', 'user', '1'),
+(UUID(), 'user7', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user7@gmail.com', 'user', '1'),
+(UUID(), 'user8', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user8@gmail.com', 'user', '1'),
+(UUID(), 'user9', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user9@gmail.com', 'user', '1'),
+(UUID(), 'user10', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user10@gmail.com', 'user', '1'),
+(UUID(), 'user11', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user11@gmail.com', 'user', '1'),
+(UUID(), 'user12', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user12@gmail.com', 'user', '1'),
+(UUID(), 'user13', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user13@gmail.com', 'user', '1'),
+(UUID(), 'user14', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user14@gmail.com', 'user', '1'),
+(UUID(), 'user15', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user15@gmail.com', 'user', '1'),
+(UUID(), 'user16', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user16@gmail.com', 'user', '1'),
+(UUID(), 'user17', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user17@gmail.com', 'user', '1'),
+(UUID(), 'user18', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user18@gmail.com', 'user', '1'),
+(UUID(), 'user19', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user19@gmail.com', 'user', '1'),
+(UUID(), 'user20', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'user20@gmail.com', 'user', '1');
+`;
+
 module.exports = {
     insertRoot,
     findRoot,
     createAccounts,
     deleteNotActiveAccount,
     event_schedulerON,
+    testing_data,
 }

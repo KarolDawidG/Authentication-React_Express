@@ -19,6 +19,7 @@ export const UserTable: React.FC = () => {
                 <th>Nazwa</th>
                 <th>Email</th>
                 <th>Rola</th>
+                <th>Usun</th>
             </tr>
             </thead>
             <tbody>

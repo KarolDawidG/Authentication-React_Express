@@ -26,17 +26,17 @@ router.get('/', verifyToken, async (req, res, next) => {
     }
   });
 
-// router.post('/delete/:id', async (req, res, next) => {
-//    const id = req.params.id;
+router.delete('/delete/:id', async (req, res, next) => {
+   const id = req.params.id;
 
-//    try {
-//       await UsersRecord.delete(id);
-//       res.status(200).send('The operation has been successful.');
-//    } catch (error) {
-//       console.error(error);
-//       res.status(500).send('Unknown server error. Please contact your administrator.');
-//    }
-// });
+   try {
+      await UsersRecord.delete(id);
+        return res.status(200).send('The operation has been successful.');
+   } catch (error) {
+      console.error(error);
+       return res.status(500).send('Unknown server error. Please contact your administrator.');
+   }
+});
 
 
 

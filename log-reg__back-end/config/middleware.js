@@ -7,8 +7,7 @@ const middleware = express.Router();
 
 middleware.use(cors({
 	origin: URL.MAIN_URL,
-	// methods: ['GET', 'POST', 'PUT', 'DELETE'],
-	methods: ['GET', 'POST'],
+	methods: ['GET', 'POST', 'PUT', 'DELETE'],
 	allowedHeaders: ['Content-Type', 'Authorization'],
 	credentials: true,
   }));

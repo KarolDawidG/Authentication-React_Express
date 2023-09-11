@@ -18,6 +18,8 @@ export const ENDPOINT_REFRESH = 'http://localhost:3001/auth/refresh';
 
 export const ENDPOINT_CAPTCHA = `http://localhost:3001/cap`;
 
+export const ENDPOINT_DELETE = 'http://localhost:3001/users/delete/';
+
 export const ADMIN_ROLE = "admin";
 
 export const INTERNET_DISCONNECTED = "Ye be sailing in the Bermuda Triangle, matey! The internet be lost in Davy Jones' locker!";
