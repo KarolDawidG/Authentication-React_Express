@@ -6,11 +6,9 @@ import "../../../css/styles.css";
 
 export const LoginForm = () => {
   const context = useContext(LoginContext);
-
-  if (!context ) return null;
-    const { handleSubmit, username, password, setPassword, setUsername } = context;
+    if (!context ) return null;
+      const { handleSubmit, username, password, setPassword, setUsername } = context;
     
-
   return (
       <>
         <form className="login-form__form" onSubmit={handleSubmit}>

@@ -15,20 +15,20 @@ export const UserTable: React.FC = () => {
     return (
         <table>
             <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nazwa</th>
-                <th>Email</th>
-                <th>Rola</th>
-                <th>Usun</th>
-            </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa</th>
+                    <th>Email</th>
+                    <th>Rola</th>
+                    <th>Usun</th>
+                </tr>
             </thead>
             <tbody>
-            {usersList.map((user) => (
-                <UserTableRow user={user} key={user.id} />
-            ))}
-            </tbody>
-                <UserUpdate usersList={usersList} />
+                {usersList.map((user) => (
+                    <UserTableRow user={user} key={user.id} />
+                ))}
+                <UserUpdate usersList={usersList} /> 
+            </tbody>          
         </table>
     );
 };

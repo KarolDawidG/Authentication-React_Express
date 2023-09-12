@@ -1,8 +1,7 @@
 import React, { useState, createContext, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { notify } from "../../Others/Notify";
 import axios from "axios";
-import { INTERNET_DISCONNECTED, ENDPOINT_CAPTCHA } from "../../Utils/links";
+import { ENDPOINT_CAPTCHA } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import {RegisterContextType} from '../../Utils/Interfaces/RegisterContextType';
 import { RegistForm } from "./RegistForm";
@@ -10,6 +9,7 @@ import { Title } from "../../Others/Title";
 import { handleReg } from "./handlers/handleSubmit"; 
 import { ReCAPTCHA } from "react-google-recaptcha";
 import "../../../css/styles.css";
+import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
 
 export const RegisterContect = createContext<RegisterContextType | null>(null); 
 export const CaptchaContext = createContext<React.MutableRefObject<ReCAPTCHA | null> | null>(null);
@@ -30,16 +30,11 @@ export const Regist: React.FC = () => {
       captchaRef.current.reset();
         try {
           const responseCaptcha = await axios.post(ENDPOINT_CAPTCHA, { inputVal, token });
-          console.log(responseCaptcha.data);
             if (responseCaptcha.data === "Human 👨 👩"){
               handleReg(email, username, password, redirect);
             }
         } catch (error: any) {
-          if (error) {
-            notify(error.response.data);
-          } else {
-            notify(INTERNET_DISCONNECTED);
-          }
+            handleNetworkError(error);
         }
      }
   };
@@ -58,9 +53,7 @@ export const Regist: React.FC = () => {
               }}>
         <CaptchaContext.Provider value={captchaRef}>
 
-      <div className="title">
           <Title props={'Register'} />
-      </div>
             <div className="container"> 
               <div className="right-side">
                 <RegistForm/>

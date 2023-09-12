@@ -5,10 +5,7 @@ import "./css/styles.css";
 export const Menu = () => {
   return (
     <>
-        <div className="title">
-            <Title props={'Main Menu'} />  
-        </div>
-
+      <Title props={'Main Menu'} />   
         <div className="container">
             <div className="right-side">
                 <div className="main__img">

@@ -1,7 +1,8 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { notify } from "../../../Others/Notify";
-import { ADMIN_ROLE, ENDPOINT_AUTH, INTERNET_DISCONNECTED } from "../../../Utils/links";
+import { ADMIN_ROLE, ENDPOINT_AUTH } from "../../../Utils/links";
+import { handleNetworkError } from "./networkErrorFunctions";
 
 export const handleLogin = async (
     username: string,
@@ -36,8 +37,7 @@ export const handleLogin = async (
             } 
     } catch (error: any) {
         if (error) {
-            console.error(error);
-            notify(INTERNET_DISCONNECTED);
+            handleNetworkError(error);
         }
     }
 };

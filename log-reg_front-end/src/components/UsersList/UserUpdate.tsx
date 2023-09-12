@@ -3,6 +3,7 @@ import { UsersListProps } from "../Utils/Interfaces/UsersListProps";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
 import axios from "axios";
 import { ENDPOINT_UPDATE } from "../Utils/links";
+import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
 
 interface UserFilterProps {
   usersList: UsersListProps[]; 
@@ -29,13 +30,11 @@ export const UserUpdate: React.FC<UserFilterProps> = () => {
   const handleSubmit = () => {
     try {
       axios.put(`${ENDPOINT_UPDATE}/${selectedUser}/${selectedRole}` )
-    
       window.location.reload();
     } catch (error) {
-      console.error(error);
+      handleNetworkError(error);
     }
   };
-
 
     return (
         <td colSpan={5}>

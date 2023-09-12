@@ -66,10 +66,7 @@ export const CorrectLogin = () => {
 
   return (
     <>
-      <div className="title">
-          <Title props={'User Panel'} />
-      </div>
-
+      <Title props={'User Panel'} />
         <div className="container">
           <div className="right-side">
             <div className="redirect-btn">

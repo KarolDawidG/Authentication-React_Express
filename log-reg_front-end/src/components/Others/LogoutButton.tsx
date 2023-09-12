@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import { notify } from './Notify';
-import { INTERNET_DISCONNECTED, LOG_OUT, ENDPOINT_LOGOUT} from '../Utils/links';
+import { LOG_OUT, ENDPOINT_LOGOUT} from '../Utils/links';
+import { handleNetworkError } from '../Authentication/Login/handlers/networkErrorFunctions';
 
 interface LogoutButtonProps {
   onLogout: () => void;
@@ -10,8 +11,6 @@ interface LogoutButtonProps {
 
 export const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
 
-
-  
   const handleLogout = async () => {
     try {
       localStorage.removeItem('token');
@@ -20,11 +19,7 @@ export const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
       notify(LOG_OUT);
       onLogout();
     } catch (error: any) {
-      if (error.response) {
-        notify(error.response.data.message);
-      } else {
-        notify(INTERNET_DISCONNECTED);
-      }
+        handleNetworkError(error);
     }
   };
 

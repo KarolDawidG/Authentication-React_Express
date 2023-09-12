@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
-import { notify } from "../../Others/Notify";
 import { LoginForm } from "./LoginForm";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import {LoginContextType} from '../../Utils/Interfaces/LoginContextType';
@@ -8,6 +7,7 @@ import "../../../css/styles.css";
 import { Title } from "../../Others/Title";
 import {handleLogin} from "./handlers/loginFunctions";
 import { handleTokenRefresh } from "./handlers/tokenRefreshFunctions";
+import { handleNetworkError } from "./handlers/networkErrorFunctions";
 
 export const LoginContext = createContext<LoginContextType | null>(null);
 
@@ -22,8 +22,7 @@ export const Login = () => {
                 try {
                     handleLogin(username, password, setIsAuthenticated, redirect);
                 } catch (error) {
-                    console.error(error);
-                    notify("An error occurred while logging in.");
+                    handleNetworkError(error);
                 }
     };
   
@@ -45,9 +44,7 @@ export const Login = () => {
                     handleSubmit,
                 }}
             >
-                <div className="title">
-                    <Title props={'Login'} />
-                </div>
+            <Title props={'Login'} />
                 <div className="container">
                     <div className="right-side">
                         <LoginForm />
@@ -57,8 +54,7 @@ export const Login = () => {
                             <RedirectBtn to="/reset-email">Reset</RedirectBtn>
                         </div>
                     </div>
-                </div>
-                
+                </div>  
             </LoginContext.Provider>
         </>
     );
