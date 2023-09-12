@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { UsersListProps } from "../Utils/Interfaces/UsersListProps";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
 import axios from "axios";
+import { ENDPOINT_UPDATE } from "../Utils/links";
 
 interface UserFilterProps {
   usersList: UsersListProps[]; 
@@ -26,9 +27,13 @@ export const UserUpdate: React.FC<UserFilterProps> = () => {
 
 
   const handleSubmit = () => {
-    axios.put(`http://localhost:3001/users/${selectedUser}/${selectedRole}` )
+    try {
+      axios.put(`${ENDPOINT_UPDATE}/${selectedUser}/${selectedRole}` )
     
-    window.location.reload();
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
 

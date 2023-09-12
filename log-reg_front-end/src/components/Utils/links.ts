@@ -18,7 +18,9 @@ export const ENDPOINT_REFRESH = 'http://localhost:3001/auth/refresh';
 
 export const ENDPOINT_CAPTCHA = `http://localhost:3001/cap`;
 
-export const ENDPOINT_DELETE = 'http://localhost:3001/users/delete/';
+export const ENDPOINT_DELETE = 'http://localhost:3001/users/';
+
+export const ENDPOINT_UPDATE = 'http://localhost:3001/users';
 
 export const ADMIN_ROLE = "admin";
 
