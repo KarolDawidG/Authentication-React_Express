@@ -6,7 +6,8 @@ import { INTERNET_DISCONNECTED, ENDPOINT_RESET} from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { PasswordForm } from "./PasswordForm";
 import { PasswordStatus } from "./PasswordStatus";
-
+import { Title } from "../../Others/Title";
+import "../../../css/styles.css";
 
 export const Reset = () => {
   const [password, setPassword1] = useState("");
@@ -58,45 +59,43 @@ export const Reset = () => {
 
     return (
        <>
-        <div className="center-side">
-            <h1 className="regist__title">Reset</h1>
-        </div>
+       <div className="title">
+          <Title props={'Reset hasła'} />
+       </div>
+        
         <div className="container">
-                <div className="right-side">
-                <form onSubmit={handleSubmit}>
-            <label htmlFor="password1">Podaj nowe hasło:</label>
-                <PasswordForm
-                  password={password}
-                  setPassword={setPassword1}
-                  label="Hasło:"
-                />
-                <PasswordForm
-                  password={password2}
-                  setPassword={setPassword2}
-                  label="Powtórz hasło:"
-                />
-            <button
-              className="login-form__submit"
-              type="submit"
-              disabled={!passwordsMatch} 
-            >
-              Resetuj hasło
-            </button>
-            <PasswordStatus
-              password={password}
-              password2={password2}
-              passwordsMatch={passwordsMatch}
-            />
+            <div className="right-side">
+                <form className="login-form__form" onSubmit={handleSubmit}>
+                    <PasswordForm
+                      password={password}
+                      setPassword={setPassword1}
+                      label="Hasło: "
+                    />
+                    <PasswordForm
+                      password={password2}
+                      setPassword={setPassword2}
+                      label="Powtórz hasło: "
+                    />
+                  <button
+                      className="login-form__submit"
+                      type="submit"
+                      disabled={!passwordsMatch} 
+                    >
+                      Resetuj hasło
+                  </button>
+              <PasswordStatus
+                password={password}
+                password2={password2}
+                passwordsMatch={passwordsMatch}
+              />
+              </form>
+ 
+            <div className="redirect-btn">
+              <RedirectBtn to="/">Menu</RedirectBtn>
+              <RedirectBtn to="/login">Login</RedirectBtn> 
+            </div> 
 
-          </form>
-                </div>
-            <div className="left-side">
-                <div className="regist__buttons">
-                    <RedirectBtn to="/">Menu</RedirectBtn>
-                    <RedirectBtn to="/login">Login</RedirectBtn>  
-                </div>
             </div>
-                
         </div>
        </>
     );

@@ -3,10 +3,11 @@ import axios from 'axios';
 import { RedirectBtn } from '../../Others/RedirectBtn';
 import { notify } from "../../Others/Notify";
 import {ENDPOINT_EMAIL, INTERNET_DISCONNECTED, LINK_RESET} from '../../Utils/links';
+import { Title } from '../../Others/Title';
+import "../../../css/styles.css";
 
 interface FormState {
   email: string;
-
 }
 
 export const ResetEmail: React.FC = () => {
@@ -46,14 +47,16 @@ export const ResetEmail: React.FC = () => {
 
   return (
     <>
+      <div className="title">
+          <Title props={'Reset hasła'} />
+      </div>
+
       <div className="container">
           <div className="right-side">
-            <form  onSubmit={handleSubmit}>
-              <h1>Reset hasła</h1>
-                  <label htmlFor="email">
-                    Email
-                  </label>
+            <form className="login-form__form" onSubmit={handleSubmit}>
+                  <label className="login-form__label" htmlFor="email">Email: </label>
                       <input
+                        className="login-form__input"
                         type="email"
                         id="email"
                         placeholder="example@mail.com"
@@ -64,13 +67,12 @@ export const ResetEmail: React.FC = () => {
                       /><br /><br />
                 <input type="submit" className="login-form__submit" value="Send Message" />
             </form>
-          </div>
 
-          <div className="left-side">
-                <div className="regist__buttons">
-                  <RedirectBtn to="/">Menu</RedirectBtn>
-                  <RedirectBtn to="/regist">Regist</RedirectBtn>
-                </div>
+            <div className="redirect-btn">
+              <RedirectBtn to="/">Menu</RedirectBtn>
+              <RedirectBtn to="/login">Login</RedirectBtn> 
+            </div>
+            
           </div>
       </div>
     </>

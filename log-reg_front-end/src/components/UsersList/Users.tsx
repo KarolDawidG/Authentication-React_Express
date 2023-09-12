@@ -60,7 +60,7 @@ export const Users: React.FC = () => {
       <UsersContext.Provider value={usersList}>
         <Title props="Users list"/>
         <UserTable />
-        <RedirectBtn to="/">Menu</RedirectBtn>
+        <RedirectBtn to="/admin">Back!</RedirectBtn>
       </UsersContext.Provider>
   );
 };

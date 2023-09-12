@@ -45,18 +45,19 @@ export const Login = () => {
                     handleSubmit,
                 }}
             >
-                
-                    <Title props={'Login panel'} />
-                    <div className="container">
+                <div className="title">
+                    <Title props={'Login'} />
+                </div>
+                <div className="container">
+                    <div className="right-side">
                         <LoginForm />
-                        <div className="left-side">
-                            <div className="regist__buttons">
-                                <RedirectBtn to="/">Menu</RedirectBtn>
-                                <RedirectBtn to="/regist">Regist</RedirectBtn>
-                                <RedirectBtn to="/reset-email">Reset</RedirectBtn>
-                            </div>
+                        <div className="redirect-btn">
+                            <RedirectBtn to="/">Menu</RedirectBtn>
+                            <RedirectBtn to="/regist">Regist</RedirectBtn>
+                            <RedirectBtn to="/reset-email">Reset</RedirectBtn>
                         </div>
                     </div>
+                </div>
                 
             </LoginContext.Provider>
         </>

@@ -57,11 +57,14 @@ export const Regist: React.FC = () => {
                 setUsername
               }}>
         <CaptchaContext.Provider value={captchaRef}>
-          <Title props={'Register panel'}/>
-            <div className="container">
+
+      <div className="title">
+          <Title props={'Register'} />
+      </div>
+            <div className="container"> 
+              <div className="right-side">
                 <RegistForm/>
-              <div className="left-side">
-                <div className="regist__buttons">
+                <div className="redirect-btn">
                   <RedirectBtn to="/">Menu</RedirectBtn>
                   <RedirectBtn to="/login">Login</RedirectBtn>
                 </div>

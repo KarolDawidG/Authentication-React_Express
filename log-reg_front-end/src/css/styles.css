@@ -1,248 +1,69 @@
 body {
-  background-color: #000; /* Czarne tło */
-  color: #fff; /* Biały kolor tekstu */
+  background-color: black;
 }
 
-/* Styl dla całego kontenera */
-.container {
-  background-color: #000; /* Czarne tło */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 30vh;
-}
-
-/* Styl dla komponentu center-side */
-.center-side {
-  font-size: 24px;
-  color: #f00; /* Czerwony kolor tekstu */
+.title {
+  background-color: black;
+  color: white;
   text-align: center;
-  text-transform: uppercase;
-  background-color: #000; /* Ciemny szary kolor tła */
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ciemny cień */
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-/* Styl dla komponentu right-side i left-side */
-.right-side,
-.left-side {
-  margin-top: 10px;
-  font-size: 18px;
-  color: #fff; /* Biały kolor tekstu */
-  background-color: #222; /* Ciemniejszy szary kolor tła */
-  padding: 5px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ciemny cień */
-}
-
-/* Styl dla przycisków w komponencie left-side */
-.regist__buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.regist__buttons button {
-  background-color: #f00; /* Czerwony kolor przycisku */
-  color: #fff; /* Biały kolor tekstu na przycisku */
-  border: none;
-  padding: 10px 45px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ciemny cień */
-}
-
-.regist__buttons button:hover {
-  background-color: #a00; /* Ciemniejszy odcień czerwonego przy najechaniu */
-}
-
-/* Styl dla komunikatu w komponencie container */
-.regist__message {
-  font-size: 16px;
-  color: #fff; /* Biały kolor tekstu w komunikacie */
-  background-color: #f00; /* Czerwony kolor tła w komunikacie */
-  padding: 10px 20px;
-  border-radius: 5px;
+.container {
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  height: 50vh;
 }
 
-.regist__message.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Animacja pojawienia się komunikatu */
-@keyframes showMessage {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/*/////////////////////////////////////////// */
-/* Styl dla elementu .login-form__submit */
-.login-form__submit {
-  background-color: #f00; /* Czerwony kolor przycisku */
-  color: #fff; /* Biały kolor tekstu na przycisku */
-  border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ciemny cień */
-}
-
-/* Efekt przyciśnięcia przycisku */
-.login-form__submit:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ciemny cień przy przyciśnięciu */
-}
-
-/* Efekt hover */
-.login-form__submit:hover {
-  background-color: #a00; /* Ciemniejszy odcień czerwonego przy najechaniu */
-}
-
-/* Efekt hover, gdy kursor znajduje się nad przyciskiem przez dłuższy czas */
-.login-form__submit:hover:active {
-  background-color: #800; /* Jeszcze ciemniejszy odcień czerwonego przy kliknięciu */
-}
-
-/* Animacja po najechaniu na przycisk */
-@keyframes wiggle {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-}
-
-/* Efekt wibracji po najechaniu na przycisk */
-.login-form__submit:hover {
-  animation: wiggle 0.5s ease-in-out infinite;
-}
-/*/////////////////////////////////////////// */
-
-
-/* Styl dla elementu .login-form__input */
-.login-form__input {
-  width: 86%;
-  font-size: 16px;
-  border: 2px solid #444; /* Ciemnoszary kolor obramowania pola input */
-  border-radius: 5px;
-  transition: border-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ciemny cień */
-}
-
-/* Efekt podkreślenia krawędzi po najechaniu */
-.login-form__input:hover {
-  border-color: #f00; /* Czerwony kolor podkreślenia krawędzi po najechaniu */
-}
-
-/*----------------=============== Menu ===============----------------*/
-
-/* Styl dla całego menu */
-.menu {
-  background-color: #000; /* Ciemniejszy szary kolor tła */
+.right-side {
+  width: 300px;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ciemny cień */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-/* Styl dla sekcji z przyciskami w menu */
-.button-menu__options {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.login-form__form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
 }
 
-/* Styl dla przycisków w menu */
-.logout-button {
-  background-color: #f00; /* Czerwony kolor przycisku */
-  color: #fff; /* Biały kolor tekstu na przycisku */
+.login-form__submit, button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  padding: 10px 45px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ciemny cień */
+}
+.login-form__submit:hover, button:hover{
+  background-color: lightblue;
+  color: #000;
 }
 
-.logout-button:hover {
-  background-color: #a00; /* Ciemniejszy odcień czerwonego przy najechaniu */
+.login-form__submit:disabled {
+  cursor: not-allowed;
 }
 
-.logout-button:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ciemny cień przy przyciśnięciu */
-}
-
-/* Efekt hover, gdy kursor znajduje się nad przyciskiem przez dłuższy czas */
-.logout-button:hover:active {
-  background-color: #800; /* Jeszcze ciemniejszy odcień czerwonego przy kliknięciu */
-}
-
-/* Animacja po najechaniu na przycisk */
-@keyframes wiggle {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-}
-
-/* Efekt wibracji po najechaniu na przycisk */
-.logout-button:hover {
-  animation: wiggle 0.5s ease-in-out infinite;
-}
-
-
-/*  =====----- Obrazek -----===== */
-
-/* styles.css */
-
-.menu-image {
-  padding: 10px;
+.redirect-btn {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Określ rozmiary obrazka */
-  width: 400px; /* Dostosuj szerokość obrazka według potrzeb */
-  height: 300px; /* Dostosuj wysokość obrazka według potrzeb */
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
-.centered-image {
-  max-width: 100%; /* Zapewnia, że obrazek nie będzie przekraczał rozmiarów jego pojemnika */
-  max-height: 100%;
-}
 
-.regist__message {
-  display: flex; 
-  justify-content: center;
-  align-items: center; 
+.img {
+  width: 90%;  
 }
-

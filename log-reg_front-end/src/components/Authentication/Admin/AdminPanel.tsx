@@ -40,17 +40,21 @@ export const AdminPanel = () => {
   }
 
   return (
-    <div className="container">
-      <Title props="Welcome to Admin Panel" />
-      <div className="left-side">
-        <div className="regist__buttons">
-          <RedirectBtn to="/">Menu</RedirectBtn>
-          <RedirectBtn to="/users">Users</RedirectBtn>
-          <RedirectBtn to="/regist">Regist</RedirectBtn>
-          <RedirectBtn to="/login">Login</RedirectBtn>
+    <>
+        <div className="title">
+            <Title props={'Admin panel'} />  
         </div>
-      </div>
-      <LogoutButton onLogout={handleLogout} />
-    </div>
+
+        <div className="container">
+          <div className="right-side">
+            <div className="redirect-btn">
+              <RedirectBtn to="/">Menu</RedirectBtn>
+              <RedirectBtn to="/users">Users</RedirectBtn>
+              <LogoutButton onLogout={handleLogout} />
+            </div>
+          </div>
+        </div>
+      
+    </>
   );
 };

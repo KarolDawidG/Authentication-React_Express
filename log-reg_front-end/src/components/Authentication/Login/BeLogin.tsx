@@ -1,21 +1,25 @@
 import { RedirectBtn } from "../../Others/RedirectBtn";
+import { Title } from "../../Others/Title";
 
 export const BeLogin = () => {
   return (
-    <div className="container">
-      <div className="center-side">
-        <h1>You are not logged in or do not have access to resources!</h1>
-      </div>
+    <>
+        <div className="title">
+            <Title props={'You are not logged in or do not have access to resources!'} /> 
+        </div>
 
-      <div className="left-side">
-          <div className="regist__buttons">
-            <RedirectBtn to="/">Menu</RedirectBtn>
-            <RedirectBtn to="/regist">Regist</RedirectBtn>
-            <RedirectBtn to="/login">Login</RedirectBtn>
+        <div className="container">
+          <div className="right-side">
+            <div className="redirect-btn">
+              <RedirectBtn to="/login">Login</RedirectBtn>
+              <RedirectBtn to="/regist">Regist</RedirectBtn>
+              <RedirectBtn to="/after-login">Back!</RedirectBtn>
+            </div>
           </div>
-        </div> 
-    </div>
+        </div>
+    </>
   );
 };
+
 
 
