@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { UserTableRow } from "./UserTableRow";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
 import "../../css/tabela.css";
-import { UserUpdate } from "./UserUpdate";
 
 
 export const UserTable: React.FC = () => {
@@ -21,14 +20,16 @@ export const UserTable: React.FC = () => {
                     <th>Email</th>
                     <th>Rola</th>
                     <th>Usun</th>
+                    <th>Zmien</th>
                 </tr>
             </thead>
             <tbody>
                 {usersList.map((user) => (
                     <UserTableRow user={user} key={user.id} />
                 ))}
-                <UserUpdate usersList={usersList} /> 
-            </tbody>          
+                
+            </tbody>
+            {/* // Error: Warning: validateDOMNesting(...): <td> cannot appear as a child of <table>. todo */}
         </table>
     );
 };
