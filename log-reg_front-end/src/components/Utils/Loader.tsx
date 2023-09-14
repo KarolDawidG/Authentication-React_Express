@@ -1,9 +1,6 @@
-
 export const Loader = () => {
   return <>
-    <div>
       <h1>Loading...</h1>
-    </div>;
   </>
 }
 // There was an issue with react-spinners, so I decided to comment out those lines of code.

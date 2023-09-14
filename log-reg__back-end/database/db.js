@@ -1,6 +1,6 @@
 const { createPool } = require('mysql2/promise');
 const {hostDB, nameDB, userDB, passDB} = require('../config/configENV');
-const { createAccountsTable, createRoot, deleteAccount, eventSchedulerON} = require('./dbCreator');
+const { createAccountsTable, createRoot, deleteAccount, eventSchedulerON, testingData} = require('./dbCreator');
 
 const pool = createPool({
   host: hostDB,

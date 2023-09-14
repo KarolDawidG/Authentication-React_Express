@@ -1,58 +1,46 @@
-/* Style dla całej strony */
-body {
-  background-color: #1a1a1a;
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
 
-/* Style dla tabeli */
 table {
-  width: 100%;
+  margin: 0 auto;
+  width: 90%;
   border-collapse: collapse;
   background-color: #222;
-  border: 2px solid #c50000;
+  border: 2px solid #007bff;
 }
 
 th, td {
-  padding: 12px;
+  padding: 2px;
   text-align: left;
 }
 
-/* Style dla nagłówków kolumn */
 th {
-  background-color: #c50000;
+  background-color: #007bff;
   color: #fff;
 }
 
-/* Style dla komórek danych */
 td {
   background-color: #1a1a1a;
   color: #fff;
   border-bottom: 1px solid #444;
 }
 
-/* Style dla wierszy */
 tr {
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Animacja zmiany koloru wiersza po najechaniu myszką */
 tr:hover {
-  background-color: #444;
+  background-color: #007bff;
   transform: scale(1.02);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Animacja przy najeżdżaniu myszką na komórkę */
 td:hover {
-  background-color: #c50000;
+  background-color: #007bff;
   color: #fff;
   transition: all 0.3s ease-in-out;
 }
 
-/* Animacja przy kliknięciu na nagłówek kolumny */
 th:active {
-  background-color: #c50000;
+  background-color: #007bff;
   color: #fff;
   transition: all 0.3s ease-in-out;
 }

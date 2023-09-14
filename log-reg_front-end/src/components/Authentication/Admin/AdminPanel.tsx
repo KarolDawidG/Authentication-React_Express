@@ -18,10 +18,9 @@ export const AdminPanel = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log(token);
-    if (!token) {
-      return redirect('/be-login');
-    }
+      if (!token) {
+        return redirect('/be-login');
+      }
 
     const decodedToken:any = jwtDecode(token);
     const userRole = decodedToken.role;
@@ -40,17 +39,18 @@ export const AdminPanel = () => {
   }
 
   return (
-    <div className="container">
-      <Title props="Welcome to Admin Panel" />
-      <div className="left-side">
-        <div className="regist__buttons">
-          <RedirectBtn to="/">Menu</RedirectBtn>
-          <RedirectBtn to="/users">Users</RedirectBtn>
-          <RedirectBtn to="/regist">Regist</RedirectBtn>
-          <RedirectBtn to="/login">Login</RedirectBtn>
-        </div>
-      </div>
-      <LogoutButton onLogout={handleLogout} />
-    </div>
+    <>      
+        <Title props={'Admin panel'} />
+          <div className="container">
+            <div className="right-side">
+              <div className="redirect-btn">
+                <RedirectBtn to="/">Menu</RedirectBtn>
+                <RedirectBtn to="/users">Users</RedirectBtn>
+                <LogoutButton onLogout={handleLogout} />
+              </div>
+            </div>
+          </div>
+      
+    </>
   );
 };

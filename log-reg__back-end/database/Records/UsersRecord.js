@@ -1,5 +1,5 @@
 const {pool} = require("../db");
-const { validateEmail } = require('../../config/config');
+const { validateEmail, validateUserName } = require('../../config/config');
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -21,10 +21,11 @@ class UsersRecord{
         return results.map(obj => new UsersRecord(obj));
     }
 
-    static async selectByEmail(email){
+    static async selectByEmail(email) {
       const [results] = await pool.execute('SELECT * FROM accounts WHERE email = ?',email);
-      return results;
+      return results; 
     }
+    
 
     static async selectById(id){
       const [results] = await pool.execute('SELECT * FROM accounts WHERE id = ?',id);
@@ -32,7 +33,7 @@ class UsersRecord{
     }
 
     static async selectByUsername(username){
-      const [results] = await pool.execute('SELECT * FROM accounts WHERE username = ?', username);
+      const [results] = await pool.execute('SELECT is_active, role, password FROM accounts WHERE username = ?', username);
       return results;
     }
 
@@ -40,14 +41,31 @@ class UsersRecord{
          await pool.execute("DELETE FROM accounts WHERE id = ?", [id]);
     }
 
-    static async insert([username, hashPassword, email]) {
-      if (!validateEmail(email)) {
-        throw new Error('Invalid email address');
-      }
 
-      const id = uuidv4(); 
-      const result = await pool.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
-      return id;
+    static async insert(username, hashPassword, email) {
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+    
+        if (!validateEmail(email)) {
+          throw new Error('Invalid email address.');
+        }
+    
+        if (!validateUserName(username)) {
+          throw new Error('Invalid username.');
+        }
+        const id = uuidv4();
+
+        await connection.execute("INSERT INTO accounts (id, username, password, email) VALUES (?, ?, ?, ?)", [id, username, hashPassword, email]);
+    
+        await connection.commit();
+        return id; 
+      } catch (error) {
+        await connection.rollback();
+        throw error;
+      } finally {
+        connection.release();
+      }
     }
   
     static async updatePasswordByEmail([ hashPassword, email]) {
@@ -59,6 +77,16 @@ class UsersRecord{
       const results = await pool.execute("UPDATE accounts SET password = ? WHERE id = ?", [hashPassword, id]);
       return results;
     }
+    
+    static async updateRole(role, username) {
+      try {
+        const results = await pool.execute('UPDATE accounts SET role = ? WHERE username = ?', [role, username]);
+        return results;
+      } catch (error) {
+        throw error; 
+      }
+    }
+    
   
   }
         

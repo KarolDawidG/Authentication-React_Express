@@ -1,6 +1,7 @@
 import axios from "axios";
 import { notify } from "../../../Others/Notify";
-import { INTERNET_DISCONNECTED, ENDPOINT_REGISTER } from "../../../Utils/links";
+import { ENDPOINT_REGISTER } from "../../../Utils/links";
+import { handleNetworkError } from "../../Login/handlers/networkErrorFunctions";
 
 export const handleReg = async (
     email: string,
@@ -15,18 +16,12 @@ export const handleReg = async (
       password,
     });
         if (response.status === 200) {
-        notify(response.data);
-        setTimeout(() => navigate(`/`), 1000);
-        } else if (response.status === 401) {
-        notify(response.data.message);
+            notify(response.data);
+            setTimeout(() => navigate(`/`), 1000);
         } else {
-        notify(response.data.message);
+            notify(response.data.message);
         }
   } catch (error: any) {
-    if (error) {
-      notify(error.response.data);
-    } else {
-      notify(INTERNET_DISCONNECTED);
-    }
+      handleNetworkError(error);
   }
 };

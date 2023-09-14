@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { UserTable } from "./UserTable";
 import { RedirectBtn } from "../Others/RedirectBtn";
 import axios from 'axios';
-import { INTERNET_DISCONNECTED, ENDPOINT_USERS } from "../Utils/links";
+import { ENDPOINT_USERS } from "../Utils/links";
 import { BeLogin } from "../Authentication/Login/BeLogin";
 import { Loader } from "../Utils/Loader";
 import { Title } from "../Others/Title";
-import { notify } from "../Others/Notify";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
 import {UsersListProps} from "../Utils/Interfaces/UsersListProps";
+import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
 
 
 export const Users: React.FC = () => {
@@ -30,11 +30,7 @@ export const Users: React.FC = () => {
         const data = res.data;
         setUsersList(data.usersList);
     } catch (error: any) {
-      if (error.response) {
-        console.log(error.message)
-      } else {
-        notify(INTERNET_DISCONNECTED);
-      }
+      handleNetworkError(error);
     }
   };
 
@@ -58,9 +54,9 @@ export const Users: React.FC = () => {
 
   return (
       <UsersContext.Provider value={usersList}>
-        <Title props="Users list"/>
-        <UserTable />
-        <RedirectBtn to="/">Menu</RedirectBtn>
+          <Title props={'Users List'} />  
+          <UserTable />
+          <RedirectBtn to="/admin">Back!</RedirectBtn>
       </UsersContext.Provider>
   );
 };

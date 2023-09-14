@@ -65,15 +65,17 @@ export const CorrectLogin = () => {
   }, [handleTokenRefresh]);
 
   return (
-    <div className="container">
-      <Title props="Welcome!" />
-      <div className="left-side">
-        <div className="regist__buttons">
-          <RedirectBtn to="/">Menu</RedirectBtn>
-          <RedirectBtn to="/users">Users</RedirectBtn>
+    <>
+      <Title props={'User Panel'} />
+        <div className="container">
+          <div className="right-side">
+            <div className="redirect-btn">
+              <RedirectBtn to="/">Menu</RedirectBtn>
+              <RedirectBtn to="/users">Users</RedirectBtn>
+              {isAuthenticated && <LogoutButton onLogout={handleLogout} />}
+            </div>
+          </div>
         </div>
-      </div>
-      {isAuthenticated && <LogoutButton onLogout={handleLogout} />}
-    </div>
+    </>
   );
 };

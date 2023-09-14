@@ -13,30 +13,41 @@ router.use(middleware, limiter, errorHandler);
 router.get('/', verifyToken, async (req, res, next) => {
     const userRole = req.userRole; 
 
-    logger.info(`${MESSAGES.AUTHORIZATION_LVL}: users ${userRole}`)
     if (userRole !== 'admin') {
       return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.FORBIDDEN);
     }
     try {
         const usersList = await UsersRecord.listAll();
-        res.json({ usersList });
+        return res.json({ usersList });
     } catch (error) {
         logger.error(error.message);
-        res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
+        return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
     }
   });
 
-// router.post('/delete/:id', async (req, res, next) => {
-//    const id = req.params.id;
 
-//    try {
-//       await UsersRecord.delete(id);
-//       res.status(200).send('The operation has been successful.');
-//    } catch (error) {
-//       console.error(error);
-//       res.status(500).send('Unknown server error. Please contact your administrator.');
-//    }
-// });
+router.put('/:user/:role', verifyToken, async (req, res) => {
+    const user = req.params.user;
+    const role = req.params.role;
+    try {
+        await UsersRecord.updateRole(role, user);
+        return res.status(200).send('The operation has been successful.');
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send('Unknown server error. Please contact your administrator.');
+    }
+});
+
+router.delete('/:id', verifyToken, async (req, res, next) => {
+   const id = req.params.id;
+   try {
+      await UsersRecord.delete(id);
+        return res.status(200).send('The operation has been successful.');
+   } catch (error) {
+      console.error(error);
+       return res.status(500).send('Unknown server error. Please contact your administrator.');
+   }
+});
 
 
 

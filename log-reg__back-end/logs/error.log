@@ -1,1 +1,10 @@
-2023-07-29 22:37:38 error: No database selected
+2023-07-29 22:37:38 error: No database selected2023-09-11 14:58:27 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 14:58:30 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 14:58:47 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 14:59:56 error: Cannot read properties of undefined (reading 'execute')
+2023-09-11 15:14:42 error: Unknown column 'username.accounts' in 'field list'
+2023-09-11 17:13:16 error: UsersRecord.selectByEmail is not a function
+2023-09-11 17:13:51 error: Incorrect arguments to mysqld_stmt_execute
+2023-09-11 17:18:44 error: Cannot read properties of null (reading 'length')
+2023-09-11 17:19:12 error: Cannot read properties of null (reading 'length')
+2023-09-13 00:14:57 error: Server error: jwt expired

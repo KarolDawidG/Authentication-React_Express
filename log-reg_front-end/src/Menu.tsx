@@ -1,22 +1,23 @@
-import { Link } from "react-router-dom";
+import { RedirectBtn } from "./components/Others/RedirectBtn";
+import { Title } from "./components/Others/Title";
 import "./css/styles.css";
-
 
 export const Menu = () => {
   return (
-    <div className="menu">
-      <div className="button-menu__options">
-        <Link to="/login">
-          <button className="logout-button">Login</button>
-        </Link>
-        <Link to="/regist">
-          <button className="logout-button">Regist</button>
-        </Link>
-      </div>
-      
-      <div className="menu-image">
-        <img src='img/baba.png' alt="Baba cyborg" className="centered-image"/>
-      </div>
-    </div>
+    <>
+      <Title props={'Main Menu'} />   
+        <div className="container">
+            <div className="right-side">
+                <div className="main__img">
+                  <img src='img/baba.png' alt="Baba cyborg" className="img"/>
+                </div>
+          
+              <div className="redirect-btn">
+                    <RedirectBtn to="/regist">Regist</RedirectBtn>
+                    <RedirectBtn to="/login">Login</RedirectBtn>
+              </div>
+          </div>
+        </div>
+    </>
   );
 };
