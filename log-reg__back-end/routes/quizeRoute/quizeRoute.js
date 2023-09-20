@@ -9,6 +9,9 @@ const {  verifyToken      } = require('../../config/config');
 const { createPool } = require('mysql2/promise');
 const {hostDB, nameDB, userDB, passDB} = require('../../config/configENV');
 
+router.use(middleware);
+router.use(errorHandler);
+
 const pool = createPool({
   host: hostDB,
   user: userDB,

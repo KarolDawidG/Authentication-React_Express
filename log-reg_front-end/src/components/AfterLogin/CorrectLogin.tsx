@@ -71,7 +71,7 @@ export const CorrectLogin = () => {
           <div className="right-side">
             <div className="redirect-btn">
               <RedirectBtn to="/">Menu</RedirectBtn>
-              <RedirectBtn to="/users">Users</RedirectBtn>
+              <RedirectBtn to="/quiz">Quiz</RedirectBtn>
               {isAuthenticated && <LogoutButton onLogout={handleLogout} />}
             </div>
           </div>

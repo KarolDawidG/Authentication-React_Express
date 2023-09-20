@@ -18,14 +18,14 @@ const createAccounts = `
     `;
 
   const createQuizData = `
-    CREATE TABLE IF NOT EXISTS questions (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      question TEXT NOT NULL,
-      optionA TEXT NOT NULL,
-      optionB TEXT NOT NULL,
-      optionC TEXT NOT NULL,
-      correctAnswer CHAR(1) NOT NULL
-    );  
+      CREATE TABLE IF NOT EXISTS questions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        question TEXT NOT NULL,
+        optionA TEXT NOT NULL,
+        optionB TEXT NOT NULL,
+        optionC TEXT NOT NULL,
+        correctAnswer CHAR(1) NOT NULL
+      );  
   `;
   
   const deleteNotActiveAccount = `

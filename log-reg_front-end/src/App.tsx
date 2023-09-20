@@ -10,6 +10,7 @@ import { BeLogin } from "./components/Authentication/Login/BeLogin";
 import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
 import { ToastContainer } from "react-toastify";
 import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
+import { Quiz } from "./components/AfterLogin/Quiz";
 
 // import LogRocket from 'logrocket';   todo
 
@@ -18,6 +19,7 @@ export const App = () => {
     <><ToastContainer limit={3} />
       <Routes>
         <Route path="/" element={<Menu />} />
+        <Route path="/quiz" element={<Quiz />} />
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
         <Route path="/admin" element={<AdminPanel />} />
