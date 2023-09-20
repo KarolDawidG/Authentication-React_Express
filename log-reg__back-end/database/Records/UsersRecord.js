@@ -33,7 +33,6 @@ class UsersRecord{
         if (!validateEmail(email)) {
           throw new Error('Invalid email address.');
         }
-    
         if (!validateUserName(username)) {
           throw new Error('Invalid username.');
         }
@@ -41,35 +40,35 @@ class UsersRecord{
   
           return UsersRecord.performTransaction(async (connection) => {
             await connection.execute(INSERT, [id, username, hashPassword, email]);
-              return id;
+            return id;
           })
       }
 
     static async activateAccount(id) {
       return UsersRecord.performTransaction(async (connection) => {
         const results = await connection.execute(ACTIVE, [id]);
-          return results;
+        return results;
       });
     }
 
     static async delete(id) {
       return UsersRecord.performTransaction(async (connection) => {
-       const result = await connection.execute(DELETE, [id]);
-          return result;
+        const result = await connection.execute(DELETE, [id]);
+        return result;
       });
     }
 
     static async updatePasswordById([ hashPassword, id]) {
       return UsersRecord.performTransaction(async (connection) => {
         const results = await connection.execute(UPDATE_BY_ID, [hashPassword, id]);
-          return results;
+        return results;
       });
     }
     
     static async updateRole(role, username) {
       return UsersRecord.performTransaction(async(connection) => {
         const results = await connection.execute(UPDATE_ROLE, [role, username]);
-          return results;
+        return results;
       })
     }
 
@@ -78,21 +77,20 @@ class UsersRecord{
       return results.map(obj => new UsersRecord(obj));
   }
 
-  static async selectByEmail(email) {
-    const [results] = await pool.execute(SELECT_BY_EMAIL,email);
-    return results; 
-  }
+    static async selectByEmail(email) {
+      const [results] = await pool.execute(SELECT_BY_EMAIL,email);
+      return results; 
+    }
   
-  static async selectById(id){
-    const [results] = await pool.execute(SELECT_BY_ID,id);
-    return results;
-  }
+    static async selectById(id){
+      const [results] = await pool.execute(SELECT_BY_ID,id);
+      return results;
+    }
 
-  static async selectByUsername(username){
-    const [results] = await pool.execute(SELECT_BY_USERNAME, username);
-    return results;
-  }
-
+    static async selectByUsername(username){
+      const [results] = await pool.execute(SELECT_BY_USERNAME, username);
+      return results;
+    }
 }
         
 module.exports = {

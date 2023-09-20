@@ -21,9 +21,9 @@ const pool = createPool({
         const tables = [createAccountsTable, createRoot, deleteAccount, eventSchedulerON];
       for await (const table of tables) {
         await table(pool);
-      }console.log('Database started correctly');
+      } console.log('Database started correctly');
   } catch (err) {
-    console.error(err);
+     console.error(err);
   }
 })();
 

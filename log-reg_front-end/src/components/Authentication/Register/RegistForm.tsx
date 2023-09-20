@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { backgroundColor, preventSpace, validateEmail } from "../../Utils/FormsUtils/forms-utils";
+import { backgroundColor, preventSpace, validateEmail, validatePassword } from "../../Utils/FormsUtils/forms-utils";
 import {RegisterContect, CaptchaContext} from './Regist';
 import { REACT_APP_SITE_KEY } from "../../Utils/links";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -29,7 +29,7 @@ export const RegistForm = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ backgroundColor: validateEmail(email) ? "lightcoral" : "grey" }}
+            style={{ backgroundColor: validateEmail(email) ? "lightgreen" : "grey" }}
             onKeyDown={preventSpace}
             required
           />
@@ -39,6 +39,7 @@ export const RegistForm = () => {
             className="login-form__input"
             type="text"
             minLength={6}
+            maxLength={16}
             id="username"
             value={removeSpecialCharacters(username)}
             onChange={(e) => setUsername(e.target.value)}
@@ -52,10 +53,11 @@ export const RegistForm = () => {
             className="login-form__input"
             type="password"
             minLength={8}
+            maxLength={16}
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{backgroundColor: `${backgroundColor(password.length, 8)}`}}
+            style={{ backgroundColor:  validatePassword(password) ? "lightgreen" : "grey" }}
             onKeyDown={preventSpace}
             required
           />

@@ -1,0 +1,5 @@
+2023-09-18 19:46:07 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-18 19:50:58 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-18 19:51:21 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-18 21:36:35 error: Invalid username.
+2023-09-19 21:10:05 error: Invalid email address.

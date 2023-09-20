@@ -64,7 +64,7 @@ const validateEmail = (e) => {
 };
 
 const  validatePassword = (e) => {
-    if (e.length < 8 || e.length > 16) {
+    if (e.length < 8) {
         return false;
     }
     if (!/[A-Z]/.test(e)) {
@@ -73,12 +73,11 @@ const  validatePassword = (e) => {
     if (!/[0-9]/.test(e)) {
         return false;
     }
-
     return true;
 };
 
-const validateUserName = (username) => {
-  if (username.length >= 6 && username.length <= 16) {
+const validateUserName = (e) => {
+  if (e.length >= 6 && e.length <= 16) {
     return true;
   } else {
     return false;

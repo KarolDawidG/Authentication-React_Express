@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { backgroundColor, preventSpace } from "../../Utils/FormsUtils/forms-utils";
+import { backgroundColor, preventSpace, validatePassword } from "../../Utils/FormsUtils/forms-utils";
 import {  LoginContext } from './Login';
 import "../../../css/styles.css";
 
@@ -33,7 +33,7 @@ export const LoginForm = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ backgroundColor: `${backgroundColor(password.length, 8)}` }}
+                style={{ backgroundColor:  validatePassword(password) ? "lightgreen" : "grey" }}
                 onKeyDown={preventSpace}
                 required
             />

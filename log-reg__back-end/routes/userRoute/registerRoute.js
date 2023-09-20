@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
         const link = `${URL.REGISTER_URL}${activationToken}`;
 
         await sendRegisterEmail(email, username, link);
-        
+      
         logger.info(MESSAGES.SUCCESSFUL_SIGN_UP);
         return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_SIGN_UP);
       } catch (error) {

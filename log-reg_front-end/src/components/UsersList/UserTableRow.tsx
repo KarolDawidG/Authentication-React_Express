@@ -28,7 +28,6 @@ export const UserTableRow = (props: Props) => {
     const handleDeleteUser = async () => {
         try {
           await axios.delete(`${ENDPOINT_DELETE}${props.user.id}`);
-          
           navigate(0); 
         } catch (error: any) {
           handleNetworkError(error);
