@@ -29,7 +29,6 @@ export const UserTable: React.FC = () => {
                 ))}
                 
             </tbody>
-            {/* // Error: Warning: validateDOMNesting(...): <td> cannot appear as a child of <table>. todo */}
         </table>
     );
 };

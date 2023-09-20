@@ -5,7 +5,7 @@ const {limiter, errorHandler} = require('../../config/config');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
-const {  verifyToken      } = require('../../config/config');
+const {  verifyToken } = require('../../config/config');
 const { createPool } = require('mysql2/promise');
 const {hostDB, nameDB, userDB, passDB} = require('../../config/configENV');
 
