@@ -3,3 +3,6 @@
 2023-09-18 19:51:21 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
 2023-09-18 21:36:35 error: Invalid username.
 2023-09-19 21:10:05 error: Invalid email address.
+2023-09-20 14:00:15 error: No database selected
+2023-09-20 14:00:30 error: No database selected
+2023-09-20 14:00:31 error: No database selected

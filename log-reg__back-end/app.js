@@ -12,6 +12,9 @@ const resetRoute = require('./routes/userRoute/resetRoute');
 const forgotRoute = require('./routes/userRoute/forgotPassRoute');
 const capRoutes = require('./routes/captchaRoute/capRoute');
 
+// quiz
+const quizeRoute = require('./routes/quizeRoute/quizeRoute');
+
 const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
 const logger = require('./logs/logger');
@@ -24,6 +27,7 @@ app.use('/users', usersRoute );
 app.use('/reset', resetRoute);
 app.use('/forgot', forgotRoute);
 app.use('/cap', capRoutes);
+app.use('/quiz', quizeRoute);
 
 app.use(middleware, limiter, errorHandler);
 
