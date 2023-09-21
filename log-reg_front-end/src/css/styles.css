@@ -76,6 +76,12 @@ body {
   margin-top: 20px;
 }
 
+.redirect-btn button {
+  width: 99px; /* Stała szerokość */
+  height: 45px; /* Stała wysokość */
+}
+
+
 
 .img {
   width: 90%;  

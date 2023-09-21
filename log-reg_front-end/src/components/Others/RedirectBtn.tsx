@@ -9,7 +9,7 @@ type RedirectBtnProps = {
 export const RedirectBtn: React.FC<RedirectBtnProps> = ({ to, children }) => {
   return (
         <Link to={to}>
-          <button className="button">{children}</button>
+          <button>{children}</button>
         </Link>
   );
 };

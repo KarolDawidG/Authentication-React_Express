@@ -11,7 +11,7 @@ import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
 import { ToastContainer } from "react-toastify";
 import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
 import { Quiz } from "./components/AfterLogin/Quiz";
-
+import { Quiz20 } from "./components/AfterLogin/Quiz20";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {
@@ -20,6 +20,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Menu />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/quiz-20" element={<Quiz20 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
         <Route path="/admin" element={<AdminPanel />} />

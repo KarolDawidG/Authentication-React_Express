@@ -26,9 +26,7 @@ export const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
   return (
     <>
       <ToastContainer/>
-        <button className="button" onClick={handleLogout}>
-          Logout
-        </button>
+        <button onClick={handleLogout}>Logout</button>
     </>
   );
 };

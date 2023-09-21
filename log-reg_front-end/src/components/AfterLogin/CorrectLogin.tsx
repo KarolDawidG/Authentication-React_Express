@@ -1,19 +1,23 @@
 import { useEffect, useState, useCallback } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Title } from "../Others/Title";
 import { RedirectBtn } from "../Others/RedirectBtn";
 import { LogoutButton } from "../Others/LogoutButton";
 import { notify } from "../Others/Notify";
+import { LOG_OUT, ENDPOINT_LOGOUT} from '../Utils/links';
 import axios from "axios";
 import {ENDPOINT_REFRESH} from "../Utils/links";
+import './QuizMenu.css';
 
 export const CorrectLogin = () => {
   const redirect = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleLogout = useCallback(() => {
+  const handleLogout = useCallback(async() => {
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
+    await axios.get(ENDPOINT_LOGOUT);
+    notify(LOG_OUT);
     redirect(`/login`);
   }, [redirect]);
 
@@ -65,17 +69,16 @@ export const CorrectLogin = () => {
   }, [handleTokenRefresh]);
 
   return (
-    <>
-      <Title props={'User Panel'} />
-        <div className="container">
-          <div className="right-side">
-            <div className="redirect-btn">
-              <RedirectBtn to="/">Menu</RedirectBtn>
-              <RedirectBtn to="/quiz">Quiz</RedirectBtn>
-              {isAuthenticated && <LogoutButton onLogout={handleLogout} />}
-            </div>
-          </div>
-        </div>
-    </>
+    <div className="user-panel">
+      <p>User Panel</p>
+      <div className="button-container">
+        <Link to="/quiz"><button>Wszystkie pytania</button></Link>
+        <Link to="/quiz-20"><button>Egzamin</button></Link>
+        <Link to="/"><button>Menu</button></Link>
+      </div>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
   );
+  
+  
 };
