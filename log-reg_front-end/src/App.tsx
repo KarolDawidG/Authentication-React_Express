@@ -10,8 +10,8 @@ import { BeLogin } from "./components/Authentication/Login/BeLogin";
 import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
 import { ToastContainer } from "react-toastify";
 import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
-import { Quiz } from "./components/AfterLogin/Quiz";
-import { Quiz20 } from "./components/AfterLogin/Quiz20";
+import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
+import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {

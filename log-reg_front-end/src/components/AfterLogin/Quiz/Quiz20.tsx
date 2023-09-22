@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { RedirectBtn } from '../Others/RedirectBtn';
+import { RedirectBtn } from '../../Others/RedirectBtn';
 import { Question } from './InterfaceQuiz';
-import { handleNetworkError } from '../Authentication/Login/handlers/networkErrorFunctions';
+import { handleNetworkError } from '../../Authentication/Login/handlers/networkErrorFunctions';
 import './Quiz.css';
 
-export const Quiz: React.FC = () => {
+export const Quiz20: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -18,7 +18,7 @@ export const Quiz: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/quiz')
+      .get('http://localhost:3001/quiz-20')
       .then((response) => {
         setQuestions(response.data.quizeData);
       })
@@ -132,20 +132,13 @@ export const Quiz: React.FC = () => {
           </label>
 
           <br />
-          <label className="option-label">
-            <input
-              type="radio"
-              name="option"
-              value="D"
-              checked={selectedOption === 'D'}
-              onChange={() => setSelectedOption('D')}
-            />
-            {questions[currentQuestion].optionD}
-          </label>
 
-          <br />
+          <button className="next-button" onClick={handleNextQuestion}>Następne</button>
+          {previousQuestionAnswered && (
+            <button className="previous-button" onClick={handlePreviousQuestion}>Cofnij</button>
+          )}
 
-
+          <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
         </div>
       
 
@@ -159,13 +152,6 @@ export const Quiz: React.FC = () => {
                 <p className="incorrect-answer_p">Poprawna odpowiedź to: {questions[currentQuestion - 1].correctAnswer}</p>
               </>
             )}
-
-<button className="next-button" onClick={handleNextQuestion}>Następne</button>
-          {previousQuestionAnswered && (
-            <button className="previous-button" onClick={handlePreviousQuestion}>Cofnij</button>
-          )}
-
-          <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
           </div>
 
       </div>
