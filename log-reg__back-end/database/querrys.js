@@ -24,7 +24,6 @@ const createAccounts = `
         optionA TEXT NOT NULL,
         optionB TEXT NOT NULL,
         optionC TEXT NOT NULL,
-        optionD Text NOT NULL,
         correctAnswer CHAR(1) NOT NULL
       );  
   `;

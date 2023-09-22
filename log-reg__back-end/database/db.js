@@ -6,6 +6,7 @@ const pool = createPool({
   host: hostDB,
   user: userDB,
   password: passDB,
+  database: nameDB,
   namedPlaceholders: true,
   decimalNumbers: true,
 });

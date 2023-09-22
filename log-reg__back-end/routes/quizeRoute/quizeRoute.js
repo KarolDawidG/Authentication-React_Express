@@ -1,25 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const middleware = require('../../config/middleware');
-const {limiter, errorHandler} = require('../../config/config');
+const {errorHandler} = require('../../config/config');
 const MESSAGES = require('../../config/messages');
 const STATUS_CODES = require('../../config/status-codes');
 const logger = require('../../logs/logger');
-const {  verifyToken } = require('../../config/config');
-const { createPool } = require('mysql2/promise');
-const {hostDB, nameDB, userDB, passDB} = require('../../config/configENV');
+const {pool} = require('../../config/../database/db');
 
 router.use(middleware);
 router.use(errorHandler);
-
-const pool = createPool({
-  host: hostDB,
-  user: userDB,
-  password: passDB,
-  database: nameDB,
-  namedPlaceholders: true,
-  decimalNumbers: true,
-});
 
  
 router.get('/', async (req, res, next) => {
