@@ -1,38 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { RedirectBtn } from '../../Others/RedirectBtn';
-import { Question } from './InterfaceQuiz';
-import { handleNetworkError } from '../../Authentication/Login/handlers/networkErrorFunctions';
-import './Quiz.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { RedirectBtn } from "../../Others/RedirectBtn";
+import { Question } from "./InterfaceQuiz";
+import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
+import "./Quiz.css";
+import { BeLogin } from "../../Authentication/Login/BeLogin";
+import { Option } from "./Utils/Option";
 
 export const Quiz20: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [selectedOption, setSelectedOption] = useState<string>('');
+  const [selectedOption, setSelectedOption] = useState<string>("");
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState<number>(0);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [previousQuestionAnswered, setPreviousQuestionAnswered] = useState<boolean>(
-    false
-  );
+  const [previousQuestionAnswered, setPreviousQuestionAnswered] =
+    useState<boolean>(false);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/quiz-20')
-      .then((response) => {
-        setQuestions(response.data.quizeData);
-      })
-      .catch((error) => {
-        handleNetworkError(error);
-      });
+    try {
+      handleFetch();
+    } catch (error: any) {
+      handleNetworkError(error);
+    }
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
   }, []);
 
+  const handleFetch = async () => {
+    try {
+      const res = await axios.get("http://localhost:3001/quiz-20");
+      const data = res.data;
+      setQuestions(data.quizeData);
+    } catch (error: any) {
+      handleNetworkError(error);
+    }
+  };
+
   const handleRestartQuiz = () => {
     setCurrentQuestion(0);
-    setSelectedOption('');
+    setSelectedOption("");
     setIsCorrect(null);
     setScore(0);
     setPreviousQuestionAnswered(false);
@@ -47,7 +55,7 @@ export const Quiz20: React.FC = () => {
     }
 
     setCurrentQuestion(currentQuestion + 1);
-    setSelectedOption('');
+    setSelectedOption("");
     setPreviousQuestionAnswered(true);
   };
 
@@ -55,19 +63,13 @@ export const Quiz20: React.FC = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
       setIsCorrect(null);
-      setSelectedOption('');
+      setSelectedOption("");
       setPreviousQuestionAnswered(false);
     }
   };
 
   if (!isAuthenticated) {
-    return (
-      <div className="container">
-        <div className="right-side">
-          <h1>Musisz być zalogowany, aby rozpocząć quiz.</h1>
-        </div>
-      </div>
-    );
+    return <BeLogin />;
   }
 
   if (currentQuestion >= questions.length) {
@@ -79,9 +81,7 @@ export const Quiz20: React.FC = () => {
           <button className="restart-button" onClick={handleRestartQuiz}>
             Zagraj jeszcze raz
           </button>
-          <RedirectBtn to="/after-login">
-            Menu główne
-          </RedirectBtn>
+          <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
         </div>
       </div>
     );
@@ -94,66 +94,64 @@ export const Quiz20: React.FC = () => {
           <h1>Pytanie {currentQuestion + 1}:</h1>
           <p className="quiz-question">{questions[currentQuestion].question}</p>
 
-          <label className="option-label">
-            <input
-              type="radio"
-              name="option"
-              value="A"
-              checked={selectedOption === 'A'}
-              onChange={() => setSelectedOption('A')}
-            />
-            {questions[currentQuestion].optionA}
-          </label>
+          <Option
+            label={questions[currentQuestion].optionA}
+            value="A"
+            selected={selectedOption === "A"}
+            onChange={() => setSelectedOption("A")}
+          />
 
           <br />
 
-          <label className="option-label">
-            <input
-              type="radio"
-              name="option"
-              value="B"
-              checked={selectedOption === 'B'}
-              onChange={() => setSelectedOption('B')}
-            />
-            {questions[currentQuestion].optionB}
-          </label>
+          <Option
+            label={questions[currentQuestion].optionB}
+            value="B"
+            selected={selectedOption === "B"}
+            onChange={() => setSelectedOption("B")}
+          />
 
           <br />
 
-          <label className="option-label">
-            <input
-              type="radio"
-              name="option"
-              value="C"
-              checked={selectedOption === 'C'}
-              onChange={() => setSelectedOption('C')}
-            />
-            {questions[currentQuestion].optionC}
-          </label>
+          <Option
+            label={questions[currentQuestion].optionC}
+            value="C"
+            selected={selectedOption === "C"}
+            onChange={() => setSelectedOption("C")}
+          />
 
           <br />
+        </div>
 
-          <button className="next-button" onClick={handleNextQuestion}>Następne</button>
+        <div className="answers">
+          {isCorrect && <p className="correct-answer">Odpowiedź poprawna!</p>}
+          {!isCorrect && isCorrect !== null && (
+            <>
+              <p className="incorrect-answer">Odpowiedź niepoprawna.</p>
+              <br />
+              <p className="incorrect-answer_p">
+                {questions[currentQuestion - 1].question}
+              </p>
+              <p className="incorrect-answer_p">
+                Poprawna odpowiedź to:{" "}
+                {questions[currentQuestion - 1].correctAnswer}
+              </p>
+            </>
+          )}
+
+          <button className="next-button" onClick={handleNextQuestion}>
+            Następne
+          </button>
           {previousQuestionAnswered && (
-            <button className="previous-button" onClick={handlePreviousQuestion}>Cofnij</button>
+            <button
+              className="previous-button"
+              onClick={handlePreviousQuestion}
+            >
+              Cofnij
+            </button>
           )}
 
           <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
         </div>
-      
-
-          <div className="answers">
-            {isCorrect && <p className="correct-answer">Odpowiedź poprawna!</p>}
-            {!isCorrect && isCorrect !== null && (
-              <>
-                <p className="incorrect-answer">Odpowiedź niepoprawna.</p>
-                <br />
-                 <p className="incorrect-answer_p">{questions[currentQuestion - 1].question}</p>
-                <p className="incorrect-answer_p">Poprawna odpowiedź to: {questions[currentQuestion - 1].correctAnswer}</p>
-              </>
-            )}
-          </div>
-
       </div>
     </>
   );

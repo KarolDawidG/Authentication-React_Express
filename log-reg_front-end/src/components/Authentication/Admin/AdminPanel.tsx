@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { ADMIN_ROLE } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
@@ -12,45 +12,46 @@ export const AdminPanel = () => {
   const redirect = useNavigate();
 
   const handleLogout = useCallback(() => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     redirect(`/login`);
   }, [redirect]);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-      if (!token) {
-        return redirect('/be-login');
-      }
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return redirect("/be-login");
+    }
 
-    const decodedToken:any = jwtDecode(token);
+    const decodedToken: any = jwtDecode(token);
     const userRole = decodedToken.role;
 
     if (userRole === ADMIN_ROLE) {
       setIsLoading(false);
     } else {
-      return redirect('/be-login');
+      return redirect("/be-login");
     }
   }, [redirect]);
 
   if (isLoading) {
-    return <>
-      <Loader />
-    </>;
+    return (
+      <>
+        <Loader />
+      </>
+    );
   }
 
   return (
-    <>      
-        <Title props={'Admin panel'} />
-          <div className="container">
-            <div className="right-side">
-              <div className="redirect-btn">
-                <RedirectBtn to="/">Menu</RedirectBtn>
-                <RedirectBtn to="/users">Users</RedirectBtn>
-                <LogoutButton onLogout={handleLogout} />
-              </div>
-            </div>
+    <>
+      <Title props={"Admin panel"} />
+      <div className="container">
+        <div className="right-side">
+          <div className="redirect-btn">
+            <RedirectBtn to="/">Menu</RedirectBtn>
+            <RedirectBtn to="/users">Users</RedirectBtn>
+            <LogoutButton onLogout={handleLogout} />
           </div>
-      
+        </div>
+      </div>
     </>
   );
 };

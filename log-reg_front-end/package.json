@@ -24,6 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prettier": "npx prettier --write \"**/*.{js,ts,tsx}\" --ignore-path .prettierignore",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -50,6 +51,6 @@
   "devDependencies": {
     "@types/js-cookie": "^3.0.3",
     "@types/react-google-recaptcha": "^2.1.5",
-    "prettier": "3.0.0"
+    "prettier": "^3.0.3"
   }
 }

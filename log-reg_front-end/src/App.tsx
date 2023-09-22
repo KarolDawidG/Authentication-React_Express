@@ -16,7 +16,8 @@ import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 
 export const App = () => {
   return (
-    <><ToastContainer limit={3} />
+    <>
+      <ToastContainer limit={3} />
       <Routes>
         <Route path="/" element={<Menu />} />
         <Route path="/quiz" element={<Quiz />} />
@@ -27,8 +28,8 @@ export const App = () => {
         <Route path="/after-login" element={<CorrectLogin />} />
         <Route path="/users" element={<Users />} />
         <Route path="/reset/:id/:token" element={<Reset />} />
-        <Route path="/reset-email" element={<ResetEmail/>} />
-        <Route path="/be-login" element={<BeLogin/>} />
+        <Route path="/reset-email" element={<ResetEmail />} />
+        <Route path="/be-login" element={<BeLogin />} />
       </Routes>
     </>
   );
