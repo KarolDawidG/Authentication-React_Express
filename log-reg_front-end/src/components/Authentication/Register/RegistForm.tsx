@@ -53,7 +53,7 @@ export const RegistForm = () => {
 
         <label className="login-form__label" htmlFor="username">
           {" "}
-          Username:{" "}
+          Login:{" "}
         </label>
         <input
           className="login-form__input"
@@ -70,7 +70,7 @@ export const RegistForm = () => {
 
         <label className="login-form__label" htmlFor="password">
           {" "}
-          Password:{" "}
+          Hasło:{" "}
         </label>
         <input
           className="login-form__input"
@@ -87,7 +87,7 @@ export const RegistForm = () => {
           required
         />
         <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} ref={captchaRef} />
-        <input className="login-form__submit" type="submit" value="Register" />
+        <input className="login-form__submit" type="submit" value="Zarejestruj się!" />
       </form>
     </>
   );

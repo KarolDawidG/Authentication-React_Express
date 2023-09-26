@@ -16,6 +16,7 @@ router.get("/", verifyToken, (req, res, next) => {
   if (userRole !== "admin") {
     return res.status(STATUS_CODES.FORBIDDEN).send(MESSAGES.FORBIDDEN);
   }
+
   try {
     return res
       .status(STATUS_CODES.SUCCESS)

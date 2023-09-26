@@ -6,7 +6,7 @@ const MESSAGES = require("../../config/messages");
 const STATUS_CODES = require("../../config/status-codes");
 const logger = require("../../logs/logger");
 const { pool } = require("../../config/../database/db");
-const { generateRandomNumbers } = require("../../utils/functions");
+const { randomizeData } = require("../../utils/functions");
 
 router.use(middleware);
 router.use(errorHandler);
@@ -14,16 +14,11 @@ router.use(errorHandler);
 router.get("/", async (req, res, next) => {
   try {
     const connection = await pool.getConnection();
+
     const [rows, fields] = await connection.execute("SELECT * FROM questions");
     connection.release();
-    const arrayRandomRows = [];
-    const randomNumbersArray = generateRandomNumbers(rows.length);
 
-    for (const index of randomNumbersArray) {
-      arrayRandomRows.push(rows[index]);
-    }
-
-    console.log(randomNumbersArray);
+    const arrayRandomRows = randomizeData(rows);
 
     return res.json({ quizeData: arrayRandomRows });
   } catch (error) {

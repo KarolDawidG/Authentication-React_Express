@@ -46,7 +46,7 @@ export const ResetEmail: React.FC = () => {
 
   return (
     <>
-      <Title props={"Reset hasła"} />
+      <Title props={"Zresetuj hasło"} />
       <div className="container">
         <div className="right-side">
           <form className="login-form__form" onSubmit={handleSubmit}>
@@ -68,7 +68,7 @@ export const ResetEmail: React.FC = () => {
             <input
               type="submit"
               className="login-form__submit"
-              value="Send Message"
+              value="Wyślij e-mail!"
             />
           </form>
 

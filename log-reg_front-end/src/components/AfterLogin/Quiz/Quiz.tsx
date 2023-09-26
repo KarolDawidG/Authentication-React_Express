@@ -6,6 +6,7 @@ import { handleNetworkError } from "../../Authentication/Login/handlers/networkE
 import "./Quiz.css";
 import { BeLogin } from "../../Authentication/Login/BeLogin";
 import { Option } from "./Utils/Option";
+import { QUIZ } from "../../Utils/links";
 
 export const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -19,7 +20,7 @@ export const Quiz: React.FC = () => {
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/quiz");
+      const res = await axios.get(QUIZ);
       const data = res.data;
       setQuestions(data.quizeData);
     } catch (error: any) {
@@ -137,17 +138,11 @@ export const Quiz: React.FC = () => {
             </>
           )}
 
-          <button className="next-button" onClick={handleNextQuestion}>
-            Następne
-          </button>
-          {previousQuestionAnswered && (
-            <button
-              className="previous-button"
-              onClick={handlePreviousQuestion}
-            >
-              Cofnij
-            </button>
-          )}
+          <div className="btn">
+            <button className="next-button" onClick={handleNextQuestion}>Następne</button>
+            {previousQuestionAnswered && (
+            <button className="previous-button" onClick={handlePreviousQuestion}>Cofnij</button>)}
+          </div>
 
           <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
         </div>

@@ -17,7 +17,7 @@ export const handleReg = async (
     });
     if (response.status === 200) {
       notify(response.data);
-      setTimeout(() => navigate(`/`), 1000);
+      setTimeout(() => navigate(`/kliknij-link`), 1000);
     } else {
       notify(response.data.message);
     }

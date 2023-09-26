@@ -22,6 +22,10 @@ export const ENDPOINT_DELETE = "http://localhost:3001/users/";
 
 export const ENDPOINT_UPDATE = "http://localhost:3001/users";
 
+export const QUIZ = "http://localhost:3001/quiz/";
+
+export const QUIZ_20 = "http://localhost:3001/quiz-20";
+
 export const ADMIN_ROLE = "admin";
 
 export const INTERNET_DISCONNECTED =

@@ -11,6 +11,16 @@ const generateRandomNumbers = (rows) => {
   return numbers;
 };
 
-module.exports = {
-  generateRandomNumbers,
+const randomizeData = (rows) => {
+  const arrayRandomRows = [];
+
+  const randomNumbersArray = generateRandomNumbers(rows.length);
+
+  for (const index of randomNumbersArray) {
+    arrayRandomRows.push(rows[index]);
+  }
+
+  return arrayRandomRows;
 };
+
+module.exports = { randomizeData };

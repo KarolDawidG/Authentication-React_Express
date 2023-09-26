@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "prettier": "npx prettier --write \"**/*.js\" --ignore-path .prettierignore",
+    "prettier": "npx prettier --write \"**/*.js\" --ignore-path .prettierignore && echo Script completed successfully. All files have been scanned by Prettier.",
     "start": "nodemon app.js",
     "test": "jest"
   },

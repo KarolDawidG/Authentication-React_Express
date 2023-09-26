@@ -44,14 +44,14 @@ export const Login = () => {
           handleSubmit,
         }}
       >
-        <Title props={"Login"} />
+        <Title props={"Logowanie"} />
         <div className="container">
           <div className="right-side">
             <LoginForm />
             <div className="redirect-btn">
-              <RedirectBtn to="/">Menu</RedirectBtn>
-              <RedirectBtn to="/regist">Regist</RedirectBtn>
-              <RedirectBtn to="/reset-email">Reset</RedirectBtn>
+              <RedirectBtn to="/">Menu główne</RedirectBtn>
+              <RedirectBtn to="/regist">Rejestracja</RedirectBtn>
+              <RedirectBtn to="/reset-email">Reset hasła</RedirectBtn>
             </div>
           </div>
         </div>

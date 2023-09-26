@@ -17,3 +17,8 @@
 2023-09-21 20:11:25 error: obiektZLosowymiWierszami.push is not a function
 2023-09-23 00:01:57 error: rows is not defined
 2023-09-23 00:19:03 error: randomNumber is not defined
+2023-09-23 08:52:37 error: randomNumbersArray is not defined
+2023-09-23 08:53:58 error: arrayRandomRows is not defined
+2023-09-23 08:54:12 error: arrayRandomRows is not defined
+2023-09-23 08:57:34 error: randomizeData is not defined
+2023-09-23 09:03:47 error: randomizeData is not a function

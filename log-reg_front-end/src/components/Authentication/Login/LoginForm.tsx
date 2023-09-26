@@ -18,7 +18,7 @@ export const LoginForm = () => {
       <form className="login-form__form" onSubmit={handleSubmit}>
         <label className="login-form__label" htmlFor="username">
           {" "}
-          Username:{" "}
+          Login:{" "}
         </label>
         <input
           className="login-form__input"
@@ -34,7 +34,7 @@ export const LoginForm = () => {
 
         <label className="login-form__label" htmlFor="password">
           {" "}
-          Password:{" "}
+          Hasło:{" "}
         </label>
         <input
           className="login-form__input"
@@ -50,7 +50,7 @@ export const LoginForm = () => {
           required
         />
 
-        <input className="login-form__submit" type="submit" value="Login" />
+        <input className="login-form__submit" type="submit" value="Zaloguj się!" />
       </form>
     </>
   );

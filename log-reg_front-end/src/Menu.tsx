@@ -1,11 +1,9 @@
 import { RedirectBtn } from "./components/Others/RedirectBtn";
-import { Title } from "./components/Others/Title";
 import "./css/styles.css";
 
 export const Menu = () => {
   return (
     <>
-      <Title props={"Main Menu"} />
       <div className="container">
         <div className="right-side">
           <div className="main__img">
@@ -13,8 +11,8 @@ export const Menu = () => {
           </div>
 
           <div className="redirect-btn">
-            <RedirectBtn to="/regist">Regist</RedirectBtn>
-            <RedirectBtn to="/login">Login</RedirectBtn>
+            <RedirectBtn to="/regist">Rejestracja</RedirectBtn>
+            <RedirectBtn to="/login">Logowanie</RedirectBtn>
           </div>
         </div>
       </div>

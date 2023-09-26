@@ -52,7 +52,7 @@ export const Reset = () => {
 
   return (
     <>
-      <Title props={"Reset hasła"} />
+      <Title props={"Zmiana hasła"} />
       <div className="container">
         <div className="right-side">
           <form className="login-form__form" onSubmit={handleSubmit}>
@@ -81,7 +81,7 @@ export const Reset = () => {
           </form>
 
           <div className="redirect-btn">
-            <RedirectBtn to="/">Menu</RedirectBtn>
+            <RedirectBtn to="/">Menu główne</RedirectBtn>
             <RedirectBtn to="/login">Login</RedirectBtn>
           </div>
         </div>
