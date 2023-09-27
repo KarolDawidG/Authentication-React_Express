@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 // const { nameDB } = require("../../config/configENV");
 // const { pool } = require("../../database/db");
-const { UsersRecord } = require("../../database/Records/UsersRecord");
+const { UsersRecord } = require("../../database/Records/Users/UsersRecord");
 const {
   errorHandler,
   limiterLogin,

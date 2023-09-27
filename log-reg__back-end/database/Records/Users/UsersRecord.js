@@ -1,5 +1,6 @@
-const { pool } = require("../db");
-const { validateEmail, validateUserName } = require("../../config/config");
+const { pool } = require("../../db");
+const { performTransaction } = require("../performTransaction");
+const { validateEmail, validateUserName } = require("../../../config/config");
 const { v4: uuidv4 } = require("uuid");
 const {
   INSERT,
@@ -21,23 +22,6 @@ class UsersRecord {
     this.role = obj.role;
   }
 
-  static async performTransaction(callback) {
-    const connection = await pool.getConnection();
-    try {
-      await connection.beginTransaction();
-
-      const result = await callback(connection);
-
-      await connection.commit();
-      return result;
-    } catch (error) {
-      await connection.rollback();
-      throw error;
-    } finally {
-      connection.release();
-    }
-  }
-
   static async insert(username, hashPassword, email) {
     if (!validateEmail(email)) {
       throw new Error("Invalid email address.");
@@ -47,28 +31,28 @@ class UsersRecord {
     }
     const id = uuidv4();
 
-    return UsersRecord.performTransaction(async (connection) => {
+    return performTransaction(async (connection) => {
       await connection.execute(INSERT, [id, username, hashPassword, email]);
       return id;
     });
   }
 
   static async activateAccount(id) {
-    return UsersRecord.performTransaction(async (connection) => {
+    return performTransaction(async (connection) => {
       const results = await connection.execute(ACTIVE, [id]);
       return results;
     });
   }
 
   static async delete(id) {
-    return UsersRecord.performTransaction(async (connection) => {
+    return performTransaction(async (connection) => {
       const result = await connection.execute(DELETE, [id]);
       return result;
     });
   }
 
   static async updatePasswordById([hashPassword, id]) {
-    return UsersRecord.performTransaction(async (connection) => {
+    return performTransaction(async (connection) => {
       const results = await connection.execute(UPDATE_BY_ID, [
         hashPassword,
         id,
@@ -78,7 +62,7 @@ class UsersRecord {
   }
 
   static async updateRole(role, username) {
-    return UsersRecord.performTransaction(async (connection) => {
+    return performTransaction(async (connection) => {
       const results = await connection.execute(UPDATE_ROLE, [role, username]);
       return results;
     });

@@ -1,5 +1,5 @@
 const express = require("express");
-const { UsersRecord } = require("../../database/Records/UsersRecord");
+const { UsersRecord } = require("../../database/Records/Users/UsersRecord");
 const bcrypt = require("bcrypt");
 const { JWT_CONFIRMED_TOKEN } = require("../../config/configENV");
 const jwt = require("jsonwebtoken");
@@ -77,5 +77,6 @@ router.get("/:token", async (req, res) => {
     return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
   }
 });
+
 
 module.exports = router;
