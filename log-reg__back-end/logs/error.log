@@ -46,3 +46,9 @@
 2023-09-27 20:27:07 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
 2023-09-27 20:27:27 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
 2023-09-27 20:27:29 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
+2023-09-27 21:27:43 error: Błąd podczas tworzenia tabeli: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-27 21:27:45 error: Błąd podczas tworzenia tabeli: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-27 21:27:50 error: Błąd podczas tworzenia tabeli: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-27 21:48:18 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          question TEXT NOT NU...' at line 2

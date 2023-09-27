@@ -13,8 +13,8 @@ router.use(middleware);
 // status DELETE:   200
 
 router.post("/:testName", async (req, res) => {
-    const { testName } = req.params;
-  
+  const { testName } = req.params;
+  console.log(testName);
     try {
         const tableExists = await TabelsRecord.tableExists(testName);
         if (tableExists) {
