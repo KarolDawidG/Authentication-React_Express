@@ -12,6 +12,7 @@ export const CorrectLogin = () => {
   const handleLogout = useCallback(async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
     await axios.get(ENDPOINT_LOGOUT);
     notify(LOG_OUT);
     redirect(`/login`);
@@ -72,6 +73,9 @@ export const CorrectLogin = () => {
         </Link>
         <Link to="/">
           <button>Menu</button>
+        </Link>
+        <Link to="/crud-question">
+          <button>CRUD</button>
         </Link>
       </div>
       <button onClick={handleLogout}>Logout</button>

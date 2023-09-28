@@ -13,6 +13,7 @@ import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
 import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
 import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
+import { MenuCrud } from "./components/AfterLogin/CRUD-question/MenuCrud";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {
@@ -22,6 +23,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Menu />} />
         <Route path="/kliknij-link" element={<LookEmail/>} />
+        <Route path="/crud-question" element={<MenuCrud />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/quiz-20" element={<Quiz20 />} />
         <Route path="/login" element={<Login />} />
