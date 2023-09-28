@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 /log-reg__back-end/klucze
+log-reg__back-end/klucze
+*.pem
 # testing
 /coverage
 
