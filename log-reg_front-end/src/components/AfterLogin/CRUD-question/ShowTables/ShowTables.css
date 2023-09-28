@@ -2,12 +2,7 @@ body {
     background-color: #111111;
   }
 
-/* ShowTables.css */
-.crud-description {
-  color: white;
-}
-
-.table-name {
+.show_tables__p, .show_tables__table-name, .table-name {
   color: white;
 }
 

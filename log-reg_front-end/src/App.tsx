@@ -13,7 +13,7 @@ import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
 import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
 import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
-import { MenuCrud } from "./components/AfterLogin/CRUD-question/MenuCrud";
+import { MenuCrud } from "./components/AfterLogin/CRUD-question/Menu/MenuCrud";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {

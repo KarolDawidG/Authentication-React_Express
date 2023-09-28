@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './ShowTables.css';
-import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
 
 export const ShowTables = () => {
   const [tableNames, setTableNames] = useState([]);
   const [username, setUsername] = useState("");
-  const navigate = useNavigate();
 
   const handleDeleteUser = async (tableName:any) => {
     try {
       await axios.delete(`http://localhost:3001/create-table/${tableName}`);
-      navigate(0);
+      const updatedTableNames = tableNames.filter((name) => name !== tableName);
+      setTableNames(updatedTableNames);
     } catch (error: any) {
       handleNetworkError(error);
     }
@@ -36,22 +35,30 @@ export const ShowTables = () => {
         });
     }, []);
   
-    const removeChars = (inputString:string, charsToRemove:string) => {
-      const regexName = new RegExp(`[${charsToRemove}]`, 'g');
-      const resultRegexName = inputString.replace(regexName, '');
+    // const removeChars = (inputString:string, charsToRemove:string) => {
+    //   const regex = new RegExp(`[${charsToRemove}]`, 'g');
+    //   const result = inputString.replace(regex, '');
 
-        const regex_ = new RegExp(`[_]`, 'g');
-        const finalRresult = resultRegexName.replace(regex_, ' ');
+    //     return result;
+    // };
 
-        return finalRresult;
-    };
+    // const changeToSpace = (inputString:string) => {
+    //     const regex = new RegExp(`[_]`, 'g');
+    //     const result = inputString.replace(regex, ' ');
+
+    //     return result;
+    // };
     
+
+
+
   return (
     <>
-    <p className="crud-deiscription"> Lista dostepnych tabel: </p>
+    <p className="show_tables__p"> Lista dostepnych tabel: </p>
     <ul>
         {tableNames.map((tableName) => (
-          <li className="table-name" key={tableName}>{removeChars(tableName, username)}
+          
+          <li className="table-name" key={tableName}>{tableName}
             <button>Update</button>
             <button onClick={() => handleDeleteUser(tableName)}>Delete</button>
           </li>

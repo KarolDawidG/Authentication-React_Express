@@ -1,31 +1,26 @@
-import React, { SyntheticEvent, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
 
 export const CreateTable = () => {
   const [inputvalue, setInputvalue] = useState<string>("");
   const [username, setUsername] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
       const savedUsername = localStorage.getItem("user");
-      if (savedUsername) {
-          setUsername(savedUsername);
-        }
-   
+        if (savedUsername) {
+            setUsername(savedUsername);
+          }
     }, []);
-    
-  const handleFormSubmit = (e: SyntheticEvent) => {
-    e.preventDefault();
-      axios.post(`http://localhost:3001/create-table/${username}/${inputvalue}`)
-        .then(res => {
-          console.log(res.data);
-          navigate(0);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-  };
+  
+  const handleFormSubmit = async () => {
+      try {
+        await axios.post(`http://localhost:3001/create-table/${username}/${inputvalue}`);
+      } catch (error: any) {
+        handleNetworkError(error);
+      }
+    };
+
   
   const replaceSpacesWithUnderscores = (e:string) => {
     return e.replace(/[^\w]/gi, '_');
