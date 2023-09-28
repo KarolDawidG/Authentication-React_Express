@@ -25,8 +25,6 @@ router.use(errorHandler);
 
 router.post("/", limiterLogin, async (req, res) => {
   try {
-    // await pool.query(`USE ${nameDB}`);
-
     const user = req.body.username;
     const password = req.body.password;
 

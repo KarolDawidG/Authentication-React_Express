@@ -38,7 +38,20 @@ class TabelsRecord {
       const [result] = await connection.execute(sql);
       return result;
     });
+    
   }
+
+  static async showAllTablesOfUser(user) {
+    return performTransaction(async (connection) => {
+      const sql = `SHOW TABLES LIKE '%${user}%';`;
+      const [result] = await connection.execute(sql);
+      
+      const tableNames = result.map(row => Object.values(row)[0]);
+  
+      return tableNames;
+    });
+  }
+  
 
 
 }

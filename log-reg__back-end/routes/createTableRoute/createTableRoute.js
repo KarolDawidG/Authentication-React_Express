@@ -9,19 +9,31 @@ const logger = require("../../logs/logger");
 router.use(middleware);
 
 //POSTMAN: http://localhost:3001/create-table/testowaBazaDanych
+// status GET:      200
 // status POST:     200
 // status DELETE:   200
 
-router.post("/:testName", async (req, res) => {
-  const { testName } = req.params;
-  console.log(testName);
+router.get("/:username", async (req, res) => {
+  const { username } = req.params;
     try {
-        const tableExists = await TabelsRecord.tableExists(testName);
-        if (tableExists) {
-          return res.status(STATUS_CODES.SUCCESS).send(`Tabela ${testName} już istnieje.`);
-        }
+      const tablesUser = await TabelsRecord.showAllTablesOfUser(username);
+      return res.json({ tablesUser });
+    } catch (error) {
+      logger.error(`Błąd podczas wyszukiwania tabel: ${error.message}`);
+      return res.status(STATUS_CODES.SERVER_ERROR).send('Blad wyszukiwania tabel');
+    }
+  });
 
-      await TabelsRecord.createTable(testName);
+
+router.post("/:username/:testName", async (req, res) => {
+  const { username, testName } = req.params;
+  const newTabel = username + '_' + testName;
+    try {
+        const tableExists = await TabelsRecord.tableExists(newTabel);
+        if (tableExists) {
+          return res.status(STATUS_CODES.SUCCESS).send(`Tabela ${newTabel} już istnieje.`);
+        }
+      await TabelsRecord.createTable(newTabel);
   
       return res.status(STATUS_CODES.SUCCESS).send("Tabela została pomyślnie utworzona.");
     } catch (error) {
@@ -32,13 +44,11 @@ router.post("/:testName", async (req, res) => {
 
   router.delete("/:testName", async (req, res) => {
     const { testName } = req.params;
-  
     try {
         const tableExists = await TabelsRecord.tableExists(testName);
         if (!tableExists) {
           return res.status(STATUS_CODES.SUCCESS).send(`Tabela: '${testName}' nie istnieje.`);
         }
-
       await TabelsRecord.deleteTable(testName);
   
       return res.status(STATUS_CODES.SUCCESS).send("Tabela została pomyślnie skasowana.");
