@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const MESSAGES = require("./messages");
 const STATUS_CODES = require("./status-codes");
 const logger = require("../logs/logger");
+const fs = require("fs");
 
 const errorHandler = (err, req, res, next) => {
   console.error(err);
@@ -36,6 +37,9 @@ const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
     format: "pem",
   },
 });
+
+fs.writeFileSync("./klucze/privateKey.pem", privateKey);
+fs.writeFileSync("./klucze/publicKey.pem", publicKey);
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -91,8 +95,6 @@ module.exports = {
   errorHandler,
   limiter,
   limiterLogin,
-  publicKey,
-  privateKey,
   queryParameterize,
   validateEmail,
   validatePassword,

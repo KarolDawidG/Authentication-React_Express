@@ -52,3 +52,10 @@
 2023-09-27 21:48:18 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(
           id INT AUTO_INCREMENT PRIMARY KEY,
           question TEXT NOT NU...' at line 2
+2023-09-28 12:31:12 error: The "options" argument must be of type object. Received undefined
+2023-09-28 12:31:47 error: The "options" argument must be of type object. Received undefined
+2023-09-28 12:41:32 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 12:41:43 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 12:50:43 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 12:53:16 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 13:03:56 error: privateKey is not defined
