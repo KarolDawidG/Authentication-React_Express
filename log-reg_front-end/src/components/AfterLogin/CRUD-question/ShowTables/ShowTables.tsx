@@ -7,12 +7,15 @@ import {
   removePart,
   replaceCharacter,
 } from "./utils/stringHelpers";
+import {Updating} from "./Update";
 
 export const ShowTables = () => {
   const [tableNames, setTableNames] = useState([]);
   const [username, setUsername] = useState("");
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [selectedTableName, setSelectedTableName] = useState("");
 
-  const handleDeleteUser = async (tableName: any) => {
+  const handleDelete = async (tableName: any) => {
     try {
       await axios.delete(`http://localhost:3001/create-table/${tableName}`);
       const updatedTableNames = tableNames.filter((name) => name !== tableName);
@@ -20,6 +23,15 @@ export const ShowTables = () => {
     } catch (error: any) {
       handleNetworkError(error);
     }
+  };
+
+  const handleUpdate = async (tableName: any) => {
+    setSelectedTableName(tableName)
+    setIsUpdating(true);
+  };
+
+  const handleCloseUpdatingMessage = () => {
+    setIsUpdating(false);
   };
 
   useEffect(() => {
@@ -43,26 +55,22 @@ export const ShowTables = () => {
   }, []);
 
   return (
-    <>
-      <p className="show_tables__p"> Lista dostepnych tabel: </p>
-      <ul>
-        {tableNames.map((tableName) => (
-          <li className="table-name" key={tableName}>
-            {replaceCharacter(
-              removeFirstCharacter(removePart(tableName, username)),
-            )}
-            <div className="btn_container">
-              <button className="btn-show">Update</button>
-              <button
-                className="btn-show"
-                onClick={() => handleDeleteUser(tableName)}
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </>
+      <>
+        <p className="show_tables__p"> Lista dost?pnych tabel: </p>
+        <ul>
+          {tableNames.map((tableName) => (
+              <li className="table-name" key={tableName}>
+                {replaceCharacter(removeFirstCharacter(removePart(tableName, username)))}
+                <div className="btn_container">
+                  <button className="btn-show" onClick={() =>handleUpdate(tableName)}>Update</button>
+                  <button className="btn-show" onClick={() => handleDelete(tableName)}>
+                    Delete
+                  </button>
+                </div>
+              </li>
+          ))}
+        </ul>
+        <Updating tableName={selectedTableName} isUpdating={isUpdating} onClose={handleCloseUpdatingMessage} />
+      </>
   );
 };

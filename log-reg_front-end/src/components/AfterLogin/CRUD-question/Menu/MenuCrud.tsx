@@ -1,6 +1,6 @@
 import React from "react";
 import { Title } from "../../../Others/Title";
-import { CreateTable } from "../CreateTable/CreateTable";
+import { CreateTable } from "../CreateTables/CreateTable";
 import "./MenuCrud.css";
 import { ShowTables } from "../ShowTables/ShowTables";
 import { RedirectBtn } from "../../../Others/RedirectBtn";
