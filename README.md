@@ -24,6 +24,11 @@ Creating a .env file in the backend directory (Authentication-React Express/log-
 # For the frontend:
  - ###  `npm run frontend`
 
+## Other usefull scripts:
+ - ###  `npm run prettier`
+ --> npx prettier --write \"**/*.{js,ts,tsx}\" --ignore-path .prettierignore
+This script uses the Prettier tool to automatically format files in the project.
+
 Open your web browser and navigate to http://localhost:3000 to access the application.
 
 # Features

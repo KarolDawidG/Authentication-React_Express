@@ -4,9 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "prettier": "npx prettier --write \"**/*.js\" --ignore-path .prettierignore && echo Script completed successfully. All files have been scanned by Prettier.",
     "start": "nodemon app.js",
     "test": "jest"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "jest": "^29.6.2",
+    "prettier": "^3.0.3",
     "supertest": "^6.3.3"
   }
 }

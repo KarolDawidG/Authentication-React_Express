@@ -1,10 +1,11 @@
 export const Loader = () => {
-  return <>
+  return (
+    <>
       <h1>Loading...</h1>
-  </>
-}
+    </>
+  );
+};
 // There was an issue with react-spinners, so I decided to comment out those lines of code.
-
 
 // import {FadeLoader} from "react-spinners/";
 

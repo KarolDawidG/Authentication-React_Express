@@ -1,53 +1,60 @@
 const rateLimit = require("express-rate-limit");
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const MESSAGES = require('./messages');
-const STATUS_CODES = require('./status-codes');
-const logger = require('../logs/logger');
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const MESSAGES = require("./messages");
+const STATUS_CODES = require("./status-codes");
+const logger = require("../logs/logger");
+const fs = require("fs");
 
 const errorHandler = (err, req, res, next) => {
   console.error(err);
   logger.error(err.message);
-    if (err instanceof SyntaxError) {
-      return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_REQUEST);
-    } else {
-      return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.UNKNOW_ERROR);
-    }
+  if (err instanceof SyntaxError) {
+    return res.status(STATUS_CODES.BAD_REQUEST).send(MESSAGES.INVALID_REQUEST);
+  } else {
+    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.UNKNOW_ERROR);
+  }
 };
 
 const limiter = rateLimit({
-    windowMs: 15*60*1000,   //15 minutes
-    max: 200,                // limit each IP to 100 per windowMs
+  windowMs: 5 * 60 * 1000, //5 minutes
+  max: 100, // limit each IP to 100 per windowMs
 });
 
 const limiterLogin = rateLimit({
-  windowMs: 60 * 1000 * 5, 
-  max: 5,
+  windowMs: 5 * 60 * 1000, //5 minutes
+  max: 15,
 });
 
-const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
+const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
   modulusLength: 2048,
   publicKeyEncoding: {
-    type: 'spki',
-    format: 'pem',
+    type: "spki",
+    format: "pem",
   },
   privateKeyEncoding: {
-    type: 'pkcs8',
-    format: 'pem',
+    type: "pkcs8",
+    format: "pem",
   },
 });
 
+fs.writeFileSync("./klucze/privateKey.pem", privateKey);
+fs.writeFileSync("./klucze/publicKey.pem", publicKey);
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
-    if (!authHeader) { 
-      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.USER_NOT_LOGGED_IN);
-    }
+  if (!authHeader) {
+    return res
+      .status(STATUS_CODES.UNAUTHORIZED)
+      .send(MESSAGES.USER_NOT_LOGGED_IN);
+  }
   const token = authHeader.split(" ")[1];
-  jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
+  jwt.verify(token, publicKey, { algorithms: ["RS256"] }, (err, decoded) => {
     if (err) {
       logger.info(MESSAGES.JWT_ERROR);
-      return res.status(STATUS_CODES.UNAUTHORIZED).send(MESSAGES.SESSION_EXPIRED);
+      return res
+        .status(STATUS_CODES.UNAUTHORIZED)
+        .send(MESSAGES.SESSION_EXPIRED);
     }
     const userRole = decoded.role;
     req.userRole = userRole;
@@ -63,22 +70,21 @@ const validateEmail = (e) => {
   return email.test(e);
 };
 
-const  validatePassword = (e) => {
-    if (e.length < 8 || e.length > 16) {
-        return false;
-    }
-    if (!/[A-Z]/.test(e)) {
-        return false;
-    }
-    if (!/[0-9]/.test(e)) {
-        return false;
-    }
-
-    return true;
+const validatePassword = (e) => {
+  if (e.length < 8) {
+    return false;
+  }
+  if (!/[A-Z]/.test(e)) {
+    return false;
+  }
+  if (!/[0-9]/.test(e)) {
+    return false;
+  }
+  return true;
 };
 
-const validateUserName = (username) => {
-  if (username.length >= 6 && username.length <= 16) {
+const validateUserName = (e) => {
+  if (e.length >= 6 && e.length <= 16) {
     return true;
   } else {
     return false;
@@ -86,14 +92,12 @@ const validateUserName = (username) => {
 };
 
 module.exports = {
-    errorHandler,
-    limiter,
-    limiterLogin,
-    publicKey,
-    privateKey,
-    queryParameterize,
-    validateEmail,
-    validatePassword,
-    validateUserName,
-    verifyToken,
+  errorHandler,
+  limiter,
+  limiterLogin,
+  queryParameterize,
+  validateEmail,
+  validatePassword,
+  validateUserName,
+  verifyToken,
 };

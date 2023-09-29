@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: red;
 }
 
 .title {
@@ -18,6 +18,19 @@ body {
   align-items: center;
   height: 50vh;
 }
+
+.answers {
+  background-color: black;
+  color: white;
+  justify-content: center;
+  width: 300px;
+  margin: 0 auto; /* Dodaj ten styl, aby wyśrodkować komponent w poziomie */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Dodaj ten styl, aby wyśrodkować zawartość w pionie */
+  padding: 20px;
+}
+
 
 .right-side {
   width: 300px;
@@ -62,6 +75,12 @@ body {
   justify-content: space-around;
   margin-top: 20px;
 }
+
+.redirect-btn button {
+  width: 99px; /* Stała szerokość */
+  height: 45px; /* Stała wysokość */
+}
+
 
 
 .img {

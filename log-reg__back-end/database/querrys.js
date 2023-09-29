@@ -17,7 +17,18 @@ const createAccounts = `
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
     `;
 
-    const deleteNotActiveAccount = `
+const createQuizData = `
+      CREATE TABLE IF NOT EXISTS questions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        question TEXT NOT NULL,
+        optionA TEXT NOT NULL,
+        optionB TEXT NOT NULL,
+        optionC TEXT NOT NULL,
+        correctAnswer CHAR(1) NOT NULL
+      );  
+  `;
+
+const deleteNotActiveAccount = `
     CREATE EVENT IF NOT EXISTS delete_inactive_users
       ON SCHEDULE EVERY 15 MINUTE
       DO
@@ -53,10 +64,11 @@ const testing_data = `INSERT INTO accounts (id, username, password, email, role,
 `;
 
 module.exports = {
-    insertRoot,
-    findRoot,
-    createAccounts,
-    deleteNotActiveAccount,
-    event_schedulerON,
-    testing_data,
-}
+  insertRoot,
+  findRoot,
+  createAccounts,
+  deleteNotActiveAccount,
+  event_schedulerON,
+  testing_data,
+  createQuizData,
+};

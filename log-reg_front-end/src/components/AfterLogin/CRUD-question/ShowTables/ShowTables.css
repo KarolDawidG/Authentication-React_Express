@@ -1,0 +1,14 @@
+body {
+    background-color: #111111;
+  }
+
+.show_tables__p, .show_tables__table-name, .table-name {
+  color: white;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+  
+  

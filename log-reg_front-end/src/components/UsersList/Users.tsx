@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { UserTable } from "./UserTable";
 import { RedirectBtn } from "../Others/RedirectBtn";
-import axios from 'axios';
+import axios from "axios";
 import { ENDPOINT_USERS } from "../Utils/links";
 import { BeLogin } from "../Authentication/Login/BeLogin";
 import { Loader } from "../Utils/Loader";
 import { Title } from "../Others/Title";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
-import {UsersListProps} from "../Utils/Interfaces/UsersListProps";
+import { UsersListProps } from "../Utils/Interfaces/UsersListProps";
 import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
-
 
 export const Users: React.FC = () => {
   const redirect = useNavigate();
@@ -19,25 +18,25 @@ export const Users: React.FC = () => {
 
   const handleFetch = async () => {
     try {
-      const token = localStorage.getItem('token');
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      const token = localStorage.getItem("token");
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const config = {
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
-        const res = await axios.get(ENDPOINT_USERS, config);
-        const data = res.data;
-        setUsersList(data.usersList);
+      const res = await axios.get(ENDPOINT_USERS, config);
+      const data = res.data;
+      setUsersList(data.usersList);
     } catch (error: any) {
       handleNetworkError(error);
     }
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      redirect('/be-login');
+      redirect("/be-login");
     } else {
       handleFetch();
       setIsLoading(false);
@@ -53,10 +52,10 @@ export const Users: React.FC = () => {
   }
 
   return (
-      <UsersContext.Provider value={usersList}>
-          <Title props={'Users List'} />  
-          <UserTable />
-          <RedirectBtn to="/admin">Back!</RedirectBtn>
-      </UsersContext.Provider>
+    <UsersContext.Provider value={usersList}>
+      <Title props={"Users List"} />
+      <UserTable />
+      <RedirectBtn to="/admin">Back!</RedirectBtn>
+    </UsersContext.Provider>
   );
 };

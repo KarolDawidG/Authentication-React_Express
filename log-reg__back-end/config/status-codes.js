@@ -8,4 +8,4 @@ const STATUS_CODES = {
   SERVER_ERROR: 500,
 };
 
-  module.exports = STATUS_CODES;
+module.exports = STATUS_CODES;

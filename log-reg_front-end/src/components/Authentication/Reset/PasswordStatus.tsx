@@ -6,16 +6,22 @@ interface PasswordStatusProps {
   passwordsMatch: boolean;
 }
 
-export const PasswordStatus: React.FC<PasswordStatusProps> = ({ password, password2, passwordsMatch }) => {
+export const PasswordStatus: React.FC<PasswordStatusProps> = ({
+  password,
+  password2,
+  passwordsMatch,
+}) => {
   return (
-    <span style={{ color: password && password2 && passwordsMatch ? "green" : "red" }}>
+    <span
+      style={{
+        color: password && password2 && passwordsMatch ? "green" : "red",
+      }}
+    >
       {password && password2 && passwordsMatch
-        ? "The passwords match!"
+        ? "Hasło poprawne!"
         : password || password2
-        ? "The passwords don't match"
-        : "Enter the password"}
+        ? "Hasła nie pasują"
+        : "Wpisz hasło"}
     </span>
   );
 };
-
-

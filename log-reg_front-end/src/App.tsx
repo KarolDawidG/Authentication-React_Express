@@ -10,22 +10,30 @@ import { BeLogin } from "./components/Authentication/Login/BeLogin";
 import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
 import { ToastContainer } from "react-toastify";
 import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
-
+import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
+import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
+import { LookEmail } from "./components/Authentication/Register/LookEmail";
+import { MenuCrud } from "./components/AfterLogin/CRUD-question/Menu/MenuCrud";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {
   return (
-    <><ToastContainer limit={3} />
+    <>
+      <ToastContainer limit={3} />
       <Routes>
         <Route path="/" element={<Menu />} />
+        <Route path="/kliknij-link" element={<LookEmail/>} />
+        <Route path="/crud-question" element={<MenuCrud />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/quiz-20" element={<Quiz20 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/after-login" element={<CorrectLogin />} />
         <Route path="/users" element={<Users />} />
         <Route path="/reset/:id/:token" element={<Reset />} />
-        <Route path="/reset-email" element={<ResetEmail/>} />
-        <Route path="/be-login" element={<BeLogin/>} />
+        <Route path="/reset-email" element={<ResetEmail />} />
+        <Route path="/be-login" element={<BeLogin />} />
       </Routes>
     </>
   );

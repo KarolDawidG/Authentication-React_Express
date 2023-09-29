@@ -6,7 +6,9 @@ log-reg__back-end/logs/error.log
 /node_modules
 /.pnp
 .pnp.js
-
+/log-reg__back-end/klucze
+log-reg__back-end/klucze
+*.pem
 # testing
 /coverage
 
