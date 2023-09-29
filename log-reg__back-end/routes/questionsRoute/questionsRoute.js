@@ -8,7 +8,6 @@ const logger = require("../../logs/logger");
 
 router.use(middleware);
 
-
 router.get("/:tables", async (req, res, next) => {
   const tables = req.params.tables;
 
@@ -26,9 +25,15 @@ router.post("/:tables", async (req, res) => {
   const { question, optionA, optionB, optionC, correctAnswer } = req.body;
 
   try {
+    await QuizzesRecord.insert(
+      tables,
+      question,
+      optionA,
+      optionB,
+      optionC,
+      correctAnswer,
+    );
 
-    await QuizzesRecord.insert(tables, question, optionA, optionB, optionC, correctAnswer);
-    
     return res.status(200).send("The post operation has been successful.");
   } catch (error) {
     logger.error(error.message);
@@ -36,14 +41,19 @@ router.post("/:tables", async (req, res) => {
   }
 });
 
-
-
 router.update("/:tables", async (req, res) => {
   const tables = req.params.tables;
   const { question, optionA, optionB, optionC, correctAnswer } = req.body;
 
   try {
-    await QuizzesRecord.updateRole(question, optionA, optionB, optionC, correctAnswer, tables);
+    await QuizzesRecord.updateRole(
+      question,
+      optionA,
+      optionB,
+      optionC,
+      correctAnswer,
+      tables,
+    );
     return res.status(200).send("The operation has been successful.");
   } catch (error) {
     console.error(error);

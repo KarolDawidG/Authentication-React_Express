@@ -15,7 +15,7 @@ const capRoutes = require("./routes/captchaRoute/capRoute");
 // quiz
 const quizeRoute = require("./routes/quizeRoute/quizeRoute");
 const quize20Route = require("./routes/quizeRoute/quize20Route");
-const createTableRoute = require('./routes/createTableRoute/createTableRoute');
+const createTableRoute = require("./routes/createTableRoute/createTableRoute");
 
 const MESSAGES = require("./config/messages");
 const STATUS_CODES = require("./config/status-codes");
@@ -31,7 +31,7 @@ app.use("/forgot", forgotRoute);
 app.use("/cap", capRoutes);
 app.use("/quiz", quizeRoute);
 app.use("/quiz-20", quize20Route);
-app.use("/create-table", createTableRoute)
+app.use("/create-table", createTableRoute);
 
 app.use(middleware);
 app.use(limiter);

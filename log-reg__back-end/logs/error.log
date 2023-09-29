@@ -59,3 +59,32 @@
 2023-09-28 12:50:43 error: secretOrPrivateKey must be an asymmetric key when using RS256
 2023-09-28 12:53:16 error: secretOrPrivateKey must be an asymmetric key when using RS256
 2023-09-28 13:03:56 error: privateKey is not defined
+2023-09-29 19:15:46 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 19:18:56 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:18:56 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:19:22 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:19:22 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:22:10 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:22:10 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:23:59 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:23:59 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:26:36 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 19:26:36 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 19:29:56 error: Błąd podczas wyszukiwania tabel: wordsToRemove.join is not a function
+2023-09-29 19:29:56 error: Błąd podczas wyszukiwania tabel: wordsToRemove.join is not a function
+2023-09-29 19:31:28 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:31:28 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:31:32 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:31:32 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:34:25 error: Błąd podczas wyszukiwania tabel: item.replace is not a function
+2023-09-29 19:34:25 error: Błąd podczas wyszukiwania tabel: item.replace is not a function
+2023-09-29 20:09:30 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:09:30 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:09:44 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:09:44 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:11:46 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:11:46 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:03 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:03 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:06 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:06 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
