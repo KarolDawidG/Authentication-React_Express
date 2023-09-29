@@ -142,11 +142,18 @@ export const Quiz20: React.FC = () => {
           )}
 
           <div className="btn">
-            <button className="next-button" onClick={handleNextQuestion}>Następne</button>
+            <button className="next-button" onClick={handleNextQuestion}>
+              Następne
+            </button>
             {previousQuestionAnswered && (
-            <button className="previous-button" onClick={handlePreviousQuestion}>Cofnij</button>)}
+              <button
+                className="previous-button"
+                onClick={handlePreviousQuestion}
+              >
+                Cofnij
+              </button>
+            )}
           </div>
-
 
           <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
         </div>

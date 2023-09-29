@@ -1,14 +1,50 @@
-body {
-    background-color: #111111;
-  }
-
-.show_tables__p, .show_tables__table-name, .table-name {
-  color: white;
+/* Styl dla paragrafu */
+.show_tables__p {
+    color: wheat;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.btn {
-  margin-right: 10px;
+/* Styl dla listy tabel */
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-  
-  
+/* Styl dla elementu listy tabel */
+.table-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Styl dla nazwy tabeli */
+.table-name span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Styl dla przycisków "Update" i "Delete" */
+.btn_container {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-show {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-show:hover {
+    background-color: #0056b3;
+}

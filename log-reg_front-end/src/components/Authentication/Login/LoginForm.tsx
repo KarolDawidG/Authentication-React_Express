@@ -50,7 +50,11 @@ export const LoginForm = () => {
           required
         />
 
-        <input className="login-form__submit" type="submit" value="Zaloguj się!" />
+        <input
+          className="login-form__submit"
+          type="submit"
+          value="Zaloguj się!"
+        />
       </form>
     </>
   );

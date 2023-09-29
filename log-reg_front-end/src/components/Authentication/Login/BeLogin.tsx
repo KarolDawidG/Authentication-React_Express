@@ -4,9 +4,7 @@ import { Title } from "../../Others/Title";
 export const BeLogin = () => {
   return (
     <>
-      <Title
-        props={"Nie jesteś zalogowany!"}
-      />
+      <Title props={"Nie jesteś zalogowany!"} />
       <div className="container">
         <div className="right-side">
           <div className="redirect-btn">

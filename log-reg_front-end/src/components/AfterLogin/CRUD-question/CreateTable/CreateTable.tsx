@@ -7,28 +7,29 @@ export const CreateTable = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-      const savedUsername = localStorage.getItem("user");
-        if (savedUsername) {
-            setUsername(savedUsername);
-          }
-    }, []);
-  
-  const handleFormSubmit = async () => {
-      try {
-        await axios.post(`http://localhost:3001/create-table/${username}/${inputvalue}`);
-      } catch (error: any) {
-        handleNetworkError(error);
-      }
-    };
+    const savedUsername = localStorage.getItem("user");
+    if (savedUsername) {
+      setUsername(savedUsername);
+    }
+  }, []);
 
-  
-  const replaceSpacesWithUnderscores = (e:string) => {
-    return e.replace(/[^\w]/gi, '_');
-  }
-  
+  const handleFormSubmit = async () => {
+    try {
+      await axios.post(
+        `http://localhost:3001/create-table/${username}/${inputvalue}`,
+      );
+    } catch (error: any) {
+      handleNetworkError(error);
+    }
+  };
+
+  const replaceSpacesWithUnderscores = (e: string) => {
+    return e.replace(/[^\w]/gi, "_");
+  };
+
   return (
     <>
-    <p className="crud-deiscription"> Zalogowany użytkownik: {username}</p>
+      <p className="crud-deiscription"> Zalogowany użytkownik: {username}</p>
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"

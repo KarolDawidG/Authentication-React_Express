@@ -4,10 +4,8 @@ import { Title } from "../../Others/Title";
 export const LookEmail = () => {
   return (
     <>
-      <Title
-        props={"Na podany adres email trafił link aktywacyjny!"}
-      />
-      <Title props={"Kliknij go, aby dokończyć rejestrację!"}/>
+      <Title props={"Na podany adres email trafił link aktywacyjny!"} />
+      <Title props={"Kliknij go, aby dokończyć rejestrację!"} />
       <div className="container">
         <div className="right-side">
           <div className="redirect-btn">

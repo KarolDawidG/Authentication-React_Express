@@ -87,7 +87,11 @@ export const RegistForm = () => {
           required
         />
         <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} ref={captchaRef} />
-        <input className="login-form__submit" type="submit" value="Zarejestruj się!" />
+        <input
+          className="login-form__submit"
+          type="submit"
+          value="Zarejestruj się!"
+        />
       </form>
     </>
   );

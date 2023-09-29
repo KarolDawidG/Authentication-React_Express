@@ -22,7 +22,7 @@ export const App = () => {
       <ToastContainer limit={3} />
       <Routes>
         <Route path="/" element={<Menu />} />
-        <Route path="/kliknij-link" element={<LookEmail/>} />
+        <Route path="/kliknij-link" element={<LookEmail />} />
         <Route path="/crud-question" element={<MenuCrud />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/quiz-20" element={<Quiz20 />} />
