@@ -35,15 +35,13 @@ class QuestionsRecord {
     });
   }
 
-  static async delete(id) {
+  static async delete(table, id) {
     return performTransaction(async (connection) => {
-      const result = await connection.execute(
-        "DELETE FROM questions WHERE id = ?",
-        [id],
-      );
-      return result;
+      const sql = "DELETE FROM " + table + " WHERE id = ?;";
+      return await connection.execute(sql, [id]);
     });
   }
+
 
   static async listAll() {
     const [results] = await pool.execute(`SELECT * FROM questions`);

@@ -88,3 +88,10 @@
 2023-09-29 20:12:03 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
 2023-09-29 20:12:06 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
 2023-09-29 20:12:06 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-30 18:28:11 error: Cannot read properties of undefined (reading 'listAll')
+2023-09-30 18:28:58 error: Cannot read properties of undefined (reading 'listAll')
+2023-09-30 18:29:26 error: Cannot read properties of undefined (reading 'listAll')
+2023-09-30 18:31:42 error: Cannot read properties of undefined (reading 'showAllTablesOfUser')
+2023-09-30 18:35:16 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''%123456_tabela_1%'' at line 1
+2023-09-30 18:41:54 error: TabelsRecord.showAllIndicatedTables is not a function
+2023-09-30 18:43:29 error: table is not defined

@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const middleware = require("../../config/middleware");
-const { QuizzesRecord } = require("../../database/Records/Tabels/TabelsRecord");
+const { TabelsRecord } = require("../../database/Records/Tabels/TabelsRecord");
 const MESSAGES = require("../../config/messages");
 const STATUS_CODES = require("../../config/status-codes");
 const logger = require("../../logs/logger");
+const {QuestionsRecord} = require("../../database/Records/Questions/QuestionsRecord");
 
 router.use(middleware);
 
@@ -12,7 +13,8 @@ router.get("/:tables", async (req, res, next) => {
   const tables = req.params.tables;
 
   try {
-    const quizzesList = await QuizzesRecord.listAll(tables);
+    const quizzesList = await TabelsRecord.listAll(tables);
+
     return res.json({ quizzesList });
   } catch (error) {
     logger.error(error.message);
@@ -41,34 +43,34 @@ router.post("/:tables", async (req, res) => {
   }
 });
 
-router.update("/:tables", async (req, res) => {
-  const tables = req.params.tables;
-  const { question, optionA, optionB, optionC, correctAnswer } = req.body;
-
-  try {
-    await QuizzesRecord.updateRole(
-      question,
-      optionA,
-      optionB,
-      optionC,
-      correctAnswer,
-      tables,
-    );
-    return res.status(200).send("The operation has been successful.");
-  } catch (error) {
-    console.error(error);
-    return res
-      .status(500)
-      .send("Unknown server error. Please contact your administrator.");
-  }
-});
+// router.put("/:tables", async (req, res) => {
+//   const tables = req.params.tables;
+//   const { question, optionA, optionB, optionC, correctAnswer } = req.body;
+//
+//   try {
+//     await QuizzesRecord.updateRole(
+//       question,
+//       optionA,
+//       optionB,
+//       optionC,
+//       correctAnswer,
+//       tables,
+//     );
+//     return res.status(200).send("The operation has been successful.");
+//   } catch (error) {
+//     console.error(error);
+//     return res
+//       .status(500)
+//       .send("Unknown server error. Please contact your administrator.");
+//   }
+// });
 
 router.delete("/:tables/:id", async (req, res, next) => {
-  const id = req.params.id;
+  const id = req.params.id;  //TODO id must by uuid!
   const tables = req.params.tables;
 
   try {
-    await QuizzesRecord.delete(id, tables);
+    await QuestionsRecord.delete(tables, id);
     return res.status(200).send("The operation has been successful.");
   } catch (error) {
     console.error(error);

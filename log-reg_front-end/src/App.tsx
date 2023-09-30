@@ -14,6 +14,7 @@ import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
 import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
 import { MenuCrud } from "./components/AfterLogin/CRUD-question/Menu/MenuCrud";
+import {Insert} from "./components/AfterLogin/CRUD-question/InsertInTable/InsertInTable";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {
@@ -22,6 +23,8 @@ export const App = () => {
       <ToastContainer limit={3} />
       <Routes>
         <Route path="/" element={<Menu />} />
+        <Route path="/player1/:graczOne" element={<Insert />} />
+        <Route path="/insert/:username/:tableName" element={<Insert />} />
         <Route path="/kliknij-link" element={<LookEmail />} />
         <Route path="/crud-question" element={<MenuCrud />} />
         <Route path="/quiz" element={<Quiz />} />

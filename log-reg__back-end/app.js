@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3001;
 const { limiter, errorHandler } = require("./config/config");
 const middleware = require("./config/middleware");
+
 const logRoute = require("./routes/userRoute/loginRoute");
 const adminRoute = require("./routes/adminRoute/adminRoute");
 const regRoute = require("./routes/userRoute/registerRoute");
@@ -16,6 +17,7 @@ const capRoutes = require("./routes/captchaRoute/capRoute");
 const quizeRoute = require("./routes/quizeRoute/quizeRoute");
 const quize20Route = require("./routes/quizeRoute/quize20Route");
 const createTableRoute = require("./routes/createTableRoute/createTableRoute");
+const createQuestionRoute = require("./routes/questionsRoute/questionsRoute");
 
 const MESSAGES = require("./config/messages");
 const STATUS_CODES = require("./config/status-codes");
@@ -32,6 +34,7 @@ app.use("/cap", capRoutes);
 app.use("/quiz", quizeRoute);
 app.use("/quiz-20", quize20Route);
 app.use("/create-table", createTableRoute);
+app.use("/create-question", createQuestionRoute)
 
 app.use(middleware);
 app.use(limiter);
