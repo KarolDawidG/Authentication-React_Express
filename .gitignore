@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # logs
 log-reg__back-end/logs/error.log
+log-reg__back-end/klucze/privateKey.pem
+log-reg__back-end/klucze/publicKey.pem
 
 # dependencies
 /node_modules
