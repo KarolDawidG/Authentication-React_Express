@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const middleware = require("../../config/middleware");
-const { TabelsRecord } = require("../../database/Records/Tabels/TabelsRecord");
 const MESSAGES = require("../../config/messages");
 const STATUS_CODES = require("../../config/status-codes");
 const logger = require("../../logs/logger");
@@ -13,7 +12,7 @@ router.get("/:tables", async (req, res, next) => {
   const tables = req.params.tables;
 
   try {
-    const quizzesList = await TabelsRecord.listAll(tables);
+    const quizzesList = await QuestionsRecord.listAll(tables);
 
     return res.json({ quizzesList });
   } catch (error) {
@@ -28,7 +27,7 @@ router.post("/:tables", async (req, res) => {
 
 
   try {
-    const insertId = await TabelsRecord.insertQuestion(tableName, question, optionA, optionB, optionC, correctAnswer);
+    const insertId = await QuestionsRecord.insertQuestion(tableName, question, optionA, optionB, optionC, correctAnswer);
 
 
     return res.status(200).json({ insertId });

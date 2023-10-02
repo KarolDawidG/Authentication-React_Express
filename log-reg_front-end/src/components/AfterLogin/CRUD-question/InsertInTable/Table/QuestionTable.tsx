@@ -27,20 +27,20 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({ questionsList, tab
       <table className="question-table__table">
         <thead>
           <tr className="question-table__row question-table__header"> 
-            <th className="question-table__cell">ID</th>
+            <th>Indeks</th>
             <th className="question-table__cell">Pytanie</th>
-            <th className="question-table__cell">1</th>
-            <th className="question-table__cell">2</th>
-            <th className="question-table__cell">3</th>
+            <th className="question-table__cell">A</th>
+            <th className="question-table__cell">B</th>
+            <th className="question-table__cell">C</th>
             <th className="question-table__cell">Answer</th>
             <th className="question-table__cell">Delete</th>
           </tr>
         </thead>
         <tbody>
           {questionsList ? (
-            questionsList.map((question) => (
+            questionsList.map((question, index) => (
               <tr key={question.id} className="question-table__row">
-                <td className="question-table__cell">{question.id}</td>
+                <td className="question-table__cell">{index + 1}</td>
                 <td className="question-table__cell">{question.question}</td>
                 <td className="question-table__cell">{question.optionA}</td>
                 <td className="question-table__cell">{question.optionB}</td>

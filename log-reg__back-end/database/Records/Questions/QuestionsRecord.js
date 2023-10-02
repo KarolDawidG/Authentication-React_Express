@@ -1,3 +1,5 @@
+const {pool} = require("../../db");
+const { v4: uuidv4 } = require("uuid");
 const { performTransaction } = require("../performTransaction");
 
 class QuestionsRecord {
@@ -10,15 +12,22 @@ class QuestionsRecord {
     this.correctAnswer = obj.correctAnswer;
   }
 
+  static async listAll(table) {
+    const sql = `select * from ${table}`;
+    const [results] = await pool.execute(sql);
+    return results.map((obj) => new QuestionsRecord(obj));
+  }
+
   static async insertQuestion(tableName, question, optionA, optionB, optionC, correctAnswer) {
+    const id = uuidv4();
     return performTransaction(async (connection) => {
-      const query = "INSERT INTO ?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)";
-      const values = [tableName, question, optionA, optionB, optionC, correctAnswer];
+      const query = "INSERT INTO " + tableName + " (id, question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?, ?)";
+      const values = [id, question, optionA, optionB, optionC, correctAnswer];
       const [result] = await connection.execute(query, values);
       return result.insertId;
     });
   }
-
+  
   static async delete(table, id) {
     return performTransaction(async (connection) => {
       const sql = "DELETE FROM " + table + " WHERE id = ?;";
@@ -26,11 +35,6 @@ class QuestionsRecord {
     });
   }
 
-
-  // static async listAll() {
-  //   const [results] = await pool.execute(`SELECT * FROM questions`);
-  //   return results.map((obj) => new QuestionsRecord(obj));
-  // }
 }
 
 module.exports = {

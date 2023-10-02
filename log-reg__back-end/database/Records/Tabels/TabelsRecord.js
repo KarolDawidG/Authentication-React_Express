@@ -1,7 +1,4 @@
 const { performTransaction } = require("../performTransaction");
-const {pool} = require("../../db");
-
-
 
 class TabelsRecord {
 
@@ -21,11 +18,9 @@ class TabelsRecord {
         FROM information_schema.tables
         WHERE table_schema = DATABASE() AND table_name = ?;
       `;
-
       const [checkResult] = await connection.execute(checkTableExistsQuery, [
         tableName,
       ]);
-
       return checkResult[0].tableExists === 1;
     });
   }
@@ -34,7 +29,7 @@ class TabelsRecord {
     return performTransaction(async (connection) => {
       const sql = `
         CREATE TABLE IF NOT EXISTS ${tableName} (
-          id INT AUTO_INCREMENT PRIMARY KEY,
+          id varchar(36) NOT NULL PRIMARY KEY,
           question TEXT NOT NULL,
           optionA TEXT NOT NULL,
           optionB TEXT NOT NULL,
@@ -60,22 +55,6 @@ class TabelsRecord {
         return result.map((row) => Object.values(row)[0]);
     });
   }
-
-  static async listAll(table) {
-    const sql = `select * from ${table}`;
-    const [results] = await pool.execute(sql);
-    return results.map((obj) => new TabelsRecord(obj));
-  }
-
-  static async insertQuestion(tableName, question, optionA, optionB, optionC, correctAnswer) {
-    return performTransaction(async (connection) => {
-      const query = "INSERT INTO " + tableName + " (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)";
-      const values = [question, optionA, optionB, optionC, correctAnswer];
-      const [result] = await connection.execute(query, values);
-      return result.insertId;
-    });
-  }
-  
 
 }
 

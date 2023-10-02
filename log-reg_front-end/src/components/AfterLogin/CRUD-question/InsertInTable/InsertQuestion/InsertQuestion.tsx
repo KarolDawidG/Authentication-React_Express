@@ -9,6 +9,7 @@ interface InsertQuestionProps {
 }
 
 export const InsertQuestion: React.FC<InsertQuestionProps> = ({ tableName }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     question: "",
     optionA: "",
@@ -16,7 +17,7 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({ tableName }) => 
     optionC: "",
     correctAnswer: "",
   });
-  const navigate = useNavigate();
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
