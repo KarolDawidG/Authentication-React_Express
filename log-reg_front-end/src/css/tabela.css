@@ -27,7 +27,7 @@ tr {
   transition: background-color 0.2s ease-in-out;
 }
 
-tr:hover {
+/* tr:hover {
   background-color: #007bff;
   transform: scale(1.02);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -37,10 +37,10 @@ td:hover {
   background-color: #007bff;
   color: #fff;
   transition: all 0.3s ease-in-out;
-}
+} */
 
-th:active {
+/* th:active {
   background-color: #007bff;
   color: #fff;
   transition: all 0.3s ease-in-out;
-}
+} */

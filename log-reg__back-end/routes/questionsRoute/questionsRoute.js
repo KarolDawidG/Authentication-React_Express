@@ -23,20 +23,15 @@ router.get("/:tables", async (req, res, next) => {
 });
 
 router.post("/:tables", async (req, res) => {
-  const tables = req.params.tables;
-  const { question, optionA, optionB, optionC, correctAnswer } = req.body;
+  const tableName = req.params.tables;
+  const {  question, optionA, optionB, optionC, correctAnswer } = req.body;
+
 
   try {
-    await QuizzesRecord.insert(
-      tables,
-      question,
-      optionA,
-      optionB,
-      optionC,
-      correctAnswer,
-    );
+    const insertId = await TabelsRecord.insertQuestion(tableName, question, optionA, optionB, optionC, correctAnswer);
 
-    return res.status(200).send("The post operation has been successful.");
+
+    return res.status(200).json({ insertId });
   } catch (error) {
     logger.error(error.message);
     return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);

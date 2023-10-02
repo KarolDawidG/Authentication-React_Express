@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import './InsertInTable.css';
 import {RedirectBtn} from "../../../Others/RedirectBtn";
 import {removeFirstCharacter, removePart, replaceCharacter} from "../ShowTables/utils/stringHelpers";
 import axios from "axios";
 import {handleNetworkError} from "../../../Authentication/Login/handlers/networkErrorFunctions";
-import {QuestionTable} from "./QuestionTable";
+import {QuestionTable} from "./Table/QuestionTable";
 import {QuestionsListProps} from "../../../Utils/Interfaces/QuestionListProps";
-import {InsertQuestion} from "./InsertQuestion";
+import {InsertQuestion} from "./InsertQuestion/InsertQuestion";
+import { Header } from "./Headers/Header";
 
-export const Insert = () => {
+export const InsertMain = () => {
     const { username, tableName } = useParams();
     const nazwaTabeli = tableName && username ? replaceCharacter(removeFirstCharacter(removePart(tableName, username))) : '';
     const [questionsList, setQuestionsList] = useState<QuestionsListProps[] | null>(null);
@@ -30,10 +30,7 @@ export const Insert = () => {
 
     return (
         <>
-            <div className="insert-container">
-                <p className="insert__p">Zalogowany uzytkownik: {username}</p>
-                <p className="insert__p">Nazwa tabeli: {nazwaTabeli}</p>
-            </div>
+            <Header username={username} nazwaTabeli={nazwaTabeli}/>
             <QuestionTable questionsList={questionsList} tableName={tableName}/>
             <InsertQuestion tableName={tableName}/>
             <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>

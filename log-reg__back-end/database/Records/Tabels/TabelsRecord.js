@@ -61,20 +61,21 @@ class TabelsRecord {
     });
   }
 
-  static async showAllIndicatedTables(table) {
-    return performTransaction(async (connection) => {
-      const sql = `select * from ${table}`;
-      const [result] = await connection.execute(sql);
-
-      return result;
-    });
-  }
-
   static async listAll(table) {
     const sql = `select * from ${table}`;
     const [results] = await pool.execute(sql);
     return results.map((obj) => new TabelsRecord(obj));
   }
+
+  static async insertQuestion(tableName, question, optionA, optionB, optionC, correctAnswer) {
+    return performTransaction(async (connection) => {
+      const query = "INSERT INTO " + tableName + " (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)";
+      const values = [question, optionA, optionB, optionC, correctAnswer];
+      const [result] = await connection.execute(query, values);
+      return result.insertId;
+    });
+  }
+  
 
 }
 

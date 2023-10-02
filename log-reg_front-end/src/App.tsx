@@ -7,14 +7,14 @@ import { AdminPanel } from "./components/Authentication/Admin/AdminPanel";
 import { Users } from "./components/UsersList/Users";
 import { Reset } from "./components/Authentication/Reset/Reset";
 import { BeLogin } from "./components/Authentication/Login/BeLogin";
-import { CorrectLogin } from "./components/AfterLogin/CorrectLogin";
+import { UserPanel } from "./components/AfterLogin/UserPanel";
 import { ToastContainer } from "react-toastify";
 import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
 import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
 import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
 import { MenuCrud } from "./components/AfterLogin/CRUD-question/Menu/MenuCrud";
-import {Insert} from "./components/AfterLogin/CRUD-question/InsertInTable/InsertInTable";
+import {InsertMain} from "./components/AfterLogin/CRUD-question/InsertInTable/InsertMain";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {
@@ -23,8 +23,7 @@ export const App = () => {
       <ToastContainer limit={3} />
       <Routes>
         <Route path="/" element={<Menu />} />
-        <Route path="/player1/:graczOne" element={<Insert />} />
-        <Route path="/insert/:username/:tableName" element={<Insert />} />
+        <Route path="/insert/:username/:tableName" element={<InsertMain />} />
         <Route path="/kliknij-link" element={<LookEmail />} />
         <Route path="/crud-question" element={<MenuCrud />} />
         <Route path="/quiz" element={<Quiz />} />
@@ -32,7 +31,7 @@ export const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
         <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/after-login" element={<CorrectLogin />} />
+        <Route path="/after-login" element={<UserPanel />} />
         <Route path="/users" element={<Users />} />
         <Route path="/reset/:id/:token" element={<Reset />} />
         <Route path="/reset-email" element={<ResetEmail />} />

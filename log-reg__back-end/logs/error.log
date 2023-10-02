@@ -95,3 +95,11 @@
 2023-09-30 18:35:16 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''%123456_tabela_1%'' at line 1
 2023-09-30 18:41:54 error: TabelsRecord.showAllIndicatedTables is not a function
 2023-09-30 18:43:29 error: table is not defined
+2023-10-02 14:27:04 error: TabelsRecord.listAll is not a function
+2023-10-02 14:27:04 error: TabelsRecord.listAll is not a function
+2023-10-02 17:18:43 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-10-02 17:18:46 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-10-02 17:19:10 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1
+2023-10-02 17:19:54 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1
+2023-10-02 17:20:28 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1
+2023-10-02 17:20:32 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1

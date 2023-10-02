@@ -10,26 +10,10 @@ class QuestionsRecord {
     this.correctAnswer = obj.correctAnswer;
   }
 
-  static async insert(
-    tableName,
-    question,
-    optionA,
-    optionB,
-    optionC,
-    correctAnswer,
-  ) {
+  static async insertQuestion(tableName, question, optionA, optionB, optionC, correctAnswer) {
     return performTransaction(async (connection) => {
-      const query =
-        "INSERT INTO ?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)";
-      const values = [
-        tableName,
-        question,
-        optionA,
-        optionB,
-        optionC,
-        correctAnswer,
-      ];
-
+      const query = "INSERT INTO ?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)";
+      const values = [tableName, question, optionA, optionB, optionC, correctAnswer];
       const [result] = await connection.execute(query, values);
       return result.insertId;
     });
@@ -43,10 +27,10 @@ class QuestionsRecord {
   }
 
 
-  static async listAll() {
-    const [results] = await pool.execute(`SELECT * FROM questions`);
-    return results.map((obj) => new QuestionsRecord(obj));
-  }
+  // static async listAll() {
+  //   const [results] = await pool.execute(`SELECT * FROM questions`);
+  //   return results.map((obj) => new QuestionsRecord(obj));
+  // }
 }
 
 module.exports = {

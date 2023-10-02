@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
+import { Header } from "../InsertInTable/Headers/Header";
 
 export const CreateTable = () => {
   const [inputvalue, setInputvalue] = useState<string>("");
@@ -8,6 +9,7 @@ export const CreateTable = () => {
 
   useEffect(() => {
     const savedUsername = localStorage.getItem("user");
+    
     if (savedUsername) {
       setUsername(savedUsername);
     }
@@ -15,9 +17,7 @@ export const CreateTable = () => {
 
   const handleFormSubmit = async () => {
     try {
-      await axios.post(
-        `http://localhost:3001/create-table/${username}/${inputvalue}`,
-      );
+      await axios.post(`http://localhost:3001/create-table/${username}/${inputvalue}`);
     } catch (error: any) {
       handleNetworkError(error);
     }
@@ -29,7 +29,7 @@ export const CreateTable = () => {
 
   return (
     <>
-      <p className="crud-deiscription"> Zalogowany użytkownik: {username}</p>
+      <Header username={username}/>
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"

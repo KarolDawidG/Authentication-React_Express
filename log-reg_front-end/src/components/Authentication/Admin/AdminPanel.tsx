@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ADMIN_ROLE } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
@@ -11,10 +11,6 @@ export const AdminPanel = () => {
   const [isLoading, setIsLoading] = useState(true);
   const redirect = useNavigate();
 
-  const handleLogout = useCallback(() => {
-    localStorage.removeItem("token");
-    redirect(`/login`);
-  }, [redirect]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -46,9 +42,8 @@ export const AdminPanel = () => {
       <div className="container">
         <div className="right-side">
           <div className="redirect-btn">
-            <RedirectBtn to="/">Menu</RedirectBtn>
             <RedirectBtn to="/users">Users</RedirectBtn>
-            <LogoutButton onLogout={handleLogout} />
+            <LogoutButton />
           </div>
         </div>
       </div>
