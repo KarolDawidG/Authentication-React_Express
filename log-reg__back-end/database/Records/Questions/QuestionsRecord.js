@@ -22,7 +22,7 @@ class QuestionsRecord {
     const sql = `SELECT * FROM ${tableName} WHERE id = ?`;
     const [results] = await pool.execute(sql, [id]);
     if (results.length === 0) {
-      return null; // Pytanie o podanym identyfikatorze nie istnieje
+      return null; 
     }
     return new QuestionsRecord(results[0]);
   }

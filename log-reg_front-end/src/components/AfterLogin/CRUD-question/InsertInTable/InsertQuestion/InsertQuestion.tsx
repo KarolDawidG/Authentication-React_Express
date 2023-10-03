@@ -53,38 +53,12 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <LabelInput
-        label="Pytanie"
-        name="question"
-        value={formData.question}
-        onChange={handleChange}
-        required
-      />
-
-      <LabelInput
-        label="Opcja A"
-        name="optionA"
-        value={formData.optionA}
-        onChange={handleChange}
-        required
-      />
-
-      <LabelInput
-        label="Opcja B"
-        name="optionB"
-        value={formData.optionB}
-        onChange={handleChange}
-        required
-      />
-
-      <LabelInput
-        label="Opcja C"
-        name="optionC"
-        value={formData.optionC}
-        onChange={handleChange}
-        required
-      />
-
+      <LabelInput label="Pytanie " name="question" value={formData.question} onChange={handleChange}/>
+      <LabelInput label="Opcja A" name="optionA" value={formData.optionA} onChange={handleChange}/>
+      <LabelInput label="Opcja B" name="optionB" value={formData.optionB} onChange={handleChange}/>
+      <br/>
+      <LabelInput label="Opcja C" name="optionC" value={formData.optionC} onChange={handleChange}/>
+  
       <label className="insert-question-label">
         Poprawna odpowiedź:
         {["A", "B", "C"].map((option) => (
@@ -102,7 +76,7 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
         ))}
       </label>
 
-      <button type="submit">Dodaj pytanie</button>
+      <button className="btn-insert" type="submit">Dodaj pytanie</button>
     </form>
   );
 };

@@ -11,13 +11,25 @@
   }
   
   .rectangle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     background-color: grey;
     color: aliceblue;
     width: 80%;
     height: 60%;
-    padding: 20px;
-    text-align: center;
+    padding: 3%;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
+  .label-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .label__input {
+      width: 250px;
+      height: 40px;
+  }

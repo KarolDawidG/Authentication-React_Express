@@ -1,3 +1,8 @@
 .insert-question-label {
     color: white; 
+    margin-left: 15px;
   }
+
+.btn-insert{
+  margin-left: 15px;
+}

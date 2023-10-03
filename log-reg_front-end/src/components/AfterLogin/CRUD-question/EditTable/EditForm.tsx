@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { LabelInput } from "../InsertInTable/Input/LabelInput";
 import "./EditForm.css";
 import { EditFormProps } from "./EditFormProps";
 import axios from "axios";
 
 export const EditForm: React.FC<EditFormProps> = ({question, onClose, tableName}) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     question: question.question,
     optionA: question.optionA,
@@ -27,8 +29,8 @@ export const EditForm: React.FC<EditFormProps> = ({question, onClose, tableName}
     e.preventDefault();
 
     try {
-      await axios.post(
-        `http://localhost:3001/create-question/${tableName}`,
+      await axios.put(
+        `http://localhost:3001/create-question/${tableName}/${question.id}`,
         formData,
       );
       setFormData({
@@ -38,73 +40,42 @@ export const EditForm: React.FC<EditFormProps> = ({question, onClose, tableName}
         optionC: "",
         correctAnswer: "",
       });
+      navigate(0);
     } catch (error) {
       console.error("Błąd podczas dodawania pytania:", error);
     }
   };
 
   return (
-    <div className="edit-form">
-      <div className="rectangle-overlay">
-        <div className="rectangle-content">
+  <div className="rectangle-overlay">
+    <div className="rectangle-content">
 
-          <form onSubmit={handleSubmit}>
-
-            <LabelInput
-              label="Pytanie"
-              name="question"
-              value={formData.question}
-              onChange={handleChange}
-              required
-            />
-
-            <LabelInput
-              label="Opcja A"
-              name="optionA"
-              value={formData.optionA}
-              onChange={handleChange}
-              required
-            />
-
-            <LabelInput
-              label="Opcja B"
-              name="optionB"
-              value={formData.optionB}
-              onChange={handleChange}
-              required
-            />
-
-            <LabelInput
-              label="Opcja C"
-              name="optionC"
-              value={formData.optionC}
-              onChange={handleChange}
-              required
-            />
-
-            <label className="insert-question-label">
-              Poprawna odpowiedź:
-              {["A", "B", "C"].map((option) => (
-                <span key={option}>
-                  <input
-                    type="radio"
-                    name="correctAnswer"
-                    value={option}
+      <form onSubmit={handleSubmit}>
+        <div className="label-input">
+          <LabelInput label="Pytanie " name="question" value={formData.question} onChange={handleChange}/>
+          <LabelInput label="Opcja A" name="optionA" value={formData.optionA} onChange={handleChange}/>
+          <LabelInput label="Opcja B" name="optionB" value={formData.optionB} onChange={handleChange}/>
+          <LabelInput label="Opcja C" name="optionC" value={formData.optionC} onChange={handleChange}/>
+        
+        
+        <label className="edit-question-label"> Poprawna odpowiedź:
+          {["A", "B", "C"].map((option) => (
+            <span key={option}>
+              <input type="radio" name="correctAnswer" value={option}
                     checked={formData.correctAnswer === option}
                     onChange={handleChange}
                     required
                   />{" "}
                   {option}
-                </span>
-              ))}
-            </label>
-            <button type="submit">Zmień pytanie</button>
-           
+            </span>
+          ))}
+        </label>
+        <button type="submit">Zmień pytanie</button>
+        </div>   
           </form>
           <button onClick={onClose}>Zamknij</button>
         </div>
       </div>
-    </div>
   );
 };
 

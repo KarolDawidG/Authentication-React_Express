@@ -1,0 +1,38 @@
+.user-panel {
+  position: fixed;
+  top: 100px; 
+  left: -150px;
+  transition: left 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 50vh;
+  background-color: #f0f0f0;
+}
+
+.user-panel:hover {
+  left: 0;
+}
+
+.menu {
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-side {
+  color: #f0f0f0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; 
+}
+
+.center-side p {
+  font-size: 24px; 
+}

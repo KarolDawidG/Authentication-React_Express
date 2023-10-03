@@ -8,8 +8,6 @@ interface LabelInputProps {
   onChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
-  required: boolean;
-  maxLength?: number;
 }
 
 export const LabelInput: React.FC<LabelInputProps> = ({
@@ -17,8 +15,6 @@ export const LabelInput: React.FC<LabelInputProps> = ({
   name,
   value,
   onChange,
-  required,
-  maxLength,
 }) => {
   return (
     <label className="label">
@@ -29,8 +25,7 @@ export const LabelInput: React.FC<LabelInputProps> = ({
         name={name}
         value={value}
         onChange={onChange}
-        required={required}
-        maxLength={maxLength}
+        required
       />
     </label>
   );

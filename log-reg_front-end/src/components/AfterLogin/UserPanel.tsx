@@ -7,6 +7,7 @@ import "../AfterLogin/Quiz/QuizMenu.css";
 import { RedirectBtn } from "../Others/RedirectBtn";
 import { Title } from "../Others/Title";
 import { LogoutButton } from "../Others/LogoutButton";
+import './UserPanel.css';
 
 export const UserPanel = () => {
   const redirect = useNavigate();
@@ -56,12 +57,22 @@ export const UserPanel = () => {
   }, [handleTokenRefresh]);
 
   return (
-    <div className="user-panel">
+      <>
       <Title props="User panel" />
-      <RedirectBtn to="/quiz">Wszystkie</RedirectBtn>
-      <RedirectBtn to="/quiz-20">Egzamin</RedirectBtn>
-      <RedirectBtn to="/crud-question">Crud</RedirectBtn>
-      <LogoutButton />
-    </div>
+        <div className="user-panel">
+          <div className="menu">
+            <RedirectBtn to="/quiz">Wszystkie</RedirectBtn>
+            <RedirectBtn to="/quiz-20">Egzamin</RedirectBtn>
+            <RedirectBtn to="/crud-question">Crud</RedirectBtn>
+          </div>
+
+          <LogoutButton />
+        </div>
+
+        <div className="center-side">
+            <h1>Super test</h1>
+            <p>Wybierz odpowiednią opcję, aby stworzyć, edytować lub usunąć test!</p>
+        </div>
+      </>
   );
 };
