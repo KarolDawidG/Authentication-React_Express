@@ -34,7 +34,7 @@ app.use("/cap", capRoutes);
 app.use("/quiz", quizeRoute);
 app.use("/quiz-20", quize20Route);
 app.use("/create-table", createTableRoute);
-app.use("/create-question", createQuestionRoute)
+app.use("/create-question", createQuestionRoute);
 
 app.use(middleware);
 app.use(limiter);

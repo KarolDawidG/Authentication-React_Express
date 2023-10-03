@@ -1,7 +1,6 @@
 const { performTransaction } = require("../performTransaction");
 
 class TabelsRecord {
-
   constructor(obj) {
     this.id = obj.id;
     this.question = obj.question;
@@ -52,10 +51,9 @@ class TabelsRecord {
     return performTransaction(async (connection) => {
       const sql = `SHOW TABLES LIKE '%${user}%';`;
       const [result] = await connection.execute(sql);
-        return result.map((row) => Object.values(row)[0]);
+      return result.map((row) => Object.values(row)[0]);
     });
   }
-
 }
 
 module.exports = {
