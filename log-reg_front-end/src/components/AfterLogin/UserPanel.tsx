@@ -57,11 +57,11 @@ export const UserPanel = () => {
 
   return (
     <div className="user-panel">
-        <Title props="User panel" />
-        <RedirectBtn to="/quiz">Wszystkie</RedirectBtn>
-        <RedirectBtn to="/quiz-20">Egzamin</RedirectBtn>
-        <RedirectBtn to="/crud-question">Crud</RedirectBtn>
-        <LogoutButton/>
+      <Title props="User panel" />
+      <RedirectBtn to="/quiz">Wszystkie</RedirectBtn>
+      <RedirectBtn to="/quiz-20">Egzamin</RedirectBtn>
+      <RedirectBtn to="/crud-question">Crud</RedirectBtn>
+      <LogoutButton />
     </div>
   );
 };

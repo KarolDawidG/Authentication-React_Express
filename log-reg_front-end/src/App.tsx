@@ -14,7 +14,7 @@ import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
 import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
 import { MenuCrud } from "./components/AfterLogin/CRUD-question/Menu/MenuCrud";
-import {InsertMain} from "./components/AfterLogin/CRUD-question/InsertInTable/InsertMain";
+import { InsertMain } from "./components/AfterLogin/CRUD-question/InsertInTable/InsertMain";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {

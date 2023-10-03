@@ -11,7 +11,6 @@ export const AdminPanel = () => {
   const [isLoading, setIsLoading] = useState(true);
   const redirect = useNavigate();
 
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {

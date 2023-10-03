@@ -9,7 +9,7 @@ export const CreateTable = () => {
 
   useEffect(() => {
     const savedUsername = localStorage.getItem("user");
-    
+
     if (savedUsername) {
       setUsername(savedUsername);
     }
@@ -17,7 +17,9 @@ export const CreateTable = () => {
 
   const handleFormSubmit = async () => {
     try {
-      await axios.post(`http://localhost:3001/create-table/${username}/${inputvalue}`);
+      await axios.post(
+        `http://localhost:3001/create-table/${username}/${inputvalue}`,
+      );
     } catch (error: any) {
       handleNetworkError(error);
     }
@@ -29,7 +31,7 @@ export const CreateTable = () => {
 
   return (
     <>
-      <Header username={username}/>
+      <Header username={username} />
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"

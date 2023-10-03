@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { QuestionsListProps } from "../../../../Utils/Interfaces/QuestionListProps";
 import axios from "axios";
 import { handleNetworkError } from "../../../../Authentication/Login/handlers/networkErrorFunctions";
 import { useNavigate } from "react-router-dom";
 import "./QuestionTable.css";
+import { EditForm } from "../../EditTable/EditForm";
 
 interface QuestionTableProps {
   questionsList: QuestionsListProps[] | null;
   tableName: string | undefined;
 }
 
-export const QuestionTable: React.FC<QuestionTableProps> = ({ questionsList, tableName }) => {
+export const QuestionTable: React.FC<QuestionTableProps> = ({
+  questionsList,
+  tableName,
+}) => {
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState<
+    | any
+    | {
+        id: string;
+        question: string;
+        optionA: string;
+        optionB: string;
+        optionC: string;
+        correctAnswer: string;
+      }
+  >();
+
   const navigate = useNavigate();
+
+  const handleEditClick = (question: any) => {
+    setIsEditFormVisible(true);
+    setSelectedQuestion(question);
+  };
 
   const handleDelete = async (tableName: string | undefined, id: number) => {
     try {
-      await axios.delete(`http://localhost:3001/create-question/${tableName}/${id}`);
+      await axios.delete(
+        `http://localhost:3001/create-question/${tableName}/${id}`,
+      );
       navigate(0);
     } catch (error: any) {
       handleNetworkError(error);
@@ -23,10 +47,10 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({ questionsList, tab
   };
 
   return (
-    <div className="question-table"> 
+    <div className="question-table">
       <table className="question-table__table">
         <thead>
-          <tr className="question-table__row question-table__header"> 
+          <tr className="question-table__row question-table__header">
             <th>Indeks</th>
             <th className="question-table__cell">Pytanie</th>
             <th className="question-table__cell">A</th>
@@ -34,6 +58,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({ questionsList, tab
             <th className="question-table__cell">C</th>
             <th className="question-table__cell">Answer</th>
             <th className="question-table__cell">Delete</th>
+            <th className="question-table__cell">Update</th>
           </tr>
         </thead>
         <tbody>
@@ -45,16 +70,40 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({ questionsList, tab
                 <td className="question-table__cell">{question.optionA}</td>
                 <td className="question-table__cell">{question.optionB}</td>
                 <td className="question-table__cell">{question.optionC}</td>
-                <td className="question-table__cell">{question.correctAnswer}</td>
                 <td className="question-table__cell">
-                  <button className="question-table__button" onClick={() => handleDelete(tableName, question.id)}>Delete</button>
+                  {question.correctAnswer}
+                </td>
+                <td className="question-table__cell">
+                  <button
+                    className="question-table__button"
+                    onClick={() => handleDelete(tableName, question.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+                <td className="question-table__cell">
+                  <button
+                    className="btn-update"
+                    onClick={() => handleEditClick(question)}
+                  >
+                    Update
+                  </button>
                 </td>
               </tr>
             ))
           ) : (
             <tr className="question-table__row">
-              <td className="question-table__cell" colSpan={6}>Brak pytań do wyświetlenia.</td>
+              <td className="question-table__cell" colSpan={6}>
+                Brak pytań do wyświetlenia.
+              </td>
             </tr>
+          )}
+          {isEditFormVisible && (
+            <EditForm
+              question={selectedQuestion}
+              tableName={tableName}
+              onClose={() => setIsEditFormVisible(false)}
+            />
           )}
         </tbody>
       </table>

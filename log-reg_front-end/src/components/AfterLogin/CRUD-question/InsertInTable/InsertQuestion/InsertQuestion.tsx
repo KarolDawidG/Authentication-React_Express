@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LabelInput } from "../Input/LabelInput";
-import './InsertQuestion.css';
+import "./InsertQuestion.css";
 
 interface InsertQuestionProps {
   tableName: string | undefined;
 }
 
-export const InsertQuestion: React.FC<InsertQuestionProps> = ({ tableName }) => {
+export const InsertQuestion: React.FC<InsertQuestionProps> = ({
+  tableName,
+}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     question: "",
@@ -17,9 +19,10 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({ tableName }) => 
     optionC: "",
     correctAnswer: "",
   });
-  
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -31,14 +34,16 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({ tableName }) => 
     e.preventDefault();
 
     try {
-      await axios.post(`http://localhost:3001/create-question/${tableName}`, formData);
+      await axios.post(
+        `http://localhost:3001/create-question/${tableName}`,
+        formData,
+      );
       setFormData({
         question: "",
         optionA: "",
         optionB: "",
         optionC: "",
         correctAnswer: "",
-        
       });
       navigate(0);
     } catch (error) {
@@ -80,23 +85,22 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({ tableName }) => 
         required
       />
 
-        <label className="insert-question-label">
+      <label className="insert-question-label">
         Poprawna odpowiedź:
         {["A", "B", "C"].map((option) => (
-            <span key={option}>
+          <span key={option}>
             <input
-                type="radio"
-                name="correctAnswer"
-                value={option}
-                checked={formData.correctAnswer === option}
-                onChange={handleChange}
-                required
+              type="radio"
+              name="correctAnswer"
+              value={option}
+              checked={formData.correctAnswer === option}
+              onChange={handleChange}
+              required
             />{" "}
             {option}
-            </span>
+          </span>
         ))}
-        </label>
-
+      </label>
 
       <button type="submit">Dodaj pytanie</button>
     </form>

@@ -6,12 +6,10 @@ import { notify } from "./Notify";
 import { LOG_OUT, ENDPOINT_LOGOUT } from "../Utils/links";
 import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
 
-
-
 export const LogoutButton: React.FC = () => {
   const redirect = useNavigate();
 
-  const handleLogout = useCallback(async() => {
+  const handleLogout = useCallback(async () => {
     try {
       localStorage.removeItem("token");
       localStorage.removeItem("refreshToken");

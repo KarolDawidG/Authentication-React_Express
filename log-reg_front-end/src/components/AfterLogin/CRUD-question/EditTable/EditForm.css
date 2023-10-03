@@ -1,0 +1,23 @@
+.rectangle-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 36, 36, 0.5); /* Przezroczysty overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .rectangle-content {
+    background-color: grey;
+    color: aliceblue;
+    width: 80%;
+    height: 60%;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
