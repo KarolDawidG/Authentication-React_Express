@@ -12,6 +12,7 @@ import { QuestionTable } from "./Table/QuestionTable";
 import { QuestionsListProps } from "../../../Utils/Interfaces/QuestionListProps";
 import { InsertQuestion } from "./InsertQuestion/InsertQuestion";
 import { Header } from "./Headers/Header";
+import { ImportExport } from "./ImportExport/ImportExport";
 
 export const InsertMain = () => {
   const { username, tableName } = useParams();
@@ -46,6 +47,7 @@ export const InsertMain = () => {
       <QuestionTable questionsList={questionsList} tableName={tableName} />
       <InsertQuestion tableName={tableName} />
       <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
+      <ImportExport tableName={tableName}/>
     </>
   );
 };
