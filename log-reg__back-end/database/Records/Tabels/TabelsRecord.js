@@ -1,4 +1,5 @@
 const { performTransaction } = require("../performTransaction");
+const {pool} = require('../../db');
 
 class TabelsRecord {
   constructor(obj) {
@@ -53,6 +54,12 @@ class TabelsRecord {
       const [result] = await connection.execute(sql);
       return result.map((row) => Object.values(row)[0]);
     });
+  }
+
+  static async listFromTable(table) {
+    const sql = `select question, optionA, optionB, optionC, correctAnswer from ${table}`;
+    const [results] = await pool.execute(sql);
+    return results.map((obj) => new TabelsRecord(obj));
   }
 }
 
