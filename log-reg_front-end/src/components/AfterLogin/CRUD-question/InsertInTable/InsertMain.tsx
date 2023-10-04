@@ -47,7 +47,7 @@ export const InsertMain = () => {
       <QuestionTable questionsList={questionsList} tableName={tableName} />
       <InsertQuestion tableName={tableName} />
       <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
-      <ImportExport tableName={tableName}/>
+      <ImportExport tableName={tableName} />
     </>
   );
 };

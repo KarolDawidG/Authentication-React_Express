@@ -38,6 +38,9 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
         `http://localhost:3001/create-question/${tableName}`,
         formData,
       );
+
+      console.log(formData);
+
       setFormData({
         question: "",
         optionA: "",
@@ -45,7 +48,7 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
         optionC: "",
         correctAnswer: "",
       });
-      navigate(0);
+      //navigate(0);
     } catch (error) {
       console.error("Błąd podczas dodawania pytania:", error);
     }
@@ -53,12 +56,32 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <LabelInput label="Pytanie " name="question" value={formData.question} onChange={handleChange}/>
-      <LabelInput label="Opcja A" name="optionA" value={formData.optionA} onChange={handleChange}/>
-      <LabelInput label="Opcja B" name="optionB" value={formData.optionB} onChange={handleChange}/>
-      <br/>
-      <LabelInput label="Opcja C" name="optionC" value={formData.optionC} onChange={handleChange}/>
-  
+      <LabelInput
+        label="Pytanie "
+        name="question"
+        value={formData.question}
+        onChange={handleChange}
+      />
+      <LabelInput
+        label="Opcja A"
+        name="optionA"
+        value={formData.optionA}
+        onChange={handleChange}
+      />
+      <LabelInput
+        label="Opcja B"
+        name="optionB"
+        value={formData.optionB}
+        onChange={handleChange}
+      />
+      <br />
+      <LabelInput
+        label="Opcja C"
+        name="optionC"
+        value={formData.optionC}
+        onChange={handleChange}
+      />
+
       <label className="insert-question-label">
         Poprawna odpowiedź:
         {["A", "B", "C"].map((option) => (
@@ -76,7 +99,9 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
         ))}
       </label>
 
-      <button className="btn-insert" type="submit">Dodaj pytanie</button>
+      <button className="btn-insert" type="submit">
+        Dodaj pytanie
+      </button>
     </form>
   );
 };

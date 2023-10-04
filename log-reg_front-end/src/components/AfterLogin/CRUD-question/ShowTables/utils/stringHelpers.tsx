@@ -1,5 +1,8 @@
 export const removePart = (text: string, partToRemove: string): string => {
-  return text.replace(partToRemove, "");
+  const lowerCaseText = text.toLowerCase();
+  const lowerCasePartToRemove = partToRemove.toLowerCase();
+
+  return lowerCaseText.replace(lowerCasePartToRemove, "");
 };
 
 export const removeFirstCharacter = (text: string): string => {
