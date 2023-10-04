@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./DataToFile.css";
+import { notify } from "../../../../Others/Notify";
+import {ImportExportProps} from "./ImportExportProps";
 
-interface LoadDataFromFileProps {
-    onClose: () => void; 
-}
-
-export const LoadDataFromFile: React.FC<LoadDataFromFileProps> = ({ onClose }) => {
+export const ImportData: React.FC<ImportExportProps> = ({tableName, onClose }) => {
     const [fileData, setFileData] = useState<string>("");
-
+    const navigate = useNavigate();
+    
     const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
 
@@ -34,6 +34,11 @@ export const LoadDataFromFile: React.FC<LoadDataFromFileProps> = ({ onClose }) =
           const correctAnswer = lines[i + 4]?.trim() || "";
           const postString = lines[i + 5]?.trim() || "";
     
+          if (postString !== "") {
+            notify('Błądny format danych!');
+            return;
+          }
+
           const dataObject = {
             question,
             optionA,
@@ -45,10 +50,22 @@ export const LoadDataFromFile: React.FC<LoadDataFromFileProps> = ({ onClose }) =
     
           jsonData.push(dataObject);
         }
-    
-        console.log(jsonData);
+        saveDataToServer(jsonData);
+
+        setTimeout(() => {
+          navigate(0);
+        }, 1000);
+        
         onClose();
     };
+
+    const saveDataToServer = async (jsonData:any) => {
+        try {
+            await axios.post(`http://localhost:3001/import/${tableName}`, jsonData);
+          } catch (error) {
+            console.error("Błąd podczas dodawania pytania:", error);
+          }
+        };
 
   return (
     <div className="rectangle-overlay">

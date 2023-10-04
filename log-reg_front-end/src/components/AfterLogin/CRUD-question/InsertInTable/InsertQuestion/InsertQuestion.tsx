@@ -8,9 +8,7 @@ interface InsertQuestionProps {
   tableName: string | undefined;
 }
 
-export const InsertQuestion: React.FC<InsertQuestionProps> = ({
-  tableName,
-}) => {
+export const InsertQuestion: React.FC<InsertQuestionProps> = ({tableName}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     question: "",
@@ -38,9 +36,6 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
         `http://localhost:3001/create-question/${tableName}`,
         formData,
       );
-
-      console.log(formData);
-
       setFormData({
         question: "",
         optionA: "",
@@ -48,7 +43,7 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
         optionC: "",
         correctAnswer: "",
       });
-      //navigate(0);
+      navigate(0);
     } catch (error) {
       console.error("Błąd podczas dodawania pytania:", error);
     }

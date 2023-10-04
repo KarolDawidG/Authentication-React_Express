@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { DataToFile } from "./DataToFile";
-import { LoadDataFromFile } from "./LoadDataFromFile";
+import { ExportData } from "./ExportData";
+import { ImportData } from "./ImportData";
 
 interface ImportExportProps {
   tableName: string | undefined;
@@ -17,7 +17,6 @@ export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
   const handleImportClick = () => {
     setImportVisible(true);
   };
-  
 
   return (
     <div className="export-import-panel">
@@ -26,13 +25,14 @@ export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
         <button onClick={handleExportClick}>Eksport</button>
       </div>
       {exportVisible && (
-        <DataToFile
+        <ExportData
             tableName={tableName}
             onClose={() => setExportVisible(false)}
         />
       )}
         {importVisible && (
-        <LoadDataFromFile
+        <ImportData
+            tableName={tableName}
             onClose={() => setImportVisible(false)}/>
     )}
     </div>
