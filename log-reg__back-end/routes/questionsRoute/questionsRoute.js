@@ -44,17 +44,16 @@ router.post("/:tables", async (req, res) => {
   }
 });
 
-// Importy i konfiguracje
-
-// ...
-
 router.put("/:tables/:id", async (req, res) => {
   const id = req.params.id;
   const tableName = req.params.tables;
   const { question, optionA, optionB, optionC, correctAnswer } = req.body;
 
   try {
-    const existingQuestion = await QuestionsRecord.getQuestionById(tableName, id);
+    const existingQuestion = await QuestionsRecord.getQuestionById(
+      tableName,
+      id,
+    );
 
     if (!existingQuestion) {
       return res.status(404).send("Pytanie nie zostało znalezione.");
@@ -74,7 +73,6 @@ router.put("/:tables/:id", async (req, res) => {
     return res.status(500).send("Wystąpił błąd serwera.");
   }
 });
-
 
 router.delete("/:tables/:id", async (req, res, next) => {
   const id = req.params.id;

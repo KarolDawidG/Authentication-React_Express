@@ -26,15 +26,16 @@ export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
       </div>
       {exportVisible && (
         <ExportData
-            tableName={tableName}
-            onClose={() => setExportVisible(false)}
+          tableName={tableName}
+          onClose={() => setExportVisible(false)}
         />
       )}
-        {importVisible && (
+      {importVisible && (
         <ImportData
-            tableName={tableName}
-            onClose={() => setImportVisible(false)}/>
-    )}
+          tableName={tableName}
+          onClose={() => setImportVisible(false)}
+        />
+      )}
     </div>
   );
 };

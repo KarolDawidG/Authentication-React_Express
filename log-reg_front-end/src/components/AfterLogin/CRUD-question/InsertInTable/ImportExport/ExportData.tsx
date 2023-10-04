@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./DataToFile.css";
-import {ImportExportProps} from "./ImportExportProps";
+import "./ImportExport.css";
+import { ImportExportProps } from "./ImportExportProps";
 
-export const ExportData: React.FC<ImportExportProps> = ({tableName, onClose}) => {
-    
+export const ExportData: React.FC<ImportExportProps> = ({
+  tableName,
+  onClose,
+}) => {
   const [tableData, setTableData] = useState([]);
   const [fileName, setFileName] = useState("tableData.txt");
-  
+
   const fetchData = async () => {
     try {
-        const response = await axios.get(`http://localhost:3001/export/${tableName}`);
-        const { data } = response;
-        setTableData(data.tableData);
-      } catch (error) {
-        console.error("Błąd podczas dodawania pytania:", error);
-      }
-    };
+      const response = await axios.get(
+        `http://localhost:3001/export/${tableName}`,
+      );
+      const { data } = response;
+      setTableData(data.tableData);
+    } catch (error) {
+      console.error("Błąd podczas dodawania pytania:", error);
+    }
+  };
 
-    useEffect(() => {
-      fetchData();
-    }, [tableName, fetchData]);
+  useEffect(() => {
+    fetchData();
+  }, [tableName, fetchData]);
 
   const saveDataToFile = () => {
     fetchData();
@@ -35,9 +39,9 @@ export const ExportData: React.FC<ImportExportProps> = ({tableName, onClose}) =>
     const a = document.createElement("a");
     a.href = url;
     a.download = fileName;
-    
+
     a.click();
-    
+
     window.URL.revokeObjectURL(url);
   };
 

@@ -8,7 +8,9 @@ interface InsertQuestionProps {
   tableName: string | undefined;
 }
 
-export const InsertQuestion: React.FC<InsertQuestionProps> = ({tableName}) => {
+export const InsertQuestion: React.FC<InsertQuestionProps> = ({
+  tableName,
+}) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     question: "",

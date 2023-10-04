@@ -26,6 +26,7 @@ router.get("/:username", async (req, res) => {
 router.post("/:username/:testName", async (req, res) => {
   const { username, testName } = req.params;
   const newTabel = username + "_" + testName;
+
   try {
     const tableExists = await TabelsRecord.tableExists(newTabel);
     if (tableExists) {

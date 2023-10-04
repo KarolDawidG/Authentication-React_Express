@@ -18,12 +18,12 @@ const errorHandler = (err, req, res, next) => {
 
 const limiter = rateLimit({
   windowMs: 5 * 60 * 1000, //5 minutes
-  max: 100, // limit each IP to 100 per windowMs
+  max: 1000, // limit each IP to 100 per windowMs
 });
 
 const limiterLogin = rateLimit({
   windowMs: 5 * 60 * 1000, //5 minutes
-  max: 15,
+  max: 50,
 });
 
 const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {

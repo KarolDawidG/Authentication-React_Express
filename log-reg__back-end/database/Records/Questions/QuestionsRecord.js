@@ -22,7 +22,7 @@ class QuestionsRecord {
     const sql = `SELECT * FROM ${tableName} WHERE id = ?`;
     const [results] = await pool.execute(sql, [id]);
     if (results.length === 0) {
-      return null; 
+      return null;
     }
     return new QuestionsRecord(results[0]);
   }
@@ -47,10 +47,44 @@ class QuestionsRecord {
     });
   }
 
+  static async insertQuestionsArray(tableName, questionsArray) {
+    try {
+      for (const questionData of questionsArray) {
+        const { question, optionA, optionB, optionC, correctAnswer } =
+          questionData;
+
+        if (!question || !optionA || !optionB || !optionC || !correctAnswer) {
+          console.log("Pomijam pytanie, które zawiera puste dane.");
+          continue;
+        }
+
+        const id = uuidv4();
+        await performTransaction(async (connection) => {
+          const query =
+            "INSERT INTO " +
+            tableName +
+            " (id, question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?, ?)";
+          const values = [
+            id,
+            question,
+            optionA,
+            optionB,
+            optionC,
+            correctAnswer,
+          ];
+          await connection.execute(query, values);
+        });
+      }
+
+      console.log("Wszystkie pytania zostały dodane.");
+    } catch (error) {
+      console.error("Błąd podczas dodawania pytań do bazy danych:", error);
+    }
+  }
+
   static async updateQuestion(tableName, id, updatedData) {
     return performTransaction(async (connection) => {
-      const query =
-        `UPDATE ${tableName} SET question=?, optionA=?, optionB=?, optionC=?, correctAnswer=? WHERE id=?`;
+      const query = `UPDATE ${tableName} SET question=?, optionA=?, optionB=?, optionC=?, correctAnswer=? WHERE id=?`;
       const values = [
         updatedData.question,
         updatedData.optionA,
@@ -61,7 +95,9 @@ class QuestionsRecord {
       ];
       const [result] = await connection.execute(query, values);
       if (result.affectedRows === 0) {
-        throw new Error("Aktualizacja nie powiodła się. Pytanie nie zostało znalezione.");
+        throw new Error(
+          "Aktualizacja nie powiodła się. Pytanie nie zostało znalezione.",
+        );
       }
     });
   }

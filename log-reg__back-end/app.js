@@ -22,7 +22,8 @@ const createTableRoute = require("./routes/createTableRoute/createTableRoute");
 const createQuestionRoute = require("./routes/questionsRoute/questionsRoute");
 
 // import/export
-const importRoute = require('./routes/importExportRoute/importRoute');
+const importRoute = require("./routes/importExportRoute/importRoute");
+const exportRoute = require("./routes/importExportRoute/exportRoute");
 
 const MESSAGES = require("./config/messages");
 const STATUS_CODES = require("./config/status-codes");
@@ -41,6 +42,7 @@ app.use("/quiz-20", quize20Route);
 app.use("/create-table", createTableRoute);
 app.use("/create-question", createQuestionRoute);
 app.use("/import", importRoute);
+app.use("/export", exportRoute);
 
 app.use(middleware);
 app.use(limiter);
