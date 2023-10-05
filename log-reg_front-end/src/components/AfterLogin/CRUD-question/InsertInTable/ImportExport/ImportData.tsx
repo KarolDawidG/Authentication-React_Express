@@ -5,10 +5,7 @@ import "./ImportExport.css";
 import { notify } from "../../../../Others/Notify";
 import { ImportExportProps } from "./ImportExportProps";
 
-export const ImportData: React.FC<ImportExportProps> = ({
-  tableName,
-  onClose,
-}) => {
+export const ImportData: React.FC<ImportExportProps> = ({tableName, onClose}) => {
   const [fileData, setFileData] = useState<string>("");
   const navigate = useNavigate();
 

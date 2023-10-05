@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LabelInput } from "../InsertInTable/Input/LabelInput";
 import "./EditForm.css";
-import { EditFormProps } from "./EditFormProps";
+import { EditFormProps } from "../../../Utils/Interfaces/EditFormProps";
 import axios from "axios";
 
 export const EditForm: React.FC<EditFormProps> = ({
