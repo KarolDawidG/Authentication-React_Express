@@ -8,13 +8,13 @@ import { RedirectBtn } from "../Others/RedirectBtn";
 import { Title } from "../Others/Title";
 import { LogoutButton } from "../Others/LogoutButton";
 import "./UserPanel.css";
+import { TableList } from "./tableList";
 
 export const UserPanel = () => {
   const redirect = useNavigate();
 
   const handleTokenRefresh = useCallback(async () => {
     const refreshToken = localStorage.getItem("refreshToken");
-
     if (!refreshToken) {
       redirect("/be-login");
       return null;
@@ -56,13 +56,12 @@ export const UserPanel = () => {
     }
   }, [handleTokenRefresh]);
 
+
   return (
     <>
       <Title props="User panel" />
       <div className="user-panel">
         <div className="menu">
-          <RedirectBtn to="/quiz">Wszystkie</RedirectBtn>
-          <RedirectBtn to="/quiz-20">Egzamin</RedirectBtn>
           <RedirectBtn to="/crud-question">Crud</RedirectBtn>
         </div>
 
@@ -71,9 +70,8 @@ export const UserPanel = () => {
 
       <div className="center-side">
         <h1>Super test</h1>
-        <p>
-          Wybierz odpowiednią opcję, aby stworzyć, edytować lub usunąć test!
-        </p>
+        <p>Wybierz test, który chcesz pierdolnąć!</p>
+        <TableList/>
       </div>
     </>
   );

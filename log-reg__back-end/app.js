@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 const PORT = 3001;
+const {initializeDatabase} = require('./database/initializeDatabase');
 const { limiter, errorHandler } = require("./config/config");
 const middleware = require("./config/middleware");
-
 const logRoute = require("./routes/userRoute/loginRoute");
 const adminRoute = require("./routes/adminRoute/adminRoute");
 const regRoute = require("./routes/userRoute/registerRoute");
@@ -15,7 +15,6 @@ const capRoutes = require("./routes/captchaRoute/capRoute");
 
 // quiz
 const quizeRoute = require("./routes/quizeRoute/quizeRoute");
-const quize20Route = require("./routes/quizeRoute/quize20Route");
 
 //CRUD
 const createTableRoute = require("./routes/createTableRoute/createTableRoute");
@@ -38,7 +37,6 @@ app.use("/reset", resetRoute);
 app.use("/forgot", forgotRoute);
 app.use("/cap", capRoutes);
 app.use("/quiz", quizeRoute);
-app.use("/quiz-20", quize20Route);
 app.use("/create-table", createTableRoute);
 app.use("/create-question", createQuestionRoute);
 app.use("/import", importRoute);
@@ -52,6 +50,14 @@ app.get("/", (req, res) => {
   return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
 });
 
-app.listen(PORT, () => {
-  logger.info(`${MESSAGES.SERVER_STARTED} ${PORT}`);
-});
+
+(async () => {
+  try {
+    await initializeDatabase();
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+})();

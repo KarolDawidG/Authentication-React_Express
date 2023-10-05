@@ -10,8 +10,6 @@ import { BeLogin } from "./components/Authentication/Login/BeLogin";
 import { UserPanel } from "./components/AfterLogin/UserPanel";
 import { ToastContainer } from "react-toastify";
 import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
-import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
-import { Quiz20 } from "./components/AfterLogin/Quiz/Quiz20";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
 import { MenuCrud } from "./components/AfterLogin/CRUD-question/Menu/MenuCrud";
 import { InsertMain } from "./components/AfterLogin/CRUD-question/InsertInTable/InsertMain";
@@ -26,8 +24,6 @@ export const App = () => {
         <Route path="/insert/:username/:tableName" element={<InsertMain />} />
         <Route path="/kliknij-link" element={<LookEmail />} />
         <Route path="/crud-question" element={<MenuCrud />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/quiz-20" element={<Quiz20 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<Regist />} />
         <Route path="/admin" element={<AdminPanel />} />

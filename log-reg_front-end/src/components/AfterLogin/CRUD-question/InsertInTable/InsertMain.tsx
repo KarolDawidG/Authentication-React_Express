@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { RedirectBtn } from "../../../Others/RedirectBtn";
+import { TableListContext } from "../../tableList";
 import {
   removeFirstCharacter,
   removePart,
@@ -43,11 +44,13 @@ export const InsertMain = () => {
 
   return (
     <>
-      <Header username={username} nazwaTabeli={nazwaTabeli} />
-      <QuestionTable questionsList={questionsList} tableName={tableName} />
-      <InsertQuestion tableName={tableName} />
-      <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
-      <ImportExport tableName={tableName} />
+      <TableListContext.Provider value={{username}}>
+          <Header nazwaTabeli={nazwaTabeli} />
+          <QuestionTable questionsList={questionsList} tableName={tableName} />
+          <InsertQuestion tableName={tableName} />
+          <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
+          <ImportExport tableName={tableName} />
+      </TableListContext.Provider>
     </>
   );
 };

@@ -5,18 +5,17 @@ const { errorHandler } = require("../../config/config");
 const MESSAGES = require("../../config/messages");
 const STATUS_CODES = require("../../config/status-codes");
 const logger = require("../../logs/logger");
-const { pool } = require("../../config/../database/db");
 
 router.use(middleware);
 router.use(errorHandler);
 
-router.get("/", async (req, res, next) => {
+router.get("/:user", async (req, res) => {
+  const user = req.params;
+  console.log(user);
   try {
-    const connection = await pool.getConnection();
-    const [rows, fields] = await connection.execute("SELECT * FROM questions");
-    connection.release();
 
-    return res.json({ quizeData: rows });
+    
+    return res.status(200);
   } catch (error) {
     logger.error(error.message);
 

@@ -9,7 +9,7 @@ const {
   createQuiz,
 } = require("./dbCreator");
 
-(async () => {
+const initializeDatabase = async () => {
   try {
     await createDatabaseIfNotExists(nameDB);
 
@@ -28,4 +28,8 @@ const {
   } catch (err) {
     console.error(err);
   }
-})();
+};
+
+module.exports = {
+  initializeDatabase,
+};
