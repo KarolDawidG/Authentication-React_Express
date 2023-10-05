@@ -1,7 +1,6 @@
-const { pool } = require('./pool');
+const { pool } = require("./pool");
 
-const createDatabaseIfNotExists = async(databaseName) => {
-
+const createDatabaseIfNotExists = async (databaseName) => {
   try {
     const [rows] = await pool.query("SHOW DATABASES");
     const databases = rows.map((row) => row.Database);
@@ -13,8 +12,8 @@ const createDatabaseIfNotExists = async(databaseName) => {
     console.log(`Database "${databaseName}" created or already exists.`);
   } catch (err) {
     console.error(`Error creating database "${databaseName}":`, err);
-  } 
-}
+  }
+};
 
 module.exports = {
   createDatabaseIfNotExists,

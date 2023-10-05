@@ -1,5 +1,5 @@
 const { performTransaction } = require("../performTransaction");
-const { pool } = require("../../db");
+const { pool } = require("../../pool");
 
 class TabelsRecord {
   constructor(obj) {

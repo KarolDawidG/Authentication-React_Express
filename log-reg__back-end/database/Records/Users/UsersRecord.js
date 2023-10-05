@@ -1,4 +1,4 @@
-const { pool } = require("../../db");
+const { pool } = require("../../pool");
 const { performTransaction } = require("../performTransaction");
 const { validateEmail, validateUserName } = require("../../../config/config");
 const { v4: uuidv4 } = require("uuid");

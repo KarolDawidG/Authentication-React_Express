@@ -1,6 +1,6 @@
-const { pool } = require('./pool');
-const {  nameDB } = require("../config/configENV");
-const { createDatabaseIfNotExists } = require('./createDatabaseIfNotExists');
+const { pool } = require("./pool");
+const { nameDB } = require("../config/configENV");
+const { createDatabaseIfNotExists } = require("./createDatabaseIfNotExists");
 const {
   createAccountsTable,
   createRoot,
@@ -9,9 +9,8 @@ const {
   createQuiz,
 } = require("./dbCreator");
 
-
 (async () => {
-  try {     
+  try {
     await createDatabaseIfNotExists(nameDB);
 
     await pool.query(`USE ${nameDB}`);
@@ -30,4 +29,3 @@ const {
     console.error(err);
   }
 })();
-

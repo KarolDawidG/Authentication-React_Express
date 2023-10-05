@@ -1,6 +1,6 @@
-const { pool } = require("../db");
+const { pool } = require("../pool");
 
-async function performTransaction(callback) {
+const performTransaction = async (callback) => {
   const connection = await pool.getConnection();
   try {
     await connection.beginTransaction();
@@ -15,7 +15,7 @@ async function performTransaction(callback) {
   } finally {
     connection.release();
   }
-}
+};
 
 module.exports = {
   performTransaction,
