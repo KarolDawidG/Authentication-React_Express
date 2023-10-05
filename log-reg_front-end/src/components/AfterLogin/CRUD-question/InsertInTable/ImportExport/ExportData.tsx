@@ -1,17 +1,10 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./ImportExport.css";
 import { ImportExportProps } from "./ImportExportProps";
+import { saveDataToFile } from "./helpers/saveDataToFile ";
 
-interface MyData {
-  question: string;
-  optionA: string;
-  optionB: string;
-  optionC: string;
-  correctAnswer: string;
-}
-
-export const ExportData: React.FC<ImportExportProps> = ({tableName, onClose}) => {
+export const ExportData: React.FC<ImportExportProps> = ({ tableName, onClose }) => {
   const [fileName, setFileName] = useState("tableData.txt");
 
   const fetchData = async () => {
@@ -19,32 +12,12 @@ export const ExportData: React.FC<ImportExportProps> = ({tableName, onClose}) =>
       const response = await axios.get(
         `http://localhost:3001/export/${tableName}`,
       );
-      saveDataToFile(response.data.tableData);
+      saveDataToFile(response.data.tableData, fileName, onClose);
     } catch (error) {
       console.error("Błąd podczas dodawania pytania:", error);
     }
   };
 
-  const saveDataToFile = (txtData: MyData[]) => {
-    const txtDataString = txtData
-      .map((item: MyData) => {
-        return `${item.question}\n${item.optionA}\n${item.optionB}\n${item.optionC}\n${item.correctAnswer}\n\n`;
-      })
-      .join("");
-  
-    const blob = new Blob([txtDataString], { type: "text/plain" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = fileName;
-  
-    a.click();
-  
-    window.URL.revokeObjectURL(url);
-    onClose();
-
-  };
-  
   const handleFileNameChange = (event: any) => {
     setFileName(event.target.value);
   };

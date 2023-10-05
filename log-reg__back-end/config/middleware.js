@@ -1,9 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const bodyParser = require('body-parser');
 const URL = require("./url");
 
 const middleware = express.Router();
+
+middleware.use(bodyParser.json({ limit: '200kb' }));
+middleware.use(bodyParser.urlencoded({ limit: '200kb', extended: true }));
 
 middleware.use(
   cors({

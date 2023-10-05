@@ -24,6 +24,8 @@ export const LabelInput: React.FC<LabelInputProps> = ({
         type="text"
         name={name}
         value={value}
+        minLength={5}
+        maxLength={250}
         onChange={onChange}
         required
       />
