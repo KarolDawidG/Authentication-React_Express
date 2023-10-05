@@ -1,5 +1,6 @@
-const { createPool } = require("mysql2/promise");
-const { hostDB, nameDB, userDB, passDB } = require("../config/configENV");
+const { pool } = require('./pool');
+const {  nameDB } = require("../config/configENV");
+const { createDatabaseIfNotExists } = require('./createDatabaseIfNotExists');
 const {
   createAccountsTable,
   createRoot,
@@ -8,22 +9,11 @@ const {
   createQuiz,
 } = require("./dbCreator");
 
-const pool = createPool({
-  host: hostDB,
-  user: userDB,
-  password: passDB,
-  database: nameDB,
-  namedPlaceholders: true,
-  decimalNumbers: true,
-});
 
 (async () => {
-  try {
-    const [rows] = await pool.query("SHOW DATABASES");
-    const databases = rows.map((row) => row.Database);
-    if (!databases.includes(nameDB)) {
-      await pool.query(`CREATE DATABASE ${nameDB}`);
-    }
+  try {     
+    await createDatabaseIfNotExists(nameDB);
+
     await pool.query(`USE ${nameDB}`);
     const tables = [
       createAccountsTable,
@@ -41,6 +31,3 @@ const pool = createPool({
   }
 })();
 
-module.exports = {
-  pool,
-};
