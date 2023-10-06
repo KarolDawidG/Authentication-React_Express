@@ -5,17 +5,20 @@ const { errorHandler } = require("../../config/config");
 const MESSAGES = require("../../config/messages");
 const STATUS_CODES = require("../../config/status-codes");
 const logger = require("../../logs/logger");
+const { TabelsRecord } = require("../../database/Records/Tabels/TabelsRecord");
+//const { randomizeData } = require("../../utils/functions");
 
 router.use(middleware);
 router.use(errorHandler);
 
-router.get("/:user", async (req, res) => {
-  const user = req.params;
-  console.log(user);
-  try {
+router.get("/:table", async (req, res) => {
+  const { table } = req.params;
 
-    
-    return res.status(200);
+  try {
+    const row = await TabelsRecord.listFromTable(table);
+    //const arrayRandomRows = randomizeData(row);   //only small number of random question to send
+
+    return res.json({ quizeData: row });
   } catch (error) {
     logger.error(error.message);
 

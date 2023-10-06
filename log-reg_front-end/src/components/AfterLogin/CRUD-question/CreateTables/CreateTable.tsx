@@ -11,7 +11,7 @@ export const CreateTable = () => {
   const context = useContext(TableListContext);
 
   useEffect(() => {
-    const username = localStorage.getItem('user');
+    const username = localStorage.getItem("user");
 
     setUsername(username || "");
   }, [context]);

@@ -6,11 +6,10 @@ interface InsertHeaderProps {
   nazwaTabeli?: string;
 }
 
-export const Header: React.FC<InsertHeaderProps> = ({nazwaTabeli}) => {
-
+export const Header: React.FC<InsertHeaderProps> = ({ nazwaTabeli }) => {
   const context = useContext(TableListContext);
-  if(!context) return null;
-  const {username} = context;
+  if (!context) return null;
+  const { username } = context;
 
   return (
     <div className="insert-container">

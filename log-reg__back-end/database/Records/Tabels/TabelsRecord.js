@@ -57,7 +57,7 @@ class TabelsRecord {
   }
 
   static async listFromTable(table) {
-    const sql = `select question, optionA, optionB, optionC, correctAnswer from ${table}`;
+    const sql = `select id, question, optionA, optionB, optionC, correctAnswer from ${table}`;
     const [results] = await pool.execute(sql);
     return results.map((obj) => new TabelsRecord(obj));
   }

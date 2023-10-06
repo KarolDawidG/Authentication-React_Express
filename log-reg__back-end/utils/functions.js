@@ -1,4 +1,4 @@
-const numberOfQuestions = 20;
+const numberOfQuestions = 2;
 
 const generateRandomNumbers = (rows) => {
   const numbers = [];

@@ -56,10 +56,8 @@ export const UserPanel = () => {
     }
   }, [handleTokenRefresh]);
 
-
   return (
     <>
-      <Title props="User panel" />
       <div className="user-panel">
         <div className="menu">
           <RedirectBtn to="/crud-question">Crud</RedirectBtn>
@@ -71,7 +69,7 @@ export const UserPanel = () => {
       <div className="center-side">
         <h1>Super test</h1>
         <p>Wybierz test, który chcesz pierdolnąć!</p>
-        <TableList/>
+        <TableList />
       </div>
     </>
   );

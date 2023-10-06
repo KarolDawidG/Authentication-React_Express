@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { RedirectBtn } from "../../Others/RedirectBtn";
 import { Question } from "./InterfaceQuiz";
 import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
 import "./Quiz.css";
 import { BeLogin } from "../../Authentication/Login/BeLogin";
 import { Option } from "./Utils/Option";
-import { QUIZ } from "../../Utils/links";
 
-export const Quiz: React.FC = () => {
+interface Props {
+  table?: string;
+  onClose: () => void;
+}
+
+export const Quiz: React.FC<Props> = ({ table, onClose }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -20,7 +23,7 @@ export const Quiz: React.FC = () => {
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get(QUIZ);
+      const res = await axios.get(`http://localhost:3001/quiz/${table}`);
       const data = res.data;
       setQuestions(data.quizeData);
     } catch (error: any) {
@@ -54,7 +57,6 @@ export const Quiz: React.FC = () => {
     } else {
       setIsCorrect(false);
     }
-
     setCurrentQuestion(currentQuestion + 1);
     setSelectedOption("");
     setPreviousQuestionAnswered(true);
@@ -82,7 +84,7 @@ export const Quiz: React.FC = () => {
           <button className="restart-button" onClick={handleRestartQuiz}>
             Zagraj jeszcze raz
           </button>
-          <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
+          <button onClick={onClose}>Menu główne</button>
         </div>
       </div>
     );
@@ -91,36 +93,40 @@ export const Quiz: React.FC = () => {
   return (
     <>
       <div className="container">
-        <div className="quiz-question-container">
-          <h1>Pytanie {currentQuestion + 1}:</h1>
-          <p className="quiz-question">{questions[currentQuestion].question}</p>
+        {questions.length > 0 && (
+          <div className="quiz-question-container">
+            <h1>Pytanie {currentQuestion + 1}:</h1>
+            <p className="quiz-question">
+              {questions[currentQuestion].question}
+            </p>
 
-          <Option
-            label={questions[currentQuestion].optionA}
-            value="A"
-            selected={selectedOption === "A"}
-            onChange={() => setSelectedOption("A")}
-          />
+            <Option
+              label={questions[currentQuestion].optionA}
+              value="A"
+              selected={selectedOption === "A"}
+              onChange={() => setSelectedOption("A")}
+            />
 
-          <br />
+            <br />
 
-          <Option
-            label={questions[currentQuestion].optionB}
-            value="B"
-            selected={selectedOption === "B"}
-            onChange={() => setSelectedOption("B")}
-          />
+            <Option
+              label={questions[currentQuestion].optionB}
+              value="B"
+              selected={selectedOption === "B"}
+              onChange={() => setSelectedOption("B")}
+            />
 
-          <br />
+            <br />
 
-          <Option
-            label={questions[currentQuestion].optionC}
-            value="C"
-            selected={selectedOption === "C"}
-            onChange={() => setSelectedOption("C")}
-          />
-          <br />
-        </div>
+            <Option
+              label={questions[currentQuestion].optionC}
+              value="C"
+              selected={selectedOption === "C"}
+              onChange={() => setSelectedOption("C")}
+            />
+            <br />
+          </div>
+        )}
 
         <div className="answers">
           {isCorrect && <p className="correct-answer">Odpowiedź poprawna!</p>}
@@ -152,7 +158,7 @@ export const Quiz: React.FC = () => {
             )}
           </div>
 
-          <RedirectBtn to="/after-login">Menu główne</RedirectBtn>
+          <button onClick={onClose}>Menu główne</button>
         </div>
       </div>
     </>

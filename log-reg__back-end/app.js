@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 3001;
-const {initializeDatabase} = require('./database/initializeDatabase');
+const { initializeDatabase } = require("./database/initializeDatabase");
 const { limiter, errorHandler } = require("./config/config");
 const middleware = require("./config/middleware");
 const logRoute = require("./routes/userRoute/loginRoute");
@@ -49,7 +49,6 @@ app.use(errorHandler);
 app.get("/", (req, res) => {
   return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);
 });
-
 
 (async () => {
   try {

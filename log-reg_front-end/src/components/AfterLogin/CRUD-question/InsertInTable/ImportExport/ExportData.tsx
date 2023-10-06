@@ -4,7 +4,10 @@ import "./ImportExport.css";
 import { ImportExportProps } from "./ImportExportProps";
 import { saveDataToFile } from "./helpers/saveDataToFile ";
 
-export const ExportData: React.FC<ImportExportProps> = ({ tableName, onClose }) => {
+export const ExportData: React.FC<ImportExportProps> = ({
+  tableName,
+  onClose,
+}) => {
   const [fileName, setFileName] = useState("tableData.txt");
 
   const fetchData = async () => {

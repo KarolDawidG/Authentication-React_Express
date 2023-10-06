@@ -44,12 +44,12 @@ export const InsertMain = () => {
 
   return (
     <>
-      <TableListContext.Provider value={{username}}>
-          <Header nazwaTabeli={nazwaTabeli} />
-          <QuestionTable questionsList={questionsList} tableName={tableName} />
-          <InsertQuestion tableName={tableName} />
-          <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
-          <ImportExport tableName={tableName} />
+      <TableListContext.Provider value={{ username }}>
+        <Header nazwaTabeli={nazwaTabeli} />
+        <QuestionTable questionsList={questionsList} tableName={tableName} />
+        <InsertQuestion tableName={tableName} />
+        <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
+        <ImportExport tableName={tableName} />
       </TableListContext.Provider>
     </>
   );
