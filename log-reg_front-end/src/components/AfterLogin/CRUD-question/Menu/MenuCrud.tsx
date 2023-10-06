@@ -7,6 +7,7 @@ import { RedirectBtn } from "../../../Others/RedirectBtn";
 export const MenuCrud = () => {
   return (
     <>
+    
       <CreateTable />
       <ShowTables />
       <RedirectBtn to="/after-login">Menu</RedirectBtn>

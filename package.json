@@ -3,6 +3,7 @@
     "nodemon": "^3.0.1"
   },
   "scripts": {
+    "prettier": "npx prettier --write \"**/*.js\" --ignore-path .prettierignore && (echo Script completed successfully. All files have been scanned by Prettier. && echo.)",
     "backend": "cd ./log-reg__back-end && npm run start",
     "frontend": "cd ./log-reg_front-end && npm run start",
     "log": "git log --oneline"

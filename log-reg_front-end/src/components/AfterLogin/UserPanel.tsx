@@ -4,11 +4,9 @@ import { notify } from "../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_REFRESH } from "../Utils/links";
 import "../AfterLogin/Quiz/QuizMenu.css";
-import { RedirectBtn } from "../Others/RedirectBtn";
-import { Title } from "../Others/Title";
-import { LogoutButton } from "../Others/LogoutButton";
 import "./UserPanel.css";
 import { TableList } from "./tableList";
+import { NavBar } from "./NavBar";
 
 export const UserPanel = () => {
   const redirect = useNavigate();
@@ -58,17 +56,11 @@ export const UserPanel = () => {
 
   return (
     <>
-      <div className="user-panel">
-        <div className="menu">
-          <RedirectBtn to="/crud-question">Crud</RedirectBtn>
-        </div>
-
-        <LogoutButton />
-      </div>
+      <NavBar/>
 
       <div className="center-side">
         <h1>Super test</h1>
-        <p>Wybierz test, który chcesz pierdolnąć!</p>
+        <p>Wybierz test!</p>
         <TableList />
       </div>
     </>
