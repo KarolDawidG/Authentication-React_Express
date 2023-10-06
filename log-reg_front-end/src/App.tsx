@@ -13,6 +13,7 @@ import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
 import { MenuCrud } from "./components/AfterLogin/CRUD-question/MenuCrud/MenuCrud";
 import { InsertMain } from "./components/AfterLogin/CRUD-question/InsertInTable/InsertMain";
+import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {
@@ -21,6 +22,7 @@ export const App = () => {
       <ToastContainer limit={3} />
       <Routes>
         <Route path="/" element={<Menu />} />
+        <Route path="/quiz/:tableName" element={<Quiz/>} />
         <Route path="/insert/:username/:tableName" element={<InsertMain />} />
         <Route path="/kliknij-link" element={<LookEmail />} />
         <Route path="/crud-question" element={<MenuCrud />} />

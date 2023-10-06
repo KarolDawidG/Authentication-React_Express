@@ -1,0 +1,16 @@
+ .ul {
+    color: aliceblue;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .li {
+    margin-bottom: 10px;
+  }
+
+  .white-text {
+    color: white;
+  }
+  
+
+  

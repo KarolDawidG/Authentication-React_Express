@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Question } from "./InterfaceQuiz";
-import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
 import "./Quiz.css";
 import { BeLogin } from "../../Authentication/Login/BeLogin";
 import { Option } from "./Utils/Option";
-
-interface Props {
-  table?: string;
-  onClose: () => void;
+import { RedirectBtn } from "../../Others/RedirectBtn";
+import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
+import { NavBar } from "../MainMenu/NavBar/NavBar";
+import { Header } from "../MainMenu/Headers/Header";
+enum AnswerOption {
+  A = "A",
+  B = "B",
+  C = "C",
 }
 
-export const Quiz: React.FC<Props> = ({ table, onClose }) => {
+export const Quiz: React.FC = () => {
+  const { tableName } = useParams();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -21,26 +26,18 @@ export const Quiz: React.FC<Props> = ({ table, onClose }) => {
   const [previousQuestionAnswered, setPreviousQuestionAnswered] =
     useState<boolean>(false);
 
-  const handleFetch = async () => {
-    try {
-      const res = await axios.get(`http://localhost:3001/quiz/${table}`);
-      const data = res.data;
-      setQuestions(data.quizeData);
-    } catch (error: any) {
-      handleNetworkError(error);
-    }
-  };
-
-  useEffect(() => {
-    try {
-      handleFetch();
-    } catch (error: any) {
-      handleNetworkError(error);
-    }
-
-    const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token);
-  }, []);
+    useEffect(() => {
+      const token = localStorage.getItem("token");
+      setIsAuthenticated(!!token);
+      axios
+        .get(`http://localhost:3001/quiz/${tableName}`)
+        .then((response) => {
+          setQuestions(response.data.quizeData);
+        })
+        .catch((error) => {
+          handleNetworkError(error);
+        });
+    }, [tableName]);
 
   const handleRestartQuiz = () => {
     setCurrentQuestion(0);
@@ -77,6 +74,9 @@ export const Quiz: React.FC<Props> = ({ table, onClose }) => {
 
   if (currentQuestion >= questions.length) {
     return (
+<>
+    <NavBar/>
+    <Header/>
       <div className="container">
         <div className="quiz-finished">
           <h1>Quiz zakończony!</h1>
@@ -84,14 +84,17 @@ export const Quiz: React.FC<Props> = ({ table, onClose }) => {
           <button className="restart-button" onClick={handleRestartQuiz}>
             Zagraj jeszcze raz
           </button>
-          <button onClick={onClose}>Menu główne</button>
+          <RedirectBtn to="/after-login">Menu</RedirectBtn>
         </div>
       </div>
+</>
     );
   }
 
   return (
-    <>
+  <>
+    <NavBar/>
+    <Header/>
       <div className="container">
         {questions.length > 0 && (
           <div className="quiz-question-container">
@@ -102,27 +105,27 @@ export const Quiz: React.FC<Props> = ({ table, onClose }) => {
 
             <Option
               label={questions[currentQuestion].optionA}
-              value="A"
-              selected={selectedOption === "A"}
-              onChange={() => setSelectedOption("A")}
+              value={AnswerOption.A}
+              selected={selectedOption === AnswerOption.A}
+              onChange={() => setSelectedOption(AnswerOption.A)}
             />
 
             <br />
 
             <Option
               label={questions[currentQuestion].optionB}
-              value="B"
-              selected={selectedOption === "B"}
-              onChange={() => setSelectedOption("B")}
+              value={AnswerOption.B}
+              selected={selectedOption === AnswerOption.B}
+              onChange={() => setSelectedOption(AnswerOption.B)}
             />
 
             <br />
 
             <Option
               label={questions[currentQuestion].optionC}
-              value="C"
-              selected={selectedOption === "C"}
-              onChange={() => setSelectedOption("C")}
+              value={AnswerOption.C}
+              selected={selectedOption === AnswerOption.C}
+              onChange={() => setSelectedOption(AnswerOption.C)}
             />
             <br />
           </div>
@@ -158,9 +161,9 @@ export const Quiz: React.FC<Props> = ({ table, onClose }) => {
             )}
           </div>
 
-          <button onClick={onClose}>Menu główne</button>
+          <RedirectBtn to="/after-login">Back</RedirectBtn>
         </div>
       </div>
-    </>
+  </>
   );
 };

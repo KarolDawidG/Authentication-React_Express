@@ -5,13 +5,12 @@ import {
   removePart,
   replaceCharacter,
 } from "../CRUD-question/ShowTables/utils/stringHelpers";
-import { Quiz } from "../Quiz/Quiz";
+import { Link } from "react-router-dom";
+import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
 
 export const TableList = () => {
   const [tableNames, setTableNames] = useState([]);
   const [username, setUsername] = useState("");
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [selectedTableName, setSelectedTableName] = useState();
 
   useEffect(() => {
     const savedUsername = localStorage.getItem("user");
@@ -29,34 +28,22 @@ export const TableList = () => {
         setTableNames(tableNamesArray);
       })
       .catch((error) => {
-        console.error(error);
+        handleNetworkError(error);
       });
   }, []);
 
-  const renderQuiz = (tableName: any) => {
-    setSelectedTableName(tableName);
-    setShowQuiz(true);
-  };
 
   return (
     <>
-      
-        {showQuiz ? (
-          <Quiz table={selectedTableName} onClose={() => setShowQuiz(false)} />
-        ) : (
-          <ul>
-            {tableNames.map((tableName) => (
-              <li key={tableName}>
-                <button onClick={() => renderQuiz(tableName)}>
-                  {replaceCharacter(
-                    removeFirstCharacter(removePart(tableName, username)),
-                  )}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      
+      <ul>
+        {tableNames.map((tableName) => (
+          <li key={tableName}>
+            <Link to={`/quiz/${tableName}`}>
+              <button>{replaceCharacter(removeFirstCharacter(removePart(tableName, username)))}</button>
+            </Link>
+          </li>
+          ))}
+      </ul>
     </>
   );
 };
