@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LabelInput } from "../InsertInTable/Input/LabelInput";
-import "./EditForm.css";
+import { Input } from "../InsertInTable/Input/Input";
 import { EditFormProps } from "../../../Utils/Interfaces/EditFormProps";
 import axios from "axios";
 
@@ -55,25 +54,25 @@ export const EditForm: React.FC<EditFormProps> = ({
       <div className="rectangle-content">
         <form onSubmit={handleSubmit}>
           <div className="label-input">
-            <LabelInput
+            <Input
               label="Pytanie "
               name="question"
               value={formData.question}
               onChange={handleChange}
             />
-            <LabelInput
+            <Input
               label="Opcja A"
               name="optionA"
               value={formData.optionA}
               onChange={handleChange}
             />
-            <LabelInput
+            <Input
               label="Opcja B"
               name="optionB"
               value={formData.optionB}
               onChange={handleChange}
             />
-            <LabelInput
+            <Input
               label="Opcja C"
               name="optionC"
               value={formData.optionC}

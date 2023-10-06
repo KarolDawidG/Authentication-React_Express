@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { RedirectBtn } from "../../../Others/RedirectBtn";
-import { TableListContext } from "../../tableList";
 import {
   removeFirstCharacter,
   removePart,
@@ -11,9 +10,9 @@ import axios from "axios";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
 import { QuestionTable } from "./Table/QuestionTable";
 import { QuestionsListProps } from "../../../Utils/Interfaces/QuestionListProps";
-import { InsertQuestion } from "./InsertQuestion/InsertQuestion";
-import { Header } from "./Headers/Header";
+import { Header } from "../../MainMenu/Headers/Header";
 import { ImportExport } from "./ImportExport/ImportExport";
+import { NavBar } from "../../MainMenu/NavBar/NavBar";
 
 export const InsertMain = () => {
   const { username, tableName } = useParams();
@@ -44,13 +43,11 @@ export const InsertMain = () => {
 
   return (
     <>
-      <TableListContext.Provider value={{ username }}>
+        <NavBar/>
         <Header nazwaTabeli={nazwaTabeli} />
         <QuestionTable questionsList={questionsList} tableName={tableName} />
-        <InsertQuestion tableName={tableName} />
         <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
         <ImportExport tableName={tableName} />
-      </TableListContext.Provider>
     </>
   );
 };

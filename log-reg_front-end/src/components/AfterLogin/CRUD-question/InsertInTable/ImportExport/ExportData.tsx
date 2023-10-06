@@ -28,10 +28,8 @@ export const ExportData: React.FC<ImportExportProps> = ({
   return (
     <div className="rectangle-overlay">
       <div className="rectangle-content">
-        <div>
           <label>Nazwa pliku:</label>
           <input type="text" value={fileName} onChange={handleFileNameChange} />
-        </div>
         <button onClick={fetchData}>Zapisz do pliku</button>
         <button onClick={onClose}>Zamknij</button>
       </div>

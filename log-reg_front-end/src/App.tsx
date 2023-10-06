@@ -11,7 +11,7 @@ import { UserPanel } from "./components/AfterLogin/UserPanel";
 import { ToastContainer } from "react-toastify";
 import { ResetEmail } from "./components/Authentication/Reset/ResetEmail";
 import { LookEmail } from "./components/Authentication/Register/LookEmail";
-import { MenuCrud } from "./components/AfterLogin/CRUD-question/Menu/MenuCrud";
+import { MenuCrud } from "./components/AfterLogin/CRUD-question/MenuCrud/MenuCrud";
 import { InsertMain } from "./components/AfterLogin/CRUD-question/InsertInTable/InsertMain";
 // import LogRocket from 'logrocket';   todo
 

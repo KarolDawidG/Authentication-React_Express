@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { LabelInput } from "../Input/LabelInput";
-import "./InsertQuestion.css";
+import { Input } from "../Input/Input";
+import { ImportExportProps } from "../ImportExport/ImportExportProps";
 
-interface InsertQuestionProps {
-  tableName: string | undefined;
-}
-
-export const InsertQuestion: React.FC<InsertQuestionProps> = ({
+export const InsertQuestion: React.FC<ImportExportProps> = ({
   tableName,
+  onClose,
 }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -52,53 +49,55 @@ export const InsertQuestion: React.FC<InsertQuestionProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <LabelInput
-        label="Pytanie "
-        name="question"
-        value={formData.question}
-        onChange={handleChange}
-      />
-      <LabelInput
-        label="Opcja A"
-        name="optionA"
-        value={formData.optionA}
-        onChange={handleChange}
-      />
-      <LabelInput
-        label="Opcja B"
-        name="optionB"
-        value={formData.optionB}
-        onChange={handleChange}
-      />
-      <br />
-      <LabelInput
-        label="Opcja C"
-        name="optionC"
-        value={formData.optionC}
-        onChange={handleChange}
-      />
+    <div className="rectangle-overlay">
+      <div className="rectangle-content">
+        <form onSubmit={handleSubmit}>
+        <Input
+          label="Pytanie "
+          name="question"
+          value={formData.question}
+          onChange={handleChange}
+        />
+        <Input
+          label="Opcja A"
+          name="optionA"
+          value={formData.optionA}
+          onChange={handleChange}
+        />
+        <Input
+          label="Opcja B"
+          name="optionB"
+          value={formData.optionB}
+          onChange={handleChange}
+        />
+        
+        <Input
+          label="Opcja C"
+          name="optionC"
+          value={formData.optionC}
+          onChange={handleChange}
+        />
 
-      <label className="insert-question-label">
-        Poprawna odpowiedź:
-        {["A", "B", "C"].map((option) => (
-          <span key={option}>
-            <input
-              type="radio"
-              name="correctAnswer"
-              value={option}
-              checked={formData.correctAnswer === option}
-              onChange={handleChange}
-              required
-            />{" "}
-            {option}
-          </span>
-        ))}
-      </label>
-
-      <button className="btn-insert" type="submit">
-        Dodaj pytanie
-      </button>
-    </form>
+        <label className="insert-question-label">
+          Poprawna odpowiedź:
+          {["A", "B", "C"].map((option) => (
+            <span key={option}>
+              <input
+                type="radio"
+                name="correctAnswer"
+                value={option}
+                checked={formData.correctAnswer === option}
+                onChange={handleChange}
+                required
+              />{" "}
+              {option}
+            </span>
+          ))}
+        </label>
+        <button className="btn-insert" type="submit">Dodaj pytanie</button>
+      </form>
+    <button onClick={onClose}>Zamknij</button>
+      </div>
+    </div>
   );
 };

@@ -1,25 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
-import { Header } from "../InsertInTable/Headers/Header";
-import { TableListContext } from "../../tableList";
 
 export const CreateTable = () => {
   const [inputvalue, setInputvalue] = useState<string>("");
-  const [user, setUsername] = useState<string>("");
-
-  const context = useContext(TableListContext);
-
-  useEffect(() => {
-    const username = localStorage.getItem("user");
-
-    setUsername(username || "");
-  }, [context]);
+  const username = localStorage.getItem("user");
 
   const handleFormSubmit = async () => {
     try {
       await axios.post(
-        `http://localhost:3001/create-table/${user}/${inputvalue}`,
+        `http://localhost:3001/create-table/${username}/${inputvalue}`,
       );
     } catch (error: any) {
       handleNetworkError(error);
@@ -32,8 +22,6 @@ export const CreateTable = () => {
 
   return (
     <>
-      <TableListContext.Provider value={{ username: user }}>
-        <Header />
         <form onSubmit={handleFormSubmit}>
           <input
             type="text"
@@ -43,7 +31,7 @@ export const CreateTable = () => {
           />
           <button type="submit">Stworz</button>
         </form>
-      </TableListContext.Provider>
+      
     </>
   );
 };

@@ -30,7 +30,7 @@ ul {
     font-weight: bold;
 }
 
-/* Styl dla przycisków "Update" i "Delete" */
+/* Styl dla przyciskï¿½w "Update" i "Delete" */
 .btn_container {
     display: flex;
     gap: 10px;
@@ -62,7 +62,7 @@ ul {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     color: black;
-    z-index: 9999; /* Zwi?ksz z-index, aby by? na wierzchu innych elementów */
+    z-index: 9999; 
 }
 
 .updating-box p {

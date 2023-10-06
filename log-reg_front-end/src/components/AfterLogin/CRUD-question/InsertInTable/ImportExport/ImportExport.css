@@ -16,9 +16,30 @@
     align-items: flex-start;
     background-color: grey;
     color: aliceblue;
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
     padding: 3%;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
+  /* LabelInput.css */
+
+.label {
+  color: azure;
+  margin-bottom: 10px;
+}
+
+.label__input {
+  width: 100%; /* Ustaw szerokość na 100% kontenera */
+  height: 30px;
+  padding: 5px; /* Dodaj odstęp wokół pola */
+  border: 1px solid #ccc; /* Dodaj obramowanie */
+  border-radius: 5px; /* Zaokrąglij narożniki */
+}
+
+/* Dodaj styl dla pola tekstowego, gdy jest w stanie focus */
+.label__input:focus {
+  outline: none;
+  border-color: dodgerblue; /* Zmień kolor obramowania w stanie focus */
+}

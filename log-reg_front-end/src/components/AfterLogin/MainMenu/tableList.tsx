@@ -1,18 +1,11 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import {
   removeFirstCharacter,
   removePart,
   replaceCharacter,
-} from "./CRUD-question/ShowTables/utils/stringHelpers";
-import { Quiz } from "./Quiz/Quiz";
-
-interface TableContextType {
-  username?: string | undefined;
-  tableNames?: string[];
-}
-
-export const TableListContext = createContext<TableContextType | null>(null);
+} from "../CRUD-question/ShowTables/utils/stringHelpers";
+import { Quiz } from "../Quiz/Quiz";
 
 export const TableList = () => {
   const [tableNames, setTableNames] = useState([]);
@@ -47,7 +40,7 @@ export const TableList = () => {
 
   return (
     <>
-      <TableListContext.Provider value={{ username, tableNames }}>
+      
         {showQuiz ? (
           <Quiz table={selectedTableName} onClose={() => setShowQuiz(false)} />
         ) : (
@@ -63,7 +56,7 @@ export const TableList = () => {
             ))}
           </ul>
         )}
-      </TableListContext.Provider>
+      
     </>
   );
 };

@@ -5,8 +5,10 @@ import axios from "axios";
 import { ENDPOINT_REFRESH } from "../Utils/links";
 import "../AfterLogin/Quiz/QuizMenu.css";
 import "./UserPanel.css";
-import { TableList } from "./tableList";
-import { NavBar } from "./NavBar";
+import { TableList } from "./MainMenu/tableList";
+import { NavBar } from "./MainMenu/NavBar/NavBar";
+import { RedirectBtn } from "../Others/RedirectBtn";
+import { Header } from "./MainMenu/Headers/Header";
 
 export const UserPanel = () => {
   const redirect = useNavigate();
@@ -57,12 +59,9 @@ export const UserPanel = () => {
   return (
     <>
       <NavBar/>
-
-      <div className="center-side">
-        <h1>Super test</h1>
-        <p>Wybierz test!</p>
-        <TableList />
-      </div>
+      <Header/>
+      <TableList />
+      <RedirectBtn to="/crud-question">Edit tests</RedirectBtn>
     </>
   );
 };

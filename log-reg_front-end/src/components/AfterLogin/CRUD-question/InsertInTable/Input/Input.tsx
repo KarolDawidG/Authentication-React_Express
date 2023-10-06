@@ -1,7 +1,6 @@
 import React from "react";
-import "./LabelInput.css";
 
-interface LabelInputProps {
+interface InputProps {
   label: string;
   name: string;
   value: string;
@@ -10,7 +9,7 @@ interface LabelInputProps {
   ) => void;
 }
 
-export const LabelInput: React.FC<LabelInputProps> = ({
+export const Input: React.FC<InputProps> = ({
   label,
   name,
   value,
@@ -24,8 +23,8 @@ export const LabelInput: React.FC<LabelInputProps> = ({
         type="text"
         name={name}
         value={value}
-        minLength={5}
-        maxLength={250}
+        minLength={3}
+        maxLength={200}
         onChange={onChange}
         required
       />
