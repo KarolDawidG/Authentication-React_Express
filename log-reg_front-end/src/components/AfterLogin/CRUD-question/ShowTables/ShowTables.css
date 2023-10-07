@@ -1,71 +1,27 @@
-/* Styl dla paragrafu */
 .show_tables__p {
     color: wheat;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
 }
 
-/* Styl dla listy tabel */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-/* Styl dla elementu listy tabel */
-.table-name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-}
-
-/* Styl dla nazwy tabeli */
-.table-name span {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Styl dla przycisk�w "Update" i "Delete" */
-.btn_container {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-show {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-show:hover {
-    background-color: #0056b3;
-}
-
-.updating-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 400px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.table-container {
+    max-height: 350px;
+    overflow-y: auto;
+    width: 50%;
+  }
+  
+  th {
     text-align: center;
-    color: black;
-    z-index: 9999; 
-}
+    padding: 4px;
+    
+  }
+  
+  td {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
 
-.updating-box p {
-    margin: 0;
-}
+ 
+  
+
+
 

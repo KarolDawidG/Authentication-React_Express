@@ -1,16 +1,23 @@
- .ul {
-    color: aliceblue;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .li {
-    margin-bottom: 10px;
-  }
+h1{
+  color: #ccc;
+  padding: 10px;
+}
 
-  .white-text {
-    color: white;
-  }
-  
+.ul__table-list {
+  display: flex;
+  margin: 5px;
+  justify-content: left;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
 
-  
+.li__table-list {
+  margin-bottom: 10px;
+}
+
+.li__table-list:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out;
+}

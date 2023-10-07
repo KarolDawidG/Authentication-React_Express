@@ -45,27 +45,34 @@ export const ShowTables = () => {
 
   return (
     <>
-      <p className="show_tables__p"> Lista dostepnych tabel: </p>
-      <ul>
-        {tableNames.map((tableName) => (
-          <li className="table-name" key={tableName}>
-            {replaceCharacter(
-              removeFirstCharacter(removePart(tableName, username)),
-            )}
-            <div className="btn_container">
-              <RedirectBtn to={`/insert/${username}/${tableName}`}>
-                Create
-              </RedirectBtn>
-              <button
-                className="btn-show"
-                onClick={() => handleDelete(tableName)}
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <p className="show_tables__p"> Lista dostępnych tabel: </p>
+      <div className="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nazwa tabeli</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableNames.map((tableName) => (
+            <tr key={tableName}>
+              <td>
+                {replaceCharacter(
+                  removeFirstCharacter(removePart(tableName, username))
+                )}
+              </td>
+              <td>
+                <div className="btn_container">
+                  <RedirectBtn to={`/insert/${username}/${tableName}`}>Create</RedirectBtn><br/>
+                  <button className="btn-show"onClick={() => handleDelete(tableName)}>Delete</button>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
     </>
   );
 };

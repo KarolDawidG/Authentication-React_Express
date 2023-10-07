@@ -7,6 +7,7 @@ import {
 } from "../CRUD-question/ShowTables/utils/stringHelpers";
 import { Link } from "react-router-dom";
 import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
+import './TableList.css';
 
 export const TableList = () => {
   const [tableNames, setTableNames] = useState([]);
@@ -34,16 +35,17 @@ export const TableList = () => {
 
 
   return (
-    <>
-      <ul>
+    <div className="container__table-list">
+      <h1>Wybierz test: </h1>
+      <ul className="ul__table-list">
         {tableNames.map((tableName) => (
-          <li key={tableName}>
+          <li className=" li__table-list" key={tableName}>
             <Link to={`/quiz/${tableName}`}>
               <button>{replaceCharacter(removeFirstCharacter(removePart(tableName, username)))}</button>
             </Link>
           </li>
           ))}
       </ul>
-    </>
+    </div>
   );
 };
