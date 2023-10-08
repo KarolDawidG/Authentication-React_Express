@@ -4,4 +4,5 @@ export interface LoginContextType {
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   setUsername: (username: string) => void;
   setPassword: (password: string) => void;
+  onClose: () => void;
 }

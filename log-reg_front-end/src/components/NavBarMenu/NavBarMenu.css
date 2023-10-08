@@ -1,0 +1,110 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  background-color: blue;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.navbar__logo {
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+
+.navbar__ul {
+  float: right;
+  margin-right: 20px;
+}
+
+.navbar__ul .navbar__item {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+
+.navbar__ul .navbar__link {
+  color: #f0f0f0;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.navbar__checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+.navbar__login-form {
+  background-color: #2c3e53;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  width: 345px;
+  height: 70%;
+  transition: transform 0.5s ease-in-out;
+  z-index: 999;
+}
+
+.navbar__login-form.show {
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 800px) {
+  .navbar__checkbtn {
+    display: block;
+  }
+  .navbar__ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all 0.5s;
+  }
+  .navbar__ul .navbar__item {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  .navbar__ul .navbar__link {
+    font-size: 20px;
+  }
+  a.active,
+  a:hover {
+    background: none;
+    color: #0082e6;
+  }
+  #check:checked ~ .navbar__ul {
+    left: 0;
+  }
+}

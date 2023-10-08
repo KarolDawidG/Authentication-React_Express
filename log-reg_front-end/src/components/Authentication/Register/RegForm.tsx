@@ -5,12 +5,14 @@ import {
   validateEmail,
   validatePassword,
 } from "../../Utils/FormsUtils/forms-utils";
-import { RegisterContect, CaptchaContext } from "./Regist";
+import { RegisterContect, CaptchaContext } from "./Registration";
 import { REACT_APP_SITE_KEY } from "../../Utils/links";
 import ReCAPTCHA from "react-google-recaptcha";
-import "../../../css/styles.css";
+import "./style.css";
 
-export const RegistForm = () => {
+
+export const RegForm:React.FC = () => {
+
   const context = useContext(RegisterContect);
   const contextCapta = useContext(CaptchaContext);
 
@@ -23,6 +25,7 @@ export const RegistForm = () => {
     setUsername,
     email,
     setEmail,
+    onClose,
   } = context;
   const captchaRef = contextCapta as React.MutableRefObject<ReCAPTCHA | null>;
 
@@ -87,11 +90,13 @@ export const RegistForm = () => {
           required
         />
         <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} ref={captchaRef} />
+        
         <input
           className="login-form__submit"
           type="submit"
           value="Zarejestruj się!"
         />
+        <button className="btn" onClick={onClose}>Zamknij</button>
       </form>
     </>
   );

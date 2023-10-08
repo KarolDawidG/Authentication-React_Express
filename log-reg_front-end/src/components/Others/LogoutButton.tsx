@@ -16,7 +16,7 @@ export const LogoutButton: React.FC = () => {
       localStorage.removeItem("user");
       await axios.get(ENDPOINT_LOGOUT);
       notify(LOG_OUT);
-      redirect(`/login`);
+      redirect(`/`);
     } catch (error: any) {
       handleNetworkError(error);
     }

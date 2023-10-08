@@ -1,9 +1,4 @@
-body {
-  background-color: black;
-}
-
 .title {
-  background-color: black;
   color: white;
   text-align: center;
   font-size: 24px;
@@ -24,10 +19,10 @@ body {
   color: white;
   justify-content: center;
   width: 300px;
-  margin: 0 auto; /* Dodaj ten styl, aby wyśrodkować komponent w poziomie */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Dodaj ten styl, aby wyśrodkować zawartość w pionie */
+  align-items: center;
   padding: 20px;
 }
 
@@ -40,36 +35,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-form__form {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-form__form input {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  
-}
-
-.login-form__submit, button {
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.login-form__submit:hover, button:hover{
-  background-color: lightblue;
-  color: #000;
-}
-
-.login-form__submit:disabled {
-  cursor: not-allowed;
-}
-
 .redirect-btn {
   display: flex;
   justify-content: space-around;
@@ -77,8 +42,8 @@ body {
 }
 
 .redirect-btn button {
-  width: 99px; /* Stała szerokość */
-  height: 45px; /* Stała wysokość */
+  width: 99px;
+  height: 45px;
 }
 
 

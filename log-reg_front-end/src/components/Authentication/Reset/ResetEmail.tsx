@@ -6,6 +6,7 @@ import { ENDPOINT_EMAIL, LINK_RESET } from "../../Utils/links";
 import { Title } from "../../Others/Title";
 import "../../../css/styles.css";
 import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
+import { NavBarMenu } from "../../NavBarMenu/NavBarMenu";
 
 interface FormState {
   email: string;
@@ -46,6 +47,7 @@ export const ResetEmail: React.FC = () => {
 
   return (
     <>
+    <NavBarMenu/>
       <Title props={"Zresetuj hasło"} />
       <div className="container">
         <div className="right-side">
@@ -74,7 +76,6 @@ export const ResetEmail: React.FC = () => {
 
           <div className="redirect-btn">
             <RedirectBtn to="/">Menu</RedirectBtn>
-            <RedirectBtn to="/login">Login</RedirectBtn>
           </div>
         </div>
       </div>

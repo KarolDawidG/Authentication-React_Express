@@ -6,4 +6,5 @@ export interface RegisterContextType {
   setEmail: (email: string) => void;
   setUsername: (username: string) => void;
   setPassword: (password: string) => void;
+  onClose: () => void;
 }

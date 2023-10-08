@@ -6,10 +6,10 @@ export const NavBar = () => {
     <nav className="navbar">
       <input type="checkbox" id="check" />
       <label htmlFor="check" className="checkbtn">
-        <i className="fas fa-bars">|||</i>
+        <i>|||</i>
       </label>
 
-      <label className="logo">Super Testy</label>
+      <label className="logo">Mega-Test</label>
           <ul className="navbar__ul">
               <li>
                 <a href="https://github.com/KarolDawidG">About</a>

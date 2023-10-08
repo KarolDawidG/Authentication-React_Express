@@ -1,0 +1,49 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.btn {
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+}
+  
+  .login-form__form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-form__form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+  }
+  
+  .login-form__submit {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .login-form__submit:hover{
+    background-color: lightblue;
+    color: #000;
+  }
+  
+  .login-form__submit:disabled {
+    cursor: not-allowed;
+  }
+  
+
+
+  

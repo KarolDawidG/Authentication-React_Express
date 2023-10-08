@@ -1,8 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 // import { NotFoundView } from './components/views/menu-views/NotFoundView'; todo
 import { Menu } from "./Menu";
-import { Login } from "./components/Authentication/Login/Login";
-import { Regist } from "./components/Authentication/Register/Regist";
 import { AdminPanel } from "./components/Authentication/Admin/AdminPanel";
 import { Users } from "./components/UsersList/Users";
 import { Reset } from "./components/Authentication/Reset/Reset";
@@ -26,8 +24,6 @@ export const App = () => {
         <Route path="/insert/:username/:tableName" element={<InsertMain />} />
         <Route path="/kliknij-link" element={<LookEmail />} />
         <Route path="/crud-question" element={<MenuCrud />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/regist" element={<Regist />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/after-login" element={<UserPanel />} />
         <Route path="/users" element={<Users />} />

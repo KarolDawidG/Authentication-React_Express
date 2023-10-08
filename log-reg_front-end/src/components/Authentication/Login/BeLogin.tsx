@@ -1,18 +1,11 @@
-import { RedirectBtn } from "../../Others/RedirectBtn";
-import { Title } from "../../Others/Title";
+import { NavBarMenu } from "../../NavBarMenu/NavBarMenu";
 
 export const BeLogin = () => {
   return (
     <>
-      <Title props={"Nie jesteś zalogowany!"} />
+      <NavBarMenu/>
       <div className="container">
-        <div className="right-side">
-          <div className="redirect-btn">
-            <RedirectBtn to="/login">Logowanie</RedirectBtn>
-            <RedirectBtn to="/regist">Rejestracja</RedirectBtn>
-            <RedirectBtn to="/after-login">Cofnij!</RedirectBtn>
-          </div>
-        </div>
+        <h1>Nie jesteś zalogowany!</h1>
       </div>
     </>
   );

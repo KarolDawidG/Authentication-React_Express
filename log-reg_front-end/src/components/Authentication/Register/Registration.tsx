@@ -2,20 +2,23 @@ import React, { useState, createContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ENDPOINT_CAPTCHA } from "../../Utils/links";
-import { RedirectBtn } from "../../Others/RedirectBtn";
 import { RegisterContextType } from "../../Utils/Interfaces/RegisterContextType";
-import { RegistForm } from "./RegistForm";
-import { Title } from "../../Others/Title";
 import { handleReg } from "./handlers/handleSubmit";
 import { ReCAPTCHA } from "react-google-recaptcha";
 import "../../../css/styles.css";
 import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
+import { RegForm } from "./RegForm";
+
+interface Props {
+  onClose: () => void;
+}
 
 export const RegisterContect = createContext<RegisterContextType | null>(null);
 export const CaptchaContext =
   createContext<React.MutableRefObject<ReCAPTCHA | null> | null>(null);
 
-export const Regist: React.FC = () => {
+export const Registration:React.FC<Props> = ({onClose}) => {
+
   const captchaRef = useRef<ReCAPTCHA | null>(null);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -54,19 +57,11 @@ export const Regist: React.FC = () => {
           setEmail,
           setPassword,
           setUsername,
+          onClose,
         }}
       >
-        <CaptchaContext.Provider value={captchaRef}>
-          <Title props={"Rejestracja"} />
-          <div className="container">
-            <div className="right-side">
-              <RegistForm />
-              <div className="redirect-btn">
-                <RedirectBtn to="/">Menu główne</RedirectBtn>
-                <RedirectBtn to="/login">Logowanie</RedirectBtn>
-              </div>
-            </div>
-          </div>
+        <CaptchaContext.Provider value={captchaRef}>            
+              <RegForm />
         </CaptchaContext.Provider>
       </RegisterContect.Provider>
     </>

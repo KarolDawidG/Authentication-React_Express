@@ -9,6 +9,7 @@ import { PasswordStatus } from "./PasswordStatus";
 import { Title } from "../../Others/Title";
 import "../../../css/styles.css";
 import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
+import { NavBarMenu } from "../../NavBarMenu/NavBarMenu";
 
 export const Reset = () => {
   const [password, setPassword1] = useState("");
@@ -52,6 +53,7 @@ export const Reset = () => {
 
   return (
     <>
+      <NavBarMenu />
       <Title props={"Zmiana hasła"} />
       <div className="container">
         <div className="right-side">
@@ -82,7 +84,6 @@ export const Reset = () => {
 
           <div className="redirect-btn">
             <RedirectBtn to="/">Menu główne</RedirectBtn>
-            <RedirectBtn to="/login">Login</RedirectBtn>
           </div>
         </div>
       </div>
