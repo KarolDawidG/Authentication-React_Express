@@ -14,7 +14,7 @@ body {
   background-color: blue;
   height: 100%;
   width: 100%;
-  position: relative;
+  
 }
 
 .navbar__logo {
@@ -77,6 +77,16 @@ body {
   transform: translate(-50%, -50%);
 }
 
+@media (max-width: 952px){
+  label.logo{
+      font-size: 30px;
+      padding-left: 50px;
+  }
+  nav ul li a{
+      font-size: 16px;
+    }
+}
+
 @media (max-width: 800px) {
   .navbar__checkbtn {
     display: block;
@@ -89,7 +99,7 @@ body {
     top: 80px;
     left: -100%;
     text-align: center;
-    transition: all 0.5s;
+    transition: all .5s;
   }
   .navbar__ul .navbar__item {
     display: block;
