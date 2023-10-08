@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ImportExport.css";
 import { ImportExportProps } from "./ImportExportProps";
-import { saveDataToFile } from "./helpers/saveDataToFile ";
+import { saveDataToFile } from "./helpers/saveDataToFile";
 
 export const ExportData: React.FC<ImportExportProps> = ({
   tableName,

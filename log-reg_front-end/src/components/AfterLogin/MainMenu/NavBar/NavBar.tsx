@@ -1,5 +1,4 @@
 import { LogoutButton } from "../../../Others/LogoutButton";
-import { RedirectBtn } from "../../../Others/RedirectBtn";
 import "./NavBar.css";
 
 export const NavBar = () => {
@@ -11,7 +10,7 @@ export const NavBar = () => {
       </label>
 
       <label className="logo">Super Testy</label>
-          <ul>
+          <ul className="navbar__ul">
               <li>
                 <a href="https://github.com/KarolDawidG">About</a>
               </li>
