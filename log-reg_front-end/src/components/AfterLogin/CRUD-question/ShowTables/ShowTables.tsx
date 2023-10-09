@@ -8,6 +8,7 @@ import {
   replaceCharacter,
 } from "./utils/stringHelpers";
 import { RedirectBtn } from "../../../Others/RedirectBtn";
+import { Table, Button, Row, Col } from "react-bootstrap"; // Importujemy komponenty Bootstrapa
 
 export const ShowTables = () => {
   const [tableNames, setTableNames] = useState([]);
@@ -45,33 +46,47 @@ export const ShowTables = () => {
 
   return (
     <>
-      <p className="show_tables__p"> Lista dostępnych tabel: </p>
+      <p style={{ color: "white" }}> Lista dostępnych tabel: </p>
       <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Nazwa tabeli</th>
-            <th>Akcje</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableNames.map((tableName) => (
-            <tr key={tableName}>
-              <td>
-                {replaceCharacter(
-                  removeFirstCharacter(removePart(tableName, username))
-                )}
-              </td>
-              <td>
-                <div className="btn_container">
-                  <RedirectBtn to={`/insert/${username}/${tableName}`}>Create</RedirectBtn><br/>
-                  <button className="btn-show"onClick={() => handleDelete(tableName)}>Delete</button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <div className="table-wrapper">
+          <Table striped bordered hover className="custom-table">
+            <thead>
+              <tr>
+                <th style={{ width: "50%" }}>Nazwa tabeli</th>
+                <th style={{ width: "50%" }}>Akcje</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableNames.map((tableName) => (
+                <tr key={tableName}>
+                  <td>
+                    {replaceCharacter(
+                      removeFirstCharacter(removePart(tableName, username))
+                    )}
+                  </td>
+                  <td>
+                    <Row>
+                      <Col>
+                        <RedirectBtn to={`/insert/${username}/${tableName}`}>
+                          Create
+                        </RedirectBtn>
+                        </Col>
+                      <Col>
+                        <Button
+                          variant="danger"
+                          onClick={() => handleDelete(tableName)}
+                          className="btn-show"
+                        >
+                          Delete
+                        </Button>
+                      </Col>
+                    </Row>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
       </div>
     </>
   );

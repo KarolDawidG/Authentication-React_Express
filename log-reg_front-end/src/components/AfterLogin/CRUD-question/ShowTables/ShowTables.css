@@ -1,27 +1,7 @@
-.show_tables__p {
-    color: wheat;
+.table-wrapper {
+  max-height: 300px; /* Maksymalna wysokość kontenera */
+  overflow-y: auto; /* Pionowe paski przewijania, jeśli tabela jest za długa */
+  width: 50%;
+  margin: 0 auto; /* Centruje tabelę na stronie */
 }
-
-.table-container {
-    max-height: 350px;
-    overflow-y: auto;
-    width: 50%;
-  }
-  
-  th {
-    text-align: center;
-    padding: 4px;
-    
-  }
-  
-  td {
-    text-align: center;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
-
- 
-  
-
-
 

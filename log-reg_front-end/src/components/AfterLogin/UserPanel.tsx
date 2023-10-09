@@ -1,10 +1,10 @@
+import React from "react";
 import { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { notify } from "../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_REFRESH } from "../Utils/links";
-import "../AfterLogin/Quiz/QuizMenu.css";
-import "./UserPanel.css";
+import { Container, Row, Col, Button } from "react-bootstrap"; // Import Bootstrap komponentów
 import { TableList } from "./MainMenu/tableList";
 import { NavBar } from "./MainMenu/NavBar/NavBar";
 import { RedirectBtn } from "../Others/RedirectBtn";
@@ -57,11 +57,17 @@ export const UserPanel = () => {
   }, [handleTokenRefresh]);
 
   return (
-    <>
-      <NavBar/>
-      <Header/>
-      <TableList />
-      <RedirectBtn to="/crud-question">Edit tests</RedirectBtn>
-    </>
+    <Container fluid>
+      <NavBar />
+      <Header />
+      <Row>
+        <Col>
+          <TableList />
+        </Col>
+        <Col xs={3} className="text-right">
+          <RedirectBtn to="/crud-question">Edit tests</RedirectBtn>
+        </Col>
+      </Row>
+    </Container>
   );
 };

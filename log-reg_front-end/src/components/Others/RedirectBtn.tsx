@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 type RedirectBtnProps = {
   to: string;
@@ -9,7 +10,7 @@ type RedirectBtnProps = {
 export const RedirectBtn: React.FC<RedirectBtnProps> = ({ to, children }) => {
   return (
     <Link to={to}>
-      <button>{children}</button>
+      <Button variant="primary">{children}</Button>
     </Link>
   );
 };

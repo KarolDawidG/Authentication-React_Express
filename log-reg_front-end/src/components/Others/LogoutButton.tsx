@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { Button } from "react-bootstrap";
 import { notify } from "./Notify";
 import { LOG_OUT, ENDPOINT_LOGOUT } from "../Utils/links";
 import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
@@ -25,7 +26,9 @@ export const LogoutButton: React.FC = () => {
   return (
     <>
       <ToastContainer />
-      <button onClick={handleLogout}>Logout</button>
+      <Button variant="primary" onClick={handleLogout}>
+        Logout
+      </Button>
     </>
   );
 };
