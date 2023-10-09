@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Form, Button } from "react-bootstrap";
 import {
   backgroundColor,
   preventSpace,
@@ -6,7 +7,6 @@ import {
 } from "../../Utils/FormsUtils/forms-utils";
 import { LoginContext } from "./Login";
 import { Link } from "react-router-dom";
-import './style.css';
 
 export const LoginForm = () => {
   const context = useContext(LoginContext);
@@ -15,50 +15,50 @@ export const LoginForm = () => {
     context;
 
   return (
-    <>
-      <form className="login-form__form" onSubmit={handleSubmit}>
-        <label className="login-form__label" htmlFor="username">
-          {" "}
-          Login:{" "}
-        </label>
-        <input
-          className="login-form__input"
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Login:</Form.Label>
+        <Form.Control
           minLength={4}
           type="text"
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{ backgroundColor: `${backgroundColor(username.length, 4)}` }}
+          style={{
+            backgroundColor: `${backgroundColor(username.length, 4)}`,
+          }}
           onKeyDown={preventSpace}
           required
         />
+      </Form.Group>
 
-        <label className="login-form__label" htmlFor="password">
-          {" "}
-          Hasło:{" "}
-        </label>
-        <input
-          className="login-form__input"
+      <Form.Group>
+        <Form.Label>Hasło:</Form.Label>
+        <Form.Control
           minLength={8}
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           style={{
-            backgroundColor: validatePassword(password) ? "lightgreen" : "grey",
+            backgroundColor: validatePassword(password)
+              ? "lightgreen"
+              : "grey",
           }}
           onKeyDown={preventSpace}
           required
         />
+      </Form.Group>
 
-        <input
-          className="login-form__submit"
-          type="submit"
-          value="Zaloguj się!"
-        />
-        <button className="btn" onClick={onClose}>Zamknij</button>
-        <Link className="btn" to={"/reset-email"}>Pzypomnij hasło</Link>
-      </form>
-    </>
+      <Button variant="primary" type="submit">
+        Zaloguj się!
+      </Button>
+      <Button variant="secondary" onClick={onClose}>
+        Zamknij
+      </Button>
+      <Link to="/reset-email" className="btn btn-link">
+        Przypomnij hasło
+      </Link>
+    </Form>
   );
 };

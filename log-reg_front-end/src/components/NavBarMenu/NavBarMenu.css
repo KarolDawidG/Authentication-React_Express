@@ -1,4 +1,4 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   text-decoration: none;
@@ -117,4 +117,4 @@ body {
   #check:checked ~ .navbar__ul {
     left: 0;
   }
-}
+} */

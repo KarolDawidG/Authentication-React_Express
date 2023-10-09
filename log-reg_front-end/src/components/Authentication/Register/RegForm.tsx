@@ -8,11 +8,9 @@ import {
 import { RegisterContect, CaptchaContext } from "./Registration";
 import { REACT_APP_SITE_KEY } from "../../Utils/links";
 import ReCAPTCHA from "react-google-recaptcha";
-import "./style.css";
+import { Form, Button } from "react-bootstrap";
 
-
-export const RegForm:React.FC = () => {
-
+export const RegForm: React.FC = () => {
   const context = useContext(RegisterContect);
   const contextCapta = useContext(CaptchaContext);
 
@@ -34,14 +32,10 @@ export const RegForm:React.FC = () => {
   };
 
   return (
-    <>
-      <form className="login-form__form" onSubmit={handleSubmit}>
-        <label className="login-form__label" htmlFor="email">
-          {" "}
-          Email:{" "}
-        </label>
-        <input
-          className="login-form__input"
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control
           type="email"
           minLength={4}
           id="email"
@@ -53,30 +47,28 @@ export const RegForm:React.FC = () => {
           onKeyDown={preventSpace}
           required
         />
+      </Form.Group>
 
-        <label className="login-form__label" htmlFor="username">
-          {" "}
-          Login:{" "}
-        </label>
-        <input
-          className="login-form__input"
+      <Form.Group>
+        <Form.Label>Login:</Form.Label>
+        <Form.Control
           type="text"
           minLength={6}
           maxLength={16}
           id="username"
           value={removeSpecialCharacters(username)}
           onChange={(e) => setUsername(e.target.value)}
-          style={{ backgroundColor: `${backgroundColor(username.length, 6)}` }}
+          style={{
+            backgroundColor: `${backgroundColor(username.length, 6)}`,
+          }}
           onKeyDown={preventSpace}
           required
         />
+      </Form.Group>
 
-        <label className="login-form__label" htmlFor="password">
-          {" "}
-          Hasło:{" "}
-        </label>
-        <input
-          className="login-form__input"
+      <Form.Group>
+        <Form.Label>Hasło:</Form.Label>
+        <Form.Control
           type="password"
           minLength={8}
           maxLength={16}
@@ -89,15 +81,16 @@ export const RegForm:React.FC = () => {
           onKeyDown={preventSpace}
           required
         />
-        <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} ref={captchaRef} />
-        
-        <input
-          className="login-form__submit"
-          type="submit"
-          value="Zarejestruj się!"
-        />
-        <button className="btn" onClick={onClose}>Zamknij</button>
-      </form>
-    </>
+      </Form.Group>
+
+      <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} ref={captchaRef} />
+
+      <Button variant="primary" type="submit">
+        Zarejestruj się!
+      </Button>
+      <Button variant="secondary" onClick={onClose}>
+        Zamknij
+      </Button>
+    </Form>
   );
 };

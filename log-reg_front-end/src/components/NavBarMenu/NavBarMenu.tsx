@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./NavBarMenu.css";
+import { Button, Navbar, Nav, Modal } from "react-bootstrap";
 import { Registration } from "../Authentication/Register/Registration";
 import { Login } from "../Authentication/Login/Login";
 
@@ -15,38 +15,39 @@ export const NavBarMenu = () => {
     setIsRegisFormVisible(!isRegisFormVisible);
   };
 
+  const handleCloseModal = () => {
+    setIsLoginFormVisible(false);
+    setIsRegisFormVisible(false);
+  };
+
   return (
-    <nav className="navbar">
-      <input type="checkbox" id="check" />
-      <label htmlFor="check" className="navbar__checkbtn">
-        <i>|||</i>
-      </label>
+    <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar.Brand href="#home">Mega-Test</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
+          <Nav.Item>
+            <Button onClick={showLoginForm} variant="outline-primary">
+              Log-in
+            </Button>
+          </Nav.Item>
+          <Nav.Item>
+            <Button onClick={showRegisForm} variant="outline-success">
+              Reg-in
+            </Button>
+          </Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
 
-      <label className="navbar__logo">Mega-Test</label>
-      <ul className="navbar__ul">
-        <li>
-          <button onClick={showLoginForm} className="navbar__link">
-            Log-in
-          </button>
-        </li>
-        <li>
-        <button onClick={showRegisForm} className="navbar__link">
-            Reg-in
-          </button>
-        </li>
-      </ul>
-
-      {isLoginFormVisible && (
-        <div className="navbar__login-form">
-          <Login onClose={() => setIsLoginFormVisible(false)}/>
-        </div>
-      )}
-
-      {isRegisFormVisible && (
-        <div className="navbar__login-form">
-          <Registration  onClose={() => setIsRegisFormVisible(false)}/>
-        </div>
-      )}  
-    </nav>
+      <Modal show={isLoginFormVisible || isRegisFormVisible} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{isLoginFormVisible ? "Logowanie" : "Rejestracja"}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {isLoginFormVisible && <Login onClose={handleCloseModal} />}
+          {isRegisFormVisible && <Registration onClose={handleCloseModal} />}
+        </Modal.Body>
+      </Modal>
+    </Navbar>
   );
 };
