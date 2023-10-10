@@ -26,12 +26,12 @@ export const NavBarMenu = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Item>
+          <Nav.Item className="ml-auto">
             <Button onClick={showLoginForm} variant="outline-primary">
               Log-in
             </Button>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className="ml-auto">
             <Button onClick={showRegisForm} variant="outline-success">
               Reg-in
             </Button>

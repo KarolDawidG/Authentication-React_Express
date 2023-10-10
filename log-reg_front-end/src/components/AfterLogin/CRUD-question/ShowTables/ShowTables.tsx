@@ -81,7 +81,7 @@ export const ShowTables = () => {
             ))}
 
           </tbody>
-            <caption>List of egzams</caption>
+            <caption><p className="text-info">List of egzams</p></caption>
         </table>
       </div>
     </div>

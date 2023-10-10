@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
-import { Form, Button, InputGroup } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const CreateTable = () => {
   const [inputvalue, setInputvalue] = useState<string>("");
@@ -22,20 +22,19 @@ export const CreateTable = () => {
   };
 
   return (
-    <Form onSubmit={handleFormSubmit}>
-      <InputGroup>
-        <Form.Control
-          type="text"
-          value={replaceSpacesWithUnderscores(inputvalue)}
-          onChange={(e) => setInputvalue(e.target.value)}
-          placeholder="Wpisz nazwę nowej tabeli"
-        />
-        <InputGroup>
-          <Button type="submit" variant="primary">
-            Stworz
-          </Button>
-        </InputGroup>
-      </InputGroup>
-    </Form>
+  <div className="container-sm">
+    <form onSubmit={handleFormSubmit}>
+        <div className="form-group">
+            <input 
+                  type="text"
+                  value={replaceSpacesWithUnderscores(inputvalue)}
+                  onChange={(e) => setInputvalue(e.target.value)}
+                  placeholder="Wpisz nazwę nowej tabeli"
+            />
+            <button type="submit" className="btn btn-primary" >Stworz</button>
+        </div>
+      
+    </form>
+  </div>
   );
 };
