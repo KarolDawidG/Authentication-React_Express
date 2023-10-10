@@ -1,7 +1,27 @@
-.table-wrapper {
-  max-height: 300px; /* Maksymalna wysokość kontenera */
-  overflow-y: auto; /* Pionowe paski przewijania, jeśli tabela jest za długa */
-  width: 50%;
-  margin: 0 auto; /* Centruje tabelę na stronie */
+.text-center {
+  text-align: center;
 }
 
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 30%;
+  margin: 10px; 
+  text-align: center;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  width: 70%;
+  height: 300px;
+  overflow: auto;
+  }
+
+  .table-wrapper-scroll-y {
+  display: block;
+  }
+
+  p {
+    width: 70%;
+  }

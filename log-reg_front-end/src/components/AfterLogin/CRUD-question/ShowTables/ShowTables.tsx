@@ -7,8 +7,8 @@ import {
   removePart,
   replaceCharacter,
 } from "./utils/stringHelpers";
-import { RedirectBtn } from "../../../Others/RedirectBtn";
-import { Table, Button, Row, Col } from "react-bootstrap"; // Importujemy komponenty Bootstrapa
+import 'bootstrap/dist/css/bootstrap.css';
+import { Link } from "react-router-dom";
 
 export const ShowTables = () => {
   const [tableNames, setTableNames] = useState([]);
@@ -45,49 +45,46 @@ export const ShowTables = () => {
   }, []);
 
   return (
-    <>
-      <p style={{ color: "white" }}> Lista dostępnych tabel: </p>
-      <div className="table-container">
-        <div className="table-wrapper">
-          <Table striped bordered hover className="custom-table">
-            <thead>
-              <tr>
-                <th style={{ width: "50%" }}>Nazwa tabeli</th>
-                <th style={{ width: "50%" }}>Akcje</th>
+  <>
+    <div className="container-sm">
+      <p className="p-3 mb-2 bg-success text-white"> Lista dostępnych tabel: </p>
+
+      <div className="table-wrapper-scroll-y my-custom-scrollbar">
+        <table className="table table-bordered table-striped mb-0">
+          <thead>
+            <tr >
+              <th scope="row" className="text-center">No.</th>
+              <th scope="col" className="text-center">Nazwa tabeli</th>
+              <th scope="col" className="text-center">Akcje</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {tableNames.map((tableName, index) => (
+              <tr key={tableName}>
+                <th scope="row">{index+1}</th>
+                <td>
+                  {replaceCharacter(removeFirstCharacter(removePart(tableName, username)))}
+                </td>
+
+                 <td>
+                  <Link to={`/insert/${username}/${tableName}`}>
+                    <button className="btn btn-success center-button">Create</button>
+                  </Link>
+                      
+                  <button
+                    onClick={() => handleDelete(tableName)}
+                    className="btn btn-danger center-button"
+                  >Delete</button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {tableNames.map((tableName) => (
-                <tr key={tableName}>
-                  <td>
-                    {replaceCharacter(
-                      removeFirstCharacter(removePart(tableName, username))
-                    )}
-                  </td>
-                  <td>
-                    <Row>
-                      <Col>
-                        <RedirectBtn to={`/insert/${username}/${tableName}`}>
-                          Create
-                        </RedirectBtn>
-                        </Col>
-                      <Col>
-                        <Button
-                          variant="danger"
-                          onClick={() => handleDelete(tableName)}
-                          className="btn-show"
-                        >
-                          Delete
-                        </Button>
-                      </Col>
-                    </Row>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
+            ))}
+
+          </tbody>
+            <caption>List of egzams</caption>
+        </table>
       </div>
-    </>
+    </div>
+  </>
   );
 };
