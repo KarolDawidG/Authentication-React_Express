@@ -22,9 +22,8 @@ export const CreateTable = () => {
   };
 
   return (
-  <div className="container-sm">
     <form onSubmit={handleFormSubmit}>
-        <div className="form-group">
+        <div className="form">
             <input 
                   type="text"
                   value={replaceSpacesWithUnderscores(inputvalue)}
@@ -35,6 +34,5 @@ export const CreateTable = () => {
         </div>
       
     </form>
-  </div>
   );
 };

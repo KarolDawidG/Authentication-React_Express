@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { TableList } from "./MainMenu/tableList";
 import { NavBar } from "./MainMenu/NavBar/NavBar";
 import { Header } from "./MainMenu/Headers/Header";
+import { Footer } from "../Footer/Footer";
 
 export const UserPanel = () => {
   const redirect = useNavigate();
@@ -60,6 +61,7 @@ export const UserPanel = () => {
       <NavBar />
       <Header /> 
       <TableList />
+      <Footer/>
     </>
   );
 };

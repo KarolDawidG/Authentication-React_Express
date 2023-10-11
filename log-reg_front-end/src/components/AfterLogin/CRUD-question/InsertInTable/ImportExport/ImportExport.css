@@ -16,8 +16,8 @@
     align-items: flex-start;
     background-color: grey;
     color: aliceblue;
-    width: 60%;
-    height: 40%;
+    width: 80%;
+    height: auto;
     padding: 3%;
     border: 1px solid #ccc;
     border-radius: 4px;

@@ -48,7 +48,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
   };
 
   return (
-    <div className="container-sm">
+    <>
       <p className="p-3 mb-2 bg-success text-white"> Lista pytań: </p>
       <div className="question-table my-custom-scrollbar">
         <table className="table table-hover">
@@ -112,7 +112,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
           <caption><p className="text-info">List of questions</p></caption>
         </table>
       </div>
-    </div>
+    </>
     
   );
 };

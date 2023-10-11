@@ -46,8 +46,7 @@ export const ShowTables = () => {
 
   return (
   <>
-    <div className="container-sm">
-      <p className="p-3 mb-2 bg-success text-white"> Lista dostępnych tabel: </p>
+    <p className="p-3 mb-2 bg-success text-white"> Lista dostępnych tabel: </p>
 
       <div className="table-wrapper-scroll-y my-custom-scrollbar">
         <table className="table table-hover mb-0">
@@ -55,7 +54,7 @@ export const ShowTables = () => {
             <tr >
               <th scope="row" className="text-center">No.</th>
               <th scope="col" className="text-center">Nazwa tabeli</th>
-              <th scope="col" className="text-center">Akcje</th>
+              <th scope="col" className="text-center actions-cell">Akcje</th>
             </tr>
           </thead>
 
@@ -68,14 +67,17 @@ export const ShowTables = () => {
                 </td>
 
                  <td>
-                  <Link to={`/insert/${username}/${tableName}`}>
-                    <button className="btn btn-success center-button">Create</button>
-                  </Link>
-                      
-                  <button
-                    onClick={() => handleDelete(tableName)}
-                    className="btn btn-danger center-button"
-                  >Delete</button>
+                  <div className="center-button">
+                    <Link to={`/insert/${username}/${tableName}`}>
+                      <button className="btn btn-success">Create</button>
+                    </Link>
+                        
+                    <button
+                      onClick={() => handleDelete(tableName)}
+                      className="btn btn-danger"
+                    >Delete</button>
+                  </div>
+
                 </td>
               </tr>
             ))}
@@ -84,7 +86,6 @@ export const ShowTables = () => {
             <caption><p className="text-info">List of egzams</p></caption>
         </table>
       </div>
-    </div>
-  </>
+    </>
   );
 };

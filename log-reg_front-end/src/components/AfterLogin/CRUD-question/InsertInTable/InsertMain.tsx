@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { RedirectBtn } from "../../../Others/RedirectBtn";
 import {
   removeFirstCharacter,
   removePart,
   replaceCharacter,
 } from "../ShowTables/utils/stringHelpers";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.css';
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
 import { QuestionTable } from "./Table/QuestionTable";
 import { QuestionsListProps } from "../../../Utils/Interfaces/QuestionListProps";
 import { Header } from "../../MainMenu/Headers/Header";
 import { ImportExport } from "./ImportExport/ImportExport";
 import { NavBar } from "../../MainMenu/NavBar/NavBar";
+import { Footer } from "../../../Footer/Footer";
 
 export const InsertMain = () => {
   const { username, tableName } = useParams();
@@ -45,9 +46,11 @@ export const InsertMain = () => {
     <>
         <NavBar/>
         <Header nazwaTabeli={nazwaTabeli} />
-        <QuestionTable questionsList={questionsList} tableName={tableName} />
-        <RedirectBtn to="/crud-question?">Back</RedirectBtn>
-        <ImportExport tableName={tableName} />
+          <div className="container-sm">
+              <QuestionTable questionsList={questionsList} tableName={tableName} />
+              <ImportExport tableName={tableName} />
+          </div>
+        <Footer/>
     </>
   );
 };

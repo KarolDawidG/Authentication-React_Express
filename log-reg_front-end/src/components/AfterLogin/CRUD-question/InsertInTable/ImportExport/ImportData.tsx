@@ -76,9 +76,18 @@ export const ImportData: React.FC<ImportExportProps> = ({
   return (
     <div className="rectangle-overlay">
       <div className="rectangle-content">
-        <input type="file" accept=".txt" onChange={handleFileInputChange} />
-        <button className="btn btn-primary" onClick={handleParseData}>Przetwórz dane</button>
-        <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
+      <div className="container-sm">
+        <div className="row">
+          <div className="col-md-6">
+            <input type="file" accept=".txt" onChange={handleFileInputChange} />
+            <button className="btn btn-primary" onClick={handleParseData}>Przetwórz dane</button>
+            <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
+          </div>
+          <div className="col-md-6">
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, enim odit. Earum dicta, voluptate est amet laborum magni modi neque magnam, at deleniti, recusandae nisi eaque mollitia. Provident, nisi commodi.</p>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   );
