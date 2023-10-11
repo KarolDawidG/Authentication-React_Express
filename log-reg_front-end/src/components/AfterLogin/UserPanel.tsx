@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { notify } from "../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_REFRESH } from "../Utils/links";
-import { Container, Row, Col, Button } from "react-bootstrap"; // Import Bootstrap komponentów
+import 'bootstrap/dist/css/bootstrap.css';
 import { TableList } from "./MainMenu/tableList";
 import { NavBar } from "./MainMenu/NavBar/NavBar";
-import { RedirectBtn } from "../Others/RedirectBtn";
 import { Header } from "./MainMenu/Headers/Header";
 
 export const UserPanel = () => {
@@ -57,17 +56,10 @@ export const UserPanel = () => {
   }, [handleTokenRefresh]);
 
   return (
-    <Container fluid>
+    <>
       <NavBar />
-      <Header />
-      <Row>
-        <Col>
-          <TableList />
-        </Col>
-        <Col xs={3} className="text-right">
-          <RedirectBtn to="/crud-question">Edit tests</RedirectBtn>
-        </Col>
-      </Row>
-    </Container>
+      <Header /> 
+      <TableList />
+    </>
   );
 };

@@ -4,6 +4,7 @@ import axios from "axios";
 import { handleNetworkError } from "../../../../Authentication/Login/handlers/networkErrorFunctions";
 import { useNavigate } from "react-router-dom";
 import "./QuestionTable.css";
+import 'bootstrap/dist/css/bootstrap.css';
 import { EditForm } from "../../EditTable/EditForm";
 
 interface QuestionTableProps {
@@ -47,66 +48,71 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
   };
 
   return (
-    <div className="question-table">
-      <table className="question-table__table">
-        <thead>
-          <tr className="question-table__row question-table__header">
-            <th>Indeks</th>
-            <th className="question-table__cell">Pytanie</th>
-            <th className="question-table__cell">A</th>
-            <th className="question-table__cell">B</th>
-            <th className="question-table__cell">C</th>
-            <th className="question-table__cell">Answer</th>
-            <th className="question-table__cell">Delete</th>
-            <th className="question-table__cell">Update</th>
-          </tr>
-        </thead>
-        <tbody>
-          {questionsList ? (
-            questionsList.map((question, index) => (
-              <tr key={question.id} className="question-table__row">
-                <td className="question-table__cell">{index + 1}</td>
-                <td className="question-table__cell">{question.question}</td>
-                <td className="question-table__cell">{question.optionA}</td>
-                <td className="question-table__cell">{question.optionB}</td>
-                <td className="question-table__cell">{question.optionC}</td>
-                <td className="question-table__cell">
-                  {question.correctAnswer}
-                </td>
-                <td className="question-table__cell">
-                  <button
-                    className="question-table__button"
-                    onClick={() => handleDelete(tableName, question.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-                <td className="question-table__cell">
-                  <button
-                    className="btn-update"
-                    onClick={() => handleEditClick(question)}
-                  >
-                    Update
-                  </button>
+    <div className="container-sm">
+      <p className="p-3 mb-2 bg-success text-white"> Lista pytań: </p>
+      <div className="question-table my-custom-scrollbar">
+        <table className="table table-hover">
+          <thead>
+            <tr className=" question-table__header">
+              <th>Indeks</th>
+              <th >Pytanie</th>
+              <th >A</th>
+              <th >B</th>
+              <th >C</th>
+              <th >Answer</th>
+              <th >Delete</th>
+              <th >Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            {questionsList ? (
+              questionsList.map((question, index) => (
+                <tr key={question.id} >
+                  <td >{index + 1}</td>
+                  <td >{question.question}</td>
+                  <td >{question.optionA}</td>
+                  <td >{question.optionB}</td>
+                  <td >{question.optionC}</td>
+                  <td >
+                    {question.correctAnswer}
+                  </td>
+                  <td >
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(tableName, question.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                  <td >
+                    <button
+                      className="btn btn-success"
+                      onClick={() => handleEditClick(question)}
+                    >
+                      Update
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td>
+                  Brak pytań do wyświetlenia.
                 </td>
               </tr>
-            ))
-          ) : (
-            <tr className="question-table__row">
-              <td className="question-table__cell" colSpan={6}>
-                Brak pytań do wyświetlenia.
-              </td>
-            </tr>
-          )}
-          {isEditFormVisible && (
-            <EditForm
-              question={selectedQuestion}
-              tableName={tableName}
-              onClose={() => setIsEditFormVisible(false)}
-            />
-          )}
-        </tbody>
-      </table>
+            )}
+            {isEditFormVisible && (
+              <EditForm
+                question={selectedQuestion}
+                tableName={tableName}
+                onClose={() => setIsEditFormVisible(false)}
+              />
+            )}
+          </tbody>
+          <caption><p className="text-info">List of questions</p></caption>
+        </table>
+      </div>
     </div>
+    
   );
 };

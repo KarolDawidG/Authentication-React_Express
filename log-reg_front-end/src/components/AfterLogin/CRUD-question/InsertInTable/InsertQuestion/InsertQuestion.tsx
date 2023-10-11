@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Input } from "../Input/Input";
 import { ImportExportProps } from "../ImportExport/ImportExportProps";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const InsertQuestion: React.FC<ImportExportProps> = ({
   tableName,
@@ -31,10 +32,8 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
     e.preventDefault();
 
     try {
-      await axios.post(
-        `http://localhost:3001/create-question/${tableName}`,
-        formData,
-      );
+      await axios.post(`http://localhost:3001/create-question/${tableName}`, formData);
+
       setFormData({
         question: "",
         optionA: "",
@@ -42,6 +41,7 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
         optionC: "",
         correctAnswer: "",
       });
+      
       navigate(0);
     } catch (error) {
       console.error("Błąd podczas dodawania pytania:", error);
@@ -51,7 +51,9 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
   return (
     <div className="rectangle-overlay">
       <div className="rectangle-content">
+
         <form onSubmit={handleSubmit}>
+
         <Input
           label="Pytanie "
           name="question"
@@ -94,9 +96,10 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
             </span>
           ))}
         </label>
-        <button className="btn-insert" type="submit">Dodaj pytanie</button>
+        <button className="btn btn-primary" type="submit">Dodaj pytanie</button>
       </form>
-    <button onClick={onClose}>Zamknij</button>
+
+    <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
       </div>
     </div>
   );

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../InsertInTable/Input/Input";
 import { EditFormProps } from "../../../Utils/Interfaces/EditFormProps";
+
 import axios from "axios";
 
 export const EditForm: React.FC<EditFormProps> = ({
   question,
-  onClose,
+  onClose,  
   tableName,
 }) => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ export const EditForm: React.FC<EditFormProps> = ({
         `http://localhost:3001/create-question/${tableName}/${question.id}`,
         formData,
       );
+
       setFormData({
         question: "",
         optionA: "",
@@ -43,6 +45,7 @@ export const EditForm: React.FC<EditFormProps> = ({
         optionC: "",
         correctAnswer: "",
       });
+
       navigate(0);
     } catch (error) {
       console.error("Błąd podczas dodawania pytania:", error);
@@ -50,10 +53,13 @@ export const EditForm: React.FC<EditFormProps> = ({
   };
 
   return (
+<>
     <div className="rectangle-overlay">
       <div className="rectangle-content">
+        
         <form onSubmit={handleSubmit}>
-          <div className="label-input">
+
+          
             <Input
               label="Pytanie "
               name="question"
@@ -96,11 +102,14 @@ export const EditForm: React.FC<EditFormProps> = ({
                 </span>
               ))}
             </label>
-            <button type="submit">Zmień pytanie</button>
-          </div>
+            <button className="btn btn-primary" type="submit">Zmień pytanie</button>
+          
         </form>
-        <button onClick={onClose}>Zamknij</button>
+
+        <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
       </div>
     </div>
+</>
+
   );
 };

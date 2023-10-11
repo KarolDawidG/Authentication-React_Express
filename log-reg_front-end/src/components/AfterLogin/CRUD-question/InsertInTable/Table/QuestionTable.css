@@ -1,12 +1,22 @@
 .question-table {
-    margin: 20px auto;
-    max-width: 90%;
+    width: 90%;
     max-height: 350px;
     overflow: auto;
     overflow-x: auto;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .my-custom-scrollbar {
+    position: relative;
+    width: 90%;
+    height: 300px;
+    overflow: auto;
+    }
+
+  p {
+    width: 90%;
   }
   
   .question-table__table {

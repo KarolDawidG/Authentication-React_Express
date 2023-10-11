@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ImportExport.css";
+import 'bootstrap/dist/css/bootstrap.css';
 import { notify } from "../../../../Others/Notify";
 import { ImportExportProps } from "./ImportExportProps";
 
@@ -76,8 +77,8 @@ export const ImportData: React.FC<ImportExportProps> = ({
     <div className="rectangle-overlay">
       <div className="rectangle-content">
         <input type="file" accept=".txt" onChange={handleFileInputChange} />
-        <button onClick={handleParseData}>Przetwórz dane</button>
-        <button onClick={onClose}>Zamknij</button>
+        <button className="btn btn-primary" onClick={handleParseData}>Przetwórz dane</button>
+        <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
       </div>
     </div>
   );

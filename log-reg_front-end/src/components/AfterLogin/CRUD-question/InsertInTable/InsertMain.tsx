@@ -46,7 +46,7 @@ export const InsertMain = () => {
         <NavBar/>
         <Header nazwaTabeli={nazwaTabeli} />
         <QuestionTable questionsList={questionsList} tableName={tableName} />
-        <RedirectBtn to="/crud-question?">Cofnij</RedirectBtn>
+        <RedirectBtn to="/crud-question?">Back</RedirectBtn>
         <ImportExport tableName={tableName} />
     </>
   );

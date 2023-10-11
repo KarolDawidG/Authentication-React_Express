@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ImportExport.css";
+import 'bootstrap/dist/css/bootstrap.css';
 import { ImportExportProps } from "./ImportExportProps";
 import { saveDataToFile } from "./helpers/saveDataToFile";
 
@@ -30,8 +31,8 @@ export const ExportData: React.FC<ImportExportProps> = ({
       <div className="rectangle-content">
           <label>Nazwa pliku:</label>
           <input type="text" value={fileName} onChange={handleFileNameChange} />
-        <button onClick={fetchData}>Zapisz do pliku</button>
-        <button onClick={onClose}>Zamknij</button>
+        <button className="btn btn-primary" onClick={fetchData}>Zapisz do pliku</button>
+        <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
 import 'bootstrap/dist/css/bootstrap.css';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ShowTables.css";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
@@ -50,7 +50,7 @@ export const ShowTables = () => {
       <p className="p-3 mb-2 bg-success text-white"> Lista dostępnych tabel: </p>
 
       <div className="table-wrapper-scroll-y my-custom-scrollbar">
-        <table className="table table-bordered table-striped mb-0">
+        <table className="table table-hover mb-0">
           <thead>
             <tr >
               <th scope="row" className="text-center">No.</th>
