@@ -37,7 +37,7 @@ export const ImportData: React.FC<ImportExportProps> = ({
       const optionA = lines[i + 1]?.trim() || "";
       const optionB = lines[i + 2]?.trim() || "";
       const optionC = lines[i + 3]?.trim() || "";
-      const correctAnswer = lines[i + 4]?.trim() || "";
+      const correctAnswer = lines[i + 4]?.trim() || "A";
       const postString = lines[i + 5]?.trim() || "";
 
       if (postString !== "") {

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { NavBarMenu } from "./components/NavBarMenu/NavBarMenu";
-import { Footer } from './components/Footer/Footer';
+import { Footer } from './components/AfterLogin/MainMenu/Footer/Footer';
 
 export const Menu = () => {
   return (

@@ -3,7 +3,7 @@ import { ShowTables } from "../ShowTables/ShowTables";
 import { RedirectBtn } from "../../../Others/RedirectBtn";
 import { NavBar } from "../../MainMenu/NavBar/NavBar";
 import { Header } from "../../MainMenu/Headers/Header";
-import { Footer } from "../../../Footer/Footer";
+import { Footer } from "../../MainMenu/Footer/Footer";
 import 'bootstrap/dist/css/bootstrap.css';
 
 export const MenuCrud = () => {

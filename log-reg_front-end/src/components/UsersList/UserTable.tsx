@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserTableRow } from "./UserTableRow";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
-import "../../css/tabela.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const UserTable: React.FC = () => {
   const usersList = useContext(UsersContext);
@@ -11,7 +11,7 @@ export const UserTable: React.FC = () => {
   }
 
   return (
-    <table>
+    <table className="table table-hover table-dark">
       <thead>
         <tr>
           <th>ID</th>

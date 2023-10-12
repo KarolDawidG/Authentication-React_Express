@@ -5,10 +5,10 @@ import { notify } from "../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_REFRESH } from "../Utils/links";
 import 'bootstrap/dist/css/bootstrap.css';
-import { TableList } from "./MainMenu/tableList";
+import { TableList } from "./MainMenu/TableList/tableList";
 import { NavBar } from "./MainMenu/NavBar/NavBar";
 import { Header } from "./MainMenu/Headers/Header";
-import { Footer } from "../Footer/Footer";
+import { Footer } from "./MainMenu/Footer/Footer";
 
 export const UserPanel = () => {
   const redirect = useNavigate();

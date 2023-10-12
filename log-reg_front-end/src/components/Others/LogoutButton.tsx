@@ -1,11 +1,10 @@
 import React, { useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import { Button } from "react-bootstrap";
 import { notify } from "./Notify";
 import { LOG_OUT, ENDPOINT_LOGOUT } from "../Utils/links";
 import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const LogoutButton: React.FC = () => {
   const redirect = useNavigate();
@@ -24,11 +23,8 @@ export const LogoutButton: React.FC = () => {
   }, [redirect]);
 
   return (
-    <>
-      <ToastContainer />
-      <Button variant="primary" onClick={handleLogout}>
+      <button className="btn btn-outline-secondary btn-lg" onClick={handleLogout}>
         Logout
-      </Button>
-    </>
+      </button>
   );
 };

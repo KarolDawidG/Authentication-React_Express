@@ -8,6 +8,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
+  .custom-text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+  }
+
   .my-custom-scrollbar {
     position: relative;
     width: 90%;

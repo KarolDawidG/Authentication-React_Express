@@ -37,6 +37,7 @@ export const ExportData: React.FC<ImportExportProps> = ({
               <button className="btn btn-primary" onClick={fetchData}>Zapisz do pliku</button>
               <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
             </div>
+            
             <div className="col-md-6">
               <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, enim odit. Earum dicta, voluptate est amet laborum magni modi neque magnam, at deleniti, recusandae nisi eaque mollitia. Provident, nisi commodi.</p>
             </div>

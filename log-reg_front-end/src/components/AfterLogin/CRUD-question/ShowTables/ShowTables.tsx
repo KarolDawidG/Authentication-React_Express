@@ -46,13 +46,13 @@ export const ShowTables = () => {
 
   return (
   <>
-    <p className="p-3 mb-2 bg-success text-white"> Lista dostępnych tabel: </p>
+    <p className="p-1 mb-1 bg-success text-white"> Lista dostępnych tabel: </p>
 
-      <div className="table-wrapper-scroll-y my-custom-scrollbar">
+      <div className="my-custom-scrollbar table-size">
         <table className="table table-hover mb-0">
           <thead>
             <tr >
-              <th scope="row" className="text-center">No.</th>
+              <th scope="row" className="text-center no-cell">No.</th>
               <th scope="col" className="text-center">Nazwa tabeli</th>
               <th scope="col" className="text-center actions-cell">Akcje</th>
             </tr>

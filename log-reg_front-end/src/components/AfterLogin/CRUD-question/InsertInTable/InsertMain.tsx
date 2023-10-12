@@ -13,7 +13,7 @@ import { QuestionsListProps } from "../../../Utils/Interfaces/QuestionListProps"
 import { Header } from "../../MainMenu/Headers/Header";
 import { ImportExport } from "./ImportExport/ImportExport";
 import { NavBar } from "../../MainMenu/NavBar/NavBar";
-import { Footer } from "../../../Footer/Footer";
+import { Footer } from "../../MainMenu/Footer/Footer";
 
 export const InsertMain = () => {
   const { username, tableName } = useParams();

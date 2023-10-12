@@ -5,27 +5,20 @@
 .actions-cell {
   width: 80px; 
 }
+.no-cell {
+  width: 10px; 
+}
 
 .center-button {
   display: flex;
   justify-content: center;
   align-items: center; 
-  width: 30%;
-  margin: 10px; 
+  width: auto;
+  margin: 0; 
   text-align: center;
 }
 
 .my-custom-scrollbar {
   position: relative;
-  width: 70%;
-  height: 300px;
   overflow: auto;
-  }
-
-  .table-wrapper-scroll-y {
-  display: block;
-  }
-
-  p {
-    width: 70%;
   }
