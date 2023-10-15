@@ -6,10 +6,10 @@ import { ENDPOINT_RESET } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { PasswordForm } from "./PasswordForm";
 import { PasswordStatus } from "./PasswordStatus";
-import { Title } from "../../Others/Title";
-import "../../../css/styles.css";
 import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
 import { NavBarMenu } from "../../NavBarMenu/NavBarMenu";
+import "bootstrap/dist/css/bootstrap.css";
+import { Footer } from "../../AfterLogin/MainMenu/Footer/Footer";
 
 export const Reset = () => {
   const [password, setPassword1] = useState("");
@@ -54,10 +54,10 @@ export const Reset = () => {
   return (
     <>
       <NavBarMenu />
-      <Title props={"Zmiana hasła"} />
-      <div className="container">
-        <div className="right-side">
-          <form className="login-form__form" onSubmit={handleSubmit}>
+      <div className="container-sm center-content">
+      <h1 className="display-4 animated-title">Zresetuj hasło</h1>
+        <div className="row">
+          <form className="form" onSubmit={handleSubmit}>
             <PasswordForm
               password={password}
               setPassword={setPassword1}
@@ -69,7 +69,7 @@ export const Reset = () => {
               label="Powtórz hasło: "
             />
             <button
-              className="login-form__submit"
+              className="btn btn-danger"
               type="submit"
               disabled={!passwordsMatch}
             >
@@ -81,12 +81,10 @@ export const Reset = () => {
               passwordsMatch={passwordsMatch}
             />
           </form>
-
-          <div className="redirect-btn">
             <RedirectBtn to="/">Menu główne</RedirectBtn>
-          </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

@@ -39,9 +39,14 @@ export const NavBarMenu = () => {
         </Nav>
       </Navbar.Collapse>
 
-      <Modal show={isLoginFormVisible || isRegisFormVisible} onHide={handleCloseModal}>
+      <Modal
+        show={isLoginFormVisible || isRegisFormVisible}
+        onHide={handleCloseModal}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>{isLoginFormVisible ? "Logowanie" : "Rejestracja"}</Modal.Title>
+          <Modal.Title>
+            {isLoginFormVisible ? "Logowanie" : "Rejestracja"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {isLoginFormVisible && <Login onClose={handleCloseModal} />}

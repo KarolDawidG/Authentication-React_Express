@@ -5,7 +5,6 @@ import { ENDPOINT_CAPTCHA } from "../../Utils/links";
 import { RegisterContextType } from "../../Utils/Interfaces/RegisterContextType";
 import { handleReg } from "./handlers/handleSubmit";
 import { ReCAPTCHA } from "react-google-recaptcha";
-import "../../../css/styles.css";
 import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
 import { RegForm } from "./RegForm";
 
@@ -17,8 +16,7 @@ export const RegisterContect = createContext<RegisterContextType | null>(null);
 export const CaptchaContext =
   createContext<React.MutableRefObject<ReCAPTCHA | null> | null>(null);
 
-export const Registration:React.FC<Props> = ({onClose}) => {
-
+export const Registration: React.FC<Props> = ({ onClose }) => {
   const captchaRef = useRef<ReCAPTCHA | null>(null);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -60,8 +58,8 @@ export const Registration:React.FC<Props> = ({onClose}) => {
           onClose,
         }}
       >
-        <CaptchaContext.Provider value={captchaRef}>            
-              <RegForm />
+        <CaptchaContext.Provider value={captchaRef}>
+          <RegForm />
         </CaptchaContext.Provider>
       </RegisterContect.Provider>
     </>

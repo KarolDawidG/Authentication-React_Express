@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserTableRow } from "./UserTableRow";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 export const UserTable: React.FC = () => {
   const usersList = useContext(UsersContext);

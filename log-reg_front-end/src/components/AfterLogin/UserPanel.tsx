@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { notify } from "../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_REFRESH } from "../Utils/links";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import { TableList } from "./MainMenu/TableList/tableList";
 import { NavBar } from "./MainMenu/NavBar/NavBar";
 import { Header } from "./MainMenu/Headers/Header";
@@ -59,9 +59,9 @@ export const UserPanel = () => {
   return (
     <>
       <NavBar />
-      <Header /> 
+      <Header />
       <TableList />
-      <Footer/>
+      <Footer />
     </>
   );
 };

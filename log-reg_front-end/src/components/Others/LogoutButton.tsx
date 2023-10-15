@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { notify } from "./Notify";
 import { LOG_OUT, ENDPOINT_LOGOUT } from "../Utils/links";
 import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 export const LogoutButton: React.FC = () => {
   const redirect = useNavigate();
@@ -23,8 +23,8 @@ export const LogoutButton: React.FC = () => {
   }, [redirect]);
 
   return (
-      <button className="btn btn-outline-secondary btn-lg" onClick={handleLogout}>
-        Logout
-      </button>
+    <button className="btn btn-outline-secondary btn-lg" onClick={handleLogout}>
+      Logout
+    </button>
   );
 };

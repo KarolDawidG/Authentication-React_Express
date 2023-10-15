@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 type RedirectBtnProps = {
   to: string;
@@ -9,9 +9,8 @@ type RedirectBtnProps = {
 
 export const RedirectBtn: React.FC<RedirectBtnProps> = ({ to, children }) => {
   return (
-      <Link to={to}>
-        <button className="btn btn-outline-secondary btn-lg">{children}</button>
-      </Link>
-    
+    <Link to={to}>
+      <button className="btn btn-outline-secondary btn-lg">{children}</button>
+    </Link>
   );
 };

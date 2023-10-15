@@ -6,7 +6,7 @@ import {
   replaceCharacter,
 } from "../ShowTables/utils/stringHelpers";
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
 import { QuestionTable } from "./Table/QuestionTable";
 import { QuestionsListProps } from "../../../Utils/Interfaces/QuestionListProps";
@@ -44,13 +44,13 @@ export const InsertMain = () => {
 
   return (
     <>
-        <NavBar/>
-        <Header nazwaTabeli={nazwaTabeli} />
-          <div className="container-sm">
-              <QuestionTable questionsList={questionsList} tableName={tableName} />
-              <ImportExport tableName={tableName} />
-          </div>
-        <Footer/>
+      <NavBar />
+      <Header nazwaTabeli={nazwaTabeli} />
+      <div className="container-sm">
+        <QuestionTable questionsList={questionsList} tableName={tableName} />
+        <ImportExport tableName={tableName} />
+      </div>
+      <Footer />
     </>
   );
 };

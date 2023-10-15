@@ -7,7 +7,7 @@ import {
   removePart,
   replaceCharacter,
 } from "./utils/stringHelpers";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 
 export const ShowTables = () => {
@@ -45,45 +45,58 @@ export const ShowTables = () => {
   }, []);
 
   return (
-  <>
-    <p className="p-1 mb-1 bg-success text-white"> Lista dostępnych tabel: </p>
+    <>
+      <p className="p-1 mb-1 bg-success text-white">
+        {" "}
+        Lista dostępnych tabel:{" "}
+      </p>
 
       <div className="my-custom-scrollbar table-size">
         <table className="table table-hover mb-0">
           <thead>
-            <tr >
-              <th scope="row" className="text-center no-cell">No.</th>
-              <th scope="col" className="text-center">Nazwa tabeli</th>
-              <th scope="col" className="text-center actions-cell">Akcje</th>
+            <tr>
+              <th scope="row" className="text-center no-cell">
+                No.
+              </th>
+              <th scope="col" className="text-center">
+                Nazwa tabeli
+              </th>
+              <th scope="col" className="text-center actions-cell">
+                Akcje
+              </th>
             </tr>
           </thead>
 
           <tbody>
             {tableNames.map((tableName, index) => (
               <tr key={tableName}>
-                <th scope="row">{index+1}</th>
+                <th scope="row">{index + 1}</th>
                 <td>
-                  {replaceCharacter(removeFirstCharacter(removePart(tableName, username)))}
+                  {replaceCharacter(
+                    removeFirstCharacter(removePart(tableName, username)),
+                  )}
                 </td>
 
-                 <td>
+                <td>
                   <div className="center-button">
                     <Link to={`/insert/${username}/${tableName}`}>
                       <button className="btn btn-success">Create</button>
                     </Link>
-                        
+
                     <button
                       onClick={() => handleDelete(tableName)}
                       className="btn btn-danger"
-                    >Delete</button>
+                    >
+                      Delete
+                    </button>
                   </div>
-
                 </td>
               </tr>
             ))}
-
           </tbody>
-            <caption><p className="text-info">List of egzams</p></caption>
+          <caption>
+            <p className="text-info">List of egzams</p>
+          </caption>
         </table>
       </div>
     </>

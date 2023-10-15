@@ -2,7 +2,7 @@ import {
   backgroundColor,
   preventSpace,
 } from "../../Utils/FormsUtils/forms-utils";
-import "../../../css/styles.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 interface PassForm {
   password: string;
@@ -13,9 +13,9 @@ interface PassForm {
 export const PasswordForm = ({ password, setPassword, label }: PassForm) => {
   return (
     <>
-      <label htmlFor="password">{label}</label>
+      <label className="p-2 text-white" htmlFor="password">{label}</label>
       <input
-        className="login-form__input"
+        className="form-control"
         type="password"
         id="password"
         value={password}

@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
 
 interface PasswordStatusProps {
   password: string;
@@ -12,7 +13,7 @@ export const PasswordStatus: React.FC<PasswordStatusProps> = ({
   passwordsMatch,
 }) => {
   return (
-    <span
+    <span className="p-2"
       style={{
         color: password && password2 && passwordsMatch ? "green" : "red",
       }}

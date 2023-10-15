@@ -11,8 +11,14 @@ import { Link } from "react-router-dom";
 export const LoginForm = () => {
   const context = useContext(LoginContext);
   if (!context) return null;
-  const { handleSubmit, username, password, setPassword, setUsername, onClose } =
-    context;
+  const {
+    handleSubmit,
+    username,
+    password,
+    setPassword,
+    setUsername,
+    onClose,
+  } = context;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -41,9 +47,7 @@ export const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           style={{
-            backgroundColor: validatePassword(password)
-              ? "lightgreen"
-              : "grey",
+            backgroundColor: validatePassword(password) ? "lightgreen" : "grey",
           }}
           onKeyDown={preventSpace}
           required

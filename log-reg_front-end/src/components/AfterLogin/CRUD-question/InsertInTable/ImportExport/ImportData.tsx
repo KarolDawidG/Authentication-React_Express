@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ImportExport.css";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import { notify } from "../../../../Others/Notify";
 import { ImportExportProps } from "./ImportExportProps";
 
@@ -76,18 +76,32 @@ export const ImportData: React.FC<ImportExportProps> = ({
   return (
     <div className="rectangle-overlay">
       <div className="rectangle-content">
-      <div className="container-sm">
-        <div className="row">
-          <div className="col-md-6">
-            <input type="file" accept=".txt" onChange={handleFileInputChange} />
-            <button className="btn btn-primary" onClick={handleParseData}>Przetwórz dane</button>
-            <button className="btn btn-danger" onClick={onClose}>Zamknij</button>
-          </div>
-          <div className="col-md-6">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, enim odit. Earum dicta, voluptate est amet laborum magni modi neque magnam, at deleniti, recusandae nisi eaque mollitia. Provident, nisi commodi.</p>
+        <div className="container-sm">
+          <div className="row">
+            <div className="col-md-6">
+              <input
+                type="file"
+                accept=".txt"
+                onChange={handleFileInputChange}
+              />
+              <button className="btn btn-primary" onClick={handleParseData}>
+                Przetwórz dane
+              </button>
+              <button className="btn btn-danger" onClick={onClose}>
+                Zamknij
+              </button>
+            </div>
+            <div className="col-md-6">
+              <p>
+                {" "}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
+                enim odit. Earum dicta, voluptate est amet laborum magni modi
+                neque magnam, at deleniti, recusandae nisi eaque mollitia.
+                Provident, nisi commodi.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );

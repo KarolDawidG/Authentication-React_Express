@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
@@ -7,8 +7,8 @@ import {
   removePart,
   replaceCharacter,
 } from "../../CRUD-question/ShowTables/utils/stringHelpers";
-import 'bootstrap/dist/css/bootstrap.css';
-import './TableList.css';
+import "bootstrap/dist/css/bootstrap.css";
+import "./TableList.css";
 
 export const TableList = () => {
   const [tableNames, setTableNames] = useState([]);
@@ -43,17 +43,19 @@ export const TableList = () => {
             {tableNames.map((tableName) => (
               <div key={tableName}>
                 <Link to={`/quiz/${tableName}`}>
-                    <p className="btn btn-primary">
-                      {replaceCharacter(removeFirstCharacter(removePart(tableName, username)))}
-                    </p>
+                  <p className="btn btn-primary">
+                    {replaceCharacter(
+                      removeFirstCharacter(removePart(tableName, username)),
+                    )}
+                  </p>
                 </Link>
               </div>
-              ))}
+            ))}
           </div>
 
-            <Link to="/crud-question">
-                <button className="btn btn-danger">Edytuj</button>
-            </Link>
+          <Link to="/crud-question">
+            <button className="btn btn-danger">Edytuj</button>
+          </Link>
         </div>
 
         <div className="col-md-6 bg-muted">
@@ -61,19 +63,16 @@ export const TableList = () => {
             Po lewej stronie znajdują się wszystkie twoje testy!
           </p>
           <p className="text-secondary">
-            Kliknij <span className="btn btn-primary">Nazwa_testu!</span> aby przejść do wybranego testu!
+            Kliknij <span className="btn btn-primary">Nazwa_testu!</span> aby
+            przejść do wybranego testu!
           </p>
 
           <p className="text-secondary">
-            Jeśli chcesz stworzyć nowy test, bądź edytować już istniejący, kliknij opcję edytuj.
+            Jeśli chcesz stworzyć nowy test, bądź edytować już istniejący,
+            kliknij opcję edytuj.
           </p>
-
         </div>
       </div>
-
-
-
-
     </div>
   );
 };

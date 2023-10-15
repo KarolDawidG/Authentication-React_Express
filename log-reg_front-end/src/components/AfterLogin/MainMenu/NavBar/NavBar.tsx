@@ -11,8 +11,12 @@ export const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Item>
-              <RedirectBtn to="https://github.com/KarolDawidG">About</RedirectBtn>
-              <RedirectBtn to="https://react-g-rock-paper-scissors.netlify.app/contact">Contack!</RedirectBtn>
+              <RedirectBtn to="https://github.com/KarolDawidG">
+                About
+              </RedirectBtn>
+              <RedirectBtn to="https://react-g-rock-paper-scissors.netlify.app/contact">
+                Contack!
+              </RedirectBtn>
               <LogoutButton />
             </Nav.Item>
           </Nav>
@@ -21,4 +25,3 @@ export const NavBar = () => {
     </>
   );
 };
-

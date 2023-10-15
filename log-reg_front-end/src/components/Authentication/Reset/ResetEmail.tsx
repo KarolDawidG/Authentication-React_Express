@@ -3,10 +3,11 @@ import axios from "axios";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { notify } from "../../Others/Notify";
 import { ENDPOINT_EMAIL, LINK_RESET } from "../../Utils/links";
-import { Title } from "../../Others/Title";
-import "../../../css/styles.css";
 import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
 import { NavBarMenu } from "../../NavBarMenu/NavBarMenu";
+import "bootstrap/dist/css/bootstrap.css";
+import "./ResetEmail.css";
+import { Footer } from "../../AfterLogin/MainMenu/Footer/Footer";
 
 interface FormState {
   email: string;
@@ -47,38 +48,38 @@ export const ResetEmail: React.FC = () => {
 
   return (
     <>
-    <NavBarMenu/>
-      <Title props={"Zresetuj hasło"} />
-      <div className="container">
-        <div className="right-side">
-          <form className="login-form__form" onSubmit={handleSubmit}>
-            <label className="login-form__label" htmlFor="email">
-              Email:{" "}
-            </label>
-            <input
-              className="login-form__input"
-              type="email"
-              id="email"
-              placeholder="example@mail.com"
-              name="email"
-              value={formState.email}
-              onChange={handleChange}
-              required
-            />
-            <br />
-            <br />
-            <input
-              type="submit"
-              className="login-form__submit"
-              value="Wyślij e-mail!"
-            />
-          </form>
+      <NavBarMenu />
+      <div className="container-sm center-content">
+        <div className="row">
+          <div className="col">
+          <h1 className="display-4 animated-title">Zresetuj hasło</h1>
+            <form className="form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label className="progress-bar bg-success" htmlFor="email">
+                  Email:{" "}
+                </label>
+                <input
+                  className="form-control"
+                  type="email"
+                  id="email"
+                  placeholder="example@mail.com"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-          <div className="redirect-btn">
+              <button type="submit" className="btn btn-outline-danger">
+                Wyślij e-mail!
+              </button>
+            </form>
+
             <RedirectBtn to="/">Menu</RedirectBtn>
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
