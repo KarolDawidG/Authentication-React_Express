@@ -15,6 +15,7 @@ import {
   removeFirstCharacter,
   removePart,
 } from "../CRUD-question/ShowTables/utils/stringHelpers";
+import { Footer } from "../MainMenu/Footer/Footer";
 
 enum AnswerOption {
   A = "A",
@@ -123,7 +124,7 @@ export const Quiz: React.FC = () => {
           {questions.length > 0 && (
             <div className="col-md-6">
               <h1 className="text-white ">Pytanie {currentQuestion + 1}:</h1>
-              <p className="quiz-question">
+              <p className="quiz-question text-white">
                 {questions[currentQuestion].question}
               </p>
 
@@ -164,7 +165,7 @@ export const Quiz: React.FC = () => {
                 <p className="incorrect-answer_p">
                   {questions[currentQuestion - 1].question}
                 </p>
-                <p className="incorrect-answer_p">
+                <p className="incorrect-answer_p text-white">
                   Poprawna odpowiedź to:{" "}
                   {questions[currentQuestion - 1].correctAnswer}
                 </p>
@@ -191,6 +192,7 @@ export const Quiz: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

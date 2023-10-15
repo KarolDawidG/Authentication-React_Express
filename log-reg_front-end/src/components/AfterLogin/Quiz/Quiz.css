@@ -2,44 +2,14 @@ body {
   background-color: black;
 }
 
-.quiz-question-container {
-  width: 600px;
-  height: 400px;
-  padding: 20px;
-  background-color: #141414;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  animation: slideIn 0.5s ease-in-out;
-}
-
-.quiz-question-container h1,
-.quiz-question,
-.option-label,
-.next-button,
-.previous-button,
-.correct-answer,
-.incorrect-answer,
-.incorrect-answer_p {
-  color: #ffffff;
-}
-
-.quiz-question-container h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #e50914;
-}
-
 .option-label {
   display: block;
-  margin-bottom: 10px;
   font-size: 16px;
 }
 
 .option-label input[type="radio"] {
   margin-right: 5px;
 }
-
 
 .correct-answer {
   color: #2ecc71;
