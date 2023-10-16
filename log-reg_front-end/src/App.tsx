@@ -12,6 +12,7 @@ import { LookEmail } from "./components/Authentication/Register/LookEmail";
 import { MenuCrud } from "./components/AfterLogin/CRUD-question/MenuCrud/MenuCrud";
 import { InsertMain } from "./components/AfterLogin/CRUD-question/InsertInTable/InsertMain";
 import { Quiz } from "./components/AfterLogin/Quiz/Quiz";
+import './styles/style.css';
 // import LogRocket from 'logrocket';   todo
 
 export const App = () => {

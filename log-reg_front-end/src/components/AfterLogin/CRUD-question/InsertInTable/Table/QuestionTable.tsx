@@ -50,17 +50,17 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
 
   return (
     <>
-      <p className="p-3 mb-2 bg-success text-white"> Lista pytań: </p>
+      <p className="p-3 mb-2 bg-success text-white"> List of questions: </p>
       <div className="question-table my-custom-scrollbar">
         <table className="table table-hover">
           <thead>
             <tr className=" question-table__header">
               <th>No</th>
-              <th>Pytanie</th>
+              <th>Question</th>
               <th>A</th>
               <th>B</th>
               <th>C</th>
-              <th>Odp.</th>
+              <th>Answer</th>
               <th>Delete</th>
               <th>Update</th>
             </tr>
@@ -113,7 +113,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
               ))
             ) : (
               <tr>
-                <td>Brak pytań do wyświetlenia.</td>
+                <td>No questions to display.</td>
               </tr>
             )}
             {isEditFormVisible && (

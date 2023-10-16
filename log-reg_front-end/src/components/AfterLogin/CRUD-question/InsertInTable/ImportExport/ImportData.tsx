@@ -41,7 +41,7 @@ export const ImportData: React.FC<ImportExportProps> = ({
       const postString = lines[i + 5]?.trim() || "";
 
       if (postString !== "") {
-        notify("Błądny format danych!");
+        notify("Invalid data format!");
         return;
       }
 
@@ -69,7 +69,7 @@ export const ImportData: React.FC<ImportExportProps> = ({
     try {
       await axios.post(`http://localhost:3001/import/${tableName}`, jsonData);
     } catch (error) {
-      console.error("Błąd podczas dodawania pytania:", error);
+      console.error("Error while adding a question: ", error);
     }
   };
 
@@ -85,19 +85,29 @@ export const ImportData: React.FC<ImportExportProps> = ({
                 onChange={handleFileInputChange}
               />
               <button className="btn btn-primary" onClick={handleParseData}>
-                Przetwórz dane
+                Process the data
               </button>
               <button className="btn btn-danger" onClick={onClose}>
-                Zamknij
+                Close
               </button>
             </div>
             <div className="col-md-6">
+              <p className="h5">
+                Data should follow the pattern:<br/>
+              </p>
               <p>
-                {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                enim odit. Earum dicta, voluptate est amet laborum magni modi
-                neque magnam, at deleniti, recusandae nisi eaque mollitia.
-                Provident, nisi commodi.
+                Sample question<br/>
+                Answer A<br/>
+                Answer B<br/>
+                Answer C<br/>
+                A<br/>
+                  <br/>
+                Next question<br/>
+                Answer A<br/>
+                Answer B<br/>
+                Answer C<br/>
+                A<br/>
+                  <br/>
               </p>
             </div>
           </div>

@@ -61,33 +61,32 @@ export const EditForm: React.FC<EditFormProps> = ({
             <div className="col-md-6">
               <form onSubmit={handleSubmit}>
                 <Input
-                  label="Pytanie "
+                  label="Question"
                   name="question"
                   value={formData.question}
                   onChange={handleChange}
                 />
                 <Input
-                  label="Opcja A"
+                  label="Option A"
                   name="optionA"
                   value={formData.optionA}
                   onChange={handleChange}
                 />
                 <Input
-                  label="Opcja B"
+                  label="Option B"
                   name="optionB"
                   value={formData.optionB}
                   onChange={handleChange}
                 />
                 <Input
-                  label="Opcja C"
+                  label="Option C"
                   name="optionC"
                   value={formData.optionC}
                   onChange={handleChange}
                 />
 
-                <label className="edit-question-label">
-                  {" "}
-                  Poprawna odpowiedź:
+                <label className="col-md-6">
+                  Correct answer:
                   {["A", "B", "C"].map((option) => (
                     <span key={option}>
                       <input
@@ -102,30 +101,26 @@ export const EditForm: React.FC<EditFormProps> = ({
                     </span>
                   ))}
                 </label>
+
                 <button className="btn btn-primary" type="submit">
-                  Zmień pytanie
+                  Change the question
                 </button>
               </form>
 
               <button className="btn btn-danger" onClick={onClose}>
-                Zamknij
+                Close
               </button>
             </div>
             <div className="col-md-6">
-              <p>
-                {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                enim odit. Earum dicta, voluptate est amet laborum magni modi
-                neque magnam, at deleniti, recusandae nisi eaque mollitia.
-                Provident, nisi commodi.
+
+              <p className="h5">
+                If you want to edit a question, feel free to make any changes you desire!
               </p>
+
               <p>
-                {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                enim odit. Earum dicta, voluptate est amet laborum magni modi
-                neque magnam, at deleniti, recusandae nisi eaque mollitia.
-                Provident, nisi commodi.
+                Just remember to save all your changes!
               </p>
+
             </div>
           </div>
         </div>

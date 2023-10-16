@@ -32,27 +32,31 @@ export const ExportData: React.FC<ImportExportProps> = ({
         <div className="container-sm">
           <div className="row">
             <div className="col-md-6">
-              <label>Nazwa pliku:</label>
+              <label>File name: </label>
               <input
                 type="text"
                 value={fileName}
                 onChange={handleFileNameChange}
               />
               <button className="btn btn-primary" onClick={fetchData}>
-                Zapisz do pliku
+                Save to file
               </button>
               <button className="btn btn-danger" onClick={onClose}>
-                Zamknij
+                Close
               </button>
             </div>
 
             <div className="col-md-6">
+              <p className="h5">
+                  All data will be saved in a txt file in the following format:
+              </p>
               <p>
-                {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                enim odit. Earum dicta, voluptate est amet laborum magni modi
-                neque magnam, at deleniti, recusandae nisi eaque mollitia.
-                Provident, nisi commodi.
+                  Sample question<br/>
+                  Answer A<br/>
+                  Answer B<br/>
+                  Answer C<br/>
+                  A<br/>
+                  <br/>
               </p>
             </div>
           </div>

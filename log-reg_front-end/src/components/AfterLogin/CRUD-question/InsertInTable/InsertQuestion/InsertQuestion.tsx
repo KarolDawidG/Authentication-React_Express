@@ -60,33 +60,33 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
             <div className="col-md-6">
               <form onSubmit={handleSubmit}>
                 <Input
-                  label="Pytanie "
+                  label="Question"
                   name="question"
                   value={formData.question}
                   onChange={handleChange}
                 />
                 <Input
-                  label="Opcja A"
+                  label="Option A"
                   name="optionA"
                   value={formData.optionA}
                   onChange={handleChange}
                 />
                 <Input
-                  label="Opcja B"
+                  label="Option B"
                   name="optionB"
                   value={formData.optionB}
                   onChange={handleChange}
                 />
 
                 <Input
-                  label="Opcja C"
+                  label="Option C"
                   name="optionC"
                   value={formData.optionC}
                   onChange={handleChange}
                 />
 
-                <label className="insert-question-label">
-                  Poprawna odpowiedź:
+                <label className="col-md-6">
+                  Correct answer:
                   {["A", "B", "C"].map((option) => (
                     <span key={option}>
                       <input
@@ -102,28 +102,21 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
                   ))}
                 </label>
                 <button className="btn btn-primary" type="submit">
-                  Dodaj pytanie
+                  Add question
                 </button>
               </form>
 
               <button className="btn btn-danger" onClick={onClose}>
-                Zamknij
+                Close
               </button>
             </div>
             <div className="col-md-6">
               <p>
-                {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                enim odit. Earum dicta, voluptate est amet laborum magni modi
-                neque magnam, at deleniti, recusandae nisi eaque mollitia.
-                Provident, nisi commodi.
-              </p>
-              <p>
-                {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                enim odit. Earum dicta, voluptate est amet laborum magni modi
-                neque magnam, at deleniti, recusandae nisi eaque mollitia.
-                Provident, nisi commodi.
+                Add data to the test in the following format:
+                
+                1. Question: Try to use a maximum of 200 characters. <br/>
+                2. Answers A, B, and C <br/>
+                3. Then mark the correct answer, e.g., A <br/>
               </p>
             </div>
           </div>

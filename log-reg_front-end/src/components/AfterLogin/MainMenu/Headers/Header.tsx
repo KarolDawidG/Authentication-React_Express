@@ -18,11 +18,11 @@ export const Header: React.FC<InsertHeaderProps> = ({ nazwaTabeli }) => {
       }}
     >
       <div>
-        <p className="btn btn-secondary">Zalogowany użytkownik: {user}</p>
+        <p className="btn btn-secondary">Logged-in user: {user}</p>
       </div>
       {nazwaTabeli && (
         <div>
-          <p className="btn btn-secondary">Nazwa tabeli: {nazwaTabeli}</p>
+          <p className="btn btn-secondary">Quiz: {nazwaTabeli}</p>
         </div>
       )}
     </div>

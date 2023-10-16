@@ -38,7 +38,7 @@ export const TableList = () => {
     <div className="container-sm">
       <div className="row">
         <div className="col-md-6">
-          <h1 className="p-3 mb-2  text-white">Wybierz test:</h1>
+          <h1 className="p-3 mb-2  text-white">Choose a test:</h1>
           <div className="scrollbar">
             {tableNames.map((tableName) => (
               <div key={tableName}>
@@ -54,24 +54,21 @@ export const TableList = () => {
           </div>
 
           <Link to="/crud-question">
-            <button className="btn btn-danger">Edytuj</button>
+            <button className="btn btn-danger">Edit</button>
           </Link>
         </div>
 
         <div className="col-md-6 bg-muted">
-          <p className="text-secondary">
-            Po lewej stronie znajdują się wszystkie twoje testy!
-          </p>
-          <p className="text-secondary">
-            Kliknij <span className="btn btn-primary">Nazwa_testu!</span> aby
-            przejść do wybranego testu!
-          </p>
-
-          <p className="text-secondary">
-            Jeśli chcesz stworzyć nowy test, bądź edytować już istniejący,
-            kliknij opcję edytuj.
+          <p className="text-white">
+            On the left side, you will find all your tests!
+            <br/><br/>
+            Click on the test name to start the challenge!
+            <br/>
+            If you want to create a new test or edit an existing one,
+            click on the edit option.
           </p>
         </div>
+
       </div>
     </div>
   );

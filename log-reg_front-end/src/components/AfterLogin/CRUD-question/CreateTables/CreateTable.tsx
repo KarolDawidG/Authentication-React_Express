@@ -10,7 +10,7 @@ export const CreateTable = () => {
   const handleFormSubmit = async () => {
     try {
       await axios.post(
-        `http://localhost:3001/create-table/${username}/${inputvalue}`,
+        `http://localhost:3001/create-table/${username}/${inputvalue}`
       );
     } catch (error: any) {
       handleNetworkError(error);
@@ -23,17 +23,17 @@ export const CreateTable = () => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <div className="form">
+      <>
         <input
           type="text"
           value={replaceSpacesWithUnderscores(inputvalue)}
           onChange={(e) => setInputvalue(e.target.value)}
-          placeholder="Wpisz nazwę nowej tabeli"
+          placeholder="Enter new table name"
         />
-        <button type="submit" className="btn btn-primary">
-          Stworz
+        <button type="submit" className="btn btn-primary ml-2"> {/* Add margin class ml-2 */}
+          Create
         </button>
-      </div>
+      </>
     </form>
   );
 };

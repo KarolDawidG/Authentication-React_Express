@@ -34,7 +34,7 @@ export const RegForm: React.FC = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label>Email:</Form.Label>
+        <Form.Label>E-mail:</Form.Label>
         <Form.Control
           type="email"
           minLength={4}
@@ -67,7 +67,7 @@ export const RegForm: React.FC = () => {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Hasło:</Form.Label>
+        <Form.Label>Password:</Form.Label>
         <Form.Control
           type="password"
           minLength={8}
@@ -86,10 +86,10 @@ export const RegForm: React.FC = () => {
       <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} ref={captchaRef} />
 
       <Button variant="primary" type="submit">
-        Zarejestruj się!
+        Sign up!
       </Button>
       <Button variant="secondary" onClick={onClose}>
-        Zamknij
+        Close
       </Button>
     </Form>
   );

@@ -5,7 +5,7 @@ export const LookEmail = () => {
     <>
       <NavBarMenu />
       <div className="container">
-        <h1>Na podany adres email trafił link aktywacyjny!</h1>
+        <h1>An activation link has been sent to the provided email address!</h1>
       </div>
     </>
   );

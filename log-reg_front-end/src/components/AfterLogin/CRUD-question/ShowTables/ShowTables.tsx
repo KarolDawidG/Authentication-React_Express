@@ -48,7 +48,7 @@ export const ShowTables = () => {
     <>
       <p className="p-1 mb-1 bg-success text-white">
         {" "}
-        Lista dostępnych tabel:{" "}
+        List of available tables:
       </p>
 
       <div className="my-custom-scrollbar table-size">
@@ -59,10 +59,10 @@ export const ShowTables = () => {
                 No.
               </th>
               <th scope="col" className="text-center">
-                Nazwa tabeli
+                Table name
               </th>
               <th scope="col" className="text-center actions-cell">
-                Akcje
+                Action
               </th>
             </tr>
           </thead>

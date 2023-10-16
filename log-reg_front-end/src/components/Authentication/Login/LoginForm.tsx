@@ -23,7 +23,7 @@ export const LoginForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label>Login:</Form.Label>
+        <Form.Label>Log-in:</Form.Label>
         <Form.Control
           minLength={4}
           type="text"
@@ -39,7 +39,7 @@ export const LoginForm = () => {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Hasło:</Form.Label>
+        <Form.Label>Password:</Form.Label>
         <Form.Control
           minLength={8}
           type="password"
@@ -55,13 +55,13 @@ export const LoginForm = () => {
       </Form.Group>
 
       <Button variant="primary" type="submit">
-        Zaloguj się!
+        Log in!
       </Button>
       <Button variant="secondary" onClick={onClose}>
-        Zamknij
+        Close
       </Button>
       <Link to="/reset-email" className="btn btn-link">
-        Przypomnij hasło
+        Forgot password
       </Link>
     </Form>
   );
