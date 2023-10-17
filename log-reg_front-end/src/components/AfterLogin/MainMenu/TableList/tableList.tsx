@@ -61,14 +61,14 @@ export const TableList = () => {
         <div className="col-md-6 bg-muted">
           <p className="text-white">
             On the left side, you will find all your tests!
-            <br/><br/>
+            <br />
+            <br />
             Click on the test name to start the challenge!
-            <br/>
-            If you want to create a new test or edit an existing one,
-            click on the edit option.
+            <br />
+            If you want to create a new test or edit an existing one, click on
+            the edit option.
           </p>
         </div>
-
       </div>
     </div>
   );

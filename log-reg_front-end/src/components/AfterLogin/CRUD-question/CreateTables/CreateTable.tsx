@@ -10,7 +10,7 @@ export const CreateTable = () => {
   const handleFormSubmit = async () => {
     try {
       await axios.post(
-        `http://localhost:3001/create-table/${username}/${inputvalue}`
+        `http://localhost:3001/create-table/${username}/${inputvalue}`,
       );
     } catch (error: any) {
       handleNetworkError(error);
@@ -30,7 +30,9 @@ export const CreateTable = () => {
           onChange={(e) => setInputvalue(e.target.value)}
           placeholder="Enter new table name"
         />
-        <button type="submit" className="btn btn-primary ml-2"> {/* Add margin class ml-2 */}
+        <button type="submit" className="btn btn-primary ml-2">
+          {" "}
+          {/* Add margin class ml-2 */}
           Create
         </button>
       </>

@@ -13,7 +13,8 @@ export const PasswordStatus: React.FC<PasswordStatusProps> = ({
   passwordsMatch,
 }) => {
   return (
-    <span className="p-2"
+    <span
+      className="p-2"
       style={{
         color: password && password2 && passwordsMatch ? "green" : "red",
       }}

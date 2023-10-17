@@ -37,7 +37,7 @@ export const ImportData: React.FC<ImportExportProps> = ({
       const optionA = lines[i + 1]?.trim() || "";
       const optionB = lines[i + 2]?.trim() || "";
       const optionC = lines[i + 3]?.trim() || "";
-      const correctAnswer = lines[i + 4]?.trim() || "A";
+      const correctAnswer = lines[i + 4]?.trim() || "";
       const postString = lines[i + 5]?.trim() || "";
 
       if (postString !== "") {
@@ -93,21 +93,24 @@ export const ImportData: React.FC<ImportExportProps> = ({
             </div>
             <div className="col-md-6">
               <p className="h5">
-                Data should follow the pattern:<br/>
+                Data should follow the pattern:
+                <br />
               </p>
               <p>
-                Sample question<br/>
-                Answer A<br/>
-                Answer B<br/>
-                Answer C<br/>
-                A<br/>
-                  <br/>
-                Next question<br/>
-                Answer A<br/>
-                Answer B<br/>
-                Answer C<br/>
-                A<br/>
-                  <br/>
+                Sample question
+                <br />
+                Answer A<br />
+                Answer B<br />
+                Answer C<br />
+                A<br />
+                <br />
+                Next question
+                <br />
+                Answer A<br />
+                Answer B<br />
+                Answer C<br />
+                A<br />
+                <br />
               </p>
             </div>
           </div>

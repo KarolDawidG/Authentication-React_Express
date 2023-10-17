@@ -52,7 +52,7 @@ export const ResetEmail: React.FC = () => {
       <div className="container-sm center-content">
         <div className="row">
           <div className="col">
-          <h1 className="display-4 animated-title">Zresetuj hasło</h1>
+            <h1 className="display-4 animated-title">Zresetuj hasło</h1>
             <form className="form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label className="progress-bar bg-success" htmlFor="email">
@@ -79,7 +79,7 @@ export const ResetEmail: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

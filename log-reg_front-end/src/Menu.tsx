@@ -13,16 +13,18 @@ export const Menu = () => {
               <img src="img/baba.png" alt="Baba cyborg" className="img-fluid" />
             </div>
           </div>
-            <div className="col-md-6">
-              <h2 className="text-white">
-                Multiple-Choice Test Creation App
-              </h2>
+          <div className="col-md-6">
+            <h2 className="text-white">Multiple-Choice Test Creation App</h2>
             <p className="lead text-white">
-              This is a tool that enables you to create, edit, export, import, and delete multiple-choice tests of type A, B, C. <br/><br/>
-
-              Use this application to create and manage tests in a simple and efficient manner. We provide an intuitive interface that makes working with questions and answers easy. <br/><br/>
-              
-              Let our application simplify the process of test creation and management for you, without unnecessary hassle.
+              This is a tool that enables you to create, edit, export, import,
+              and delete multiple-choice tests of type A, B, C. <br />
+              <br />
+              Use this application to create and manage tests in a simple and
+              efficient manner. We provide an intuitive interface that makes
+              working with questions and answers easy. <br />
+              <br />
+              Let our application simplify the process of test creation and
+              management for you, without unnecessary hassle.
             </p>
           </div>
         </div>

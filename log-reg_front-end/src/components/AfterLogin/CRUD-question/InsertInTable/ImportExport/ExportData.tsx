@@ -48,15 +48,16 @@ export const ExportData: React.FC<ImportExportProps> = ({
 
             <div className="col-md-6">
               <p className="h5">
-                  All data will be saved in a txt file in the following format:
+                All data will be saved in a txt file in the following format:
               </p>
               <p>
-                  Sample question<br/>
-                  Answer A<br/>
-                  Answer B<br/>
-                  Answer C<br/>
-                  A<br/>
-                  <br/>
+                Sample question
+                <br />
+                Answer A<br />
+                Answer B<br />
+                Answer C<br />
+                A<br />
+                <br />
               </p>
             </div>
           </div>

@@ -192,7 +192,7 @@ export const Quiz: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

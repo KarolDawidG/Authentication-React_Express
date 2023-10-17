@@ -13,7 +13,9 @@ interface PassForm {
 export const PasswordForm = ({ password, setPassword, label }: PassForm) => {
   return (
     <>
-      <label className="p-2 text-white" htmlFor="password">{label}</label>
+      <label className="p-2 text-white" htmlFor="password">
+        {label}
+      </label>
       <input
         className="form-control"
         type="password"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Navbar, Nav, Modal } from "react-bootstrap";
 import { Registration } from "../Authentication/Register/Registration";
 import { Login } from "../Authentication/Login/Login";
@@ -45,7 +45,7 @@ export const NavBarMenu = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            {isLoginFormVisible ? "Logowanie" : "Rejestracja"}
+            {isLoginFormVisible ? "Sign-in" : "Sign-up"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

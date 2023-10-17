@@ -112,11 +112,10 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
             </div>
             <div className="col-md-6">
               <p>
-                Add data to the test in the following format:
-                
-                1. Question: Try to use a maximum of 200 characters. <br/>
-                2. Answers A, B, and C <br/>
-                3. Then mark the correct answer, e.g., A <br/>
+                Add data to the test in the following format: 1. Question: Try
+                to use a maximum of 200 characters. <br />
+                2. Answers A, B, and C <br />
+                3. Then mark the correct answer, e.g., A <br />
               </p>
             </div>
           </div>

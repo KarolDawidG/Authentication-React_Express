@@ -112,15 +112,12 @@ export const EditForm: React.FC<EditFormProps> = ({
               </button>
             </div>
             <div className="col-md-6">
-
               <p className="h5">
-                If you want to edit a question, feel free to make any changes you desire!
+                If you want to edit a question, feel free to make any changes
+                you desire!
               </p>
 
-              <p>
-                Just remember to save all your changes!
-              </p>
-
+              <p>Just remember to save all your changes!</p>
             </div>
           </div>
         </div>

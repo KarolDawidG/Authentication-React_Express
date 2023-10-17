@@ -55,7 +55,7 @@ export const Reset = () => {
     <>
       <NavBarMenu />
       <div className="container-sm center-content">
-      <h1 className="display-4 animated-title">Zresetuj hasło</h1>
+        <h1 className="display-4 animated-title">Zresetuj hasło</h1>
         <div className="row">
           <form className="form" onSubmit={handleSubmit}>
             <PasswordForm
@@ -81,10 +81,10 @@ export const Reset = () => {
               passwordsMatch={passwordsMatch}
             />
           </form>
-            <RedirectBtn to="/">Menu główne</RedirectBtn>
+          <RedirectBtn to="/">Menu główne</RedirectBtn>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
