@@ -54,9 +54,7 @@ export const Contack: React.FC<Props> = ({ onClose }) => {
               ></textarea>
 
             <button className="btn btn-primary">Send</button>
-            <button className="btn btn-danger" onClick={onClose}>
-              Close
-            </button>
+            <button className="btn btn-danger" onClick={onClose}>Close</button>
           </div>
 
           <div className="col-md-6">

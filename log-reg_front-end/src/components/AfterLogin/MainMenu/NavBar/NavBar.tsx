@@ -48,7 +48,7 @@ export const NavBar = () => {
                   onClick={showContactForm}
                   className="btn btn-outline-secondary btn-lg"
                 >
-                  Kontakt
+                  Contact!
                 </button>
               </li>
             </ul>
