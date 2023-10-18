@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Navbar, Nav, Modal, Button } from "react-bootstrap";
 import { LogoutButton } from "../../../Others/LogoutButton";
 import { RedirectBtn } from "../../../Others/RedirectBtn";
 import { Contack } from "./Contact";
+import "bootstrap/dist/css/bootstrap.css";
+import "./NavBar.css";
 
 export const NavBar = () => {
   const [isContactFormVisible, setIsContactFormVisible] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const showContactForm = () => {
     setIsContactFormVisible(!isContactFormVisible);
@@ -14,37 +16,53 @@ export const NavBar = () => {
   const handleCloseModal = () => {
     setIsContactFormVisible(false);
   };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Navbar.Brand href="#home">Mega-Test</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-            <Nav.Item>
-              <RedirectBtn to="https://github.com/KarolDawidG">
-                About
-              </RedirectBtn>
-              <LogoutButton />
-            </Nav.Item>
+      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div className="container-sm">
+          <a href="#home" className="navbar-brand">
+            Mega-Test
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={toggleMobileMenu}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className={`collapse navbar-collapse ${isMobileMenuOpen ? "show" : ""}`} id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <RedirectBtn to="https://github.com/KarolDawidG">About</RedirectBtn>
+              </li>
+              <li className="nav-item">
+                <LogoutButton />
+              </li>
+              <li className="nav-item">
+                <button
+                  onClick={showContactForm}
+                  className="btn btn-outline-secondary btn-lg"
+                >
+                  Kontakt
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-            <Nav.Item>
-              <Button
-                onClick={showContactForm}
-                variant="outline-primary"
-                className="btn-lg"
-              >
-                Kontakt
-              </Button>
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse>
-
-        <Modal show={isContactFormVisible} onHide={handleCloseModal}>
-            <Contack onClose={handleCloseModal} />  
-            {/* //todo some issue */}
-        </Modal>
-      </Navbar>
+      {isContactFormVisible && (
+        <div className="modal" style={{ display: "block" }}>
+          <div className="modal-body">
+            <Contack onClose={handleCloseModal} />
+          </div>
+        </div>
+      )}
     </>
   );
 };

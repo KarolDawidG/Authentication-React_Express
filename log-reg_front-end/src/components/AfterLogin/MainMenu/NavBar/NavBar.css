@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+    .navbar-expand-lg .navbar-toggler {
+      display: block;
+    }
+    .collapse.navbar-collapse {
+      display: none;
+    }
+    .navbar-collapse.show {
+      display: block;
+      transition: all 0.3s; 
+    }
+  }

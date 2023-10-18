@@ -4,3 +4,22 @@
     height: 250px;
     overflow: auto;
     }
+
+@media (max-width: 768px) {
+    .col-md-6 {
+      width: 100%;
+    }
+    .col-md-6.bg-muted {
+      background-color: transparent; 
+    }
+    .scrollbar {
+        height: 200px;
+        overflow-x: auto; 
+    }
+    .btn-primary {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  

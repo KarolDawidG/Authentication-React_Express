@@ -62,7 +62,6 @@ export const TableList = () => {
           <p className="text-white">
             On the left side, you will find all your tests!
             <br />
-            <br />
             Click on the test name to start the challenge!
             <br />
             If you want to create a new test or edit an existing one, click on

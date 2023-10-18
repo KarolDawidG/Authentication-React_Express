@@ -13,7 +13,6 @@ export const Contack: React.FC<Props> = ({ onClose }) => {
         <div className="container-sm">
           <div className="row">
           <div className="col-md-6">
-            <h4>Get in touch!</h4><hr/>
               <label htmlFor="exampleInput" className="form-label">
                 Name
               </label>
@@ -61,7 +60,6 @@ export const Contack: React.FC<Props> = ({ onClose }) => {
           </div>
 
           <div className="col-md-6">
-            <h4>Contact to us</h4><hr/>
             <div className="mb-3">
               <div className="d-flex">
                 <i className="bi bi-telephone-outbound-fill"></i>
