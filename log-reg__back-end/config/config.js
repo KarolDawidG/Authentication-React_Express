@@ -36,7 +36,13 @@ const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
     type: "pkcs8",
     format: "pem",
   },
+
+
 });
+
+  if (!fs.existsSync("./klucze")) {
+    fs.mkdirSync("./klucze");
+  }
 
 fs.writeFileSync("./klucze/privateKey.pem", privateKey);
 fs.writeFileSync("./klucze/publicKey.pem", publicKey);

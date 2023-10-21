@@ -16,7 +16,7 @@ router.get("/:username", async (req, res) => {
 
     return res.json({ tablesUser });
   } catch (error) {
-    logger.error(`Błąd podczas wyszukiwania tabel: ${error.message}`);
+    logger.error(`Błąd podczas wyszukiwania tabelki: ${error.message}`);
     return res
       .status(STATUS_CODES.SERVER_ERROR)
       .send("Blad wyszukiwania tabel");

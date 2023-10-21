@@ -19,7 +19,7 @@ export const App = () => {
   return (
     <>
       <ToastContainer limit={3} />
-      <Routes>
+      <Routes>g
         <Route path="/" element={<Menu />} />
         <Route path="/quiz/:tableName" element={<Quiz />} />
         <Route path="/insert/:username/:tableName" element={<InsertMain />} />
