@@ -60,4 +60,23 @@ const sendRegisterEmail = async (email, username, link) => {
   await transporter.sendMail(mailRegisOptions);
 };
 
-module.exports = { sendResetPasswordEmail, sendRegisterEmail };
+const sendContactEmail = async (name, email, subject, message) => {
+  const transporter = createTransporter();
+
+  const mailContactOptions = {
+    from: email,
+    to: user,
+    subject: `Message from ${email}: ${subject}`,
+    text: 
+  `
+  Email sender: ${email}
+  Name of sender: ${name}
+  Subject: ${subject}\n
+  Message:\n\n ${message}.
+  `,
+  };
+
+  await transporter.sendMail(mailContactOptions);
+};
+
+module.exports = { sendResetPasswordEmail, sendRegisterEmail, sendContactEmail};

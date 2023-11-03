@@ -1,61 +1,108 @@
 import "bootstrap/dist/css/bootstrap.css";
+import axios  from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Contact.css";
+import { useState } from "react";
+import { notify } from "../../../Others/Notify";
+import { ContactProps } from "../../../Utils/Interfaces/ContactProps";
+import { ENDPOINT_CONTACT } from "../../../Utils/links";
 
-interface Props {
-  onClose: () => void;
-}
+export const Contact: React.FC<ContactProps> = ({ onClose }) => {
+  const [formState, setFormState] = useState<ContactProps>({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
 
-export const Contack: React.FC<Props> = ({ onClose }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      await axios.post(ENDPOINT_CONTACT, formState);
+      notify('An E-mail has been sent!');
+      setFormState({ name: '', email: '', subject: '', message: '' });
+      onClose?.();
+    } catch (error) {
+      console.log(error);
+      notify('Something went wrong! Check the console (catch).');
+    }
+  };
+
   return (
     <div className="contact-overlay">
       <div className="content-contact">
         <div className="container-sm">
           <div className="row">
-          <div className="col-md-6">
-              <label htmlFor="exampleInput" className="form-label">
+          <form className="col-md-6" onSubmit={handleSubmit}>
+
+              <label htmlFor="name" className="form-label">
                 Name
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="exampleInput"
+                id="name"
+                name="name"
+                value={formState.name}
+                onChange={handleChange}
                 placeholder="your name"
+              
+                required
               ></input>
 
-              <label htmlFor="exampleInput" className="form-label">
+              <label htmlFor="email" className="form-label">
                 Email
               </label>
               <input
                 type="email"
                 className="form-control"
-                id="exampleInput"
+                id="email"
+                name="email"
+                value={formState.email}
+                onChange={handleChange}
                 placeholder="your email"
+                
+                required
               ></input>
 
-              <label htmlFor="exampleInput" className="form-label">
+              <label htmlFor="subject" className="form-label">
                 Subject
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="exampleInput"
+                id="subject"
+                name="subject"
+                value={formState.subject}
+                onChange={handleChange}
                 placeholder="subject"
+                
+                required
               ></input>
 
-              <label htmlFor="exampleInput" className="form-label">
+              <label htmlFor="message" className="form-label">
                 Message
               </label>
               <textarea
                 rows={3}
                 className="form-control"
-                id="exampleInput"
+                id="message"
+                name="message"
+                value={formState.message}
+                onChange={handleChange}
                 placeholder="your message"
+                required
               ></textarea>
 
-            <button className="btn btn-primary">Send</button>
+            <input type="submit" className="btn btn-primary" value="Send Message" />
             <button className="btn btn-danger" onClick={onClose}>Close</button>
-          </div>
+          </form>
 
           <div className="col-md-6">
             <div className="mb-3">
@@ -81,3 +128,4 @@ export const Contack: React.FC<Props> = ({ onClose }) => {
     </div>
   );
 };
+

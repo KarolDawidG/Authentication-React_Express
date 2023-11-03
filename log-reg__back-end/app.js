@@ -12,7 +12,7 @@ const usersRoute = require("./routes/adminRoute/usersRoute");
 const resetRoute = require("./routes/userRoute/resetRoute");
 const forgotRoute = require("./routes/userRoute/forgotPassRoute");
 const capRoutes = require("./routes/captchaRoute/capRoute");
-
+const contactRoutes = require("./routes/userRoute/contactFormRoute");
 // quiz
 const quizeRoute = require("./routes/quizeRoute/quizeRoute");
 
@@ -41,6 +41,7 @@ app.use("/create-table", createTableRoute);
 app.use("/create-question", createQuestionRoute);
 app.use("/import", importRoute);
 app.use("/export", exportRoute);
+app.use("/contact-form", contactRoutes);
 
 app.use(middleware);
 app.use(limiter);

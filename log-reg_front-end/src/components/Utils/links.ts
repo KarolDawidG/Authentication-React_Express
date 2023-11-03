@@ -26,6 +26,8 @@ export const QUIZ = "http://localhost:3001/quiz/";
 
 export const QUIZ_20 = "http://localhost:3001/quiz-20";
 
+export const ENDPOINT_CONTACT = 'http://localhost:3001/contact-form';
+
 export const ADMIN_ROLE = "admin";
 
 export const INTERNET_DISCONNECTED =

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LogoutButton } from "../../../Others/LogoutButton";
 import { RedirectBtn } from "../../../Others/RedirectBtn";
-import { Contack } from "./Contact";
+import { Contact } from "./Contact";
 import "bootstrap/dist/css/bootstrap.css";
 import "./NavBar.css";
 
@@ -59,7 +59,7 @@ export const NavBar = () => {
       {isContactFormVisible && (
         <div className="modal" style={{ display: "block" }}>
           <div className="modal-body">
-            <Contack onClose={handleCloseModal} />
+            <Contact onClose={handleCloseModal} />
           </div>
         </div>
       )}
