@@ -7,7 +7,7 @@ import {
 } from "../ShowTables/utils/stringHelpers";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
-import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
 import { QuestionTable } from "./Table/QuestionTable";
 import { QuestionsListProps } from "../../../Utils/Interfaces/QuestionListProps";
 import { Header } from "../../MainMenu/Headers/Header";

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { notify } from "../../../Others/Notify";
 import { ENDPOINT_REGISTER } from "../../../Utils/links";
-import { handleNetworkError } from "../../Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
 
 export const handleReg = async (
   email: string,

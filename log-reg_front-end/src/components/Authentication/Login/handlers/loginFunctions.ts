@@ -2,7 +2,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { notify } from "../../../Others/Notify";
 import { ADMIN_ROLE, ENDPOINT_AUTH } from "../../../Utils/links";
-import { handleNetworkError } from "./networkErrorFunctions";
+import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
 
 export const handleLogin = async (
   username: string,

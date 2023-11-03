@@ -7,7 +7,7 @@ import "./Quiz.css";
 import { BeLogin } from "../../Authentication/Login/BeLogin";
 import { Option } from "./Utils/Option";
 import { RedirectBtn } from "../../Others/RedirectBtn";
-import { handleNetworkError } from "../../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../Utils/handlers/networkErrorFunctions";
 import { NavBar } from "../MainMenu/NavBar/NavBar";
 import { Header } from "../MainMenu/Headers/Header";
 import {

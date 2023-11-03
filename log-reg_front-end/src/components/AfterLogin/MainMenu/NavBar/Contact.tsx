@@ -6,6 +6,7 @@ import { useState } from "react";
 import { notify } from "../../../Others/Notify";
 import { ContactProps } from "../../../Utils/Interfaces/ContactProps";
 import { ENDPOINT_CONTACT } from "../../../Utils/links";
+import { handleAxiosError } from "../../../Utils/handlers/axiosErrorHandler";
 
 export const Contact: React.FC<ContactProps> = ({ onClose }) => {
   const [formState, setFormState] = useState<ContactProps>({
@@ -29,8 +30,7 @@ export const Contact: React.FC<ContactProps> = ({ onClose }) => {
       setFormState({ name: '', email: '', subject: '', message: '' });
       onClose?.();
     } catch (error) {
-      console.log(error);
-      notify('Something went wrong! Check the console (catch).');
+      handleAxiosError(error);
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { QuestionsListProps } from "../../../../Utils/Interfaces/QuestionListProps";
 import axios from "axios";
-import { handleNetworkError } from "../../../../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../../../Utils/handlers/networkErrorFunctions";
 import { useNavigate } from "react-router-dom";
 import "./QuestionTable.css";
 import "bootstrap/dist/css/bootstrap.css";

@@ -4,7 +4,7 @@ import { LoginForm } from "./LoginForm";
 import { LoginContextType } from "../../Utils/Interfaces/LoginContextType";
 import { handleLogin } from "./handlers/loginFunctions";
 import { handleTokenRefresh } from "./handlers/tokenRefreshFunctions";
-import { handleNetworkError } from "./handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../Utils/handlers/networkErrorFunctions";
 
 interface Props {
   onClose: () => void;

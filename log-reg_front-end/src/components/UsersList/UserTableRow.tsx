@@ -4,7 +4,7 @@ import { UsersListProps } from "../Utils/Interfaces/UsersListProps";
 import { ENDPOINT_DELETE, ENDPOINT_UPDATE } from "../Utils/links";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
-import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../Utils/handlers/networkErrorFunctions";
 
 interface Props {
   user: UsersListProps;

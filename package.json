@@ -7,5 +7,8 @@
     "backend": "cd ./log-reg__back-end && npm run start",
     "frontend": "cd ./log-reg_front-end && npm run start",
     "log": "git log --oneline"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0"
   }
 }

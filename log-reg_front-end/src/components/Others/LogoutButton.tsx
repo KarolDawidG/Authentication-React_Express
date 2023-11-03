@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { notify } from "./Notify";
 import { LOG_OUT, ENDPOINT_LOGOUT } from "../Utils/links";
-import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../Utils/handlers/networkErrorFunctions";
 import "bootstrap/dist/css/bootstrap.css";
 
 export const LogoutButton: React.FC = () => {

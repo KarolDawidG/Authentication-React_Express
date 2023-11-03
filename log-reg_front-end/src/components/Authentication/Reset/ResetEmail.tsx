@@ -3,7 +3,7 @@ import axios from "axios";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { notify } from "../../Others/Notify";
 import { ENDPOINT_EMAIL, LINK_RESET } from "../../Utils/links";
-import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../Utils/handlers/networkErrorFunctions";
 import { NavBarMenu } from "../../NavBarMenu/NavBarMenu";
 import "bootstrap/dist/css/bootstrap.css";
 import "./ResetEmail.css";

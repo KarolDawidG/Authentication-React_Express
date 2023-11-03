@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { handleNetworkError } from "../../../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
 import {
   removeFirstCharacter,
   removePart,

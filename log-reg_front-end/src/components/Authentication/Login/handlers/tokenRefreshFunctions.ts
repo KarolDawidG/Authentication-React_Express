@@ -1,7 +1,7 @@
 import { notify } from "../../../Others/Notify";
 import axios from "axios";
 import { ENDPOINT_REFRESH } from "../../../Utils/links";
-import { handleNetworkError } from "./networkErrorFunctions";
+import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
 
 export const handleTokenRefresh = async (
   setIsAuthenticated: (value: boolean) => void,

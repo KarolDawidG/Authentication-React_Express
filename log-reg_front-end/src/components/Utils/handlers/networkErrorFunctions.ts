@@ -1,5 +1,5 @@
-import { notify } from "../../../Others/Notify";
-import { INTERNET_DISCONNECTED } from "../../../Utils/links";
+import { notify } from "../../Others/Notify";
+import { INTERNET_DISCONNECTED } from "../links";
 
 export const handleNetworkError = (error: any) => {
   console.error(error);

@@ -5,7 +5,7 @@ import { ENDPOINT_CAPTCHA } from "../../Utils/links";
 import { RegisterContextType } from "../../Utils/Interfaces/RegisterContextType";
 import { handleReg } from "./handlers/handleSubmit";
 import { ReCAPTCHA } from "react-google-recaptcha";
-import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../Utils/handlers/networkErrorFunctions";
 import { RegForm } from "./RegForm";
 
 interface Props {

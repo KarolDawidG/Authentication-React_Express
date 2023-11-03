@@ -9,7 +9,7 @@ import { Loader } from "../Utils/Loader";
 import { Title } from "../Others/Title";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
 import { UsersListProps } from "../Utils/Interfaces/UsersListProps";
-import { handleNetworkError } from "../Authentication/Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../Utils/handlers/networkErrorFunctions";
 
 export const Users: React.FC = () => {
   const redirect = useNavigate();

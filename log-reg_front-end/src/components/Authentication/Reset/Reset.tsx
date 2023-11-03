@@ -6,7 +6,7 @@ import { ENDPOINT_RESET } from "../../Utils/links";
 import { RedirectBtn } from "../../Others/RedirectBtn";
 import { PasswordForm } from "./PasswordForm";
 import { PasswordStatus } from "./PasswordStatus";
-import { handleNetworkError } from "../Login/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../Utils/handlers/networkErrorFunctions";
 import { NavBarMenu } from "../../NavBarMenu/NavBarMenu";
 import "bootstrap/dist/css/bootstrap.css";
 import { Footer } from "../../AfterLogin/MainMenu/Footer/Footer";
