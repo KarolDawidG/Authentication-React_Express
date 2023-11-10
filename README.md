@@ -32,8 +32,8 @@ Creating a .env file in the backend directory (Authentication-React Express/log-
 
 5. Setting Environment Variables:
 
-- PASS: This is a password you choose for an unspecified purpose. Make sure it's secure.
-- USER: Set a password for the application on the Google website for your gmail account.
+- PASS: Set a password for the application on the Google website for your gmail account.
+- USER: This is your email address. Use example_email@gmail.com as a format template.
 - HOST_DB: Set this to localhost if your database runs locally. Otherwise, provide the database host address.
 - NAME_DB: The name of your database, such as example_name.
 - USER_DB: Your database username. This is often root or any custom username you have set for your database.
