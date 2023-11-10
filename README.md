@@ -66,6 +66,7 @@ Creating a .env file in the backend directory (Authentication-React Express/log-
  - Password Reset
  - Admin Panel
  - Authorization via JWT
+ - reCAPTCHA
    
 # Technologies Used
 ## backend
