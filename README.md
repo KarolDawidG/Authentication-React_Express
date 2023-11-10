@@ -27,6 +27,23 @@ You can check out the demo in the link below
 You can do this by:
 Creating a .env file in the backend directory (Authentication-React Express/log-reg_back-end) and adding your database connection details.
 
+4. Creating the .env File:
+ - Create a new file named .env in /log-reg_back-end directory.
+
+5. Setting Environment Variables:
+
+- PASS: This is a password you choose for an unspecified purpose. Make sure it's secure.
+- USER: Set a password for the application on the Google website for your gmail account.
+- HOST_DB: Set this to localhost if your database runs locally. Otherwise, provide the database host address.
+- NAME_DB: The name of your database, such as example_name.
+- USER_DB: Your database username. This is often root or any custom username you have set for your database.
+- PASS_DB: Your database password. Leave it blank if your database doesn't have a password, otherwise fill in your database password.
+- PORT: The port on which your local server will run. 3001 is a common choice, but you can use any free port.
+- JWT_SECRET: A secret key for JWT (JSON Web Token) used to secure web tokens. You can generate a random string for this.
+- service: This is typically the email service provider, like gmail for Google Mail.
+- REACT_APP_SECRET_KEY and REACT_APP_SITE_KEY: This is a secret key, used in recaptcha. To generate a key, visit the website: https://www.google.com/recaptcha You will create two keys: a secret key and a site key. You will have to use the latter on the frontend side in the folder: \log-reg_front-end\src\components\Authentication\Register\RegForm
+- JWT_CONFIRMED_TOKEN: Another token for JSON Web Tokens, used for email confirmation or other secure processes. Generate a unique, complex string for this.
+  
 #### Once the dependencies are installed and the database is configured, you can start the application by running the following commands in separate terminal windows (CMD):
 
 # For the backend:
