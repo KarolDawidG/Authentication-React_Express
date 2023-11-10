@@ -37,7 +37,7 @@ export const TableList = () => {
   return (
     <div className="container-sm">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 text-center text-md-start p-4">
           <h1 className="p-3 mb-2  text-white">Choose a test:</h1>
           <div className="scrollbar">
             {tableNames.map((tableName) => (
@@ -58,7 +58,7 @@ export const TableList = () => {
           </Link>
         </div>
 
-        <div className="col-md-6 bg-muted">
+        <div className="col-md-6 text-center text-md-start p-4">
           <p className="text-white">
             On the left side, you will find all your tests!
             <br />

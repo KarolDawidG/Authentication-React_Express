@@ -11,7 +11,7 @@ export const MenuCrud = () => {
     <>
       <NavBar />
       <Header />
-      <div className="container-sm">
+      <div className="container-sm text-md-start p-4">
         <CreateTable />
         <ShowTables />
         <RedirectBtn to="/after-login">Back</RedirectBtn>
