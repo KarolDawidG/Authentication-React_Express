@@ -1,15 +1,6 @@
-interface MyData {
-  question: string;
-  optionA: string;
-  optionB: string;
-  optionC: string;
-  correctAnswer: string;
-}
+import { MyData } from './interfaceMyData';
 
-export const saveDataToFile = (
-  txtData: MyData[],
-  fileName: string,
-  onClose: () => void,
+export const saveDataToFileTxt = (txtData: MyData[], fileName: string, onClose: () => void,
 ) => {
   const txtDataString = txtData
     .map((item: MyData) => {

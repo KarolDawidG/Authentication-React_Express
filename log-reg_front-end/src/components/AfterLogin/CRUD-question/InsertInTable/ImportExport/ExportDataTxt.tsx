@@ -3,9 +3,9 @@ import axios from "axios";
 import "./ImportExport.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { ImportExportProps } from "./ImportExportProps";
-import { saveDataToFile } from "./helpers/saveDataToFile";
+import { saveDataToFileTxt } from "./helpers/saveDataToFileTxt";
 
-export const ExportData: React.FC<ImportExportProps> = ({
+export const ExportDataTxt: React.FC<ImportExportProps> = ({
   tableName,
   onClose,
 }) => {
@@ -16,7 +16,7 @@ export const ExportData: React.FC<ImportExportProps> = ({
       const response = await axios.get(
         `http://localhost:3001/export/${tableName}`,
       );
-      saveDataToFile(response.data.tableData, fileName, onClose);
+      saveDataToFileTxt(response.data.tableData, fileName, onClose);
     } catch (error) {
       console.error("Błąd podczas dodawania pytania:", error);
     }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ExportData } from "./ExportData";
+import { ExportDataTxt } from "./ExportDataTxt";
+import { ExportDataPdf } from "./ExportDataPdf";
 import { ImportData } from "./ImportData";
 import { InsertQuestion } from "../InsertQuestion/InsertQuestion";
 import "bootstrap/dist/css/bootstrap.css";
@@ -11,11 +12,16 @@ interface ImportExportProps {
 
 export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
   const [exportVisible, setExportVisible] = useState(false);
+  const [exportVisiblePdf, setExportVisiblePdf] = useState(false);
   const [importVisible, setImportVisible] = useState(false);
   const [insertVisible, setInsertVisible] = useState(false);
 
   const handleExportClick = () => {
     setExportVisible(true);
+  };
+
+  const handleExportClickPdf = () => {
+    setExportVisiblePdf(true);
   };
 
   const handleImportClick = () => {
@@ -40,7 +46,13 @@ export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
           className="btn btn-lg btn-outline-secondary"
           onClick={handleExportClick}
         >
-          Eksport
+          Eksport Txt
+        </button>
+        <button
+          className="btn btn-lg btn-outline-secondary"
+          onClick={handleExportClickPdf}
+        >
+          Eksport Pdf
         </button>
         <button
           className="btn btn-lg btn-outline-success"
@@ -50,9 +62,15 @@ export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
         </button>
       </div>
       {exportVisible && (
-        <ExportData
+        <ExportDataTxt
           tableName={tableName}
           onClose={() => setExportVisible(false)}
+        />
+      )}
+      {exportVisiblePdf && (
+        <ExportDataPdf
+          tableName={tableName}
+          onClose={() => setExportVisiblePdf(false)}
         />
       )}
       {importVisible && (
