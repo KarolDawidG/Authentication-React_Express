@@ -1,14 +1,19 @@
 import { Page, Text, View, Document } from '@react-pdf/renderer';
-import { styles } from './style';
+import { styles, mainPageStyle } from './style';
 import { MyData } from './interfaceMyData';
+import { writings } from './writings';
 
 export const MyDocument = ({ segments }: { segments: MyData[][] }) => {
   let questionNumber = 0;
   return(<Document>
 
     {/* Pirst page */}
-    <Page size="A4" style={styles.page}>
-      <Text>Strona tytułowa</Text>
+    <Page size="A4" style={mainPageStyle.page}>
+      <Text style={mainPageStyle.title}>{writings.title}</Text>
+      <Text style={mainPageStyle.subtitle}>{writings.subtitle}</Text>
+      <Text style={mainPageStyle.description}>{writings.description_1}</Text>
+      <Text style={mainPageStyle.description}>{writings.description_2}</Text>
+      <Text style={mainPageStyle.description}>{writings.good_luck}</Text>
     </Page>
 
     {/* Main pages */}
@@ -48,3 +53,4 @@ export const MyDocument = ({ segments }: { segments: MyData[][] }) => {
 
   </Document>)
 };
+
