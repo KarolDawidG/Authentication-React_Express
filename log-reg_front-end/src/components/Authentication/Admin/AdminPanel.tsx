@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { ADMIN_ROLE } from "../../Utils/links";
 import { LogoutButton } from "../../Others/LogoutButton";
 import { RedirectBtn } from "../../Others/RedirectBtn";
-import { Loader } from "../../Utils/Loader";
 import { Title } from "../../Others/Title";
 import jwtDecode from "jwt-decode";
 
@@ -29,9 +28,9 @@ export const AdminPanel = () => {
 
   if (isLoading) {
     return (
-      <>
-        <Loader />
-      </>
+      <div>
+        Searching ... 
+      </div>
     );
   }
 

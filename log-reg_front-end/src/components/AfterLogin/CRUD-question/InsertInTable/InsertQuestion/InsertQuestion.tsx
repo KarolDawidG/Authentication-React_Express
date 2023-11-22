@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Input } from "../Input/Input";
-import { ImportExportProps } from "../ImportExport/ImportExportProps";
+import { ImportExportProps } from "../../ImportExport/helpers/ImportExportProps";
 import "bootstrap/dist/css/bootstrap.css";
-import "../ImportExport/ImportExport.css";
+import "../../ImportExport/ImportExport.css";
 
 export const InsertQuestion: React.FC<ImportExportProps> = ({
   tableName,

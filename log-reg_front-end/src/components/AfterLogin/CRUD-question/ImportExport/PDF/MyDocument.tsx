@@ -1,6 +1,6 @@
 import { Page, Text, View, Document } from '@react-pdf/renderer';
 import { styles, mainPageStyle } from './style';
-import { MyData } from './interfaceMyData';
+import { MyData } from '../helpers/interfaceMyData';
 import { writings } from './writings';
 
 export const MyDocument = ({ segments }: { segments: MyData[][] }) => {

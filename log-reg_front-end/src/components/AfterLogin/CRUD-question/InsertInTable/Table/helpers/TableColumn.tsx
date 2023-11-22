@@ -1,10 +1,5 @@
 import "../QuestionTable.css";
-
-interface TableColumnProps {
-  value: string;
-  placement: string;
-  title: string;
-}
+import { TableColumnProps } from "../../../Interface/TableColumnProps";
 
 export const TableColumn: React.FC<TableColumnProps> = ({
   value,

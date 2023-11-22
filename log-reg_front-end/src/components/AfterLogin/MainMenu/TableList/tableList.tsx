@@ -6,7 +6,7 @@ import {
   removeFirstCharacter,
   removePart,
   replaceCharacter,
-} from "../../CRUD-question/ShowTables/utils/stringHelpers";
+} from "../../CRUD-question/MenuCrud/ShowTables/utils/stringHelpers";
 import "bootstrap/dist/css/bootstrap.css";
 import "./TableList.css";
 

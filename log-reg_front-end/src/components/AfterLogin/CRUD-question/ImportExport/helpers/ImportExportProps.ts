@@ -1,4 +1,4 @@
 export interface ImportExportProps {
-  tableName: string | undefined;
+  tableName?: string | undefined;
   onClose: () => void;
 }

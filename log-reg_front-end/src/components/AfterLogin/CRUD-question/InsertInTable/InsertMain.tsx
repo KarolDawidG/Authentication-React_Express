@@ -4,14 +4,14 @@ import {
   removeFirstCharacter,
   removePart,
   replaceCharacter,
-} from "../ShowTables/utils/stringHelpers";
+} from "../MenuCrud/ShowTables/utils/stringHelpers";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
 import { QuestionTable } from "./Table/QuestionTable";
 import { QuestionsListProps } from "../../../Utils/Interfaces/QuestionListProps";
 import { Header } from "../../MainMenu/Headers/Header";
-import { ImportExport } from "./ImportExport/ImportExport";
+import { ImportExport } from "../ImportExport/ImportExport";
 import { NavBar } from "../../MainMenu/NavBar/NavBar";
 import { Footer } from "../../MainMenu/Footer/Footer";
 

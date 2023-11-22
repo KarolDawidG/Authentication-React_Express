@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./ImportExport.css";
+import "../ImportExport.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { ImportExportProps } from "./ImportExportProps";
-import { saveDataToFilePdf } from "./helpers/saveDataToFilePdf";
+import { ImportExportProps } from "../helpers/ImportExportProps";
+import { saveDataToFilePdf } from "./saveDataToFilePdf";
 
 export const ExportDataPdf: React.FC<ImportExportProps> = ({
   tableName,

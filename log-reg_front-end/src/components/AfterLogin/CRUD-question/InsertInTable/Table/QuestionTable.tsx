@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { QuestionsListProps } from "../../../../Utils/Interfaces/QuestionListProps";
 import axios from "axios";
 import { handleNetworkError } from "../../../../Utils/handlers/networkErrorFunctions";
 import { useNavigate } from "react-router-dom";
@@ -7,11 +6,7 @@ import "./QuestionTable.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { EditForm } from "../../EditTable/EditForm";
 import { TableColumn } from "./helpers/TableColumn";
-
-interface QuestionTableProps {
-  questionsList: QuestionsListProps[] | null;
-  tableName: string | undefined;
-}
+import { QuestionTableProps } from "../../Interface/QuestionTableProps";
 
 export const QuestionTable: React.FC<QuestionTableProps> = ({
   questionsList,

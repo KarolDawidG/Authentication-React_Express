@@ -1,5 +1,5 @@
-import { CreateTable } from "../CreateTables/CreateTable";
-import { ShowTables } from "../ShowTables/ShowTables";
+import { CreateTable } from "./CreateTables/CreateTable";
+import { ShowTables } from "./ShowTables/ShowTables";
 import { NavBar } from "../../MainMenu/NavBar/NavBar";
 import { Header } from "../../MainMenu/Headers/Header";
 import { Footer } from "../../MainMenu/Footer/Footer";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../../../Utils/handlers/networkErrorFunctions";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 

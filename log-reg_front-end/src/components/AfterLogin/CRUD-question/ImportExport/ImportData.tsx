@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ImportExport.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { notify } from "../../../../Others/Notify";
-import { ImportExportProps } from "./ImportExportProps";
+import { ImportExportProps } from "./helpers/ImportExportProps";
+import { notify } from "../../../Others/Notify";
 
 export const ImportData: React.FC<ImportExportProps> = ({
   tableName,

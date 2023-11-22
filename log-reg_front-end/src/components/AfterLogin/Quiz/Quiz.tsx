@@ -14,7 +14,7 @@ import {
   replaceCharacter,
   removeFirstCharacter,
   removePart,
-} from "../CRUD-question/ShowTables/utils/stringHelpers";
+} from "../CRUD-question/MenuCrud/ShowTables/utils/stringHelpers";
 import { Footer } from "../MainMenu/Footer/Footer";
 
 enum AnswerOption {

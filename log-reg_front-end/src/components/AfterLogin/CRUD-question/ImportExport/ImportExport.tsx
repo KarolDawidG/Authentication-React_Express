@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { ExportDataTxt } from "./ExportDataTxt";
-import { ExportDataPdf } from "./ExportDataPdf";
+import { ExportDataTxt } from "./TXT/ExportDataTxt";
+import { ExportDataPdf } from "./PDF/ExportDataPdf";
 import { ImportData } from "./ImportData";
-import { InsertQuestion } from "../InsertQuestion/InsertQuestion";
 import "bootstrap/dist/css/bootstrap.css";
-import { RedirectBtn } from "../../../../Others/RedirectBtn";
+import { RedirectBtn } from "../../../Others/RedirectBtn";
+import { InsertQuestion } from "../InsertInTable/InsertQuestion/InsertQuestion";
+import { ImportExportMainProps } from "./helpers/ImportExportMainProps";
 
-interface ImportExportProps {
-  tableName: string | undefined;
-}
-
-export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
+export const ImportExport: React.FC<ImportExportMainProps> = ({ tableName }) => {
   const [exportVisible, setExportVisible] = useState(false);
   const [exportVisiblePdf, setExportVisiblePdf] = useState(false);
   const [importVisible, setImportVisible] = useState(false);

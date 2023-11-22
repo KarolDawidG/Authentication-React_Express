@@ -1,5 +1,5 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import { MyData } from './interfaceMyData';
+import { MyData } from '../helpers/interfaceMyData';
 import { MyDocument } from './MyDocument';
 
 export const saveDataToFilePdf = (txtData: MyData[], fileName: string) => {

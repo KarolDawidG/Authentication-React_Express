@@ -1,4 +1,4 @@
-import { MyData } from './interfaceMyData';
+import { MyData } from '../helpers/interfaceMyData';
 
 export const saveDataToFileTxt = (txtData: MyData[], fileName: string, onClose: () => void,
 ) => {

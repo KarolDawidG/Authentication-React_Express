@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ShowTables.css";
-import { handleNetworkError } from "../../../Utils/handlers/networkErrorFunctions";
+import { handleNetworkError } from "../../../../Utils/handlers/networkErrorFunctions";
 import {
   removeFirstCharacter,
   removePart,

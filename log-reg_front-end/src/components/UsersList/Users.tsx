@@ -5,7 +5,6 @@ import { RedirectBtn } from "../Others/RedirectBtn";
 import axios from "axios";
 import { ENDPOINT_USERS } from "../Utils/links";
 import { BeLogin } from "../Authentication/Login/BeLogin";
-import { Loader } from "../Utils/Loader";
 import { Title } from "../Others/Title";
 import { UsersContext } from "../Utils/Interfaces/UsersContext";
 import { UsersListProps } from "../Utils/Interfaces/UsersListProps";
@@ -44,7 +43,7 @@ export const Users: React.FC = () => {
   }, [redirect]);
 
   if (isLoading) {
-    return <Loader />;
+    return <div>Searching...</div>;
   }
 
   if (usersList === null) {

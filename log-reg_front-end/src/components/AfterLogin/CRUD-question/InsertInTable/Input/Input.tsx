@@ -1,13 +1,5 @@
 import React from "react";
-
-interface InputProps {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-}
+import { InputProps } from "../../Interface/InputProps";
 
 export const Input: React.FC<InputProps> = ({
   label,
