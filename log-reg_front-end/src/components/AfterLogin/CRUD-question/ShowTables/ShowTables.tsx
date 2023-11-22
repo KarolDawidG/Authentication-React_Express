@@ -46,8 +46,7 @@ export const ShowTables = () => {
 
   return (
     <>
-      <p className="p-1 mb-1 bg-success text-white">
-        {" "}
+      <p className="p-1 mb-0 bg-success text-white">
         List of available tables:
       </p>
 
@@ -94,9 +93,6 @@ export const ShowTables = () => {
               </tr>
             ))}
           </tbody>
-          <caption>
-            <p className="text-info">List of egzams</p>
-          </caption>
         </table>
       </div>
     </>

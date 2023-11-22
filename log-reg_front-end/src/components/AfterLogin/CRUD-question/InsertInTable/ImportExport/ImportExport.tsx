@@ -37,25 +37,25 @@ export const ImportExport: React.FC<ImportExportProps> = ({ tableName }) => {
       <div className="btn-group" role="group" aria-label="Import Export Button">
         <RedirectBtn to="/crud-question?">Back</RedirectBtn>
         <button
-          className="btn btn-lg btn-outline-primary"
+          className="btn btn-sm btn-outline-primary"
           onClick={handleImportClick}
         >
           Import
         </button>
         <button
-          className="btn btn-lg btn-outline-secondary"
+          className="btn btn-sm btn-outline-secondary"
           onClick={handleExportClick}
         >
           Eksport Txt
         </button>
         <button
-          className="btn btn-lg btn-outline-secondary"
+          className="btn btn-sm btn-outline-secondary"
           onClick={handleExportClickPdf}
         >
           Eksport Pdf
         </button>
         <button
-          className="btn btn-lg btn-outline-success"
+          className="btn btn-sm btn-outline-success"
           onClick={handleInsertClick}
         >
           Insert

@@ -1,6 +1,5 @@
 import { CreateTable } from "../CreateTables/CreateTable";
 import { ShowTables } from "../ShowTables/ShowTables";
-import { RedirectBtn } from "../../../Others/RedirectBtn";
 import { NavBar } from "../../MainMenu/NavBar/NavBar";
 import { Header } from "../../MainMenu/Headers/Header";
 import { Footer } from "../../MainMenu/Footer/Footer";
@@ -11,10 +10,9 @@ export const MenuCrud = () => {
     <>
       <NavBar />
       <Header />
-      <div className="container-sm text-md-start p-4">
+      <div className="container-sm text-md-start p-0">
         <CreateTable />
         <ShowTables />
-        <RedirectBtn to="/after-login">Back</RedirectBtn>
       </div>
       <Footer />
     </>

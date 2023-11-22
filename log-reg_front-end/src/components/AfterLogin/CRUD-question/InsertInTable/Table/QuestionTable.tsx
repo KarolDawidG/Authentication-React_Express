@@ -50,7 +50,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
 
   return (
     <>
-      <p className="p-3 mb-2 bg-success text-white"> List of questions: </p>
+      <p className="p-1 mb-0 bg-success text-white rounded-2"> List of questions: </p>
       <div className="question-table my-custom-scrollbar">
         <table className="table table-hover">
           <thead>
@@ -95,7 +95,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
                   <td>{question.correctAnswer}</td>
                   <td>
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-danger btn-sm"
                       onClick={() => handleDelete(tableName, question.id)}
                     >
                       Delete
@@ -103,7 +103,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
                   </td>
                   <td>
                     <button
-                      className="btn btn-success"
+                      className="btn btn-success btn-sm"
                       onClick={() => handleEditClick(question)}
                     >
                       Update
@@ -124,9 +124,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
               />
             )}
           </tbody>
-          <caption>
-            <p className="text-info">List of questions</p>
-          </caption>
+
         </table>
       </div>
     </>

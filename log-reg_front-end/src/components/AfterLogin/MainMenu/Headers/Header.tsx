@@ -17,13 +17,9 @@ export const Header: React.FC<InsertHeaderProps> = ({ nazwaTabeli }) => {
         color: "white",
       }}
     >
-      <div>
-        <p className="btn btn-secondary">Logged-in user: {user}</p>
-      </div>
+        <div className="text-white bg-secondary p-1 rounded-1 text-center mb-0">User: {user}</div>
       {nazwaTabeli && (
-        <div>
-          <p className="btn btn-secondary">Quiz: {nazwaTabeli}</p>
-        </div>
+          <div className="btn btn-secondary">Quiz: {nazwaTabeli}</div>
       )}
     </div>
   );

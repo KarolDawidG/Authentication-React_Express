@@ -1,43 +1,43 @@
 .rectangle-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(37, 36, 36, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; 
-  }
-  
-  .rectangle-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: grey;
-    color: aliceblue;
-    width: 80%;
-    height: auto;
-    padding: 3%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(37, 36, 36, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; 
+}
+
+.rectangle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: grey;
+  color: aliceblue;
+  width: 80%;
+  height: auto;
+  padding: 3%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
 .label {
-  color: azure;
-  margin-bottom: 10px;
+color: azure;
+margin-bottom: 10px;
 }
 
 .label__input {
-  width: 100%;
-  height: 30px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+width: 100%;
+height: 30px;
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 5px;
 }
 
 .label__input:focus {
-  outline: none;
-  border-color: red;
+outline: none;
+border-color: red;
 }
