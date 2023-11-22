@@ -20,7 +20,7 @@ export const MyDocument = ({ segments }: { segments: MyData[][] }) => {
     {segments.map((segment, pageIndex) => (
         <Page key={pageIndex} size="A4" style={styles.page}>
           {segment.map((item, itemIndex) => {
-            questionNumber += 1; // Inkrementacja numeru pytania
+            questionNumber += 1;
             return (
               <View key={itemIndex} style={styles.section}>
                 <Text style={styles.question}>
@@ -34,7 +34,7 @@ export const MyDocument = ({ segments }: { segments: MyData[][] }) => {
             );
           })}
           <Text style={styles.pageNumber}>
-            Strona {pageIndex + 2}
+            Page {pageIndex + 2}
           </Text>
         </Page>
       ))}

@@ -20,8 +20,8 @@ You can check out the demo in the link below
 2. Install the required dependencies for both the backend and frontend by navigating to the following directories and running the command:
 
 ### `npm install` 
- - Authentication-React Express/log-reg_back-end
- - Authentication-React Express/log-reg_front-end
+ - /log-reg_back-end
+ - /log-reg_front-end
 
 3. Set up the necessary database configurations by providing the required data. 
 You can do this by:
@@ -59,7 +59,7 @@ Creating a .env file in the backend directory (Authentication-React Express/log-
 
 # Features
  - Creating, editing, saving, and deleting multiple-choice tests
- - Ability to export and import data to a txt file
+ - Ability to export and import data to a txt file and PDF
  - Performing A, B, and C multiple-choice tests
  - User Authentication
  - User Registration
