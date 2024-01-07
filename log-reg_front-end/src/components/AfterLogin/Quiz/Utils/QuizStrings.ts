@@ -8,5 +8,4 @@ export const quizStrings = {
     whichAnswer: 'The correct answer is:',
     next: 'Next',
     back: 'Back',
-    
 }

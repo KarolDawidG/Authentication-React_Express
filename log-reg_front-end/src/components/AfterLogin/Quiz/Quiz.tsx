@@ -16,7 +16,7 @@ import {
   removePart,
 } from "../CRUD-question/MenuCrud/ShowTables/utils/stringHelpers";
 import { Footer } from "../MainMenu/Footer/Footer";
-import { quizStrings } from "./QuizStrings";
+import { quizStrings } from "./Utils/QuizStrings";
 import { AnswerOption } from "./Utils/AnswerOption";
 
 export const Quiz: React.FC = () => {
