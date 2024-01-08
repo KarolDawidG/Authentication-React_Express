@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  backend:
+    build: ./log-reg__back-end
+    env_file: 
+      - .env
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: ${HOST_DB}
+      DB_USER: ${USER_DB}
+      DB_PASSWORD: ${PASS_DB}
+      DB_NAME: ${NAME_DB}
+
+  frontend:
+    build: ./log-reg_front-end
+    ports:
+      - "4000:4000"
+    depends_on:
+      - backend
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3310:3310"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: dziennik
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+volumes:
+  dbdata:

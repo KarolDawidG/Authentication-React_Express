@@ -6,10 +6,11 @@ const middleware = require("../../config/middleware");
 const { limiter, errorHandler } = require("../../config/config");
 const { UsersRecord } = require("../../database/Records/Users/UsersRecord");
 const logger = require("../../logs/logger");
-const { jwt_secret } = require("../../config/configENV");
 const MESSAGES = require("../../config/messages");
 const STATUS_CODES = require("../../config/status-codes");
 const { validatePassword } = require("../../config/config");
+
+const {jwt_secret} = require('../../config/envConfig');
 
 router.use(middleware);
 router.use(limiter);

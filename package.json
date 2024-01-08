@@ -6,7 +6,8 @@
     "prettier": "npx prettier --write \"**/*.js\" --ignore-path .prettierignore && (echo Script completed successfully. All files have been scanned by Prettier. && echo.)",
     "backend": "cd ./log-reg__back-end && npm run start",
     "frontend": "cd ./log-reg_front-end && npm run start",
-    "log": "git log --oneline"
+    "log": "git log --oneline",
+    "db": "docker exec -it authentication-react_express_db_1 mysql -u root -p"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0"

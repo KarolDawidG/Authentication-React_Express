@@ -5,7 +5,7 @@ const MESSAGES = require("../../config/messages");
 const URL = require("../../config/url");
 const middleware = require("../../config/middleware");
 
-const { REACT_APP_SECRET_KEY } = require("../../config/configENV");
+const {REACT_APP_SECRET_KEY} = require('../../config/envConfig');
 
 router.use(middleware);
 
