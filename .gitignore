@@ -3,7 +3,8 @@
 log-reg__back-end/logs/error.log
 log-reg__back-end/klucze/privateKey.pem
 log-reg__back-end/klucze/publicKey.pem
-
+log-reg__back-end/config/envConfig.js
+mysql_data/
 # dependencies
 /node_modules
 /.pnp

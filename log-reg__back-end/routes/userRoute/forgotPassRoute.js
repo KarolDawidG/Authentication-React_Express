@@ -9,7 +9,8 @@ const STATUS_CODES = require("../../config/status-codes");
 const URL = require("../../config/url");
 const logger = require("../../logs/logger");
 const { sendResetPasswordEmail } = require("../../config/emailSender");
-const { jwt_secret } = require("../../config/configENV");
+
+const {jwt_secret} = require('../../config/envConfig');
 
 router.use(middleware);
 router.use(errorHandler);

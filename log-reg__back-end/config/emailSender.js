@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const { service, user, pass } = process.env;
+const {user, pass, service} = require("./envConfig");
 
 const createTransporter = () => {
   return nodemailer.createTransport({
@@ -10,6 +10,7 @@ const createTransporter = () => {
     },
   });
 };
+
 
 const sendResetPasswordEmail = async (email, username, link) => {
   const transporter = createTransporter();

@@ -1,7 +1,6 @@
 const express = require("express");
 const { UsersRecord } = require("../../database/Records/Users/UsersRecord");
 const bcrypt = require("bcrypt");
-const { JWT_CONFIRMED_TOKEN } = require("../../config/configENV");
 const jwt = require("jsonwebtoken");
 const middleware = require("../../config/middleware");
 const { errorHandler } = require("../../config/config");
@@ -12,6 +11,8 @@ const STATUS_CODES = require("../../config/status-codes");
 const logger = require("../../logs/logger");
 const { validatePassword } = require("../../config/config");
 const { sendRegisterEmail } = require("../../config/emailSender");
+
+const {JWT_CONFIRMED_TOKEN} = require('../../config/envConfig');
 
 router.use(middleware);
 router.use(errorHandler);
