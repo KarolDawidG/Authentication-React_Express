@@ -1,5 +1,15 @@
 version: '3.8'
 services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: dziennik
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
   backend:
     build: ./log-reg__back-end
     env_file: 
@@ -7,29 +17,14 @@ services:
     ports:
       - "3001:3001"
     depends_on:
-      - db
-    environment:
-      DB_HOST: ${HOST_DB}
-      DB_USER: ${USER_DB}
-      DB_PASSWORD: ${PASS_DB}
-      DB_NAME: ${NAME_DB}
+      - mysql
 
   frontend:
     build: ./log-reg_front-end
     ports:
-      - "4000:4000"
+      - "3000:3000"
     depends_on:
       - backend
 
-  db:
-    image: mysql:latest
-    ports:
-      - "3310:3310"
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: dziennik
-    volumes:
-      - ./mysql_data:/var/lib/mysql
-
 volumes:
-  dbdata:
+  mysql_data:

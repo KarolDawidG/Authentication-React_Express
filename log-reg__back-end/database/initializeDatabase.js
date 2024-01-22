@@ -1,5 +1,5 @@
 const { pool } = require("./pool");
-const { nameDB } = require("../config/configENV");
+const nameDB  = 'dziennik';
 const { createDatabaseIfNotExists } = require("./createDatabaseIfNotExists");
 const {
   createAccountsTable,

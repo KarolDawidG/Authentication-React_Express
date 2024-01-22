@@ -20,7 +20,7 @@ RUN npm run build
 ENV NODE_ENV production
 
 # Ustaw port, na którym będzie działać aplikacja
-EXPOSE 4000
+EXPOSE 3000
 
 # Uruchom serwer produkcyjny
-CMD ["npx", "serve", "-s", "build", "-l", "4000"]
+CMD ["npx", "serve", "-s", "build", "-l", "3000"]
