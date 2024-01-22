@@ -1,11 +1,10 @@
 const { createPool } = require("mysql2/promise");
-const { hostDB, userDB, passDB, nameDB} = require("../config/configENV");
 
 const pool = createPool({
-  host: hostDB,
-  user: userDB,
-  database: nameDB,
-  password: passDB,
+  host: 'mysql',
+  user: 'root',
+  database: 'dziennik',
+  password: '',
   namedPlaceholders: true,
   decimalNumbers: true,
 });
