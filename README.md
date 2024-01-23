@@ -90,5 +90,45 @@ Creating a .env file in the backend directory (Authentication-React Express/log-
  - React (TypeScript)
  - Bootstrap
 
+
+# Instalacja Docker
+
+Docker to platforma do tworzenia, wdrażania i uruchamiania aplikacji w izolowanych kontenerach. Docker Compose to narzędzie, które pozwala na definicję i uruchamianie wielokontenerowych aplikacji Docker.
+
+### Krok 1: Instalacja Docker
+
+1. **Windows i macOS:**
    
-If you encounter any issues or have questions, please refer to the project's documentation or reach out to the project maintainers.
+   - Pobierz i zainstaluj Docker Desktop ze strony [Docker Hub](https://hub.docker.com/?overlay=onboarding).
+
+2. **Linux:**
+   
+   - Otwórz terminal i wykonaj poniższe polecenia (dla Ubuntu/Debian):
+     ```
+     sudo apt update
+     sudo apt install docker
+     ```
+
+### Krok 2: Instalacja Docker Compose
+
+- **Windows i macOS:**
+  - Docker Compose jest już zawarty w Docker Desktop, więc nie wymaga osobnej instalacji.
+  
+- **Linux:**
+  - Zainstaluj Docker Compose wykonując poniższe polecenia:
+    ```
+    sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    ```
+
+## Uruchomienie Aplikacji
+
+### Krok 1: Wykonaj ponizsze komendy w folderze glownym aplikacji:
+
+   - Otwórz terminal i wykonaj poniższe polecenia:
+     
+     ```
+     docker-compose build
+     docker-compose up
+     ```
+
