@@ -1,0 +1,255 @@
+2023-09-18 19:46:07 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-18 19:50:58 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-18 19:51:21 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-18 21:36:35 error: Invalid username.
+2023-09-19 21:10:05 error: Invalid email address.
+2023-09-20 14:00:15 error: No database selected
+2023-09-20 14:00:30 error: No database selected
+2023-09-20 14:00:31 error: No database selected
+2023-09-21 19:35:54 error: Cannot read properties of undefined (reading '2')
+2023-09-21 19:47:32 error: rows is not defined
+2023-09-21 19:48:02 error: rows is not defined
+2023-09-21 19:49:55 error: wylosowaneWiersze is not defined
+2023-09-21 19:53:02 error: Assignment to constant variable.
+2023-09-21 19:54:45 error: rows is not defined
+2023-09-21 19:55:52 error: e is not defined
+2023-09-21 19:55:54 error: e is not defined
+2023-09-21 20:11:25 error: obiektZLosowymiWierszami.push is not a function
+2023-09-23 00:01:57 error: rows is not defined
+2023-09-23 00:19:03 error: randomNumber is not defined
+2023-09-23 08:52:37 error: randomNumbersArray is not defined
+2023-09-23 08:53:58 error: arrayRandomRows is not defined
+2023-09-23 08:54:12 error: arrayRandomRows is not defined
+2023-09-23 08:57:34 error: randomizeData is not defined
+2023-09-23 09:03:47 error: randomizeData is not a function
+2023-09-27 19:05:10 error: Błąd podczas tworzenia tabeli: QuizzesRecord.query is not a function
+2023-09-27 19:10:55 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''d' (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        question TEXT NOT NU...' at line 1
+2023-09-27 19:11:44 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        question TEXT NOT NUL...' at line 1
+2023-09-27 19:38:45 error: Błąd podczas tworzenia tabeli: QuizzesRecord.query is not a function
+2023-09-27 19:41:08 error: Błąd podczas tworzenia tabeli: QuizzesRecord.deleteTable is not a function
+2023-09-27 19:42:20 error: Błąd podczas tworzenia tabeli: Unknown table 'dziennik.testowabazadanych24'
+2023-09-27 19:44:27 error: Błąd podczas tworzenia tabeli: Unknown table 'dziennik.testowabazadanych24'
+2023-09-27 19:46:05 error: Błąd podczas tworzenia tabeli: Unknown table 'dziennik.testowabazadanych'
+2023-09-27 19:50:49 error: Błąd podczas tworzenia tabeli: tableName is not defined
+2023-09-27 19:52:29 error: Błąd podczas tworzenia tabeli: Unknown table 'dziennik.testowabazadanych2'
+2023-09-27 19:53:50 error: Błąd podczas tworzenia tabeli: Unknown table 'dziennik.testowabazadanych2'
+2023-09-27 19:54:55 error: Błąd podczas tworzenia tabeli: Unknown table 'dziennik.testowabazadanych2'
+2023-09-27 20:13:51 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
+2023-09-27 20:15:16 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
+2023-09-27 20:15:28 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
+2023-09-27 20:19:43 error: Błąd podczas tworzenia tabeli: pool is not defined
+2023-09-27 20:19:44 error: Błąd podczas tworzenia tabeli: pool is not defined
+2023-09-27 20:27:07 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
+2023-09-27 20:27:27 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
+2023-09-27 20:27:29 error: Błąd podczas tworzenia tabeli: TabelsRecord.performTransaction is not a function
+2023-09-27 21:27:43 error: Błąd podczas tworzenia tabeli: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-27 21:27:45 error: Błąd podczas tworzenia tabeli: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-27 21:27:50 error: Błąd podczas tworzenia tabeli: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-09-27 21:48:18 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          question TEXT NOT NU...' at line 2
+2023-09-28 12:31:12 error: The "options" argument must be of type object. Received undefined
+2023-09-28 12:31:47 error: The "options" argument must be of type object. Received undefined
+2023-09-28 12:41:32 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 12:41:43 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 12:50:43 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 12:53:16 error: secretOrPrivateKey must be an asymmetric key when using RS256
+2023-09-28 13:03:56 error: privateKey is not defined
+2023-09-29 19:15:46 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 19:18:56 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:18:56 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:19:22 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:19:22 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:22:10 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:22:10 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:23:59 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:23:59 error: Błąd podczas wyszukiwania tabel: inputString.replace is not a function
+2023-09-29 19:26:36 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 19:26:36 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 19:29:56 error: Błąd podczas wyszukiwania tabel: wordsToRemove.join is not a function
+2023-09-29 19:29:56 error: Błąd podczas wyszukiwania tabel: wordsToRemove.join is not a function
+2023-09-29 19:31:28 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:31:28 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:31:32 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:31:32 error: Błąd podczas wyszukiwania tabel: wordsToRemove.map is not a function
+2023-09-29 19:34:25 error: Błąd podczas wyszukiwania tabel: item.replace is not a function
+2023-09-29 19:34:25 error: Błąd podczas wyszukiwania tabel: item.replace is not a function
+2023-09-29 20:09:30 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:09:30 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:09:44 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:09:44 error: Błąd podczas wyszukiwania tabel: trzeciaTablica is not defined
+2023-09-29 20:11:46 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:11:46 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:03 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:03 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:06 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-29 20:12:06 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'replace')
+2023-09-30 18:28:11 error: Cannot read properties of undefined (reading 'listAll')
+2023-09-30 18:28:58 error: Cannot read properties of undefined (reading 'listAll')
+2023-09-30 18:29:26 error: Cannot read properties of undefined (reading 'listAll')
+2023-09-30 18:31:42 error: Cannot read properties of undefined (reading 'showAllTablesOfUser')
+2023-09-30 18:35:16 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''%123456_tabela_1%'' at line 1
+2023-09-30 18:41:54 error: TabelsRecord.showAllIndicatedTables is not a function
+2023-09-30 18:43:29 error: table is not defined
+2023-10-02 14:27:04 error: TabelsRecord.listAll is not a function
+2023-10-02 14:27:04 error: TabelsRecord.listAll is not a function
+2023-10-02 17:18:43 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-10-02 17:18:46 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-10-02 17:19:10 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1
+2023-10-02 17:19:54 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1
+2023-10-02 17:20:28 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1
+2023-10-02 17:20:32 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?? (question, optionA, optionB, optionC, correctAnswer) VALUES (?, ?, ?, ?, ?)' at line 1
+2023-10-02 19:49:20 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'uuid) PRIMARY KEY,
+          question TEXT NOT NULL,
+          optionA TEXT N...' at line 2
+2023-10-02 19:51:32 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 19:51:34 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 19:52:26 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 19:53:04 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 19:53:05 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 19:54:53 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 19:54:54 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 20:06:26 error: TabelsRecord.insertQuestion is not a function
+2023-10-02 20:06:29 error: TabelsRecord.insertQuestion is not a function
+2023-10-02 20:20:52 error: Duplicate entry '\x00' for key 'PRIMARY'
+2023-10-02 20:20:55 error: Duplicate entry '\x00' for key 'PRIMARY'
+2023-10-02 20:20:57 error: Duplicate entry '\x00' for key 'PRIMARY'
+2023-10-02 20:21:05 error: Duplicate entry '\x00' for key 'PRIMARY'
+2023-10-02 20:21:31 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '() NOT NULL,
+          question TEXT NOT NULL,
+          optionA TEXT NOT NUL...' at line 2
+2023-10-02 20:21:51 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci' at line 9
+2023-10-02 20:21:55 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci' at line 9
+2023-10-02 20:22:31 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 9
+2023-10-02 20:23:27 error: Błąd podczas tworzenia tabeli: Incorrect column specifier for column 'id'
+2023-10-02 20:23:51 error: Błąd podczas tworzenia tabeli: Incorrect column specifier for column 'id'
+2023-10-02 20:26:43 error: Błąd podczas tworzenia tabeli: Incorrect column specifier for column 'id'
+2023-10-02 20:27:06 error: Błąd podczas tworzenia tabeli: Incorrect column specifier for column 'id'
+2023-10-02 20:27:11 error: Błąd podczas tworzenia tabeli: Incorrect column specifier for column 'id'
+2023-10-02 20:27:29 error: Błąd podczas tworzenia tabeli: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AUTO_INCREMENT PRIMARY KEY,
+          question TEXT NOT NULL,
+          optio...' at line 2
+2023-10-02 20:33:56 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 20:33:59 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 20:47:20 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 20:48:22 error: Duplicate entry '' for key 'PRIMARY'
+2023-10-02 20:55:44 error: pool is not defined
+2023-10-02 20:55:44 error: pool is not defined
+2023-10-02 20:56:34 error: TabelsRecord is not defined
+2023-10-02 20:56:34 error: TabelsRecord is not defined
+2023-10-04 13:10:45 error: TabelsRecord.usertableDatasList is not a function
+2023-10-04 13:11:07 error: TabelsRecord.usertableDatasList is not a function
+2023-10-04 13:11:30 error: pool is not defined
+2023-10-04 13:35:50 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '{tableName}' at line 1
+2023-10-04 18:09:09 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2023-10-04 19:09:48 error: tableData is not defined
+2023-10-04 19:09:48 error: tableData is not defined
+2023-10-04 19:09:48 error: tableData is not defined
+2023-10-04 20:54:40 error: request entity too large
+2023-10-04 20:55:40 error: request entity too large
+2023-10-04 20:56:00 error: request entity too large
+2023-10-05 14:29:21 error: Cannot read properties of undefined (reading 'execute')
+2023-10-05 14:32:14 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 14:32:14 error: Błąd podczas wyszukiwania tabel: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 16:25:50 error: request entity too large
+2023-10-05 16:26:12 error: request entity too large
+2023-10-05 16:26:40 error: No database selected
+2023-10-05 16:26:40 error: No database selected
+2023-10-05 16:27:31 error: No database selected
+2023-10-05 16:27:31 error: No database selected
+2023-10-05 16:27:58 error: request entity too large
+2023-10-05 16:28:31 error: request entity too large
+2023-10-05 16:30:41 error: No database selected
+2023-10-05 16:30:41 error: No database selected
+2023-10-05 16:31:00 error: No database selected
+2023-10-05 16:31:00 error: No database selected
+2023-10-05 18:32:16 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:32:16 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:32:19 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:32:19 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:33:26 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:33:26 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:34:06 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:34:06 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:34:09 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:34:09 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:34:11 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:36:11 error: No database selected
+2023-10-05 18:37:11 error: No database selected
+2023-10-05 18:37:21 error: No database selected
+2023-10-05 18:37:43 error: No database selected
+2023-10-05 18:40:55 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:40:55 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:41:03 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:41:03 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:46:25 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:46:25 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:51:09 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:51:09 error: Cannot read properties of undefined (reading 'getConnection')
+2023-10-05 18:51:40 error: No database selected
+2023-10-05 18:51:40 error: No database selected
+2023-10-05 18:51:50 error: No database selected
+2023-10-05 18:51:55 error: No database selected
+2023-10-05 18:52:02 error: No database selected
+2023-10-05 18:53:15 error: No database selected
+2023-10-05 18:57:02 error: No database selected
+2023-10-06 13:55:37 error: pool is not defined
+2023-10-06 13:57:07 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '[object Object]' at line 1
+2023-10-06 13:57:07 error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '[object Object]' at line 1
+2023-10-06 14:14:17 error: No database selected
+2023-10-06 14:14:17 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:17 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:42 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:42 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:44 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:44 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:46 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:46 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-06 14:14:52 error: No database selected
+2023-10-06 14:19:18 error: randomizeData is not defined
+2023-10-06 14:19:18 error: randomizeData is not defined
+2023-10-06 14:19:29 error: randomizeData is not defined
+2023-10-06 14:19:29 error: randomizeData is not defined
+2023-10-06 23:35:33 error: Table 'dziennik.undefined' doesn't exist
+2023-10-06 23:35:33 error: Table 'dziennik.undefined' doesn't exist
+2023-10-06 23:38:52 error: Table 'dziennik.undefined' doesn't exist
+2023-10-06 23:38:52 error: Table 'dziennik.undefined' doesn't exist
+2023-10-07 00:16:25 error: No database selected
+2023-10-07 00:16:36 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:17:32 error: No database selected
+2023-10-07 00:17:40 error: No database selected
+2023-10-07 00:24:37 error: No database selected
+2023-10-07 00:24:37 error: No database selected
+2023-10-07 00:24:37 error: No database selected
+2023-10-07 00:24:37 error: No database selected
+2023-10-07 00:24:37 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:24:37 error: No database selected
+2023-10-07 00:26:19 error: No database selected
+2023-10-07 00:26:19 error: No database selected
+2023-10-07 00:26:19 error: No database selected
+2023-10-07 00:26:19 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:26:52 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:26:56 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:26:56 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:34 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:34 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:36 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:36 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:37 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:37 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:39 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:39 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-07 00:27:47 error: No database selected
+2023-10-07 00:33:05 error: No database selected
+2023-10-07 00:34:13 error: No database selected
+2023-10-08 17:17:32 error: Server error: jwt expired
+2023-10-10 17:15:26 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-10 17:15:26 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-12 18:28:30 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-10-12 18:28:30 error: Błąd podczas wyszukiwania tabel: No database selected
+2023-11-05 14:12:28 error: Table 'dziennik.accounts' doesn't exist
+2023-11-05 14:12:35 error: Table 'dziennik.accounts' doesn't exist
