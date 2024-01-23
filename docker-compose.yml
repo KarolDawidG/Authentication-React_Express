@@ -4,23 +4,28 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: dziennik
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: password
     ports:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
   backend:
-    build: ./log-reg__back-end
+    build: ./backend
     env_file: 
       - .env
+    environment:
+      HOST_DB: mysql  # nazwa usługi MySQL w docker-compose
+      USER_DB: root
+      NAME_DB: dziennik
+      PASS_DB: password
     ports:
       - "3001:3001"
     depends_on:
       - mysql
 
   frontend:
-    build: ./log-reg_front-end
+    build: ./frontend
     ports:
       - "3000:3000"
     depends_on:
