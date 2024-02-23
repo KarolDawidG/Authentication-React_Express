@@ -4,6 +4,7 @@ import "../ImportExport.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { ImportExportProps } from "../helpers/ImportExportProps";
 import { saveDataToFilePdf } from "./saveDataToFilePdf";
+import { EXPORT_DATA } from "../../../../Utils/links";
 
 export const ExportDataPdf: React.FC<ImportExportProps> = ({
   tableName,
@@ -15,7 +16,7 @@ export const ExportDataPdf: React.FC<ImportExportProps> = ({
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/export/${tableName}`,
+        `${EXPORT_DATA}/${tableName}`,
       );
       setPdfData(response.data.tableData);
     } catch (error) {

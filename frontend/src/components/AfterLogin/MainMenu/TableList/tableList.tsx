@@ -9,6 +9,7 @@ import {
 } from "../../CRUD-question/MenuCrud/ShowTables/utils/stringHelpers";
 import "bootstrap/dist/css/bootstrap.css";
 import "./TableList.css";
+import { CREATE_TABLE } from "../../../Utils/links";
 
 export const TableList = () => {
   const [tableNames, setTableNames] = useState([]);
@@ -21,7 +22,7 @@ export const TableList = () => {
       setUsername(savedUsername);
     }
     axios
-      .get(`http://localhost:3001/create-table/${savedUsername}`)
+      .get(`${CREATE_TABLE}/${savedUsername}`)
       .then((response) => {
         const {
           data: { tablesUser: tableNamesArray },

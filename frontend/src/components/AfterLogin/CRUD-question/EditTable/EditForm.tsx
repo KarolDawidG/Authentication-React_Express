@@ -5,6 +5,7 @@ import { EditFormProps } from "../../../Utils/Interfaces/EditFormProps";
 import "./EditForm.css";
 
 import axios from "axios";
+import { EDIT_FORM } from "../../../Utils/links";
 
 export const EditForm: React.FC<EditFormProps> = ({
   question,
@@ -35,7 +36,7 @@ export const EditForm: React.FC<EditFormProps> = ({
 
     try {
       await axios.put(
-        `http://localhost:3001/create-question/${tableName}/${question.id}`,
+        `${EDIT_FORM}/${tableName}/${question.id}`,
         formData,
       );
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import { handleNetworkError } from "../../../../Utils/handlers/networkErrorFunctions";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
+import { CREATE_TABLE } from "../../../../Utils/links";
 
 export const CreateTable = () => {
   const [inputvalue, setInputvalue] = useState<string>("");
@@ -11,7 +12,7 @@ export const CreateTable = () => {
   const handleFormSubmit = async () => {
     try {
       await axios.post(
-        `http://localhost:3001/create-table/${username}/${inputvalue}`,
+        `${CREATE_TABLE}/${username}/${inputvalue}`,
       );
     } catch (error: any) {
       handleNetworkError(error);

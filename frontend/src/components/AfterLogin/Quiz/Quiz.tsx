@@ -18,6 +18,7 @@ import {
 import { Footer } from "../MainMenu/Footer/Footer";
 import { quizStrings } from "./Utils/QuizStrings";
 import { AnswerOption } from "./Utils/AnswerOption";
+import { QUIZ } from "../../Utils/links";
 
 export const Quiz: React.FC = () => {
   const { tableName } = useParams<string>();
@@ -47,7 +48,7 @@ export const Quiz: React.FC = () => {
     handleTestName();
     setIsAuthenticated(!!token);
     axios
-      .get(`http://localhost:3001/quiz/${tableName}`)
+      .get(`${QUIZ}/${tableName}`)
       .then((response) => {
         setQuestions(response.data.quizeData);
       })

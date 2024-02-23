@@ -9,6 +9,7 @@ import {
 } from "./utils/stringHelpers";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
+import { CREATE_TABLE } from "../../../../Utils/links";
 
 export const ShowTables = () => {
   const [tableNames, setTableNames] = useState([]);
@@ -16,7 +17,7 @@ export const ShowTables = () => {
 
   const handleDelete = async (tableName: any) => {
     try {
-      await axios.delete(`http://localhost:3001/create-table/${tableName}`);
+      await axios.delete(`${CREATE_TABLE}/${tableName}`);
       const updatedTableNames = tableNames.filter((name) => name !== tableName);
       setTableNames(updatedTableNames);
     } catch (error: any) {
@@ -31,7 +32,7 @@ export const ShowTables = () => {
       setUsername(savedUsername);
     }
     axios
-      .get(`http://localhost:3001/create-table/${savedUsername}`)
+      .get(`${CREATE_TABLE}/${savedUsername}`)
       .then((response) => {
         const {
           data: { tablesUser: tableNamesArray },

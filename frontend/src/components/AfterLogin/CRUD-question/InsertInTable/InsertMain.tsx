@@ -14,6 +14,7 @@ import { Header } from "../../MainMenu/Headers/Header";
 import { ImportExport } from "../ImportExport/ImportExport";
 import { NavBar } from "../../MainMenu/NavBar/NavBar";
 import { Footer } from "../../MainMenu/Footer/Footer";
+import { CREATE_QUESTION } from "../../../Utils/links";
 
 export const InsertMain = () => {
   const { username, tableName } = useParams();
@@ -29,7 +30,7 @@ export const InsertMain = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3001/create-question/${tableName}`,
+          `${CREATE_QUESTION}/${tableName}`,
         );
         const {
           data: { quizzesList: questionsList },

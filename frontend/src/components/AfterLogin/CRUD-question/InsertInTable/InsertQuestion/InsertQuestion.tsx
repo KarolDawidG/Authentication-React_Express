@@ -5,6 +5,7 @@ import { Input } from "../Input/Input";
 import { ImportExportProps } from "../../ImportExport/helpers/ImportExportProps";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../ImportExport/ImportExport.css";
+import { CREATE_QUESTION } from "../../../../Utils/links";
 
 export const InsertQuestion: React.FC<ImportExportProps> = ({
   tableName,
@@ -34,7 +35,7 @@ export const InsertQuestion: React.FC<ImportExportProps> = ({
 
     try {
       await axios.post(
-        `http://localhost:3001/create-question/${tableName}`,
+        `${CREATE_QUESTION}/${tableName}`,
         formData,
       );
 

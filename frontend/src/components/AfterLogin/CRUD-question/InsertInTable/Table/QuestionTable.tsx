@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { EditForm } from "../../EditTable/EditForm";
 import { TableColumn } from "./helpers/TableColumn";
 import { QuestionTableProps } from "../../Interface/QuestionTableProps";
+import { CREATE_QUESTION } from "../../../../Utils/links";
 
 export const QuestionTable: React.FC<QuestionTableProps> = ({
   questionsList,
@@ -35,7 +36,7 @@ export const QuestionTable: React.FC<QuestionTableProps> = ({
   const handleDelete = async (tableName: string | undefined, id: number) => {
     try {
       await axios.delete(
-        `http://localhost:3001/create-question/${tableName}/${id}`,
+        `${CREATE_QUESTION}/${tableName}/${id}`,
       );
       navigate(0);
     } catch (error: any) {

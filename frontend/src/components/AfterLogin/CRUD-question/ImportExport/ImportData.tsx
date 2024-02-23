@@ -5,6 +5,7 @@ import "./ImportExport.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { ImportExportProps } from "./helpers/ImportExportProps";
 import { notify } from "../../../Others/Notify";
+import { IMPORT_DATA } from "../../../Utils/links";
 
 export const ImportData: React.FC<ImportExportProps> = ({
   tableName,
@@ -67,7 +68,7 @@ export const ImportData: React.FC<ImportExportProps> = ({
 
   const saveDataToServer = async (jsonData: any) => {
     try {
-      await axios.post(`http://localhost:3001/import/${tableName}`, jsonData);
+      await axios.post(`${IMPORT_DATA}/${tableName}`, jsonData);
     } catch (error) {
       console.error("Error while adding a question: ", error);
     }

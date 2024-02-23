@@ -11,7 +11,7 @@ middleware.use(bodyParser.urlencoded({ limit: "200kb", extended: true }));
 
 middleware.use(
   cors({
-    origin: URL.MAIN_URL,
+    origin: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
