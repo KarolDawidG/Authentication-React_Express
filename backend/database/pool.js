@@ -2,7 +2,7 @@ require('dotenv').config();
 const { createPool } = require("mysql2/promise");
 
 const pool = createPool({
-  host: process.env.HOST_DB || 'localhost',
+  host: process.env.HOST_DB || 'mysql', //'mysql' if you want to use docker-compose
   user: process.env.USER_DB || 'root',
   database: process.env.NAME_DB || 'dziennik',
   password: process.env.PASS_DB || 'password',
@@ -13,7 +13,6 @@ const pool = createPool({
 module.exports = {
   pool,
 };
-
 
 
 // const { createPool } = require("mysql2/promise");

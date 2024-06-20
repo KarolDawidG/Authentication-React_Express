@@ -38,7 +38,7 @@ services:
       - "3001:3001"
     depends_on:
       - mysql
-    command: ["/usr/src/app/wait-for-it.sh", "mysql:3306", "--", "node", "app.js"]
+    command: ["bash", "-c", "chmod +x /usr/src/app/wait-for-it.sh && /usr/src/app/wait-for-it.sh mysql:3306 -- npm start"]
   
 volumes:
   mysql_data:
