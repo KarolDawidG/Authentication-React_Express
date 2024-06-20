@@ -1,21 +1,36 @@
 version: '3.8'
+networks:
+  app-network:
 services:
   mysql:
+    networks:
+      - app-network
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: dziennik
       MYSQL_ROOT_PASSWORD: password
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
+  frontend:
+    networks:
+      - app-network
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
   backend:
+    networks:
+      - app-network
     build: ./backend
     env_file: 
       - .env
     environment:
-      HOST_DB: mysql  # nazwa usługi MySQL w docker-compose
+      HOST_DB: mysql
       USER_DB: root
       NAME_DB: dziennik
       PASS_DB: password
@@ -23,13 +38,7 @@ services:
       - "3001:3001"
     depends_on:
       - mysql
-
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-
+    command: ["/usr/src/app/wait-for-it.sh", "mysql:3306", "--", "node", "app.js"]
+  
 volumes:
   mysql_data:

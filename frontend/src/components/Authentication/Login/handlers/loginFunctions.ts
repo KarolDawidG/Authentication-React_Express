@@ -14,7 +14,7 @@ export const handleLogin = async (
     const response = await axios.post(ENDPOINT_AUTH, {
       username,
       password,
-    });
+    }); 
 
     if (response && response.status === 200) {
       const token = response.data.token;

@@ -3,6 +3,9 @@ FROM node:alpine
 
 # Utwórz katalog roboczy w kontenerze
 WORKDIR /usr/src/app
+RUN apk add --no-cache bash
+COPY wait-for-it.sh /usr/src/app/wait-for-it.sh
+RUN chmod +x /usr/src/app/wait-for-it.sh
 
 # Kopiuj pliki package.json i package-lock.json (jeśli istnieje)
 COPY package*.json ./
